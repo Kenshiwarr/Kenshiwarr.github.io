@@ -73,6 +73,7 @@ jQuery.event.special.mousewheel = {
 </head>
 
 <body>
+  
   <div id="navbarge" class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark hmenu">
     <div class="container-fluid">
@@ -131,11 +132,10 @@ jQuery.event.special.mousewheel = {
             <source srcset="img/background/cs_bg_normal_mobile_2.jpg" media="(max-width: 600px)" class="bg">
             <img src="img/background/cs_bg_normal.jpg" class="bg bg-img_slide">
         </picture>
-        <div class="containerPoster">
-            <div class="centerPoster">
-                    <img src="img/background/logo_center_new.webp" class="img-fluid rounded mx-auto d-block">
-            </div>
-        </div>
+        <div class="centerPoster">
+          <img src="img/background/logo_center_new.webp" class="img-fluid rounded mx-auto d-block">
+  </div>
+        
         <div class="containerButton">
             <div class="centerButton">
                     <button onclick="location.href = './gear-calculator/?ismenuopen='+ isMenuOpen +'';" type="button" class="getStartedBtn btn-shine btn-md" style="
@@ -154,8 +154,26 @@ jQuery.event.special.mousewheel = {
 
         <!-- <div class="introFooter"></div> -->
     </div>
-
+   <!--  <div class="containerPoster">
+            
+    </div> -->
     
+    <footer id="mainFooter" class="text-center text-lg-start bg-dark text-muted">
+      <!-- Section: Social media -->
+      <div class="container stay-tuned text-start" style="color: white;">
+        <div class="pt-2">
+        <span>Any website related questions: 
+          <div class="tooltipcontainer_hover"><a href="https://discordapp.com/users/302526521862651916" target="_blank"><img src="../logo/discord_logo.jpg" height="48px" width="48px" alt="" style="border: 1px transparent; border-radius: 10%;"></a> <span class="tooltiptext">
+            <div><img src="../logo/discord_img.webp" alt="" height="85px" width="85px" style="border: 4px solid black; border-radius: 50%;"><br/><span>@Kensond</span>
+            </span></div></div>
+          </span>  
+                </div>
+      </div>
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color: white;">
+        &copy;  2024 Copyleft:
+        <a class="text-reset fw-bold" href="https://kenshiwarr.github.io/">kenshiwarr.github.io</a>
+      </div>
+    </footer>
     
 
   <script src="../libs/bootstrap.bundle.min.js"></script>

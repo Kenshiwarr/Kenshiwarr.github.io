@@ -13,7 +13,7 @@ body {
     margin: 0;
     width: 100%;
     min-width: 1320px;
-    background: #efefef;
+    background: rgb(25,28,30);
     line-height: 1;
   }
   .body-container {
@@ -257,6 +257,7 @@ letter-spacing: .15em;
         .Footer_Text {
             font-size: 30px;
         }
+        
 }
 
 .bg-img_slide {

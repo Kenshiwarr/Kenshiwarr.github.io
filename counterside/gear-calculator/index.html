@@ -120,7 +120,7 @@ jQuery.event.special.mousewheel = {
 
 <div class="mb-5 mt-5">
 </div>
-<button type="button" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">
+<button type="button" id="openLoadoutsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">
   Open saved loadouts menu
 </button>
 
@@ -439,59 +439,9 @@ jQuery.event.special.mousewheel = {
 
 </div>
 
-    </div>
     
 
-       
-</div>
 
-
-<div class="modal fade" id="staticBackdrop3" aria-hidden="true" aria-labelledby="staticBackdropLabel3" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel3"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="gearSelectionModal">
-</div>
-            
-            <div class="custom-equipment-slot"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal">Close</button>
-          <!-- <button class="btn btn-primary" data-bs-target="#staticBackdrop" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button> -->
-          <button class="btn btn-success" id="TierAndRarityConfirmationBtn" data-bs-target="#staticBackdrop3" data-bs-toggle="modal" data-bs-dismiss="modal">Confirm</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="staticBackdrop4" aria-hidden="true" aria-labelledby="staticBackdropLabel3" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="GearModalTitle"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          
-        <div class="row row-cols-1" id="selectedGearModal">
-          
-</div>
-            
-            <div class="custom-equipment-slot"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary me-auto" id="GearChangeBtn" data-bs-target="#staticBackdrop4" data-bs-toggle="modal">Change gear</button>
-          <button type="button" class="btn btn-secondary" id="GearRemoveBtn" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" style="display: none;">Remove gear</button>
-          
-          <button class="btn btn-success" id="GearConfirmationBtn" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" data-bs-dismiss="modal">Confirm</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 <p></p>
 
@@ -556,15 +506,21 @@ jQuery.event.special.mousewheel = {
 
 </div>
 
+<button type="button" class="btn btn-link float-end m-4" id="ResetSessionPageBtn">Clear current session and restart page</button>
+
 <div class="container">
 <!-- Button trigger modal -->
 
 
-<button type="button" class="btn btn-link float-end" id="ResetSessionPageBtn">Clear current session and restart page</button>
-<div id="CalculateBtn"  class="m-5" hidden>
+
+<div class="m-5" >
+  <div id="CalculateBtn" hidden>
 <button id="UpdateStatsBtn">Calculate</button>
 <small>Use this button if something went wrong and stats didn't update after your input</small>
 </div>
+</div>
+</div>
+
 </div>
 <!-- Modal -->
 <div class="modal fade" id="compareUnitsModal" tabindex="-1" aria-labelledby="compareUnitsModalLabel" aria-hidden="true">
@@ -647,6 +603,9 @@ jQuery.event.special.mousewheel = {
 </div>
 
 
+
+
+
  
   
 
@@ -666,6 +625,81 @@ jQuery.event.special.mousewheel = {
   </div>
 </div>
 
+
+
+<div class="modal fade" id="staticBackdrop3" aria-hidden="true" aria-labelledby="staticBackdropLabel3" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel3"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="row row-cols-1 row-cols-md-3 g-4" id="gearSelectionModal">
+</div>
+          
+          <div class="custom-equipment-slot"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger me-auto" data-bs-dismiss="modal">Close</button>
+        <!-- <button class="btn btn-primary" data-bs-target="#staticBackdrop" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button> -->
+        <button class="btn btn-success" id="TierAndRarityConfirmationBtn" data-bs-target="#staticBackdrop3" data-bs-toggle="modal" data-bs-dismiss="modal">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop4" aria-hidden="true" aria-labelledby="staticBackdropLabel3" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="GearModalTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+      <div class="row row-cols-1" id="selectedGearModal">
+        
+</div>
+          
+          <div class="custom-equipment-slot"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary me-auto" id="GearChangeBtn" data-bs-target="#staticBackdrop4" data-bs-toggle="modal">Change gear</button>
+        <button type="button" class="btn btn-secondary" id="GearRemoveBtn" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" style="display: none;">Remove gear</button>
+        
+        <button class="btn btn-success" id="GearConfirmationBtn" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" data-bs-dismiss="modal">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer id="mainFooter" class="text-center text-lg-start bg-dark text-muted">
+  <!-- Section: Social media -->
+  <div class="container stay-tuned text-start" style="color: white;">
+    <div class="pt-2">
+    <span>Any website related questions: 
+      <div class="tooltipcontainer_hover"><a href="https://discordapp.com/users/302526521862651916" target="_blank"><img src="../../logo/discord_logo.jpg" height="48px" width="48px" alt="" style="border: 1px transparent; border-radius: 10%;"></a> <span class="tooltiptext">
+        <div><img src="../../logo/discord_img.webp" alt="" height="85px" width="85px" style="border: 4px solid black; border-radius: 50%;"><br/><span>@Kensond</span>
+        </span></div></div>
+      
+      
+     </span>
+              
+              <div class="text-center">
+               
+            </div>
+            </div>
+  </div>
+  
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color: white;">
+    &copy;  2024 Copyleft:
+    <a class="text-reset fw-bold" href="https://kenshiwarr.github.io/">kenshiwarr.github.io</a>
+    
+  </div>
+</footer>
   
 <script src="dataset.js"></script>
 <script src="main-func.js"></script>
