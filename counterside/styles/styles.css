@@ -38,6 +38,7 @@ body {
   color: white;
   --bs-bg-opacity: 1;
   background-color: rgba(var(--m-bg-color), var(--bs-bg-opacity)) !important;
+  height: 100vh;
   }
 
   body > * {
@@ -48,7 +49,8 @@ body {
   #mainFooter {
     clear: both;
     position: relative;
-    height: 10rem;
+    height: 8rem;
+    margin-top: -8rem;
   }
 
   #initial_ {
