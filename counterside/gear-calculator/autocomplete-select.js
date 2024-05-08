@@ -1172,7 +1172,7 @@ var needCurrHPind = false;
      }
 
       
-      $('#Unit_Extra').html('');
+      $('#Unit_Extra').html('<span class="fw-bold">Select unit main attack:</span><br/>');
 
 
       if (unit_mainAttack.length>0) {
@@ -1192,6 +1192,11 @@ var needCurrHPind = false;
         
         }
       }
+
+      $('#Unit_Extra .form-check').on('change',function() {
+        UpdateUnitAndTarget(total_unit_data);
+        CalcUnitDMG();
+      })
 
 
 
