@@ -1,4 +1,13 @@
+const url_getUnits = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+// Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+var Utitle = url_query_params.tUt; // "some_value"
+var Uname = url_query_params.tUn; // "some_value"
 
+var Tname = url_query_params.tTn; // "some_value"
+var Ttitle = url_query_params.tTt; // "some_value"
+var ifDummy = url_query_params.Isdmmy; // "some_value"
 
 
 if (localStorageAvailable) {
@@ -33,12 +42,34 @@ if (localStorageAvailable) {
       location.reload(true);
     }
   
+  } else if ((Uname != null) && (Utitle != null)) {
+    console.log('yess')
+    searchvcsv(Utitle.replace(/_/g, ' '),Uname.replace(/_/g, ' '),true)
+if (ifDummy == 'false') {
+  $('#searchIDtarget').prop('disabled', false);
+  $('#searchIDtarget').attr('placeholder','');
+  ifSelectTargetDummy = false;
+  $('#selectCustomEnemy').removeClass('d-flex');
+    $('#selectCustomEnemy').prop('hidden', true);
+  $('#btn-setTargetAsDummy').prop('checked',false);
+  
+$('#dummy_extra_stats_dropdown').hide();
+$('#target_extra_stats_dropdown').show();
+}
+    
+    if ((Tname != null) && (Ttitle != null)) {
+      searchvcsv2(Ttitle.replace(/_/g, ' '),Tname.replace(/_/g, ' '),true)
+    }
   }
   
   console.timeEnd('LoadFromLocalStorageTime');
 } else {
   $('#uct_saved_loadouts').html('<div class="text-danger text-center"> local storage is not available. <br /> No data can be saved. <br /> Your progress will be lost once you refresh the page. </div>')
 }
+
+
+
+
 
 
 //var units_full_names = ['States of One ACH-4 Clan','States of One ATAC-130 Gunship','States of One ATB-1B Spear','States of One ATF-35 Thunderbolt','States of One ATL-1 Lincoln','Abyssal Ravage Orca','ESPR Acolyte','Fennec Fox Adamant Sniper','Old Administration Administration Rifleman','Old Administration Administration Shieldman','Old Administration Administration Sword Fighter','Agent Eujin','Valentinus Monastery Agnes Abigail','Old Administration: Maze Division Alex','Six Wings Amy Firstwing','Freedom Riders Amy Strickland','Future-at-War Arachne','Zodiac Knights: Blue Shift Arius Esquede','Special Hero Class Arti Lana','States of One Assault Trooper','Fenrir Squad Hilde','Cold Case Horizon','Stormbringer Jake Walker','Arhat Joo Shiyoon','Minerva Karin Wong','Ace of Wings Lee Sooyeon','Kresnik Lyudmila','Garguantia Maria Antonov','Six Wings Na Yubin','Nehemoth Ray','Tenured President Regina MacCready','Asmodeus Rosaria le Friede','Altergressive Seo Yoon','Singularity Shin Jia','Final Phase Sigma','Type: Fenrir Yoo Mina','Solar Codex Yuna Springfield','Future-at-War Ballista','Miracle Investigation Council 9 Benedict Constantine','Best Mascot Irie Alford','Best Streamer Miya','Miracle Investigation Council 9 Biblide Luce','Black Tide Black Tail','Blue Blood Elizabeth Pendragon','HRT Berry Bomi','Breakbeat Alex','Administration Counter Academy Brownie Moore','Steel Lane Buzzard','Lancelot Frontier C.C.','Knights of Redemption Carlota Martinez','Elysium Philharmonic Carmen','Official Support Cathy Wade','Black Tide Chariot','R7 Irregular Scouts Charlie Rockwood','White Rabbit Cho Hojin','Daymine Mining Team 4 Choi Gangsan','HRT Berry Choi Ina','The Militia Choi Jihoon','The Gronia Department of National Security Christina Brecht','Academy Student Council Ciel Marronier','Miracle Investigation Council 9 Cindy Looper','Knights of Redemption Clareth El Arcadena','Miracle Investigation Council 9 Claudia Nelson','The Iron Knight Gerard Curian','Dark Seven Sylvia Lena Cooper','Horizon Finance Dash','Suicide Squad Joo Shiyoung','Delta Seven Dominic King Reginald','OZ Dorothy','Front Bay Sharks Dracasia','R7 Irregular Scouts Eddie Fisher','ESPR Edel Meitner','Academy Student Council Edith Twins','Jehuty Biotech Eins & Zwei','Prydwen Institution Elizabeth Pendragon','Border Guards Ella','Old Administration Estaque','Zodiac Knights: Blue Shift Esterosa de Chevalier','ALT Squad Eujin','Gha&quot;agsheblah Eve Meitner','Strega Evelyn Keller','Apex Predator Evolved One','Expert Mercenary Yoo Mina','Canary Squad Félicette','Zodiac Knights: Blue Shift Fione Lowell','Fallen Hawk Frederick Doma','Fallen Hawk Frederick Yuma','Freelancer Kim Chowon','Full Moon Nanahara Chinatsu','Alphatrix Innovation Gabriel Jun the Vicious Breaker','HRT Berry Gaeun','Galahad Roy Burnett','Betatrix Gambler','Scavengers Glitch','Northern Union Goliath','Great Silence Ecclesia','Gremory\'s Bar Gremory','Northern Union Grendel','Griffin Rider Christina Brecht','Fennec Fox HM MRLS','White Rabbit Han Sorim','Cronenworth Puppet Troupe Harab','Nanahara Family Alliance Hayami Kanade','Nanahara Family Alliance Hayami Sanae','Hero Blossom Kaci Bins','Hidden Challenger Kim Chulsoo','Type: Siegfried Hilde','Freedom Riders Hirose Aki','Horizon Finance Horizon','Steel Lane Hound','Red Musician I-NO','Old Administration Ifrit','Strega Ingrid Johanna','Joint Investigation Kang Soyoung','Official Support Irie Alford','States of One Ironside','Delta Seven Jaina Kropel','Delta Seven Jake Walker','Mason Mercenary Office Jane Doe','Future-at-War Janus','R7 Irregular Scouts Jessica Green','Subculture Research Club Jin Bora','Mason Mercenary Office John Mason','Fenrir Squad Joo Shiyoon','Delta Seven: Pathfinder Joo Shiyoung','Special Hero Class Kaci Bins','GUREN TYPE-08 ELEMENTS "SEITEN" Kallen Kozuki','The Militia Kang Minwoo','Police SWAT 4 Kang Soyoung','Delta Seven: Pathfinder Karin Wong','Kestrel Xiao Lin','Alphatrix Innovation Kim Chowon','Yeoksam Residents&quot;& Association Kim Chulsoo','ALT Squad Kim Sobin','Delta Seven Kyle Wong','Canary Squad Laika','ESPR Lamda Spatari','Platina Express Lara Jaeger','Strega Laura Beatrix','Frontier Lee Dafoe','Alphatrix Innovation Lee Jin','Six Wings Lee Jisoo','Freedom Riders Lee Minseo','Fenrir Division Lee Sooyeon','Police SWAT 4 Lee Yumi','The Militia Lee Yuri','Zero Lelouch Lamperouge','Northern Union Lenore','Successor Levia Thanis','Flora Maid Service Lily','Freedom Riders Lin Xien','OZ Liona','Zodiac Knights: Blue Shift Liv Allen','Lonely Villainess Lone Lee','Jehuty Biotech Lucid','Knights of Redemption Lucrecia','Nightmare Realization Lulu the Nightmare','HRT Berry Lumi','Elysium Philharmonic Luna','Flora Maid Service Lycoris','Old Administration: Maze Division Lyudmila','Fennec Fox MA1 HMMWV','Scavengers Machine Collector','Elysium Philharmonic Maestra Nequitia','Delta Seven Maria Antonov','Jellyfish Pirates May','Frontier Maya Hunt','Subculture Research Club Mi Rinae','Academy Student Council Mika ★ Star','Post-War Administration Bureau Millia Rage','Demon-type C.O. Ministra','HRT Berry Miya','Flora Maid Service Mone','Demon-type C.O. Mors','Fennec Fox Mortar Team','Fenrir Division Na Yubin','Administration Counter Academy Naielle Bluesteel','Nanahara Family Alliance Nanahara Chifuyu','Nanahara Family Alliance Nanahara Chinatsu','Nanahara Family Alliance Nayuka Minato','Near Astraea Esterosa de Chevalier','Nest Keeper Xiao Lin','Gremory\'&s Bar Nicole Primer','Frontier Nina Anderson','Fenrir Squad Noelle Wright','Nanahara Family Alliance Ogami Masaki','Alphatrix Innovation Oh Saerom','Successor Orca','Orochinagi Nanahara Chifuyu','Outlander Rivet','Scavengers Overflow','Charade Ozymandias','Fennec Fox PZH Mobile Gun','Daymine Mining Team 4 Park Hyunsoo','States of One Peacekeeper','Elysium Philharmonic Plaga','Purple Mist Laura Beatrix','Illyria Commando Brigade Ramlethal Valentine','Alphatrix Innovation Raphaela Juri the Evil Chaser','Black Tide Reaper','Delta Seven: Pathfinder Rebecca Catherine','Fennec Fox Recoiless Gunner','ESPR Regina MacCready','Replacer Syndicate Replacer Bishop','Replacer Syndicate Replacer King','Replacer Syndicate Replacer Knight','Replacer Syndicate Replacer Queen','The Gronia Department of National Security Revenant','Steel Lane Rhino','Steel Lane Rifleman','Horizon Finance Rita Arsenico','ESPR Rivet','Fallen Hawk Rosaria le Friede','Prydwen Institution Roy Burnett','Prydwen Institution Ryan Ferrier','Black Tide Scout','Secret Service Lycoris','ALT Squad Seo Yoon','Cronenworth Puppet Troupe Serapel','Elysium Philharmonic Shena','Dino Mech Shepherd and Lurcher','Steel Lane Shieldman','Daymine Mining Team 4 Shim Somi','Alphatrix Innovation Shin Jia','Future Strategy Department Sigma','OZ Skia Crow','Special Hero Class Sky Layfield','The Sleeping Girl and the Yellow-billed Flock Edith Twins','Steel Lane Sniper','Flame of Corruption Sol Badguy','Front Bay Sharks Sonya Bill','Steel Lane Sparrow','Special Force Han Sorim','Demon-type C.O. Spira','Fennec Fox Stinger Gunner','Black Tide Stronghold','Steel Lane Suppressor','Black Tide Sweeper','Delta Seven Sylvia Lena Cooper','Steel Lane Tactical Transporter Deuce-and-a-Half','Front Bay Sharks Tallie','Old Administration Tarrasque','Black Tide Terminator','Prydwen Institution Thaddeus Morgan','Future-at-War Titan','Tommy and the Losers Tommy the Die-hard','Triaina Plan Titan','Fennec Fox UBGL Rifleman','Flora Maid Service Veronica','Volume Up! Gaeun','Border Guards Warden','Steel Lane Woodpecker','ALT Squad Xiao Lin','The Fallen Plague God Yamata no Orochi','Zodiac Knights: Blue Shift Yang Hansol','White Rabbit Yang Harim','Academy Student Council Yen Xing Lanchester','Fenrir Squad Yoo Mina','Strega Yuna Springfield','Fennec Fox ZSU Shilka','Official Support Zena Bird'];
