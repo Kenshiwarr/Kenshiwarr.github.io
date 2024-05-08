@@ -1697,6 +1697,12 @@ targetdurability = (target_hp/Number(Total_Unit_DPS)).toFixed(2)
 
       console.timeEnd('CaltUnitDMG_start');
       timerEnd('UpdateUnitAndTarget_timer');
+    } else {
+      $('#new_sd_dmg').html('');
+      $('#new_sd_dps').html('');
+      $('#sd_dmg_table-tooltip_list').html('');
+      $('#sd_dmg_table').html('<div class="text-center fw-bold" style="font-size: 22px; color: red;">THIS UNIT HAS NO DAMAGE DATA!</div>');
+      $('#sd_dmg_table-tooltip_list').append('<div class="dt_tooltip_container"> </div>');
     }
 
       }
@@ -1986,6 +1992,12 @@ function autocomplete(inp, arr) {
                 var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
                 var udpst = ''
 
+
+                if (udpsid.length != 0) {
+
+                
+                  
+
                 for (let i = 0, n = udpsid.length; i < n; i++) {
                   udpst += "'"
                   for (let j = 1; j < 23; j++) {
@@ -2002,6 +2014,9 @@ function autocomplete(inp, arr) {
                   }
 
                 }
+              } else {
+                udpst = ''
+              }
 
                 //udpst = udpst.slice(0, -1);
                 
