@@ -2104,7 +2104,7 @@ function autocomplete(inp, arr) {
   function UpdateUnitAndTarget(unit_stats) {
     timer('UpdateUnitAndTarget_timer');
     if (unit_stats != '') {
-      $('#searchIDunit').val(unit_stats[1])
+      $('#searchID').val(unit_stats[1])
       if (ifSelectTargetDummy) {
         
     $('#target_extra_stats_dropdown').hide();
@@ -2115,7 +2115,7 @@ function autocomplete(inp, arr) {
     $('#dummy_extra_stats_dropdown').hide();
       }
 
-      $('#searchIDunit').val(unit_stats[1])
+      $('#searchID').val(unit_stats[1])
   
       if (ifSelectTargetDummy === true) {
         if ($("#target-icon").html() != target_dummy_data[8] && $("#target-title").html() != target_dummy_data[0] && $("#target-name").html() != target_dummy_data[1]) {

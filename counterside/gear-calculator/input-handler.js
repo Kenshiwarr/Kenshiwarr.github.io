@@ -44,7 +44,9 @@ if (localStorageAvailable) {
   
   } else if ((Uname != null) && (Utitle != null)) {
     console.log('yess')
+    
     searchvcsv(Utitle.replace(/_/g, ' '),Uname.replace(/_/g, ' '),true)
+    
 if (ifDummy == 'false') {
   $('#searchIDtarget').prop('disabled', false);
   $('#searchIDtarget').attr('placeholder','');
