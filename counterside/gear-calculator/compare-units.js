@@ -365,7 +365,7 @@ console.timeEnd('LoadingSaved_timer')
         var ert = 4;
         
         currIndexLi.children().addClass('preDeleted')
-        currIndexLi.append('<div class="d-grid text-center" style="position: absolute; top: 35%; left: 40%;"><span class="text-danger undo_text">Deletes in '+ert+' sec.</span><button class="btn btn-primary undo_btn" mtd-action="undo">Undo</button></div>')
+        currIndexLi.append('<div class="d-grid text-center" style="position: absolute; top: 35%; left: 40%;"><span class="text-danger undo_text">Deletes in '+ert+' sec.</span><button class="btn btn-primary undo_btn" mtd-action="undo">Cancel</button></div>')
         
         var Undobtn = currIndexLi.find('.undo_btn')
         var Undotxt = currIndexLi.find('.undo_text')

@@ -693,6 +693,8 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
     unit_stats_to_save = unit_stats_to_save.filter(Boolean);
 
       
+    SetScrollable($('#dropdown_unit_stats .unitStats_of'));
+      
 
       
 

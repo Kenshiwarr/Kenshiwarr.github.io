@@ -231,12 +231,15 @@ function UpdateBaseStatsTotal() {
                 'mousedown.ttDrag': function(e) {
                     clicked = true;
                     clickY = e.pageY;
+                    ttDrag.css('cursor', 'grabbing');
                 },
                 'mouseup.ttDrag': function() {
                     clicked = false;
+                    ttDrag.css('cursor', 'grab');
                 },
                 'mouseleave.ttDrag': function() {
                     clicked = false;
+                    ttDrag.css('cursor', 'grab');
   
                     /* if (ttDrag.get(0).scrollHeight <= ttDrag.height()) {
                       
