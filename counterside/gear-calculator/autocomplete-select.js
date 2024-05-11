@@ -1981,8 +1981,10 @@ function autocomplete(inp, arr) {
                 $('#searched-unitID-values').attr('subvalue',sc2);
 
 
+                var unit_data = sc2.split(',');
+
                 var ugr = '';
-                var ugid = indexOfAll(unit_gear_stats_csv, sc2.split(',')[9]);
+                var ugid = indexOfAll(unit_gear_stats_csv, unit_data[9].split(';')[0]);
                 
                 for (let i = 0, n = ugid.length; i < n; i++) {
                   ugr += '"'
@@ -2028,7 +2030,7 @@ function autocomplete(inp, arr) {
                 //udpst = udpst.slice(0, -1);
                 
                 
-                var unit_data = sc2.split(',');
+               
                 currentUnitType = unit_data[9].split(';')[0];
       
                 $('#searched-unitID-values').attr('value',unit_data);

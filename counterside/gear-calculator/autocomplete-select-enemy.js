@@ -814,13 +814,16 @@ function autocompleteTarget(inp, arr) {
                    
                     
                   }
+                  
   
                   sc2 = uTitle + ',' + uName + sc2 + ',' + ',';
                   $('#searched-unitID-values').attr('subvalue',sc2);
   
+
+                  var target_data = sc2.split(',');
   
                   var ugr = '';
-                  var ugid = indexOfAll(unit_gear_stats_csv, sc2.split(',')[9]);
+                  var ugid = indexOfAll(unit_gear_stats_csv, target_data[9].split(';')[0]);
                   
                   for (let i = 0, n = ugid.length; i < n; i++) {
                     ugr += '"'
@@ -859,7 +862,7 @@ function autocompleteTarget(inp, arr) {
                   //udpst = udpst.slice(0, -1);
                   
                   
-                  var target_data = sc2.split(',');
+                  
                   currentTargetType = target_data[9].split(';')[0];
         
                   $('#searched-targetID-values').attr('value',target_data);
