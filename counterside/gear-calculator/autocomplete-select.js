@@ -59,7 +59,7 @@ const average_cat1_dmg = 1.18
       var unit_def = 0;
       var DEF_pc = unit_def/(unit_def+1000);
       var unit_crit = 0;
-      var CRIT_pc = unit_crit/(unit_crit+1000);
+      var CRIT_pc = Math.min(0.0005*unit_crit,0.85);
       var unit_hit = 0;
       var HIT_pc = unit_hit/(unit_hit+1500);
       var unit_eva = 0;
@@ -442,7 +442,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       unit_def = Number(unit_data[4])*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
       DEF_pc = unit_def/(unit_def+1000);
       unit_crit = Number(unit_data[5])*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
-      CRIT_pc = unit_crit/(unit_crit+1000);
+      CRIT_pc = Math.min(0.0005*unit_crit,0.85);
       unit_hit = Number(unit_data[6])*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
       HIT_pc = unit_hit/(unit_hit+1500);
       unit_eva = Number(unit_data[7])*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
@@ -1987,19 +1987,19 @@ function autocomplete(inp, arr) {
                 var ugid = indexOfAll(unit_gear_stats_csv, unit_data[9].split(';')[0]);
                 
                 for (let i = 0, n = ugid.length; i < n; i++) {
-                  ugr += '"'
+                  ugr += '"';
                   for (let j = 0; j < 59; j++) {
                     if (unit_gear_stats_csv[ugid[i]+j-3] === undefined) {
-                      ugr += ','
+                      ugr += ',';
                     } else {
                       ugr += unit_gear_stats_csv[ugid[i]+j-3] + ',';
                     }
                   }
-                  ugr += '",'
+                  ugr += '",';
                 }
 
                 var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
-                var udpst = ''
+                var udpst = '';
 
 
                 if (udpsid.length != 0) {
@@ -2008,10 +2008,10 @@ function autocomplete(inp, arr) {
                   
 
                 for (let i = 0, n = udpsid.length; i < n; i++) {
-                  udpst += "'"
+                  udpst += "'";
                   for (let j = 1; j < 23; j++) {
                     if (unit_dps_stats_csv[udpsid[i]+j] === undefined) {
-                      udpst += ','
+                      udpst += ',';
                     } else {
                       if (j === 22) {
                         udpst += unit_dps_stats_csv[udpsid[i]+j];
@@ -2024,7 +2024,7 @@ function autocomplete(inp, arr) {
 
                 }
               } else {
-                udpst = ''
+                udpst = '';
               }
 
                 //udpst = udpst.slice(0, -1);
@@ -2058,7 +2058,7 @@ function autocomplete(inp, arr) {
                unit_def = unit_data[4]
                DEF_pc = unit_def/(unit_def+1000);
                unit_crit = unit_data[5]
-               CRIT_pc = unit_crit/(unit_crit+1000);
+               CRIT_pc = Math.min(0.0005*unit_crit,0.85);
                unit_hit = unit_data[6]
                HIT_pc = unit_hit/(unit_hit+1500);
                unit_eva = unit_data[7]
@@ -2088,7 +2088,7 @@ function autocomplete(inp, arr) {
               if (check === true) {
                 UpdateUnitStats(total_unit_data);
               UpdateUnitAndTarget(total_unit_data);
-              CalcUnitDMG()
+              CalcUnitDMG();
               
               }
               
@@ -2221,8 +2221,7 @@ function autocomplete(inp, arr) {
           
         }
       },'mouseleave':function() {
-        tTooltip.removeClass('active')
-
+        tTooltip.removeClass('active');
       }
 
       })

@@ -3,7 +3,7 @@
       var target_def = 0;
       var target_DEF_pc = target_def/(target_def+1000);
       var target_crit = 0;
-      var target_CRIT_pc = target_crit/(target_crit+1000);
+      var target_CRIT_pc = Math.min(0.0005*target_crit,0.85);
       var target_hit = 0;
       var target_HIT_pc = target_hit/(target_hit+1500);
       var target_eva = 0;
@@ -332,7 +332,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       target_def = Number(target_data[4])*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
       target_DEF_pc = target_def/(target_def+1000);
       target_crit = Number(target_data[5])*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
-      target_CRIT_pc = target_crit/(target_crit+1000);
+      target_CRIT_pc = Math.min(0.0005*target_crit,0.85);
       target_hit = Number(target_data[6])*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
       target_HIT_pc = target_hit/(target_hit+1500);
       target_eva = Number(target_data[7])*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
@@ -889,7 +889,7 @@ function autocompleteTarget(inp, arr) {
                 target_def = target_data[4]
                 target_DEF_pc = target_def/(target_def+1000);
                 target_crit = target_data[5]
-                target_CRIT_pc = target_crit/(target_crit+1000);
+                target_CRIT_pc = Math.min(0.0005*target_crit,0.85); 
                 target_hit = target_data[6]
                 target_HIT_pc = target_hit/(target_hit+1500);
                 target_eva = target_data[7]
