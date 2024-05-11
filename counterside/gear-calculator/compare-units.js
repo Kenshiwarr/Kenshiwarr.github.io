@@ -851,15 +851,15 @@ console.timeEnd('LoadingSaved_timer')
                                     uctI_o[5].append((u_1stat >= u_2stat ? '<span class="text-success">+'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>':'<span class="text-danger">'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>') +  '<br />');
 
                                 }
-                                if (indxOfval2 !== -1) {
-                            u_1stat = (Number(sau[10][indxOfval2+(cCompares_Length[1]/2)])*100).toFixed(1).replace(/[.,]0+$/, ""); 
+                                if (indxOfval !== -1) {
+                            u_1stat = (Number(cUnit_val[indxOfval+(cCompares_Length[0]/2)])*100).toFixed(1).replace(/[.,]0+$/, ""); 
                             uctI_o[0].append((u_1stat) + '%' +  '<br />');
                            
                         } else {
                             uctI_o[0].append('- <br />');
                         }
-                        if (indxOfval !== -1) {
-                            u_2stat = (Number(cUnit_val[indxOfval+(cCompares_Length[0]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
+                        if (indxOfval2 !== -1) {
+                            u_2stat = (Number(sau[10][indxOfval2+(cCompares_Length[1]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
                             uctI_o[1].append((u_2stat) + '%' +  '<br />');
                         } else {
                             uctI_o[1].append('- <br />');
@@ -931,14 +931,14 @@ console.timeEnd('LoadingSaved_timer')
                         uctI_o[7].append( (u_1stat >= u_2stat ? '<span class="text-success">+'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>':'<span class="text-danger">'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>') +  '<br />');
                         
                     }
-                                if (indxOfval4 !== -1) {
-                            u_1stat = (Number(sau[11][indxOfval4+(cCompares_Length[3]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
+                                if (indxOfval3 !== -1) {
+                            u_1stat = (Number(cTarget_val[indxOfval3+(cCompares_Length[2]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
                             uctI_o[2].append((u_1stat) + '%' +  '<br />');
                         } else {
                             uctI_o[2].append('- <br />');
                         }
-                        if (indxOfval3 !== -1) {
-                            u_2stat = (Number(cTarget_val[indxOfval3+(cCompares_Length[2]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
+                        if (indxOfval4 !== -1) {
+                            u_2stat = (Number(sau[11][indxOfval4+(cCompares_Length[3]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
                             uctI_o[3].append((u_2stat) + '%' +  '<br />');
                         } else {
                             uctI_o[3].append('- <br />');
