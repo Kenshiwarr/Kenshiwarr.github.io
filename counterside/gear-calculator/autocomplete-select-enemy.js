@@ -820,7 +820,7 @@ function autocompleteTarget(inp, arr) {
   
   
                   var ugr = '';
-                  var ugid = indexOfAll(unit_gear_stats_csv, 'Counter');
+                  var ugid = indexOfAll(unit_gear_stats_csv, sc2.split(',')[9]);
                   
                   for (let i = 0, n = ugid.length; i < n; i++) {
                     ugr += '"'
