@@ -1265,6 +1265,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var chm_chance = [chance_to_hit,chance_to_crit,enemy_chance_to_dodge];
 
 
+
   if (enemy_chance_to_dodge === 0) {
     chm_chance[2] = 0;
     isSureFireNat = true;
@@ -1379,7 +1380,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       dmgAppl[2] = Math.round(sDmg_miss);
     }
     if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
-      dmgAppl[3] = '<span dt_target="#dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip_hover">'+Math.round(sDmg_Tdcm)+'</span> ';
+      dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg  dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
     $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[0]).toFixed(2).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[1]).toFixed(2).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]).toFixed(2).replace(/[.,]0+$/, "")+'% </div>')
 
     } else {
