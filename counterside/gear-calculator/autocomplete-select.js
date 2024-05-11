@@ -2459,7 +2459,11 @@ function DeleteDropdownFromAnything(ddid) {
 
 function AppendCustomStatsForUnits() {
 
-  if ($('#stat_data_list_values ol .dropdown-item').length === 0) {
+  $('#stat_data_list_values ol').html('');
+  $('#target_stat_data_list_values ol').html('');
+  $('#dummy_stat_data_list_values ol').html('');
+
+  if (($('#stat_data_list_values ol .dropdown-item').length === 0) && ($('#target_stat_data_list_values ol .dropdown-item').length === 0) && ($('#dummy_stat_data_list_values ol .dropdown-item').length === 0)) {
     
 
     for (let i = 0, n = BONUS_STATS_LIST.length; i < n; i++) {
@@ -2481,7 +2485,6 @@ function AppendCustomStatsForUnits() {
     }
     
   $('#search_data_list_values').on('input',function(e) {
-  console.log($(this).val());
   const tval = $(this).val().toLowerCase();
   
   $("#stat_data_list_values li .dropdown-item").filter(function () {
@@ -2494,8 +2497,8 @@ function AppendCustomStatsForUnits() {
   
   
   });
+
   $('#target_search_data_list_values').on('input',function(e) {
-  console.log($(this).val());
   const tval = $(this).val().toLowerCase();
   
   $("#target_stat_data_list_values li .dropdown-item").filter(function () {
@@ -2508,6 +2511,20 @@ function AppendCustomStatsForUnits() {
   
   
   });
+
+  $('#dummy_search_data_list_values').on('input',function(e) {
+    const tval = $(this).val().toLowerCase();
+    
+    $("#dummy_stat_data_list_values li .dropdown-item").filter(function () {
+    if (tval !== '') {
+    $(this).parent().not().addClass('filter_search-hidden')
+    }
+    return $(this).val().toLowerCase().indexOf(tval) > -1;
+    }).parent().removeClass('filter_search-hidden')
+    
+    
+    
+    });
   
   $('#stat_data_list_values .dropdown-item').on('click',function() {
   var sItem = $(this).text();
