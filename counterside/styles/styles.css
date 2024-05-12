@@ -31,6 +31,13 @@
 input[type="search"]::placeholder {
   color: rgba(183, 180, 190, 0.733);
 }
+input[type="text"]::placeholder {
+  color: rgba(183, 180, 190, 0.733);
+}
+input[type="number"]::placeholder {
+  color: rgba(183, 180, 190, 0.733);
+}
+
 
 body {
   /* background-color: rgb(129, 163, 179); */
@@ -1123,4 +1130,12 @@ color: #bebebe;
 
 #cTdurability {
   font-weight: bolder;
+}
+
+.txt-healing {
+  color: #519b61;
+}
+
+.txt-barrier {
+  color: #7397ac;
 }

@@ -479,6 +479,129 @@ SetScrollable($('.ComparingSelectedUnitsModal-main'));
 
 CreateTooltipForAnything($('#target-current_hp'),'<div style="width: 12rem;">This only appears if unit can do damage based on target\'s current % health</div>');
 
+$('#HPS_Healing_CD-Input').hide();
+    $('#HPS_Healing_Amount-Input').hide();
+    $('#HPS_Healing_Confirm-btn').hide();
+
+    $('#healing_hps_cd').hide();
+    $('#healing_hps_amount').hide();
+    $('#healing_hps_result').hide();
+
+    $('#HPS_Barrier_CD-Input').hide();
+    $('#HPS_Barrier_Amount-Input').hide();
+    $('#HPS_Barrier_Confirm-btn').hide();
+
+    $('#barrier_hps_cd').hide();
+    $('#barrier_hps_amount').hide();
+    $('#barrier_hps_result').hide();
+
+
+
+$('#HPS_Healing-Checkbox').on('change',function() {
+  if (this.checked === true) {
+    $('#HPS_Healing_CD-Input').show();
+    $('#HPS_Healing_Amount-Input').show();
+    $('#HPS_Healing_Confirm-btn').show();
+
+    $('#healing_hps_cd').show();
+    $('#healing_hps_amount').show();
+    $('#healing_hps_result').show();
+  } else {
+    $('#HPS_Healing_CD-Input').hide();
+    $('#HPS_Healing_Amount-Input').hide();
+    $('#HPS_Healing_Confirm-btn').hide();
+
+    $('#healing_hps_cd').hide();
+    $('#healing_hps_amount').hide();
+    $('#healing_hps_result').hide();
+  }
+ 
+  UpdateUnitAndTarget(total_unit_data);
+  CalcUnitDMG();
+ 
+});
+
+$('#HPS_Barrier-Checkbox').on('change',function() {
+  if (this.checked === true) {
+    $('#HPS_Barrier_CD-Input').show();
+    $('#HPS_Barrier_Amount-Input').show();
+    $('#HPS_Barrier_Confirm-btn').show();
+
+    $('#barrier_hps_cd').show();
+    $('#barrier_hps_amount').show();
+    $('#barrier_hps_result').show();
+  } else {
+    $('#HPS_Barrier_CD-Input').hide();
+    $('#HPS_Barrier_Amount-Input').hide();
+    $('#HPS_Barrier_Confirm-btn').hide();
+
+    $('#barrier_hps_cd').hide();
+    $('#barrier_hps_amount').hide();
+    $('#barrier_hps_result').hide();
+  }
+ 
+  UpdateUnitAndTarget(total_unit_data);
+  CalcUnitDMG();
+});
+
+
+
+$('#HPS_Healing_Confirm-btn').on('click',function() {
+  var HpsAmount;
+var HpsResult;
+var HpsCD;
+
+if ($('#HPS_Healing_Amount-Input').val() === '') {
+  HpsAmount = 0;
+} else {
+  HpsAmount = Number($('#HPS_Healing_Amount-Input').val())/100;
+}
+  
+
+  UpdateUnitAndTarget(total_unit_data);
+  HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[19]));
+  $('#healing_hps_amount span').text(Math.round(HpsResult));
+  if ($('#HPS_Healing_CD-Input').val() != 0) {
+    HpsCD = $('#HPS_Healing_CD-Input').val();
+    $('#healing_hps_cd span').text(Math.round(HpsCD));
+    $('#healing_hps_result span').text(Math.round(HpsResult/HpsCD));
+  } else {
+    $('#healing_hps_result span').text('0');
+  }
+  
+  CalcUnitDMG();
+
+});
+
+$('#HPS_Barrier_Confirm-btn').on('click',function() {
+  var HpsAmount;
+var HpsResult;
+var HpsCD;
+
+if ($('#HPS_Barrier_Amount-Input').val() === '') {
+  HpsAmount = 0;
+} else {
+  HpsAmount = Number($('#HPS_Barrier_Amount-Input').val())/100;
+}
+  
+
+  UpdateUnitAndTarget(total_unit_data);
+  HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[60]));
+  $('#barrier_hps_amount span').text(Math.round(HpsResult));
+  if ($('#HPS_Barrier_CD-Input').val() != 0) {
+    HpsCD = $('#HPS_Barrier_CD-Input').val();
+    $('#barrier_hps_cd span').text(Math.round(HpsCD));
+    $('#barrier_hps_result span').text(Math.round(HpsResult/HpsCD));
+  } else {
+    $('#barrier_hps_result span').text('0');
+  }
+  
+  CalcUnitDMG();
+
+});
+
+
+
 
 //localStorage.clear();
 

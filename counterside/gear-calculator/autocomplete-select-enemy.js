@@ -466,6 +466,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
 
       $('#target-hp').html('<h>HP: </h><span class="current_stats">' + Math.round(target_hp) + ((target_hp-target_data[2]) > 0 ? (' <span class="added_stats">(+' + Math.round(target_hp-target_data[2]) + ')'):'') + '</span></span>');
+      $('#target-hp').attr('subvalue',target_hp)
       $('#target-current_hp').html('<h>Current HP: ' + Math.round(target_hp*enemy_remaining_hp_percent) + ' (' + Number($('#target-current_hp_range').val()) +'%)' + '</h>');
       $('#target-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(target_atk) + ((target_atk-target_data[3]) > 0 ? (' <span class="added_stats">(+' + Math.round(target_atk-target_data[3]) + ')'):'') + '</span></span>');
       $('#target-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(target_def) + '</h> <span class="added_stats"> ' + ((target_def-target_data[4]) > 0 ? ('(+' + Math.round(target_def-target_data[4]) + ')'):'') + '('+ (target_DEF_pc*100).toFixed(2) +'%)</span></span>');

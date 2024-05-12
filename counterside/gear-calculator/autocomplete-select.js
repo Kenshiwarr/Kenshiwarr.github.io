@@ -585,6 +585,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       $('#unit-movement').html('<img src="cs_icons/movement_'+ mTypeIcon +'.png" height="20px" width="20px">' +unit_data[11] + ' Movement');
       
       $('#unit-hp').html('<h>HP: </h><span class="current_stats">' + Math.round(unit_hp) + ((unit_hp-unit_data[2]) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_hp-unit_data[2]) + ')'):'') + '</span></span>');
+      $('#unit-hp').attr('subvalue',unit_hp)
       $('#unit-current_hp').html('<h>Current HP: ' + Math.round(unit_hp*enemy_remaining_hp_percent) + ' (' + Number($('#unit-current_hp_range').val()) +'%)' + '</h>');
       $('#unit-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(unit_atk) + ''+ ((unit_atk-unit_data[3]) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_atk-unit_data[3]) + ')'):'') + '</span></span>');
       $('#unit-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(unit_def) + '</h> <span class="added_stats"> ' + ((unit_def-unit_data[4]) > 0 ? ('(+' + Math.round(unit_def-unit_data[4]) + ')'):'') + '('+ (DEF_pc*100).toFixed(2) +'%)</span></span>');
@@ -1381,11 +1382,11 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     }
     if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
       dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg  dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[0]).toFixed(2).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[1]).toFixed(2).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]).toFixed(2).replace(/[.,]0+$/, "")+'% </div>')
+    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
 
     } else {
       dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg  dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[0]).toFixed(2).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[1]).toFixed(2).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]).toFixed(2).replace(/[.,]0+$/, "")+'% </div>')
+    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
 
     }
     
@@ -1470,14 +1471,27 @@ if (sCounter > 1) {
 var finalunitdps;
 var targetdurability;
 
+var unitHpsHealing = 0;
+
+var unitHpsBarrier = 0;
+
+if ($('#HPS_Healing-Checkbox').is(':checked')) {
+  unitHpsHealing = Number($('#healing_hps_result span').text());
+  
+}
+if ($('#HPS_Barrier-Checkbox').is(':checked')) { 
+  unitHpsBarrier = Number($('#barrier_hps_result span').text());
+}
+
+
 
 
 finalunitdps = Math.round(Number(Total_Unit_DPS));
-targetdurability = (target_hp/Number(Total_Unit_DPS)).toFixed(2)
-        $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> Target is alive for <span id="cTdurability">'+ (target_hp/Number(Total_Unit_DPS)).toFixed(2) +' sec.</span></p>');
+targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2)
+        $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> '+ (unitHpsHealing > 0 ? '<small id="txt_healing" class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small id="txt_barrier" class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
         if (total_unit_data[12] > 1) {
           for (let i = 1; i < total_unit_data[12]; i++) {
-            $('#new_sd_dps').append('<p>Total unit DPS ('+ (i+1) +' units) = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS))*(i+1) + '</span> Target is alive for <span id="cTdurability">'+ (target_hp/Number(Total_Unit_DPS)/(i+1)).toFixed(2) +' sec.</span></p>');
+            $('#new_sd_dps').append('<p>Total unit DPS ('+ (i+1) +' units) = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS))*(i+1) + '</span> '+ (unitHpsHealing > 0 ? '<small id="txt_healing" class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small id="txt_barrier" class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)/(i+1)).toFixed(2) +' sec.</span></p>');
             finalunitdps = finalunitdps*(i+1)
             targetdurability = targetdurability/(i+1)
           }
@@ -1490,6 +1504,9 @@ targetdurability = (target_hp/Number(Total_Unit_DPS)).toFixed(2)
       target_stats_to_save.push(targetdurability);
       target_stats_to_save.splice((target_stats_to_save.length)/2, 0, 'Durability');
 
+
+      CreateTooltipForAnything($('#txt_healing'),'Reduced by healing')
+      CreateTooltipForAnything($('#txt_barrier'),'Reduced by barriers')
 
 
 

@@ -245,7 +245,7 @@ jQuery.event.special.mousewheel = {
 
 
 <div class="unit_statWindow">
-<div id="unit-hp"></div>
+<div id="unit-hp" subvalue="1"></div>
 <div id="unit-atk"></div>
 <div id="unit-def"></div>
 <div id="unit-crit"></div>
@@ -501,8 +501,41 @@ jQuery.event.special.mousewheel = {
   <div id="sd_dmg_table-tooltip_list"></div>
 
 
+  <div id="new_sd_hps"><div>
+    <span class="text-center fw-bold">Include healing</span>  
+    <div class="input-group" style="width: 65%;">
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="HPS_Healing-Checkbox">
+    </div>
+    <input id="HPS_Healing_CD-Input" placeholder="Cooldown of healing skill" type="number" class="form-control" aria-label="Text input with checkbox" subvalue="1">
+    <input id="HPS_Healing_Amount-Input" placeholder="Healing of max hp%" type="number" aria-label="Last name" class="form-control" subvalue="0">
+    <button id="HPS_Healing_Confirm-btn" type="button" class="btn btn-success ms-1">Confirm</button>
+  </div> <div class="d-flex justify-content-between" style="width: 45%;">
+  <div id="healing_hps_cd">Cooldown (sec): <br /><span>0</span>   </div>
+  <div id="healing_hps_amount">Healing amount: <br /><span >0</span>   </div>
+  <div id="healing_hps_result">HPS: <br /><span >0</span>   </div></div>   </div>
+
+  <div class="mt-3"><span class="text-center fw-bold">Include barriers</span> 
+    <div class="input-group" style="width: 65%;">
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" id="HPS_Barrier-Checkbox">
+    </div>
+    <input id="HPS_Barrier_CD-Input" placeholder="Cooldown of barrier skill" type="number" class="form-control" aria-label="Text input with checkbox">
+    <input id="HPS_Barrier_Amount-Input" placeholder="Barrier of max hp%" type="number" aria-label="Last name" class="form-control">
+    <button id="HPS_Barrier_Confirm-btn" type="button" class="btn btn-success ms-1">Confirm</button>
+  </div> <div class="d-flex justify-content-between" style="width: 45%;"> 
+  <div id="barrier_hps_cd">Cooldown (sec): <br /><span>0</span>   </div>
+  <div id="barrier_hps_amount">Barrier amount: <br /><span >0</span>   </div>
+  <div id="barrier_hps_result">HPS: <br /><span >0</span>   </div></div>   </div>
+
+
+
+
+</div>
+
   <div id="new_sd_dps"></div>
 
+  
   
 
 </div>
