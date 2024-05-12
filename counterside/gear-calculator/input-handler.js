@@ -479,6 +479,13 @@ SetScrollable($('.ComparingSelectedUnitsModal-main'));
 
 CreateTooltipForAnything($('#target-current_hp'),'<div style="width: 12rem;">This only appears if unit can do damage based on target\'s current % health</div>');
 
+
+$('#label-hps_h_cd').hide();
+$('#label-hps_h_amt').hide();
+
+$('#label-hps_b_cd').hide();
+$('#label-hps_b_amt').hide();
+
 $('#HPS_Healing_CD-Input').hide();
     $('#HPS_Healing_Amount-Input').hide();
     $('#HPS_Healing_Confirm-btn').hide();
@@ -494,11 +501,14 @@ $('#HPS_Healing_CD-Input').hide();
     $('#barrier_hps_cd').hide();
     $('#barrier_hps_amount').hide();
     $('#barrier_hps_result').hide();
+    
 
 
 
 $('#HPS_Healing-Checkbox').on('change',function() {
   if (this.checked === true) {
+    $('#label-hps_h_cd').show();
+    $('#label-hps_h_amt').show();
     $('#HPS_Healing_CD-Input').show();
     $('#HPS_Healing_Amount-Input').show();
     $('#HPS_Healing_Confirm-btn').show();
@@ -507,6 +517,8 @@ $('#HPS_Healing-Checkbox').on('change',function() {
     $('#healing_hps_amount').show();
     $('#healing_hps_result').show();
   } else {
+    $('#label-hps_h_cd').hide();
+    $('#label-hps_h_amt').hide();
     $('#HPS_Healing_CD-Input').hide();
     $('#HPS_Healing_Amount-Input').hide();
     $('#HPS_Healing_Confirm-btn').hide();
@@ -523,6 +535,8 @@ $('#HPS_Healing-Checkbox').on('change',function() {
 
 $('#HPS_Barrier-Checkbox').on('change',function() {
   if (this.checked === true) {
+    $('#label-hps_b_cd').show();
+    $('#label-hps_b_amt').show();
     $('#HPS_Barrier_CD-Input').show();
     $('#HPS_Barrier_Amount-Input').show();
     $('#HPS_Barrier_Confirm-btn').show();
@@ -531,6 +545,8 @@ $('#HPS_Barrier-Checkbox').on('change',function() {
     $('#barrier_hps_amount').show();
     $('#barrier_hps_result').show();
   } else {
+    $('#label-hps_b_cd').hide();
+    $('#label-hps_b_amt').hide();
     $('#HPS_Barrier_CD-Input').hide();
     $('#HPS_Barrier_Amount-Input').hide();
     $('#HPS_Barrier_Confirm-btn').hide();
