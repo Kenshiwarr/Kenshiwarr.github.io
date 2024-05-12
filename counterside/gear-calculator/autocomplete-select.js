@@ -699,6 +699,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       
 
+    $('#new_sd_hps').removeAttr('hidden');
 
       $('#unit-stats-details').removeAttr('hidden');
 
