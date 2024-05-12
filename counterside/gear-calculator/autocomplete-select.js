@@ -1471,6 +1471,52 @@ if (sCounter > 1) {
 var finalunitdps;
 var targetdurability;
 
+
+var HpsAmount;
+var HpsResult;
+var HpsCD;
+
+if ($('#HPS_Healing_Amount-Input').val() === '') {
+  HpsAmount = 0;
+} else {
+  HpsAmount = Number($('#HPS_Healing_Amount-Input').val())/100;
+}
+  
+
+  UpdateUnitAndTarget(total_unit_data);
+  HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[19]));
+  $('#healing_hps_amount span').text(Math.round(HpsResult));
+  if ($('#HPS_Healing_CD-Input').val() != 0) {
+    HpsCD = $('#HPS_Healing_CD-Input').val();
+    $('#healing_hps_cd span').text(Math.round(HpsCD));
+    $('#healing_hps_result span').text(Math.round(HpsResult/HpsCD));
+  } else {
+    $('#healing_hps_result span').text('0');
+  }
+
+  var HpsAmount;
+  var HpsResult;
+  var HpsCD;
+  
+  if ($('#HPS_Barrier_Amount-Input').val() === '') {
+    HpsAmount = 0;
+  } else {
+    HpsAmount = Number($('#HPS_Barrier_Amount-Input').val())/100;
+  }
+    
+  
+    UpdateUnitAndTarget(total_unit_data);
+    HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[60]));
+    $('#barrier_hps_amount span').text(Math.round(HpsResult));
+    if ($('#HPS_Barrier_CD-Input').val() != 0) {
+      HpsCD = $('#HPS_Barrier_CD-Input').val();
+      $('#barrier_hps_cd span').text(Math.round(HpsCD));
+      $('#barrier_hps_result span').text(Math.round(HpsResult/HpsCD));
+    } else {
+      $('#barrier_hps_result span').text('0');
+    }
+
+
 var unitHpsHealing = 0;
 
 var unitHpsBarrier = 0;
