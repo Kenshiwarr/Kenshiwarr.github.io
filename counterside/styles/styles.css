@@ -266,7 +266,8 @@ background-color: rgb(109, 114, 134);
 
 .dropdown_stats_header {
   /* margin-top: 1px; */
-  margin: -2px;
+  margin-left: -2px;
+  margin-right: -2px;
   text-align: center;
   font-weight: 500;
   background-color: rgba(104, 104, 104, 0.945);
