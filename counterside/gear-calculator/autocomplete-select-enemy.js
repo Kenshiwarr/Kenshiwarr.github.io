@@ -91,7 +91,7 @@
 
       
 
-      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       var gear_stats = [enemy_Weapon.mainStat,enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.mainStat,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.mainStat,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.mainStat,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent];
      // var checkSubs = [enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent]
 
@@ -108,7 +108,7 @@
       
       
       
-      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       var gear_set_stats = [enemy_Weapon.eqSet, enemy_Armor.eqSet, enemy_Accessory1.eqSet, enemy_Accessory2.eqSet];
       var gear_set_stats_options = [enemy_Weapon.eqSet_Options, enemy_Armor.eqSet_Options, enemy_Accessory1.eqSet_Options, enemy_Accessory2.eqSet_Options];
 

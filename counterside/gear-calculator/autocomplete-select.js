@@ -2539,6 +2539,12 @@ function AppendCustomStatsForUnits() {
       if (unit_extra_bonus_stats[i] === undefined) {
         unit_extra_bonus_stats[i] = 0;
       }
+      if (target_extra_bonus_stats[i] === undefined) {
+        target_extra_bonus_stats[i] = 0;
+      }
+      if (dummy_extra_bonus_stats[i] === undefined) {
+        dummy_extra_bonus_stats[i] = 0;
+      }
   
       if (i < 3) {
         $('#stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+unit_extra_bonus_stats[i]/10+'">'+ BONUS_STATS_LIST[i] + ' = '+unit_extra_bonus_stats[i]/10+'</button></li>');
