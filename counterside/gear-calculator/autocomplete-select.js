@@ -852,6 +852,9 @@ var needCurrHPind = false;
             if ((sdcurrhpd > 0) && (needCurrHPind === false)) {
               $('#t-ch_needed').show();
               needCurrHPind = true;
+            } else {
+              $('#t-ch_needed').hide();
+              needCurrHPind = false;
             }
             
             
@@ -1504,7 +1507,7 @@ if ($('#HPS_Healing_Amount-Input').val() === '') {
   if ($('#HPS_Barrier_Amount-Input').val() === '') {
     HpsAmount = 0;
   } else {
-    HpsAmount = Number($('#HPS_Barrier_Amount-Input').val())/100;
+    HpsAmount = (Number($('#HPS_Barrier_Amount-Input').val())/100);
   }
     
   
@@ -1533,12 +1536,12 @@ if ($('#HPS_Barrier-Checkbox').is(':checked')) {
   unitHpsBarrier = Number($('#barrier_hps_result span').text());
 }
 
-
+unitHpsHealing += Number($('#target-hp').attr('subvalue'))*target_bonus_stats[16];
 
 
 finalunitdps = Math.round(Number(Total_Unit_DPS));
 targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2)
-        $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> '+ (unitHpsHealing > 0 ? '<small id="txt_healing" class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small id="txt_barrier" class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
+        $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> '+ (unitHpsHealing > 0 ? '<small id="txt_healing" class="txt-healing">(-'+ Math.round(unitHpsHealing) +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small id="txt_barrier" class="txt-barrier">(-'+ Math.round(unitHpsBarrier) +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
         if (total_unit_data[12] > 1) {
           for (let i = 1; i < total_unit_data[12]; i++) {
             $('#new_sd_dps').append('<p>Total unit DPS ('+ (i+1) +' units) = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS))*(i+1) + '</span> '+ (unitHpsHealing > 0 ? '<small id="txt_healing" class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small id="txt_barrier" class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)/(i+1)).toFixed(2) +' sec.</span></p>');
