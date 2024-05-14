@@ -805,6 +805,12 @@ var unitCalculatedDmg = [];
 var unitCalculatedDmgTotal = [];
 
 var needCurrHPind = false;
+
+
+
+if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && unit_mainAttack_selected == '1') {
+  unit_attack_data.push("freeze_loop,1,0.5,1.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
+}
       
       for (let i = 0; i < unit_attack_data.length; i++) {
         //console.log('unit_attack_data ['+ i + '] = ' + unit_attack_data[i])
@@ -1172,11 +1178,7 @@ var needCurrHPind = false;
      
      
 
-     if (($('#Unit_Extra .form-check input:radio:checked').length > 0) && (unit_mainAttack.length > 1)) {
-      unit_mainAttack_selected = $('#Unit_Extra .form-check input:radio:checked').attr('value');
-     } else {
-      unit_mainAttack_selected = 0;
-     }
+   
 
       
       $('#Unit_Extra').html('<span class="fw-bold">Select unit main attack:</span><br/>');
@@ -1201,6 +1203,12 @@ var needCurrHPind = false;
       }
 
       $('#Unit_Extra .form-check').on('change',function() {
+        if (($('#Unit_Extra .form-check input:radio:checked').length > 0) && (unit_mainAttack.length > 1)) {
+          unit_mainAttack_selected = $('#Unit_Extra .form-check input:radio:checked').attr('value');
+         } else {
+          unit_mainAttack_selected = 0;
+         }
+
         UpdateUnitStats(total_unit_data);
   UpdateTargetStats(total_target_data);
         CalcUnitDMG();
@@ -1212,6 +1220,7 @@ var needCurrHPind = false;
 var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*chance_to_hit)+(unit_mainAttack[unit_mainAttack_selected][1]*chance_to_crit)+(unit_mainAttack[unit_mainAttack_selected][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
  
 var Total_Unit_DPS = 0;
+
 
 var unit_restAttacks_last = unit_mainAttack[unit_mainAttack_selected].length;
 if (unit_restAttacks.length > 0) {
@@ -1228,7 +1237,10 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
 
   } else {
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
-    unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
+    if (unit_restAttacks[i][6] !== '101') {
+      unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
+    }
+    
   }
    Total_Unit_DPS += unit_restAttacks[i][unit_restAttacks_last];
 }
@@ -1536,7 +1548,7 @@ if ($('#HPS_Barrier-Checkbox').is(':checked')) {
   unitHpsBarrier = Number($('#barrier_hps_result span').text());
 }
 
-unitHpsHealing += Number($('#target-hp').attr('subvalue'))*target_bonus_stats[16];
+unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1+target_bonus_stats[60]));
 
 
 finalunitdps = Math.round(Number(Total_Unit_DPS));
@@ -2158,8 +2170,7 @@ function autocomplete(inp, arr) {
       
               if (check === true) {
                 UpdateUnitStats(total_unit_data);
-              UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
+              UpdateUnitAndTarget(total_unit_data)
               CalcUnitDMG();
               
               }
