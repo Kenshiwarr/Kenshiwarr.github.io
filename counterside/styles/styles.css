@@ -1014,7 +1014,17 @@ color: #bebebe;
 }
 
 .uctIc {
-  display: inline;
+ /*  display: inline; */
+ display: none;
+}
+
+
+.uctIc_b img {
+  visibility: hidden;
+}
+
+.uctIc_b {
+ display: inline;
 }
 
 .preDeleted {
@@ -1102,7 +1112,7 @@ color: #bebebe;
 
 
 .uct_header_outer {
-  position: absolute;
+  /* position: absolute; */
   color: white;
     --bs-bg-opacity: 1;
     background-color: rgba(var(--m-bg-color), var(--bs-bg-opacity)) !important;

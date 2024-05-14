@@ -682,19 +682,19 @@ console.timeEnd('LoadingSaved_timer')
         uctI[3].append('<div id="unit-compare_container_mainstats_3"> </div>');
         uctI[3].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_3"> </div>');
 
-        uctI[4].html('<div class="uctIc"><br/><br/>  <img src="" alt=""></div> ');
+        uctI[4].html('<div class="uctIc_b"><br/><br/>  <img src="" alt=""></div> ');
         uctI[4].append('<div id="unit-compare_container_mainstats_4"> </div>');
         uctI[4].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_4"> </div>');
 
-        uctI[5].html('<div class="uctIc"><small><br/></small><br/>  <img src="" alt=""></div> ');
+        uctI[5].html('<div class="uctIc_b"><small><br/></small><br/>  <img src="" alt=""></div> ');
         uctI[5].append('<div id="unit-compare_container_mainstats_5"> </div>');
         uctI[5].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_5"> </div>');
         
-        uctI[6].html('<div class="uctIc"><br/><br/>  <img src="" alt=""></div> ');
+        uctI[6].html('<div class="uctIc_b"><br/><br/>  <img src="" alt=""></div> ');
         uctI[6].append('<div id="unit-compare_container_mainstats_6"> </div>');
         uctI[6].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_6"> </div>');
 
-        uctI[7].html('<div class="uctIc"><small><br/></small><br/>  <img src="" alt=""></div> ');
+        uctI[7].html('<div class="uctIc_b"><small><br/></small><br/>  <img src="" alt=""></div> ');
         uctI[7].append('<div id="unit-compare_container_mainstats_7"> </div>');
         uctI[7].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_7"> </div>');
 
