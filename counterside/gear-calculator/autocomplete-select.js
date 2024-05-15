@@ -1844,8 +1844,8 @@ function autocomplete(inp, arr) {
               b.innerHTML += unit_titles[i] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(val.length);
           } else {
-              b.innerHTML = arr[i].substr(0, getIndixesOf(val, arr[i]), val.length);
-              b.innerHTML += unit_titles[i] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
+              b.innerHTML = unit_titles[i] + ' ';
+              b.innerHTML += arr[i].substr(0, getIndixesOf(val, arr[i]), val.length) + "<strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(Number(getIndixesOf(val, arr[i]))+val.length);
           }
     
@@ -1919,8 +1919,8 @@ function autocomplete(inp, arr) {
               b.innerHTML += unit_titles[i] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(val.length);
           } else {
-              b.innerHTML = arr[i].substr(0, getIndixesOf(val, arr[i]), val.length);
-              b.innerHTML += unit_titles[i] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
+              b.innerHTML = unit_titles[i] + ' ';
+              b.innerHTML += arr[i].substr(0, getIndixesOf(val, arr[i]), val.length) + "<strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(Number(getIndixesOf(val, arr[i]))+val.length);
           }
     
