@@ -13,7 +13,7 @@ var ifDummy = url_query_params.Isdmmy; // "some_value"
 if (localStorageAvailable) {
   
   console.time('LoadFromLocalStorageTime');
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     var locString_compare_units = 'localStorageData_compare_units'+i;
     var localStorageData_tooltip_gear = 'localStorageData_tooltip_gear'+i;
     var localStorageData_gear_info = 'gearFullDataForCompare'+i;
@@ -163,12 +163,11 @@ $( "#enemy_hit_input" ).on( "input", function() {
       
       $('#searchIDtarget').attr('placeholder','Disabled input');
       
-    console.log('yes');
+    console.log('!_t yes');
     $('#target_extra_stats_dropdown').hide();
     $('#dummy_extra_stats_dropdown').show();
 if (targetIsUpdated) {
-  var unit_stats = $('#searched-unitID-values').attr('value').split(",");
-    UpdateUnitAndTarget(unit_stats);
+  UpdateUnitAndTarget(total_unit_data);
     CalcUnitDMG()
 }
     
@@ -178,12 +177,11 @@ if (targetIsUpdated) {
       $('#searchIDtarget').attr('placeholder','Search target');
       ifSelectTargetDummy = false;
      // $('#searchIDtarget').val('')
-    console.log('no');
+    console.log('!_t no');
     $('#dummy_extra_stats_dropdown').hide();
     $('#target_extra_stats_dropdown').show();
     if (targetIsUpdated) {
-      var unit_stats = $('#searched-unitID-values').attr('value').split(",");
-        UpdateUnitAndTarget(unit_stats);
+      UpdateUnitAndTarget(total_unit_data);
         CalcUnitDMG()
     }
     }
@@ -261,7 +259,7 @@ $('#deleteAllDataForCompare').on('click',function() {
       }
     
     
-    if (fcId < 5) {
+    if (fcId < 10) {
       var tt_title
       var tt_name
       
@@ -350,7 +348,7 @@ $('#deleteAllDataForCompare').on('click',function() {
   
       UpdateCompareUnitsModal(sau,sGear,gearSaveData,false,false,emptyId)
     } else {
-      console.log('can\'t save more, limit')
+      console.log('can\'t save more, limit');
     }
   }
    

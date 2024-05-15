@@ -81,7 +81,7 @@ const average_cat1_dmg = 1.18
       var total_unit_data = '';
 
 
-      var target_dummy_data = ['-','Target Dummy','10000','0','0','0','0','0','<img src="cs_icons/Machine_gap.png" width="256p" alt="">','Counter','Striker','Ground',1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]
+      var target_dummy_data = ['-','Target Dummy','10000','0','0','0','0','0','<img src="cs_icons/Machine_gap.png" width="256p" alt="">','Counter','Striker','Ground',1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]
 
 
 
@@ -985,6 +985,8 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
 
       unitCalculatedDmgTotal = unitCalculatedDmgTotal.filter(function(val){return val.length !== 0});
 
+      console.log(unitCalculatedDmg);
+
       console.log(unitCalculatedDmgTotal);
       
       
@@ -1209,8 +1211,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
           unit_mainAttack_selected = 0;
          }
 
-        UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
+         UpdateUnitAndTarget(total_unit_data);
         CalcUnitDMG();
       })
 
@@ -1301,14 +1302,17 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   }
   
 
-  var sDmg_mod = 0;
 
   var hitsMdl = ['','',''];
   var mdl_redc = ['','',''];
   var dmgAppl = ['','','',''];
 
+  var totalSkillMod = 0;
 
-  var tooltipApply = ['tooltipcontainer','tooltipcontainer','tooltipcontainer'];
+  var sDmg_mod;
+
+
+/*   var tooltipApply = ['tooltipcontainer','tooltipcontainer','tooltipcontainer']; */
   
 
   //var aTooltip = '';
@@ -1414,10 +1418,10 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
     //aTooltip += '<div class="tttext"> ' + sDmg_scale + 'Damage modifier: ' + (unitCalculatedDmg[j][12]).toFixed(2) + ' </div>';
-    listForMultiAtkTable += '<tr class="table_extra-dark"> <td> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+dmgAppl[0] + mdl_redc[0]+' </td>  <td> '+dmgAppl[1] + mdl_redc[1]+' </td>  <td> '+dmgAppl[2] + mdl_redc[2]+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
-   
+    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+dmgAppl[0] + mdl_redc[0]+' </td>  <td> '+dmgAppl[1] + mdl_redc[1]+' </td>  <td> '+dmgAppl[2] + mdl_redc[2]+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
+    totalSkillMod += unitCalculatedDmg[j][11];
     
-   }
+   }/* 
    if (listForMultiHit != '') {
     tooltipApply[0] = 'tooltipcontainer';
    }
@@ -1426,7 +1430,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
    }
    if (listForMultiMiss != '') {
     tooltipApply[2] = 'tooltipcontainer';
-   }
+   } */
     
   }
   
@@ -1436,14 +1440,14 @@ if (sCounter > 1) {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Multi-hit 1");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Multi-hit 1");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Multi-hit 1"); */
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]*sCounter).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Single-hit");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Single-hit");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Single-hit"); */
   //aTooltip = ''; since using it on thead
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
 //listForMultiAtkTable = listForMultiAtkTable.replaceAll(/~/gi, Math.round(unit_totalAttacks[i][13]/sCounter));
@@ -1500,8 +1504,6 @@ if ($('#HPS_Healing_Amount-Input').val() === '') {
 }
   
 
-  UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
   HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[19]));
   $('#healing_hps_amount span').text(Math.round(HpsResult));
   if ($('#HPS_Healing_CD-Input').val() != 0) {
@@ -1523,8 +1525,6 @@ if ($('#HPS_Healing_Amount-Input').val() === '') {
   }
     
   
-    UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
     HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[60]));
     $('#barrier_hps_amount span').text(Math.round(HpsResult));
     if ($('#HPS_Barrier_CD-Input').val() != 0) {
@@ -2169,8 +2169,8 @@ function autocomplete(inp, arr) {
               AppendCustomStatsForUnits();
       
               if (check === true) {
-                UpdateUnitStats(total_unit_data);
-              UpdateUnitAndTarget(total_unit_data)
+                //UpdateUnitStats(total_unit_data);
+              UpdateUnitAndTarget(total_unit_data,0);
               CalcUnitDMG();
               
               }
@@ -2188,9 +2188,13 @@ function autocomplete(inp, arr) {
 
 
 
-  function UpdateUnitAndTarget(unit_stats) {
+  function UpdateUnitAndTarget(unit_stats, updpos) {
     timer('UpdateUnitAndTarget_timer');
     if (unit_stats != '') {
+      if (updpos === 0) {
+        UpdateUnitStats(unit_stats);
+      }
+      
       $('#searchID').val(unit_stats[1])
       if (ifSelectTargetDummy) {
         
@@ -2237,7 +2241,9 @@ function autocomplete(inp, arr) {
         alert('Target was not selected!');
       }
       
-      UpdateUnitStats(unit_stats);
+      if (updpos !== 0) {
+        UpdateUnitStats(unit_stats);
+      }
     } else {
       alert('Unit was not selected!');
     }
@@ -2699,9 +2705,10 @@ function AppendCustomStatsForUnits() {
     
   unit_extra_bonus_stats[inptId] = inputVal;
 
-  UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
-    //UpdateUnitAndTarget(total_unit_data);
+  /* UpdateUnitStats(total_unit_data);
+  UpdateTargetStats(total_target_data); */
+  console.log('SHOULD BE UPDATING')
+    UpdateUnitAndTarget(total_unit_data, 0);
     CalcUnitDMG()
       } else {
         console.log('same val');
@@ -2739,8 +2746,9 @@ function AppendCustomStatsForUnits() {
     }
     
     $('#SelectedStatValueInput input').val('');
-  UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
+  /* UpdateUnitStats(total_unit_data);
+  UpdateTargetStats(total_target_data); */
+  UpdateUnitAndTarget(total_unit_data);
   CalcUnitDMG()
     });
     
@@ -2811,8 +2819,9 @@ function AppendCustomStatsForUnits() {
   if (target_extra_bonus_stats[inptId] !== inputVal) {
     
   target_extra_bonus_stats[inptId] = inputVal;
-UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
+/* UpdateUnitStats(total_unit_data);
+  UpdateTargetStats(total_target_data); */
+  UpdateUnitAndTarget(total_unit_data);
 CalcUnitDMG()
   } else {
     console.log('same val');
@@ -2854,8 +2863,9 @@ CalcUnitDMG()
   }
 
   $('#target_SelectedStatValueInput input').val('');
-UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
+/* UpdateUnitStats(total_unit_data);
+  UpdateTargetStats(total_target_data); */
+  UpdateUnitAndTarget(total_unit_data);
 CalcUnitDMG()
   }); 
 
@@ -2927,8 +2937,7 @@ CalcUnitDMG()
     if (dummy_extra_bonus_stats[inptId] !== inputVal) {
       
     dummy_extra_bonus_stats[inptId] = inputVal;
-    UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
+    UpdateUnitAndTarget(total_unit_data);
   CalcUnitDMG()
     } else {
       console.log('same val');
@@ -2970,8 +2979,7 @@ CalcUnitDMG()
     }
   
     $('#dummy_SelectedStatValueInput input').val('');
-  UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data);
+    UpdateUnitAndTarget(total_unit_data);
   CalcUnitDMG()
     }); 
 

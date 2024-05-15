@@ -17,7 +17,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
     $('#deleteAllDataForCompare').prop('hidden', false);
 
     
-    if ((cScount.index() < 4) || (overwrite === true)) {
+    if ((cScount.index() < 9) || (overwrite === true)) {
 
     //var yourDate = new Date()
     var saveDate = new Date(Number(sau[9]));

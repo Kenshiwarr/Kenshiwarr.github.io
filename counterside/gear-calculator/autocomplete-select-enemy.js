@@ -42,14 +42,15 @@
 
        
 
-        var unitcdmg = Number($('#unit-stats-details .unit-CRIT_DMG').attr('subvalue'))/100;
+      //  var unitcdmg = Number($('#unit-stats-details .unit-CRIT_DMG').attr('subvalue'))/100;
 
 
         if (target_data != '') {
-
+          
           
           if (ifSelectTargetDummy === true) {
-
+console.log('THIS ALSO SHOULD WORK FINE')
+console.log(target_data)
             enemy_class = target_dummy_data[10];
             enemy_movement_type = target_dummy_data[11];
             enemy_type = target_dummy_data[9];
@@ -91,7 +92,7 @@
 
       
 
-      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0, 0];
       var gear_stats = [enemy_Weapon.mainStat,enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.mainStat,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.mainStat,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.mainStat,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent];
      // var checkSubs = [enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent]
 
@@ -105,7 +106,6 @@
           bonus_stats[i] += target_extra_bonus_stats[i]
         }
       }
-      
       
       
       var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
@@ -128,7 +128,6 @@
         }
       }
 
-      
 
       for (let i = 13; i < target_data.length-9; i++) {
         if(target_data[i] != '') {
@@ -500,6 +499,10 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         enemy_mdl = target_hp*target_data[67];
       } else {
         enemy_mdl = Inf_mdl;
+      }
+
+      if (ifSelectTargetDummy) {
+        enemy_mdl = Inf_mdl
       }
       /* enemy_mdl = Inf_mdl; */
 
