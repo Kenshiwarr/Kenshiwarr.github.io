@@ -489,6 +489,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       enemy_DEF = target_def;
       enemy_DEF_percent = enemy_DEF/(enemy_DEF+1000);
       enemy_EVA = target_eva;
+      enemy_hit = target_hit;
       enemy_EVA_percent = enemy_EVA/(enemy_EVA+800);
       enemy_CDMG_RES = target_cdmg_res;
       /* enemy_cat1_res = enemy_cat1_res*100;
