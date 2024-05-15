@@ -590,8 +590,8 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       $('#unit-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(unit_atk) + ''+ ((unit_atk-unit_data[3]) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_atk-unit_data[3]) + ')'):'') + '</span></span>');
       $('#unit-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(unit_def) + '</h> <span class="added_stats"> ' + ((unit_def-unit_data[4]) > 0 ? ('(+' + Math.round(unit_def-unit_data[4]) + ')'):'') + '('+ (DEF_pc*100).toFixed(2) +'%)</span></span>');
       $('#unit-crit').html('<h>CRIT: </h><span class="current_stats">' + Math.round(unit_crit) + '</h> <span class="added_stats"> ' + ((unit_crit-unit_data[5]) > 0 ? ('(+' + Math.round(unit_crit-unit_data[5]) + ')'):'') + '('+ (CRIT_pc*100).toFixed(2) +'%)</span></span>');
-      $('#unit-hit').html('<h>HIT: <svg id="uHtt" class="text-white" dt_target="#dt_0tt_2_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"></path> </svg> </h><span class="current_stats">' + Math.round(unit_hit) + '</h> <span class="added_stats"> ' + ((unit_hit-unit_data[6]) > 0 ? ('(+' + Math.round(unit_hit-unit_data[6]) + ')'):'') + '('+ (HIT_pc*100).toFixed(2) +'%)</span></span>');
-      $('#unit-eva').html('<h>EVA: <svg id="uEtt" class="text-white" dt_target="#dt_0tt_2_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"></path> </svg> </h><span class="current_stats">' + Math.round(unit_eva) + '</h> <span class="added_stats"> ' + ((unit_eva-unit_data[7]) > 0 ? ('(+' + Math.round(unit_eva-unit_data[7]) + ')'):'') + '('+ (chanceToDodge*100).toFixed(2) +'%)</span></span>');
+      $('#unit-hit').html('<h>HIT: </h><span class="current_stats">' + (unit_hit>(enemy_EVA*1.875) ? '<span id="uHtt">' + Math.round(unit_hit) + '<span class="text-danger align-text-bottom"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bullseye" viewBox="0 0 16 16"> <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/> <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/> <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/> <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/> </svg></span></span>': Math.floor(unit_hit) +'  <span id="uHtt" class="text-warning"><small>(' + Math.floor(enemy_EVA*1.875) + ')</small></span>') + ' </h> <span class="added_stats"> ' + ((unit_hit-unit_data[6]) > 0 ? ('(+' + Math.round(unit_hit-unit_data[6]) + ')'):'') + '('+ (HIT_pc*100).toFixed(2) +'%)</span></span>');
+      $('#unit-eva').html('<h>EVA: </h><span class="current_stats">' + (unit_eva>(enemy_hit/1.875) ? '<span id="uEtt">' + Math.round(unit_eva) + '<span class="text-success align-text-bottom"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-fill-check" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.8 11.8 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7 7 0 0 0 1.048-.625 11.8 11.8 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.54 1.54 0 0 0-1.044-1.263 63 63 0 0 0-2.887-.87C9.843.266 8.69 0 8 0m2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793z"/> </svg></span></span>': Math.floor(unit_eva) +'  <span id="uEtt" class="text-warning"><small>(' + Math.floor(enemy_hit/1.875) + ')</small></span>') + '</h> <span class="added_stats"> ' + ((unit_eva-unit_data[7]) > 0 ? ('(+' + Math.round(unit_eva-unit_data[7]) + ')'):'') + '('+ (chanceToDodge*100).toFixed(2) +'%)</span></span>');
       
 
       $('#unit-cat1_dmg').html('<h>Cat1 DMG: </h><span class="current_stats cs_extra_info">' + (cat1_dmg*100).toFixed(2) + "%</span>");
@@ -605,9 +605,19 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       $('#dropdown_unit_stats').html('<div class="dropdown_stats_header">Details</div><div class="unitStats_of"></div>');
 
 
+      if (unit_hit>(enemy_EVA*1.875)) {
+        CreateTooltipForAnything($('#uHtt'),'Unit has Sure fire against its target!')
+      } else {
+        CreateTooltipForAnything($('#uHtt'),'Hit needed for Sure fire<br /> Missing: ' + Math.abs(Math.round(unit_hit - (enemy_EVA*1.875))))
+      }
       
-      CreateTooltipForAnything($('#uHtt'),'Hit needed for Sure fire: ' + Math.floor(enemy_EVA*1.875))
-      CreateTooltipForAnything($('#uEtt'),'Eva needed to dodge: ' + Math.floor(enemy_hit/1.875))
+      
+      if (unit_eva>(enemy_hit/1.875)) {
+        CreateTooltipForAnything($('#uEtt'),'Unit can dodge enemy attacks!')
+      } else {
+        CreateTooltipForAnything($('#uEtt'),'Eva needed to dodge<br /> Missing: ' + Math.abs(Math.round(unit_eva - (enemy_hit/1.875))))
+      }
+      
       
 
       for (let i = 0; i < BONUS_STATS_LIST.length; i++) {
