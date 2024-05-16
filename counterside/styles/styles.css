@@ -791,6 +791,7 @@ margin-top: -8px;
   background: black;
   margin-bottom: 20px;
   margin-top: -20px;
+  border: 1px solid silver;
   
   position: absolute;
   border-radius: 6px;
@@ -808,7 +809,7 @@ margin-top: -8px;
   position: absolute;
   border-width: 5px;
   border-style: solid;
-  border-color: black transparent transparent transparent;
+  border-color: silver transparent transparent transparent;
   
   top: 100%;
   left: 50%;
@@ -833,6 +834,7 @@ margin-top: -8px;
   background: black;
   margin-bottom: 20px;
   margin-top: -20px;
+  border: 1px solid silver;
   
   position: absolute;
   border-radius: 6px;
@@ -850,7 +852,7 @@ margin-top: -8px;
   position: absolute;
   border-width: 5px;
   border-style: solid;
-  border-color: black transparent transparent transparent;
+  border-color: silver transparent transparent transparent;
   
   top: 100%;
   left: 50%;
