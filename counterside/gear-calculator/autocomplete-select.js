@@ -820,7 +820,7 @@ var needCurrHPind = false;
 
 
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && unit_mainAttack_selected == '1') {
-  unit_attack_data.push("freeze_loop,1,0.5,1.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
+  unit_attack_data.push("freeze_loop,1,0.5,1,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
 }
       
       for (let i = 0; i < unit_attack_data.length; i++) {
@@ -1248,10 +1248,19 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
     unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
 
   } else {
-    unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
-    if (unit_restAttacks[i][6] !== '101') {
+    if (unit_restAttacks[i][6] === '12') {
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]),0);
+  
       unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
-    }
+    } else if (unit_restAttacks[i][6] !== '101') {
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
+  
+        unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
+      } else {
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]),0);
+  
+      }
+    
     
   }
    Total_Unit_DPS += unit_restAttacks[i][unit_restAttacks_last];
@@ -1273,10 +1282,14 @@ if (unit_mainAttack.length > 0) {
 
 for (let i = 0; i < unit_totalAttacks.length; i++) {
   var cdskill = 0;
+  var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2);
   if (((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && (unit_totalAttacks[i][6] !== '01')) {
     cdskill = ((unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5])).toFixed(2);
-  } else if (unit_totalAttacks[i][6] === '100') {
-    cdskill = (unit_totalAttacks[i][5]).toFixed(2);
+  } else if ((unit_totalAttacks[i][6] === '100') || (unit_totalAttacks[i][6] === '12')) {
+    cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
+  } else if (unit_totalAttacks[i][6] === '101') {
+    cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
+    sanim = '1.00';
   } else {
     cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr)).toFixed(2);
   }
@@ -1451,14 +1464,14 @@ if (sCounter > 1) {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Multi-hit 1");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Multi-hit 1");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Multi-hit 1"); */
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Single-hit");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Single-hit");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Single-hit"); */
   //aTooltip = ''; since using it on thead
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
 //listForMultiAtkTable = listForMultiAtkTable.replaceAll(/~/gi, Math.round(unit_totalAttacks[i][13]/sCounter));
