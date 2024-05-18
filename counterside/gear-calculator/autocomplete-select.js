@@ -658,26 +658,26 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         
 
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
-        unit_stats_to_save[n-1+i] = Number(stat_bonus);
+        unit_stats_to_save[n+i] = Number(stat_bonus);
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
       } else if ((unit_data[i+2] != 0 || bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i == 1)) {
         
         stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[7]+bonus_stats[7])+(bonus_stats[i]*0.1));
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
-        unit_stats_to_save[n-1+i] = Number(stat_bonus);
+        unit_stats_to_save[n+i] = Number(stat_bonus);
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'">  <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
       } else if ((unit_data[i+2] != 0 || bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i == 2)) {
         stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[8]+bonus_stats[8])+(bonus_stats[i]*0.1));
         
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
-        unit_stats_to_save[n-1+i] = Number(stat_bonus);
+        unit_stats_to_save[n+i] = Number(stat_bonus);
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'">  <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + ' ('+ (DEF_pc*100).toFixed(2) +'%)' + '</span></li>');
       }
       if ((unit_data[i+2] != 0 || bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && ((i > 2) && (i < 6))) {
         stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[i+6] + bonus_stats[i+6])+(bonus_stats[i]));
         
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
-        unit_stats_to_save[n-1+i] = Number(stat_bonus);
+        unit_stats_to_save[n+i] = Number(stat_bonus);
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'">  <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + ' ('+ (eStat_pc[i-3]*100).toFixed(2) +'%)' + '</span></li>');
       if (i===5) {
         $('#dropdown_unit_stats .unitStats_of').append('<hr>')
@@ -686,7 +686,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 6)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%, or i>=11 otherwise
         stat_bonus = ((bonus_stats[i]+bonus_stats_gear_set[i])*100).toFixed(1);
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
-        unit_stats_to_save[n-1+i] = Number(stat_bonus)/100;
+        unit_stats_to_save[n+i] = Number(stat_bonus)/100;
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'">  <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + "%" + '</span></li>');
 
       }
