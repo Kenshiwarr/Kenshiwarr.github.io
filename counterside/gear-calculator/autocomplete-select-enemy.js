@@ -526,24 +526,24 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       for (let i = 0, n = BONUS_STATS_LIST.length; i < n; i++) {
         
-        if ((target_data[i+2] != 0 || bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i == 0)) {
+        if ((i == 0)) {
           stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[6]+bonus_stats[6])+(bonus_stats[i]*0.1));
   
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n-1+i] = Number(stat_bonus);
           $('#dropdown_target_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
-        } else if ((target_data[i+2] != 0 || bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i == 1)) {
+        } else if ((i == 1)) {
           stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[7]+bonus_stats[7])+(bonus_stats[i]*0.1));
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n-1+i] = Number(stat_bonus);
           $('#dropdown_target_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
-        } else if ((target_data[i+2] != 0 || bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) &&(i == 2)) {
+        } else if ((i == 2)) {
           stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[8]+bonus_stats[8])+(bonus_stats[i]*0.1));
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n-1+i] = Number(stat_bonus);
           $('#dropdown_target_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + ' ('+ (target_DEF_pc*100).toFixed(2) +'%)' + '</span></li>');
         }
-        if ((target_data[i+2] != 0 || bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && ((i > 2) && (i < 6))) {
+        if (((i > 2) && (i < 6))) {
           stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[i+6] + bonus_stats[i+6])+(bonus_stats[i]));
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n-1+i] = Number(stat_bonus);
