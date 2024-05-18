@@ -882,7 +882,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             var sd_anim = unit_attack_data[i].split(',')[3];
             var sd_cd = unit_attack_data[i].split(',')[18];
             var sd_cdtype = unit_attack_data[i].split(',')[19];
-            if ((ifForceCrit == 'false') && (ifSureFire == 'false')) {
+            if (((ifForceCrit == 'false') && (ifSureFire == 'false')) && (sd_cdtype != '23') ) {
               if (source_dmg*crit_multiplier >= enemy_mdl) {
                 sdcrit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
                 
@@ -943,6 +943,19 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
               } else {
                 sdhit = source_dmg;
                 sdmiss = source_dmg;
+              }
+            } else if (sd_cdtype == '23') {
+               if (source_dmg >= enemy_mdl) {
+                sdcrit = enemy_mdl+((source_dmg-enemy_mdl)*0.04);
+                sdhit = enemy_mdl+((source_dmg-enemy_mdl)*0.04);
+              } else {
+                sdcrit = source_dmg;
+                sdhit = source_dmg;
+              }
+              if (source_dmg*miss_multiplier >= enemy_mdl) {
+                sdmiss = enemy_mdl+(((source_dmg*miss_multiplier-enemy_mdl))*0.04);
+              } else {
+                sdmiss = source_dmg*miss_multiplier;
               }
             } 
             

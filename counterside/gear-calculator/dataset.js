@@ -2924,7 +2924,7 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "Northern Union Lenore","hyper1","1.25","-","4.67","3.666666667","4.333333333","-","-","-","-","-","3","TRUE","FALSE","FALSE","FALSE","FALSE","-","44","-","USN_HYPER_SKILL1","NST_HYPER'",
 "Gha'agsheblah Eve Meitner","attack1","1.2","1.5","1.67","0.5","0.8333333333","-","-","-","-","-","2","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "Gha'agsheblah Eve Meitner","attack1","1.2","1.5","1.67","1","1.333333333","-","-","-","-","-","2","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
-"Gha'agsheblah Eve Meitner","attack2","1.2","6","1.67","0.1","0.2666666667","-","-","-","-","1","1","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","-","USN_PASSIVE1","NST_ATTACK'",
+"Gha'agsheblah Eve Meitner","attack2","1.2","6","1.67","0.1","0.2666666667","-","-","-","-","1","1","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","23","USN_PASSIVE1","NST_ATTACK'",
 "Gha'agsheblah Eve Meitner","attack_air1","1.2","1.5","1.67","0.5","0.8333333333","-","-","-","-","-","2","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1_AIR","NST_ATTACK'",
 "Gha'agsheblah Eve Meitner","attack_air1","1.2","1.5","1.67","1","1.333333333","-","-","-","-","-","2","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1_AIR","NST_ATTACK'",
 "Gha'agsheblah Eve Meitner","attack_air2","1.2","6","1.67","0.1","0.2666666667","-","-","-","-","1","1","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","-","USN_PASSIVE1_AIR","NST_ATTACK'",
