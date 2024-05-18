@@ -286,7 +286,7 @@ $('#deleteAllDataForCompare').on('click',function() {
         
     }
   
-    for (let i = 0, n = (target_stats_to_save.length)/2; i < n-1; i++) {
+    for (let i = 0, n = (target_stats_to_save.length)/2; i < n; i++) {
         if (i<6) {
           sau[7] += target_stats_to_save[i] +': '+ target_stats_to_save[n+i] +'<br />';
         } else {

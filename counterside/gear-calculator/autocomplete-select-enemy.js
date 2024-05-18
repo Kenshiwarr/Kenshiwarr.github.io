@@ -572,7 +572,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
 
 
-      target_stats_to_save = target_stats_to_save.filter(Boolean);
+      target_stats_to_save = target_stats_to_save.filter((substat) => substat != undefined);
       
       
       SetScrollable($('#dropdown_target_stats .unitStats_of'));

@@ -702,7 +702,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
     unit_stats_to_save.splice((unit_stats_to_save.length)/2, 0, 'Final EHP');
 
     
-    unit_stats_to_save = unit_stats_to_save.filter(Boolean);
+    unit_stats_to_save = unit_stats_to_save.filter((substat) => substat != undefined);
 
       
     SetScrollable($('#dropdown_unit_stats .unitStats_of'));
