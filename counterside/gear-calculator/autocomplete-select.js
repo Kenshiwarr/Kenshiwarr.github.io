@@ -1590,10 +1590,10 @@ unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[1
 
 finalunitdps = Math.round(Number(Total_Unit_DPS));
 targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2)
-        $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> '+ (unitHpsHealing > 0 ? '<small id="txt_healing" class="txt-healing">(-'+ Math.round(unitHpsHealing) +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small id="txt_barrier" class="txt-barrier">(-'+ Math.round(unitHpsBarrier) +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
+        $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> '+ (unitHpsHealing > 0 ? '<small class="txt-healing">(-'+ Math.round(unitHpsHealing) +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small class="txt-barrier">(-'+ Math.round(unitHpsBarrier) +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
         if (total_unit_data[12] > 1) {
           for (let i = 1; i < total_unit_data[12]; i++) {
-            $('#new_sd_dps').append('<p>Total unit DPS ('+ (i+1) +' units) = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS))*(i+1) + '</span> '+ (unitHpsHealing > 0 ? '<small id="txt_healing" class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small id="txt_barrier" class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)/(i+1)).toFixed(2) +' sec.</span></p>');
+            $('#new_sd_dps').append('<p>Total unit DPS ('+ (i+1) +' units) = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS))*(i+1) + '</span> '+ (unitHpsHealing > 0 ? '<small class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS*(i+1))-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
             finalunitdps = finalunitdps*(i+1)
             targetdurability = targetdurability/(i+1)
           }
@@ -1607,8 +1607,14 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
       target_stats_to_save.splice((target_stats_to_save.length)/2, 0, 'Durability');
 
 
-      CreateTooltipForAnything($('#txt_healing'),'Reduced by healing')
-      CreateTooltipForAnything($('#txt_barrier'),'Reduced by barriers')
+      for (let i = 0, n = $('.txt-healing').length; i < n; i++) {
+        CreateTooltipForAnything($('.txt-healing').eq(i),'DPS reduced by healing')
+      
+      }
+      for (let i = 0, n = $('.txt-barrier').length; i < n; i++) {
+        CreateTooltipForAnything($('.txt-barrier').eq(i),'DPS reduced by barriers')
+      
+      }
 
 
 
@@ -3094,7 +3100,7 @@ function SaveSessionToLocalStorage() {
   if ($('#searched-targetID-values').attr('value') !== '') {
     
   } */
-  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data];
+  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected];
   
   //total_gear_data_target
 
@@ -3153,6 +3159,7 @@ function LoadSessionFromLocalStorage() {
         targetIsUpdated = SessionData[19]
         target_dummy_data = SessionData[20];
         selectedGearSlotList = "Weapon";
+        unit_mainAttack_selected = SessionData[21];
 
 
         $('#selectEnemyType').val(target_dummy_data[9])
