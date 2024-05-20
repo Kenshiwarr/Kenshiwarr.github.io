@@ -3159,7 +3159,7 @@ function LoadSessionFromLocalStorage() {
         targetIsUpdated = SessionData[19]
         target_dummy_data = SessionData[20];
         selectedGearSlotList = "Weapon";
-        unit_mainAttack_selected = SessionData[21];
+        
 
 
         $('#selectEnemyType').val(target_dummy_data[9])
@@ -3240,6 +3240,8 @@ function LoadSessionFromLocalStorage() {
         AppendCustomStatsForUnits()
         UpdateUnitStats(SessionData[0]);
         UpdateUnitAndTarget(SessionData[0]);
+        unit_mainAttack_selected = SessionData[21];
+        //$('#Unit_Extra .form-check input:radio:nth-child(1)').prop('checked',true).siblings().prop('checked',false);
         CalcUnitDMG()
         $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').removeClass('disabled');
         freezeClic = false;
