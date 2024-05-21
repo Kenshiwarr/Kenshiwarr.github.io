@@ -1,4 +1,4 @@
-const BONUS_STATS_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'DMG AMP', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement', 'DMG RES Penetration'];
+const BONUS_STATS_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'DMG AMP','Basic Attack DMG AMP', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Basic Attack DMG RDC', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement', 'DMG RES Penetration'];
 
 //const BONUS_STATS_GEAR_SET_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement'];
 
@@ -15,9 +15,9 @@ var shakeTmt_edittext;
 
 var targetIsUpdated = false;
 
-var unit_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
-var target_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
-var dummy_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+var unit_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+var target_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+var dummy_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
 
 
 var unit_bonus_stats = [];
@@ -212,7 +212,7 @@ const average_cat1_dmg = 1.18
 
       
 
-      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       var gear_stats = [Weapon.mainStat,Weapon.sub1,Weapon.sub2,Weapon.latent,Armor.mainStat,Armor.sub1,Armor.sub2,Armor.latent,Accessory1.mainStat,Accessory1.sub1,Accessory1.sub2,Accessory1.latent,Accessory2.mainStat,Accessory2.sub1,Accessory2.sub2,Accessory2.latent];
      // var checkSubs = [Weapon.sub1,Weapon.sub2,Weapon.latent,Armor.sub1,Armor.sub2,Armor.latent,Accessory1.sub1,Accessory1.sub2,Accessory1.latent,Accessory2.sub1,Accessory2.sub2,Accessory2.latent]
 
@@ -231,7 +231,7 @@ const average_cat1_dmg = 1.18
         }
       }
       
-      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       const gear_set_stats = [Weapon.eqSet, Armor.eqSet, Accessory1.eqSet, Accessory2.eqSet];
       const gear_set_stats_options = [Weapon.eqSet_Options, Armor.eqSet_Options, Accessory1.eqSet_Options, Accessory2.eqSet_Options];
 
@@ -755,11 +755,11 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         var unit_attack_data = Unit_dps_stats;
         unit_attack_data = unit_attack_data.slice(0, -1).slice(1).split("''"); //unit_attack_data = Unit_dps_stats.slice(0, -1).slice(1).split("''"); old
 
-        var unit_def_pen = unit_bonus_stats[57];
+        var unit_def_pen = unit_bonus_stats[58];
 
-        var attack1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
-        var skill1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[58])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
-        var hyper1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
+        var attack1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
+        var skill1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
+        var hyper1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
         
 
         
@@ -1562,7 +1562,7 @@ if ($('#HPS_Healing_Amount-Input').val() === '') {
   }
     
   
-    HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[60]));
+    HpsResult = Number($('#target-hp').attr('subvalue'))*(HpsAmount*(1+target_bonus_stats[62]));
     $('#barrier_hps_amount span').text(Math.round(HpsResult));
     if ($('#HPS_Barrier_CD-Input').val() != 0) {
       HpsCD = $('#HPS_Barrier_CD-Input').val();
@@ -1585,7 +1585,7 @@ if ($('#HPS_Barrier-Checkbox').is(':checked')) {
   unitHpsBarrier = Number($('#barrier_hps_result span').text());
 }
 
-unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1+target_bonus_stats[60]));
+unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1+target_bonus_stats[62]));
 
 
 finalunitdps = Math.round(Number(Total_Unit_DPS));
@@ -2294,7 +2294,7 @@ function autocomplete(inp, arr) {
   }
 
 
-  function CreateTooltipForAnything(obj, text, headerText, footerText, scrollAnchor) {
+  function CreateTooltipForAnything(obj, text, headerText, footerText, anchor) {
 
       /* var stale_id = '';
     $($(obj).parentsUntil($(obj).parent().parent().parent().parent())).each(function() {
@@ -2320,17 +2320,23 @@ function autocomplete(inp, arr) {
         text = '<div class="">'+headerText+'</div><div class="">' + text + '</div><div class="">'+footerText+'</div>'
         
       }
+      let tt_anchor;
+
+      if (anchor === undefined) {
+        tt_anchor = 'ct_top'
+      } else {
+        tt_anchor = 'ct_' + anchor;
+      }
 
       obj.addClass('ct_tooltip_hover');
       obj.attr('ct_target','#ct_'+obj.prop("tagName")+'_'+obj.index()+'_'+tooltipID);
     if($('#ct_'+obj.prop("tagName")+obj.index()+'_'+tooltipID).length == 0) {
-    $('#tooltip_container_ct').append('<div id="ct_'+obj.prop("tagName")+'_'+obj.index()+'_'+tooltipID+'" class="ct_tooltip">' + text + '</div>');
+    $('#tooltip_container_ct').append('<div id="ct_'+obj.prop("tagName")+'_'+obj.index()+'_'+tooltipID+'" class="ct_tooltip '+tt_anchor+'">' + text + '</div>');
     } else {
     console.log('tooltip exists!');
   }
     const tattr = obj.attr('ct_target');
     const tTooltip = $(tattr);
-    const ttID = tTooltip.attr('id');
 
     
   window.clearTimeout(timerForTooltipClear);
@@ -2347,8 +2353,24 @@ function autocomplete(inp, arr) {
         const spanCoord = $(this).offset();
         if (tTooltip.text() != '') {
 
+          switch (anchor) {
+            case 'top':
+              tTooltip.css({top: spanCoord.top-tTooltip.outerHeight(), left: spanCoord.left+(obj.outerWidth()/2)-(tTooltip.outerWidth()/2)});
+              break;
+            case 'bot':
+              tTooltip.css({top: spanCoord.top+obj.outerHeight(), left: spanCoord.left+(obj.outerWidth()/2)-(tTooltip.outerWidth()/2)});
+              break;
+            case 'right':
+              tTooltip.css({top: spanCoord.top+(obj.outerHeight()/2)-(tTooltip.outerHeight()/2), right: spanCoord.left-((tTooltip.outerWidth()/2)+(obj.outerWidth()/2))});
+              break;
+            case 'left':
+              tTooltip.css({top: spanCoord.top+(obj.outerHeight()/2)-(tTooltip.outerHeight()/2), left: spanCoord.left+((tTooltip.outerWidth()/2)-(obj.outerWidth()))});
+              break;
+            default:
+              tTooltip.css({top: spanCoord.top-tTooltip.outerHeight(), left: spanCoord.left+(obj.outerWidth()/2)-(tTooltip.outerWidth()/2)});
+              break;
+          }
           
-          tTooltip.css({top: spanCoord.top-tTooltip.outerHeight(), left: spanCoord.left+(obj.outerWidth()/2)-(tTooltip.outerWidth()/2)});
           tTooltip.addClass('active')
           
         }

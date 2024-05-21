@@ -92,7 +92,7 @@ console.log(target_data)
 
       
 
-      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0, 0];
+      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0, 0,	0,	0];
       var gear_stats = [enemy_Weapon.mainStat,enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.mainStat,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.mainStat,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.mainStat,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent];
      // var checkSubs = [enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent]
 
@@ -108,7 +108,7 @@ console.log(target_data)
       }
       
       
-      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       var gear_set_stats = [enemy_Weapon.eqSet, enemy_Armor.eqSet, enemy_Accessory1.eqSet, enemy_Accessory2.eqSet];
       var gear_set_stats_options = [enemy_Weapon.eqSet_Options, enemy_Armor.eqSet_Options, enemy_Accessory1.eqSet_Options, enemy_Accessory2.eqSet_Options];
 
@@ -388,7 +388,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       }
 
-      enemy_cat1_res = Math.max(enemy_cat1_res - unit_bonus_stats[61],0);
+      enemy_cat1_res = Math.max(enemy_cat1_res - unit_bonus_stats[63],0);
 
       enemy_cat2_res = Math.min(enemy_cat2_res,0.5)
 
@@ -496,8 +496,8 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       enemy_cat2_res = enemy_cat2_res*100; */
       enemy_cat3_res = 0;
 
-      if (target_data[67] != '') {
-        enemy_mdl = target_hp*target_data[67];
+      if (target_data[71] != '') {
+        enemy_mdl = target_hp*target_data[71];
       } else {
         enemy_mdl = Inf_mdl;
       }
