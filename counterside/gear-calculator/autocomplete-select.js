@@ -1078,7 +1078,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             }
         } else if (((String(unitCalculatedDmgTotal[i][0]).includes('attack') === true) && (String(unitCalculatedDmgTotal[i][8]).includes('NST_ATTACK') === true) && 
         (unitCalculatedDmgTotal[i][5] <= 1)) || ((String(unitCalculatedDmgTotal[i][8]).includes('NST_SKILL') === true) && (unitCalculatedDmgTotal[i][5] <= 1))) {
-          if ((String(unitCalculatedDmgTotal[i][0]).includes('phasechange') === false)) {
+          if ((String(unitCalculatedDmgTotal[i][0]).includes('phasechange') === false) && unitCalculatedDmgTotal[i][11] > 0) {
             
           unit_mainAttack_temp.push(unitCalculatedDmgTotal[i])
           }
@@ -1100,10 +1100,10 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             unit_mainAttack_air.push(unitCalculatedDmgTotal[i]);
           }
         }
-        if ((String(unitCalculatedDmgTotal[i][0]).includes('air') === true && enemy_movement_type === 'Air')) {
+        /* if ((String(unitCalculatedDmgTotal[i][0]).includes('air') === true && enemy_movement_type === 'Air')) {
         } 
         if ((String(unitCalculatedDmgTotal[i][7]).toLowerCase().includes('air') === true && enemy_movement_type === 'Air')) {
-        }
+        } */
         if (((String(unitCalculatedDmgTotal[i][8]).includes('NST_ATTACK') === true) && (unitCalculatedDmgTotal[i][5] <= 1)) && 
         ((String(unitCalculatedDmgTotal[i][0]).includes('air') === true && enemy_movement_type === 'Air') || 
         (String(unitCalculatedDmgTotal[i][7]).toLowerCase().includes('air') === true && enemy_movement_type === 'Air'))) {
@@ -1116,7 +1116,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
        (unitCalculatedDmgTotal[i][5] <= 1))) && ((String(unitCalculatedDmgTotal[i][0]).includes('air') === false && enemy_movement_type === 'Ground') && 
        (String(unitCalculatedDmgTotal[i][7]).toLowerCase().includes('air') === false && enemy_movement_type === 'Ground')))
         ) {
-          if ((String(unitCalculatedDmgTotal[i][0]).includes('phasechange') === false)) {
+          if ((String(unitCalculatedDmgTotal[i][0]).includes('phasechange') === false) && unitCalculatedDmgTotal[i][11] > 0) {
           
           if (i>0) {
             if ((unitCalculatedDmgTotal[i][1] !== unitCalculatedDmgTotal[i-1][1]) && (unitCalculatedDmgTotal[i][2] !== unitCalculatedDmgTotal[i-1][2]) && (unitCalculatedDmgTotal[i][3] !== unitCalculatedDmgTotal[i-1][3])) {
@@ -1255,7 +1255,7 @@ if (unit_restAttacks.length > 0) {
 
 
 for (let i = 0; i < unit_restAttacks.length; i++) {
-  if ((unit_restAttacks[i][8] === 'NST_ATTACK') || (unit_restAttacks[i][6] === '1')) {
+  if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
     unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1))
     unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
