@@ -916,8 +916,8 @@ console.timeEnd('LoadingSaved_timer')
                             } else if (cTarget_Left_sorted[i] === 'Durability') {
                                 
                     uctI_o[6].append('Alive for' + ': ' + '<br />');
-                            uctI_o[2].append((u_2stat) + '<br />');
-                            uctI_o[3].append((u_1stat) + '<br />');
+                            uctI_o[2].append((u_2stat) + ' sec.<br />');
+                            uctI_o[3].append((u_1stat) + ' sec.<br />');
                             if (u_1stat-u_2stat == 0) {
                                 uctI_o[7].append('<span class="text-secondary">'+ 0 + '</span>' +  '<br />');
                             } else {
