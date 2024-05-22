@@ -1267,7 +1267,7 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
   if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
     //unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1))
-    unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
+    //unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
 
   } else {
     if (unit_restAttacks[i][6] === '12') {
