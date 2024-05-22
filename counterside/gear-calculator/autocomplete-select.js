@@ -32,8 +32,8 @@ const Inf_mdl = 99999999;
 var timerForTooltipClear;
 var timerForDropdownClear;
 
-const averageHIT = 0.5;
-const averageCRIT = 0.55;
+const averageHIT = 0.4;
+const averageCRIT = 0.45;
 const averageCDMG = 0.5;
 
 
