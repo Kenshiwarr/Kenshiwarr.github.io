@@ -1260,7 +1260,7 @@ if (unit_restAttacks.length > 0) {
   unit_restAttacks_last = unit_restAttacks[unit_restAttacks.length-1].length
 }
  
-var rAtk_extra = 0;
+var rAtk_extra = '';
 
 for (let i = 0; i < unit_restAttacks.length; i++) {
   if (active_skills_exclude[i+1] !== false) { 
@@ -1276,8 +1276,10 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
       unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
     } else if (unit_restAttacks[i][6] !== '101') {
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
-     
+     if (rAtk_extra !== '') {
       unit_restAttacks[rAtk_extra][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // stuff like accumulated attacks offsets with other skills
+
+     }
         unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
       } else {
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]),0);
