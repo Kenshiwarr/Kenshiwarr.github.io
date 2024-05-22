@@ -617,6 +617,7 @@ if ($('#HPS_Barrier_Amount-Input').val() === '') {
 
 
 
+
 //localStorage.clear();
 
 //localStorage.getItem('localStorageData_unit0')

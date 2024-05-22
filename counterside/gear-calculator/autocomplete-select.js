@@ -41,6 +41,8 @@ const average_cat1_res = 0.67
 /* const average_cat1_dmg = 0.51 */
 const average_cat1_dmg = 1.18
 
+var active_skills_exclude = [];
+
 
 
 
@@ -1048,6 +1050,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
       $('#sd_dmg_table-tooltip_list').html('');
       $('#sd_dmg_table').html('<div class="accordion accordion-flush"><table class="table table-dark" id="unit_dps_table"><thead class="uthead"><tr><th>Skill name</th><th>Hit count</th><th>CD</th><th>Anim</th><th> <span id="sdmg_Hit"> Hit </span> </th> <th> <span> Crit </span> <svg id="sdmg_Crit" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg> </th> <th> <span> Miss </span><svg id="sdmg_Miss" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg> </th> <th> D<small>(avg)</small> <span id="dcm_inf"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/> </svg></span> </th> <th> DPS </th> <th> Skill Mod </th ><th> Dmg Mod </th > </tr></thead></table></div>');
       $('#sd_dmg_table-tooltip_list').append('<div class="dt_tooltip_container"> </div>');
+      $('#skill_exclude_select').html('');
 
 
       var unit_mainAttack_ground = [];
@@ -1240,9 +1243,14 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
       })
 
 
+      if (active_skills_exclude[0] !== false) {
+        var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*chance_to_hit)+(unit_mainAttack[unit_mainAttack_selected][1]*chance_to_crit)+(unit_mainAttack[unit_mainAttack_selected][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
 
+      } else {
+        var unit_mainAttackDPS = 0
 
-var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*chance_to_hit)+(unit_mainAttack[unit_mainAttack_selected][1]*chance_to_crit)+(unit_mainAttack[unit_mainAttack_selected][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
+      } 
+
  
 var Total_Unit_DPS = 0;
 
@@ -1255,6 +1263,7 @@ if (unit_restAttacks.length > 0) {
 
 
 for (let i = 0; i < unit_restAttacks.length; i++) {
+  if (active_skills_exclude[i+1] !== false) { 
   if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
     unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1))
@@ -1277,6 +1286,10 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
     
   }
    Total_Unit_DPS += unit_restAttacks[i][unit_restAttacks_last];
+  } else {
+    Total_Unit_DPS += 0
+    unit_restAttacks[i][unit_restAttacks_last] = 0
+  }
 }
 
 Total_Unit_DPS += unit_mainAttackDPS;
@@ -1477,14 +1490,14 @@ if (sCounter > 1) {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Multi-hit 1");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Multi-hit 1");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Multi-hit 1"); */
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th><span class="text-truncate">'+unit_totalAttacks[i][0]+'</span> </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Single-hit");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Single-hit");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Single-hit"); */
   //aTooltip = ''; since using it on thead
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate"> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th><span class="text-truncate">'+unit_totalAttacks[i][0]+'</span> </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
 //listForMultiAtkTable = listForMultiAtkTable.replaceAll(/~/gi, Math.round(unit_totalAttacks[i][13]/sCounter));
@@ -1513,7 +1526,8 @@ if (sCounter > 1) {
   
   }
 
-  
+  $('#skill_exclude_select').append('<div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="exsselect_'+i+'" checked> <label class="form-check-label" for="exsselect_'+i+'"> '+unit_totalAttacks[i][0]+' </label> </div>') 
+
 
  $('#unit_dps_table').append(listForMultiAtkTable)
  CreateTooltipForAnything($('#sdmg_Crit'),'Crit modifier: ' + ((1 + unit_bonus_stats[14] - target_bonus_stats[17])*100).toFixed(1).replace(/[.,]0+$/, "") + '%<br/>')
@@ -1524,6 +1538,21 @@ if (sCounter > 1) {
  
 }
 }
+$.each($('#skill_exclude_select input'), function () {
+  $(this).prop('checked',active_skills_exclude[String($(this).attr('id')).slice(-1)]);
+  $(this).on('change',function() {
+    console.log($(this).attr('id'))
+    if (this.checked === true) { 
+      active_skills_exclude[String($(this).attr('id')).slice(-1)] = true
+    } else {
+      active_skills_exclude[String($(this).attr('id')).slice(-1)] = false;
+    }
+    CalcUnitDMG();
+  })
+  
+})
+
+
 
  
 var finalunitdps;
