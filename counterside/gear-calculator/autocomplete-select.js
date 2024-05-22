@@ -1493,14 +1493,14 @@ if (sCounter > 1) {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Multi-hit 1");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Multi-hit 1");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Multi-hit 1"); */
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th><span class="text-truncate">'+unit_totalAttacks[i][0]+'</span> </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
   /* listForMultiHit = listForMultiHit.replace(/~/i, "Single-hit");
   listForMultiCrit = listForMultiCrit.replace(/~/i, "Single-hit");
   listForMultiMiss = listForMultiMiss.replace(/~/i, "Single-hit"); */
   //aTooltip = ''; since using it on thead
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th><span class="text-truncate">'+unit_totalAttacks[i][0]+'</span> </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
 //listForMultiAtkTable = listForMultiAtkTable.replaceAll(/~/gi, Math.round(unit_totalAttacks[i][13]/sCounter));
@@ -1543,9 +1543,9 @@ if (sCounter > 1) {
 }
 $.each($('#skill_exclude_select input'), function () {
   $(this).prop('checked',active_skills_exclude[String($(this).attr('id')).slice(-1)]);
+  
   $(this).on('change',function() {
-    console.log($(this).attr('id'))
-    if (this.checked === true) { 
+    if (this.checked === true) {
       active_skills_exclude[String($(this).attr('id')).slice(-1)] = true
     } else {
       active_skills_exclude[String($(this).attr('id')).slice(-1)] = false;
@@ -1555,7 +1555,12 @@ $.each($('#skill_exclude_select input'), function () {
   
 })
 
-
+for (let i = 0, n = active_skills_exclude.length; i < n; i++) {
+  if (active_skills_exclude[i] === false) {
+    //$('#dthead_'+i).hide()
+    $('#dthead_'+i).css('visibility','hidden')
+  }
+}
 
  
 var finalunitdps;
