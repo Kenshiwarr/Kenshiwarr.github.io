@@ -1631,8 +1631,8 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
         if (total_unit_data[12] > 1) {
           for (let i = 1; i < total_unit_data[12]; i++) {
             $('#new_sd_dps').append('<p>Total unit DPS ('+ (i+1) +' units) = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS))*(i+1) + '</span> '+ (unitHpsHealing > 0 ? '<small class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS*(i+1))-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
-            finalunitdps = finalunitdps*(i+1)
-            targetdurability = targetdurability/(i+1)
+            finalunitdps = (Math.round(Number(Total_Unit_DPS))*(i+1)).toFixed(2)
+            targetdurability = (target_hp/(Number(Total_Unit_DPS*(i+1))-unitHpsHealing-unitHpsBarrier)).toFixed(2)
           }
         }
       }
