@@ -989,13 +989,14 @@ console.timeEnd('LoadingSaved_timer')
         
 
         
-        for (let i = 0, n = cUnit_dtable.length; i < n; i+=5) {
-            $('#ctable_unitDtable').append('<tr> <td> <div class="text-truncate" style="width: 5rem;">'+cUnit_dtable[i]+'</div> </td> <td> '+cUnit_dtable[i+1]+' </td> <td> '+cUnit_dtable[i+2]+' </td> <td> '+cUnit_dtable[i+3]+' </td> <td> '+cUnit_dtable[i+4]+' </td> </tr>');
+        for (let i = 0, n = cUnit_dtable.length; i < n; i+=8) {
+            $('#ctable_unitDtable').append('<tr> <td> <div class="text-truncate" style="width: 5rem;">'+cUnit_dtable[i]+'</div> </td> <td> '+cUnit_dtable[i+1]+' </td> <td> <span>'+cUnit_dtable[i+2]+'</span> <svg id="udtc_'+i+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill ct_tooltip_hover" viewBox="0 0 16 16" ct_target="#ct_svg_1_b85c4"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"></path> </svg> </td> <td> '+cUnit_dtable[i+3]+' </td> <td> '+cUnit_dtable[i+4]+' </td> </tr>');
+        CreateTooltipForAnything($('#udtc_'+i),'Crit: ' + cUnit_dtable[i+5] + '<br />'+'Hit: ' + cUnit_dtable[i+6] + '<br />' + 'Miss: ' + cUnit_dtable[i+7] + '<br />')
         }
 
-        for (let i = 0, n = sau[26].length; i < n; i+=5) {
-            $('#ctable_unitDtable_2').append('<tr> <td> <div class="text-truncate" style="width: 5rem;">'+sau[26][i]+'</div> </td> <td> '+sau[26][i+1]+' </td> <td> '+sau[26][i+2]+' </td> <td> '+sau[26][i+3]+' </td> <td> '+sau[26][i+4]+' </td> </tr>');
-
+        for (let i = 0, n = sau[26].length; i < n; i+=8) {
+            $('#ctable_unitDtable_2').append('<tr> <td> <div class="text-truncate" style="width: 5rem;">'+sau[26][i]+'</div> </td> <td> '+sau[26][i+1]+' </td> <td> <span>'+sau[26][i+2]+'</span> <svg id="udtc_'+i+'_2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill ct_tooltip_hover" viewBox="0 0 16 16" ct_target="#ct_svg_1_b85c4"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"></path> </svg> </td> <td> '+sau[26][i+3]+' </td> <td> '+sau[26][i+4]+' </td> </tr>');
+        CreateTooltipForAnything($('#udtc_'+i+'_2'),'Crit: ' + sau[26][i+5] + '<br />'+'Hit: ' + sau[26][i+6] + '<br />' + 'Miss: ' + sau[26][i+7] + '<br />')
         }
         
         }

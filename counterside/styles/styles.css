@@ -831,7 +831,7 @@ margin-top: -8px;
 }
 
 .dt_tooltip_hover {
-  cursor: pointer;
+  cursor: help;
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
@@ -960,6 +960,7 @@ margin-top: -8px;
 
 .ct_tooltip_hover {
   border-bottom: 1px dotted black;
+  cursor: help;
 }
 
 
