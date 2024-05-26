@@ -1481,7 +1481,7 @@ if (sCounter > 1) {
  CreateTooltipForAnything($('#dcm_inf'),'Summ of hit, crit and miss damage values multiplied by its chances.')
 
  if (active_skills_exclude[i] != '') {
-  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),Math.round(sDmg_crit),Math.round(sDmg_hit),Math.round(sDmg_miss));
+  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(sDmg_crit)) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "") + '%)',String(Math.round(sDmg_hit)) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)',String(Math.round(sDmg_miss) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)'));
 
  }
  
