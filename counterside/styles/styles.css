@@ -1097,7 +1097,9 @@ color: #bebebe;
   width: 24rem;
 } */
 
-
+.unit-container_line {
+  pointer-events: none;
+}
 
 #unit-container_line_0 {
   margin-left: 7rem;
