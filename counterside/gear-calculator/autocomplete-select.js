@@ -15,6 +15,8 @@ var shakeTmt_edittext;
 
 var targetIsUpdated = false;
 
+var dTableCompare_values = [];
+
 var unit_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
 var target_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
 var dummy_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
@@ -1304,7 +1306,7 @@ unit_totalAttacks.push(unit_mainAttack[unit_mainAttack_selected])
 unit_totalAttacks = unit_totalAttacks.concat(unit_restAttacks)
 
 
-
+dTableCompare_values = [];
      
 if (unit_mainAttack.length > 0) {
 
@@ -1322,10 +1324,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   } else {
     cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr)).toFixed(2);
   }
-
-  var listForMultiHit = '';
-  var listForMultiCrit = '';
-  var listForMultiMiss = '';
 
   var sDmg_chpd = '';
   var sDmg_mhpd = '';
@@ -1363,12 +1361,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var totalSkillMod = 0;
 
   var sDmg_mod;
-
-
-/*   var tooltipApply = ['tooltipcontainer','tooltipcontainer','tooltipcontainer']; */
-  
-
-  //var aTooltip = '';
 
   var listForMultiAtkTable = '';
 
@@ -1428,15 +1420,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       mdl_redc[2] = '';
     }
 
-    
-    //listForMultiHit +=  '<tr> <td>' + ((sCounter > 1) ? ('<hr> Multi-hit ' + sCounter):('~')) + '<br />' + sDmg_scale +' Damage: ' + sDmg_hit + '<br />' + hitsMdl[0] + sDmg_chpd + sDmg_mhpd + '</td></tr>';
-    //listForMultiCrit +=  '<tr> <td>'+ ((sCounter > 1) ? ('<hr> Multi-hit ' + sCounter):('~')) + '<br />' + sDmg_scale +' Damage: ' + sDmg_crit + '<br />' + hitsMdl[1] + sDmg_chpd + sDmg_mhpd + '</td></tr>';
-    //listForMultiMiss +=  '<tr> <td>'+ ((sCounter > 1) ? ('<hr> Multi-hit ' + sCounter):('~')) + '<br />' + sDmg_scale +' Damage: ' + sDmg_miss + '<br />' + hitsMdl[2] + sDmg_chpd + sDmg_mhpd + '</td></tr>';
-    /* aTooltipTable_hit
-    aTooltipTable_crit
-    aTooltipTable_miss */
-
-    
 
 
     if (((sDmg_chpd !== 0) || (sDmg_mhpd !== 0))) {
@@ -1474,60 +1457,20 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+dmgAppl[0] + mdl_redc[0]+' </td>  <td> '+dmgAppl[1] + mdl_redc[1]+' </td>  <td> '+dmgAppl[2] + mdl_redc[2]+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
     totalSkillMod += unitCalculatedDmg[j][11];
     
-   }/* 
-   if (listForMultiHit != '') {
-    tooltipApply[0] = 'tooltipcontainer';
    }
-   if (listForMultiCrit != '') {
-    tooltipApply[1] = 'tooltipcontainer';
-   }
-   if (listForMultiMiss != '') {
-    tooltipApply[2] = 'tooltipcontainer';
-   } */
+
     
   }
   
   
 }
 if (sCounter > 1) {
-  /* listForMultiHit = listForMultiHit.replace(/~/i, "Multi-hit 1");
-  listForMultiCrit = listForMultiCrit.replace(/~/i, "Multi-hit 1");
-  listForMultiMiss = listForMultiMiss.replace(/~/i, "Multi-hit 1"); */
   listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
-  /* listForMultiHit = listForMultiHit.replace(/~/i, "Single-hit");
-  listForMultiCrit = listForMultiCrit.replace(/~/i, "Single-hit");
-  listForMultiMiss = listForMultiMiss.replace(/~/i, "Single-hit"); */
-  //aTooltip = ''; since using it on thead
   listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
-//listForMultiAtkTable = listForMultiAtkTable.replaceAll(/~/gi, Math.round(unit_totalAttacks[i][13]/sCounter));
-
-//aTooltip = '<div class="s3">' + aTooltip + '</div>'
-  
-  
-  /* $('#new_sd_dmg').append('<hr> <span class="tooltipcontainer">' + unit_totalAttacks[i][0] + '<span class="tooltiptext">'+ sDmg_mod +'</span></span> CD = ' + cdskill + ' Animation = ' + (unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2) +' <span class="' + tooltipApply[0] + '">Hit = ' + Math.round(unit_totalAttacks[i][2]) + '  <span class="tooltiptext"><table class="fixed_header"> <thead> <tr> <th>' + unit_totalAttacks[i][0] + ' - Hit </th></tr></thead><tbody> ' + listForMultiHit + '</tbody> </table></span></span> (<span class="' + tooltipApply[1] + '">Crit = ' + Math.round(unit_totalAttacks[i][1] )
-  + '  <span class="tooltiptext"><table class="fixed_header"> <thead> <tr> <th>' + unit_totalAttacks[i][0] + ' - Crit </th></tr></thead><tbody> ' + listForMultiCrit + '</tbody> </table></span></span> <span class="' + tooltipApply[2] + '">Miss = ' + Math.round(unit_totalAttacks[i][3])  + '  <span class="tooltiptext"><table class="fixed_header"> <thead> <tr> <th>' + unit_totalAttacks[i][0] + ' - Miss </th></tr></thead><tbody> ' + listForMultiMiss + '</tbody> </table></span></span>) , Factoring in crit/miss/mdl = ' + Math.round(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge))) + ', DPS = '+ Math.round(unit_totalAttacks[i][unit_restAttacks_last]) +' </hr>')
-  */
-
-  //$('#unit_dps_table').append(aTooltip)
-
- // $('#unit_dps_table').find("td:eq(1)").text().append('123')
-   if (sCounter > 1) {
-    //$('#unit_dps_table').append('<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+Math.round(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge)))+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th>  </th> </tr> </thead>')
-    
-  } else {
-   // $('#unit_dps_table').append('<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th> '+unit_totalAttacks[i][0]+' </th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+(unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2)+' </th> <th> <span dt_target="#dt_'+i+'tt_h" class="dt_tooltip_hover">'+Math.round(unit_totalAttacks[i][2])+'</span>'+mdl_redc[0]+'  </th> <th> <span dt_target="#dt_'+i+'tt_c" class="dt_tooltip_hover">'+Math.round(unit_totalAttacks[i][1])+'</span> '+mdl_redc[1]+'  </th> <th> <span dt_target="#dt_'+i+'tt_m" class="dt_tooltip_hover">'+Math.round(unit_totalAttacks[i][3])+'</span> </th> <th> '+Math.round(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge)))+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> <button type="button" class="btn btn-primary tttextcontainer"> ^ </button> </th> </tr> </thead>')
-    
-    /* $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_h" class="dt_tooltip">' + hitsMdl[0] + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + sDmg_chpd + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + sDmg_mhpd + '<br />'):'') + '</div>')
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_c" class="dt_tooltip">' + hitsMdl[1] + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + sDmg_chpd*crit_multiplier + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + sDmg_mhpd*crit_multiplier + '<br />'):'') + '</div>')
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_m" class="dt_tooltip">' + hitsMdl[2] + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + sDmg_chpd*miss_multiplier + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + sDmg_mhpd*miss_multiplier + '<br />'):'') + '</div>')
-   */
-    
-  
-  }
 
   $('#skill_exclude_select').append('<div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="exsselect_'+i+'" checked> <label class="form-check-label" for="exsselect_'+i+'"> '+unit_totalAttacks[i][0]+' </label> </div>') 
 
@@ -1537,7 +1480,7 @@ if (sCounter > 1) {
  CreateTooltipForAnything($('#sdmg_Miss'),'Miss modifier: ' + ((HIT_pc+0.1)*100).toFixed(1).replace(/[.,]0+$/, "") + '%<br/>');
  CreateTooltipForAnything($('#dcm_inf'),'Summ of hit, crit and miss damage values multiplied by its chances.')
 
-
+ dTableCompare_values.push(unit_totalAttacks[i][0],cdskill,Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2));
  
 }
 }
@@ -1625,7 +1568,7 @@ if ($('#HPS_Barrier-Checkbox').is(':checked')) {
 unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1+target_bonus_stats[62]));
 
 
-finalunitdps = Math.round(Number(Total_Unit_DPS));
+finalunitdps = Math.round(Number(Total_Unit_DPS)).toFixed(2);
 targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2)
         $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> '+ (unitHpsHealing > 0 ? '<small class="txt-healing">(-'+ Math.round(unitHpsHealing) +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small class="txt-barrier">(-'+ Math.round(unitHpsBarrier) +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
         if (total_unit_data[12] > 1) {
@@ -1652,6 +1595,8 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
         CreateTooltipForAnything($('.txt-barrier').eq(i),'DPS reduced by barriers')
       
       }
+      
+
 
 
 
@@ -1751,49 +1696,12 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
       })
 
       $('.tooltipcontainer').on('click',function(){
-        
-
-       /*  $('.tooltipcontainer.active').removeClass('active');
-        $(this).addClass('active') */
+       
 
             $(this).addClass('active').siblings().removeClass('active');
 
-            //$(this).attr('id', 'box2').siblings().attr('id', 'box2');
             const ttDrag = $('.tooltipcontainer.active .tooltiptext tbody');
-      /* let isDown = false;
-      let startX;
-      let startY;
-      let scrollLeft;
-      let scrollTop;
-
-      ttDrag.on('mousedown', function(e) {
-        isDown = true;
-  startX = e.pageX - ttDrag.offset().left;
-  startY = e.pageY - ttDrag.offset().top;
-  scrollLeft = ttDrag.scrollLeft();
-  scrollTop = ttDrag.scrollTop();
-  ttDrag.css('cursor','grabbing')
-        
-      })
-
-      ttDrag.on('mouseleave', function() {
-        isDown = false;
-        ttDrag.css('cursor','grab')
-      })
-      ttDrag.on('mouseup', function() {
-        isDown = false;
-        ttDrag.css('cursor','grab')
-      })
-      ttDrag.on('mousemove', function(e) {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - ttDrag.offset().left;
-        const y = e.pageY - ttDrag.offset().top;
-        const walkX = (x - startX) * 0.1; // Change this number to adjust the scroll speed
-        const walkY = (y - startY) * 0.1; // Change this number to adjust the scroll speed
-        ttDrag.scrollLeft(ttDrag.scrollLeft()-walkX);
-        ttDrag.scrollTop(ttDrag.scrollTop()-walkY);
-      }) */
+            
       var clicked = false, clickY;
             ttDrag.on({
                 'mousemove': function(e) {
@@ -1823,6 +1731,8 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
       
       });
 
+
+
       $('.unitTotalResult_hover').on('click',function(){
         
         const ttDrag = $($(this).attr('data-bs-target'));
@@ -1831,7 +1741,7 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
         
         
         if (!($(this).hasClass('scrollable')) && (ttDrag.get(0).scrollHeight > ttDrag.height())) {
-
+          ttDrag.addClass('scrollable');
           
         ttDrag.css('width','calc( 100% + '+getScrollbarWidth(sbWidth)+'px )')
         var clicked = false, clickY;
@@ -1861,8 +1771,21 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
                   ttDrag.scrollTop(ttDrag.scrollTop() + (clickY - e.pageY)/10);
               }
         }
+        
         $(this).addClass('scrollable');
       });
+
+
+     /*  for (let i = 0, n = $('.unitTotalResult_hover').length; i < n; i++) {
+        $.each($('.unitTotalResult_hover'),function() {
+          if (!($(this).hasClass('scrollable')) && $(this).get(0).scrollHeight > $(this).height()) {
+            SetScrollable($($(this).attr('data-bs-target')));
+          }
+          
+        })
+      } */ //NOTE
+   
+     
      
 
       console.timeEnd('CaltUnitDMG_start');
