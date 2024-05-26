@@ -984,8 +984,8 @@ console.timeEnd('LoadingSaved_timer')
         } */
         
         if ((cUnit_dtable.length !== 0) && (sau[26].length !== 0)) {
-            uctI_o[4].append('<table class="table"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable"> </tbody></table>');
-        uctI_o[1].append('<table class="table"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable_2"> </tbody></table>');
+            uctI_o[4].append('<table class="table table-dark table-striped"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable"> </tbody></table>');
+        uctI_o[1].append('<table class="table table-dark table-striped"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable_2"> </tbody></table>');
         
 
         
