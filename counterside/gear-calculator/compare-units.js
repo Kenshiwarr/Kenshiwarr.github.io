@@ -966,6 +966,23 @@ console.timeEnd('LoadingSaved_timer')
         }
 
 
+       /*  if ((cUnit_dtable.length !== 0) && (sau[26].length !== 0)) {
+            uctI_o[4].append('<table class="table" style="width: 20rem;"> <thead class="ctUthead"> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody class="ctUdtbody" id="ctable_unitDtable"> </tbody></table>');
+        uctI_o[1].append('<table class="table" style="width: 20rem;"> <thead class="ctUthead"> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody class="ctUdtbody" id="ctable_unitDtable_2"> </tbody></table>');
+        
+
+        
+        for (let i = 0, n = cUnit_dtable.length; i < n; i+=5) {
+            $('#ctable_unitDtable').append('<tr> <td class="text-truncate"> '+cUnit_dtable[i]+' </td> <td> '+cUnit_dtable[i+1]+' </td> <td> '+cUnit_dtable[i+2]+' </td> <td> '+cUnit_dtable[i+3]+' </td> <td> '+cUnit_dtable[i+4]+' </td> </tr>');
+        }
+
+        for (let i = 0, n = sau[26].length; i < n; i+=5) {
+            $('#ctable_unitDtable_2').append('<tr> <td class="text-truncate"> '+sau[26][i]+' </td> <td> '+sau[26][i+1]+' </td> <td> '+sau[26][i+2]+' </td> <td> '+sau[26][i+3]+' </td> <td> '+sau[26][i+4]+' </td> </tr>');
+
+        }
+        
+        } */
+        
         if ((cUnit_dtable.length !== 0) && (sau[26].length !== 0)) {
             uctI_o[4].append('<table class="table"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable"> </tbody></table>');
         uctI_o[1].append('<table class="table"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable_2"> </tbody></table>');
@@ -973,16 +990,16 @@ console.timeEnd('LoadingSaved_timer')
 
         
         for (let i = 0, n = cUnit_dtable.length; i < n; i+=5) {
-            $('#ctable_unitDtable').append('<tr> <td> '+cUnit_dtable[i]+' </td> <td> '+cUnit_dtable[i+1]+' </td> <td> '+cUnit_dtable[i+2]+' </td> <td> '+cUnit_dtable[i+3]+' </td> <td> '+cUnit_dtable[i+4]+' </td> </tr>');
+            $('#ctable_unitDtable').append('<tr> <td> <div class="text-truncate" style="width: 5rem;">'+cUnit_dtable[i]+'</div> </td> <td> '+cUnit_dtable[i+1]+' </td> <td> '+cUnit_dtable[i+2]+' </td> <td> '+cUnit_dtable[i+3]+' </td> <td> '+cUnit_dtable[i+4]+' </td> </tr>');
         }
 
         for (let i = 0, n = sau[26].length; i < n; i+=5) {
-            $('#ctable_unitDtable_2').append('<tr> <td> '+sau[26][i]+' </td> <td> '+sau[26][i+1]+' </td> <td> '+sau[26][i+2]+' </td> <td> '+sau[26][i+3]+' </td> <td> '+sau[26][i+4]+' </td> </tr>');
+            $('#ctable_unitDtable_2').append('<tr> <td> <div class="text-truncate" style="width: 5rem;">'+sau[26][i]+'</div> </td> <td> '+sau[26][i+1]+' </td> <td> '+sau[26][i+2]+' </td> <td> '+sau[26][i+3]+' </td> <td> '+sau[26][i+4]+' </td> </tr>');
 
         }
-
         
         }
+
 
 
         

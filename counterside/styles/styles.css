@@ -722,6 +722,14 @@ margin-top: -8px;
   table-layout: fixed;
 }
 
+.ctUthead, .ctUdtbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.ctUthead {
+  position: relative;
+}
 
 .uthead {
   position: relative;

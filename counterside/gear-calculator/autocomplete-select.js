@@ -1480,7 +1480,10 @@ if (sCounter > 1) {
  CreateTooltipForAnything($('#sdmg_Miss'),'Miss modifier: ' + ((HIT_pc+0.1)*100).toFixed(1).replace(/[.,]0+$/, "") + '%<br/>');
  CreateTooltipForAnything($('#dcm_inf'),'Summ of hit, crit and miss damage values multiplied by its chances.')
 
- dTableCompare_values.push(unit_totalAttacks[i][0],cdskill,Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2));
+ if (active_skills_exclude[i] != '') {
+  dTableCompare_values.push(unit_totalAttacks[i][0],cdskill,Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2));
+
+ }
  
 }
 }
