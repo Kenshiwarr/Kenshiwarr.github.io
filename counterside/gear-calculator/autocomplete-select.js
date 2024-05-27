@@ -820,6 +820,7 @@ var unitCalculatedDmg = [];
 var unitCalculatedDmgTotal = [];
 
 var needCurrHPind = false;
+$('#t-ch_needed').hide();
 
 
 
@@ -870,13 +871,14 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             var sdhit = 0;
             var sdmiss = 0;
 
+
             if ((sdcurrhpd > 0) && (needCurrHPind === false)) {
               $('#t-ch_needed').show();
               needCurrHPind = true;
-            } else {
+            }/*  else {
               $('#t-ch_needed').hide();
               needCurrHPind = false;
-            }
+            } */
             
             
             source_dmg += sdcurrhpd;
