@@ -92,7 +92,7 @@ console.log(target_data)
 
       
 
-      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0, 0,	0,	0];
+      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0, 0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       var gear_stats = [enemy_Weapon.mainStat,enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.mainStat,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.mainStat,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.mainStat,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent];
      // var checkSubs = [enemy_Weapon.sub1,enemy_Weapon.sub2,enemy_Weapon.latent,enemy_Armor.sub1,enemy_Armor.sub2,enemy_Armor.latent,enemy_Accessory1.sub1,enemy_Accessory1.sub2,enemy_Accessory1.latent,enemy_Accessory2.sub1,enemy_Accessory2.sub2,enemy_Accessory2.latent]
 
@@ -108,7 +108,7 @@ console.log(target_data)
       }
       
       
-      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       var gear_set_stats = [enemy_Weapon.eqSet, enemy_Armor.eqSet, enemy_Accessory1.eqSet, enemy_Accessory2.eqSet];
       var gear_set_stats_options = [enemy_Weapon.eqSet_Options, enemy_Armor.eqSet_Options, enemy_Accessory1.eqSet_Options, enemy_Accessory2.eqSet_Options];
 
@@ -129,7 +129,7 @@ console.log(target_data)
       }
 
 
-      for (let i = 13; i < target_data.length-9; i++) {
+      for (let i = 13; i < target_data.length; i++) {
         if(target_data[i] != '') {
           bonus_stats[i-7] += Number(target_data[i])
 
@@ -341,6 +341,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       cat2_res = Number($( ".unit-cat2_res" ).attr('value')); */
       enemy_cat1_res = 0;
       enemy_cat2_res = 0;
+      enemy_cat3_res = 0;
       
       enemy_hit_percent = enemy_hit/(enemy_hit+1500);
       enemy_crit_percent = enemy_crit/(enemy_crit+1000);
@@ -388,7 +389,15 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       }
 
+      enemy_cat1_res += Math.min(bonus_stats[68],0.8);
+
+      if (unit_advantage === 1) {
+        enemy_cat3_res += bonus_stats[71];
+      }
+
       enemy_cat1_res = Math.max(enemy_cat1_res - unit_bonus_stats[63],0);
+
+
 
       enemy_cat2_res = Math.min(enemy_cat2_res,0.5)
 
@@ -477,6 +486,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       $('#target-cat1_res').html('<h>Cat1 RES: </h><span class="current_stats cs_extra_info">' + (enemy_cat1_res*100).toFixed(2) + "%</span>");
       $('#target-cat2_res').html('<h>Cat2 RES: </h><span class="current_stats cs_extra_info">' + (enemy_cat2_res*100).toFixed(2) + "%</span>");
+      $('#target-cat3_res').html('<h>Cat3 RES: </h><span class="current_stats cs_extra_info">' + (enemy_cat3_res*100).toFixed(2) + "%</span>");
       $('#target-ehp').html('<h>EHP: </h><span class="current_stats cs_extra_info">' + Math.round(targetEHP) + '</span>');
       $('#target-ehp_final').html('<h>Final EHP: </h><span class="current_stats cs_extra_info">' + Math.round(targetfinalEHP) + '</span>');
       $('#enemy-hit_stat').html(enemy_hit + " (" + (enemy_hit_percent * 100).toFixed(2) + "%)");
@@ -494,10 +504,11 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       enemy_CDMG_RES = target_cdmg_res;
       /* enemy_cat1_res = enemy_cat1_res*100;
       enemy_cat2_res = enemy_cat2_res*100; */
-      enemy_cat3_res = 0;
+      /* enemy_cat3_res = 0; */
+
 
       if (target_data[71] != '') {
-        enemy_mdl = target_hp*target_data[71];
+        enemy_mdl = target_hp*(bonus_stats[64]);
       } else {
         enemy_mdl = Inf_mdl;
       }

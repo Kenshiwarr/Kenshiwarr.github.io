@@ -1,4 +1,4 @@
-const BONUS_STATS_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'DMG AMP','Basic Attack DMG AMP', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Basic Attack DMG RDC', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement', 'DMG RES Penetration'];
+const BONUS_STATS_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'DMG AMP','Basic Attack DMG AMP', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Basic Attack DMG RDC', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement', 'DMG RES Penetration', 'MDL', 'DEF per HP Loss', 'ATK per HP Loss', 'EVA per HP Loss', 'DMG TLRNC', 'AoE DMG RDC', 'Role DISADV DMG INC', 'Role DISADV DMG DEC'];
 
 //const BONUS_STATS_GEAR_SET_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement'];
 
@@ -17,9 +17,9 @@ var targetIsUpdated = false;
 
 var dTableCompare_values = [];
 
-var unit_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
-var target_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
-var dummy_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+var unit_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+var target_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+var dummy_extra_bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
 
 
 var unit_bonus_stats = [];
@@ -216,7 +216,7 @@ var active_skills_exclude = [];
 
       
 
-      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0.5,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       var gear_stats = [Weapon.mainStat,Weapon.sub1,Weapon.sub2,Weapon.latent,Armor.mainStat,Armor.sub1,Armor.sub2,Armor.latent,Accessory1.mainStat,Accessory1.sub1,Accessory1.sub2,Accessory1.latent,Accessory2.mainStat,Accessory2.sub1,Accessory2.sub2,Accessory2.latent];
      // var checkSubs = [Weapon.sub1,Weapon.sub2,Weapon.latent,Armor.sub1,Armor.sub2,Armor.latent,Accessory1.sub1,Accessory1.sub2,Accessory1.latent,Accessory2.sub1,Accessory2.sub2,Accessory2.latent]
 
@@ -228,14 +228,14 @@ var active_skills_exclude = [];
         bonus_stats[i] += unit_extra_bonus_stats[i]
       }
 
-      for (let i = 13; i < unit_data.length-9; i++) {
+      for (let i = 13; i < unit_data.length; i++) {
         if(unit_data[i] != '') {
           bonus_stats[i-7] += Number(unit_data[i])
 
         }
       }
       
-      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
+      var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       const gear_set_stats = [Weapon.eqSet, Armor.eqSet, Accessory1.eqSet, Accessory2.eqSet];
       const gear_set_stats_options = [Weapon.eqSet_Options, Armor.eqSet_Options, Accessory1.eqSet_Options, Accessory2.eqSet_Options];
 
@@ -401,6 +401,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       cat1_dmg = 0;
       cat2_dmg = 0;
+      cat3_dmg = 0;
 
 
       for (let i = 0, n = bonus_stats.length; i < n; i ++) {
@@ -456,6 +457,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       cat2_res = Number($( ".unit-cat2_res" ).attr('value')); */
       cat1_res = 0;
       cat2_res = 0;
+      cat3_res = 0;
       
       
       /* enemy_hit = Number($( "#enemy_hit_input" ).val());
@@ -500,6 +502,11 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       }
       
+      cat1_res += Math.min(bonus_stats[68],0.8);
+
+      if (unit_advantage === 1) {
+        cat3_dmg += bonus_stats[70];
+      }
       
       
       
@@ -600,6 +607,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       $('#unit-cat1_dmg').html('<h>Cat1 DMG: </h><span class="current_stats cs_extra_info">' + (cat1_dmg*100).toFixed(2) + "%</span>");
       $('#unit-cat2_dmg').html('<h>Cat2 DMG: </h><span class="current_stats cs_extra_info">' + (cat2_dmg*100).toFixed(2) + "%</span>");
+      $('#unit-cat3_dmg').html('<h>Cat3 DMG: </h><span class="current_stats cs_extra_info">' + (cat3_dmg*100).toFixed(2) + "%</span>");
       $('#unit-ehp').html('<h>EHP: </h><span class="current_stats cs_extra_info">' + Math.round(unitEHP) + '</span>');
       $('#unit-ehp_final').html('<h>Final EHP: </h><span class="current_stats cs_extra_info">' + Math.round(finalEHP) + '</span>');
       $('#enemy-hit_stat').html(enemy_hit + " (" + (enemy_hit_percent * 100).toFixed(2) + "%)");
@@ -761,9 +769,13 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
         var unit_def_pen = unit_bonus_stats[58];
 
-        var attack1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
-        var skill1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
-        var hyper1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+cat3_dmg-enemy_cat3_res)))
+        var attack1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var skill1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var hyper1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+
+        var attack1_aoe_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var skill1_aoe_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var hyper1_aoe_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-enemy_cat1_res)),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
         
 
         
@@ -846,6 +858,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
           var hitsAir = unit_attack_data[i].split(',')[13].toLowerCase(); */
           var ifSureFire = unit_attack_data[i].split(',')[14].toLowerCase();
           var ifForceCrit = unit_attack_data[i].split(',')[15].toLowerCase();
+          var validHitAmt = unit_attack_data[i].split(',')[11];
 
           var srcName = unit_attack_data[i].split(',')[20];
           var srcType = unit_attack_data[i].split(',')[21];
@@ -853,11 +866,24 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
           if (i < unit_attack_data.length) {
             var source_dmg = 0;
             if (srcType === 'NST_ATTACK') {
-              dmgMod = attack1_mod;
+              if (Number(validHitAmt) > 1) {
+                dmgMod = attack1_aoe_mod;
+              } else {
+                dmgMod = attack1_mod;
+              }
+              
             } else if (srcType === 'NST_SKILL') {
-              dmgMod = skill1_mod;
+              if (Number(validHitAmt) > 1) {
+                dmgMod = skill1_aoe_mod;
+              } else {
+                dmgMod = skill1_mod;
+              }
             } else if (srcType === 'NST_HYPER') {
-              dmgMod = hyper1_mod;
+              if (Number(validHitAmt) > 1) {
+                dmgMod = hyper1_aoe_mod;
+              } else {
+                dmgMod = hyper1_mod;
+              }
             } else {
               dmgMod = attack1_mod;
             };
@@ -2606,10 +2632,18 @@ function AppendCustomStatsForUnits() {
         $('#target_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]+'">'+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]+''+'</button></li>');
         $('#dummy_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]+'">'+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]+''+'</button></li>');
       } else {
-        $('#stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+unit_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+unit_extra_bonus_stats[i]*100+'%'+'</button></li>');
-        $('#target_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]*100+'%'+'</button></li>');
-        $('#dummy_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]*100+'%'+'</button></li>');
-    
+        if (i >= 65 && i < 68) {
+          $('#stat_data_list_values ol').append('<li><div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16"> <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/> </svg><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+unit_extra_bonus_stats[i]*100+'" disabled>   '+ BONUS_STATS_LIST[i] + ' = '+unit_extra_bonus_stats[i]*100+'%'+'</button></div></li>');
+          $('#target_stat_data_list_values ol').append('<li><div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16"> <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/> </svg><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]*100+'" disabled> '+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]*100+'%'+'</button></div></li>');
+          $('#dummy_stat_data_list_values ol').append('<li><div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16"> <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/> </svg><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]*100+'" disabled> '+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]*100+'%'+'</button></div></li>');
+      
+        } else {
+          $('#stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+unit_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+unit_extra_bonus_stats[i]*100+'%'+'</button></li>');
+          $('#target_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]*100+'%'+'</button></li>');
+          $('#dummy_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]*100+'%'+'</button></li>');
+      
+        }
+       
       }
     }
     

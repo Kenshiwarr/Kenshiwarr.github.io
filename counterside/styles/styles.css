@@ -101,11 +101,17 @@ body {
   background-color: rgb(98, 100, 109);
 }
 
-.lgmenu .list-group-item.disabled, .list-group-item.lgmenu:disabled {
-  color: rgb(196, 196, 196);
+.lgmenu .list-group-item.disabled, .list-group-item.lgmenu:disabled, button:disabled {
+  color: rgba(165, 165, 165, 0.856);
   pointer-events: none;
   background-color: rgb(44, 44, 44);
   
+}
+
+.dropdown-item.disabled, .dropdown-item:disabled {
+  color: rgba(165, 165, 165, 0.856);
+  pointer-events: none;
+  background-color: rgb(44, 44, 44);
 }
 
   .modal-header {
@@ -1255,4 +1261,13 @@ color: #bebebe;
 
 .txt-barrier {
   color: #7397ac;
+}
+
+/* #Page_new_stuff.badge:hover {
+  background-color: rgb(233, 137, 146);
+}
+ */
+
+#Page_new_stuff.badge {
+  background-color: rgb(220, 53, 69); ;
 }
