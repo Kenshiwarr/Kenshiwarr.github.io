@@ -46,7 +46,7 @@ const average_cat1_dmg = 1.18
 var active_skills_exclude = [];
 
 
-
+var SureFireMod = [];
 
 
 
@@ -239,8 +239,6 @@ var active_skills_exclude = [];
       const gear_set_stats = [Weapon.eqSet, Armor.eqSet, Accessory1.eqSet, Accessory2.eqSet];
       const gear_set_stats_options = [Weapon.eqSet_Options, Armor.eqSet_Options, Accessory1.eqSet_Options, Accessory2.eqSet_Options];
 
-      var gear_selected_set_stats;
-      var gear_selected_set_stats_options;
 
       /* $(document).on('click','#flexCheckDefault',function(){
         var checkVal = $('#flexCheckDefault');
@@ -501,8 +499,8 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         }
 
       }
-      
-      cat1_res += Math.min(bonus_stats[68],0.8);
+      bonus_stats[68] = Math.max(Math.min(bonus_stats[68],0.8),-0.8);
+      cat1_res += bonus_stats[68];
 
       if (unit_advantage === 1) {
         cat3_dmg += bonus_stats[70];
@@ -860,6 +858,12 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
           var ifForceCrit = unit_attack_data[i].split(',')[15].toLowerCase();
           var validHitAmt = unit_attack_data[i].split(',')[11];
 
+         /*  if (ifSureFire == 'true') {
+            SureFireMod[i] = 1;
+          } else {
+            SureFireMod[i] = 0;
+          } */
+
           var srcName = unit_attack_data[i].split(',')[20];
           var srcType = unit_attack_data[i].split(',')[21];
           var dmgMod = 1;
@@ -958,11 +962,6 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
                 sdmiss = source_dmg*crit_multiplier*miss_multiplier;
               }
             } else if (ifSureFire == 'true') {
-              if (source_dmg*miss_multiplier >= enemy_mdl) {
-                sdmiss = enemy_mdl+(((source_dmg*miss_multiplier-enemy_mdl))*0.04);
-              } else {
-                sdmiss = source_dmg*miss_multiplier;
-              }
               if (source_dmg*crit_multiplier >= enemy_mdl) {
                 sdcrit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
                 
@@ -1272,9 +1271,22 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
         CalcUnitDMG();
       })
 
+        let ctc;
+        let cth;
+        let ecd;
 
       if (active_skills_exclude[0] !== false) {
-        var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*chance_to_hit)+(unit_mainAttack[unit_mainAttack_selected][1]*chance_to_crit)+(unit_mainAttack[unit_mainAttack_selected][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
+        
+        if ((unit_mainAttack[unit_mainAttack_selected][13] == 'true') || (HIT_pc > enemy_EVA_percent)) {
+          ctc = CRIT_pc;
+          cth = (1-ctc);
+          ecd = 0;
+        } else {
+          ctc = CRIT_pc*(1-enemy_EVA_percent);
+          cth = 1-ctc-enemy_EVA_percent;
+          ecd = enemy_EVA_percent;
+        }
+        var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*cth)+(unit_mainAttack[unit_mainAttack_selected][1]*ctc)+(unit_mainAttack[unit_mainAttack_selected][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
 
       } else {
         var unit_mainAttackDPS = 0
@@ -1294,25 +1306,34 @@ var rAtk_extra = '';
 
 for (let i = 0; i < unit_restAttacks.length; i++) {
   if (active_skills_exclude[i+1] !== false) { 
+    if ((unit_restAttacks[i][13] == 'true') || (HIT_pc > enemy_EVA_percent)) {
+      ctc = CRIT_pc;
+      cth = (1-ctc);
+      ecd = 0;
+    } else {
+      ctc = CRIT_pc*(1-enemy_EVA_percent);
+      cth = 1-ctc-enemy_EVA_percent;
+      ecd = enemy_EVA_percent;
+    }
   if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
-    unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
+    unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
     unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1))
     //unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
     rAtk_extra = i;
   } else {
     if (unit_restAttacks[i][6] === '12') {
-      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]),0);
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]),0);
   
       unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
     } else if (unit_restAttacks[i][6] !== '101') {
-      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
      if (rAtk_extra !== '') {
       unit_restAttacks[rAtk_extra][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // stuff like accumulated attacks offsets with other skills
 
      }
         unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
       } else {
-      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*chance_to_hit)+(unit_restAttacks[i][1]*chance_to_crit)+(unit_restAttacks[i][3]*enemy_chance_to_dodge))/(unit_restAttacks[i][5]),0);
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]),0);
   
       }
     
@@ -1360,11 +1381,22 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var isSureFire = false;
   var isForceCrit = false;
 
-  var chm_chance = [chance_to_hit,chance_to_crit,enemy_chance_to_dodge];
+
+  if ((unit_totalAttacks[i][13] == 'true') || (HIT_pc > enemy_EVA_percent)) {
+    ctc = CRIT_pc;
+    cth = (1-ctc);
+    ecd = 0;
+  } else {
+    ctc = CRIT_pc*(1-enemy_EVA_percent);
+    cth = 1-ctc-enemy_EVA_percent;
+    ecd = enemy_EVA_percent;
+  }
+
+  var chm_chance = [ctc,cth,ecd];
 
 
 
-  if (enemy_chance_to_dodge === 0) {
+  if (ecd === 0) {
     chm_chance[2] = 0;
     isSureFireNat = true;
   }
@@ -1377,7 +1409,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     isForceCrit = true;
   }
   if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
-    chm_chance = [0,100,enemy_chance_to_dodge];
+    chm_chance = [0,1,ecd];
   }
   
 
@@ -1413,12 +1445,12 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     
 
-    var chm_dmg = (Math.round(Number((unitCalculatedDmg[j][2]*chance_to_hit)+(unitCalculatedDmg[j][1]*chance_to_crit)+(unitCalculatedDmg[j][3]*enemy_chance_to_dodge))));
+    var chm_dmg = (Math.round(Number((unitCalculatedDmg[j][2]*chm_chance[1])+(unitCalculatedDmg[j][1]*chm_chance[0])+(unitCalculatedDmg[j][3]*chm_chance[2]))));
     
     var sDmg_hit = ((Number(unitCalculatedDmg[j][2]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
     var sDmg_crit = ((Number(unitCalculatedDmg[j][1]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
     var sDmg_miss = ((Number(unitCalculatedDmg[j][3]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
-    var sDmg_Tdcm = Math.round(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge)));
+    var sDmg_Tdcm = Math.round(Number((unit_totalAttacks[i][2]*chm_chance[1])+(unit_totalAttacks[i][1]*chm_chance[0])+(unit_totalAttacks[i][3]*chm_chance[2])));
     //sDmg_chpd = (Math.round(Number(unitCalculatedDmg[j][9]))) > 0 ?  ('Target current hp% as dmg: ' + (Math.round(Number(unitCalculatedDmg[j][9])))) + '<br />':'';
     //sDmg_mhpd = (Math.round(Number(unitCalculatedDmg[j][10]))) > 0 ? ('Target max hp% as dmg: ') + (Math.round(Number(unitCalculatedDmg[j][10]))) + '<br />':'';
 
@@ -1467,11 +1499,11 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     }
     if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
       dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg  dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
+    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
 
     } else {
       dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg  dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
+    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
 
     }
     
@@ -1482,7 +1514,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
     //aTooltip += '<div class="tttext"> ' + sDmg_scale + 'Damage modifier: ' + (unitCalculatedDmg[j][12]).toFixed(2) + ' </div>';
-    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+dmgAppl[0] + mdl_redc[0]+' </td>  <td> '+dmgAppl[1] + mdl_redc[1]+' </td>  <td> '+dmgAppl[2] + mdl_redc[2]+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*chance_to_hit)+(unit_totalAttacks[i][1]*chance_to_crit)+(unit_totalAttacks[i][3]*enemy_chance_to_dodge))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
+    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+dmgAppl[0] + mdl_redc[0]+' </td>  <td> '+dmgAppl[1] + mdl_redc[1]+' </td>  <td> '+dmgAppl[2] + mdl_redc[2]+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*cth)+(unit_totalAttacks[i][1]*ctc)+(unit_totalAttacks[i][3]*ecd))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
     totalSkillMod += unitCalculatedDmg[j][11];
     
    }
@@ -1509,7 +1541,7 @@ if (sCounter > 1) {
  CreateTooltipForAnything($('#dcm_inf'),'Summ of hit, crit and miss damage values multiplied by its chances.')
 
  if (active_skills_exclude[i] != '') {
-  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "") + '%)',String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)');
+  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "") + '%)',String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)');
 
  }
  
@@ -2695,7 +2727,7 @@ function AppendCustomStatsForUnits() {
   var clickedItem = $(this);
   
   
-  const searchFill = '<div class="d-flex" id="SelectedStatValueInput"><input name="svalInpuit" searchFill="" type="text" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-confirmExtraStats" type="button" class="btn btn-success">ok</button></div>'
+  const searchFill = '<div class="d-flex" id="SelectedStatValueInput"><input name="svalInpuit" searchFill="" type="text" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-clearExtraStats" type="button" class="btn btn-light">Clear</button><button id="btn-confirmExtraStats" type="button" class="btn btn-success">Ok</button></div>'
   
   
   //console.log($('#SelectedStatValueInput').get($('#SelectedStatValueInput').index()))
@@ -2750,10 +2782,7 @@ function AppendCustomStatsForUnits() {
   
   clickedItem.attr('subvalue',(inputVal*100).toFixed(ias_d))
   }
-  
-  
-  
-  
+
   
   
   if (($('#checkbox_filterChanged').is(':checked') === true)) {
@@ -2764,20 +2793,48 @@ function AppendCustomStatsForUnits() {
   }
   
   
-  //$(this).prev().val('')
   if (unit_extra_bonus_stats[inptId] !== inputVal) {
     
   unit_extra_bonus_stats[inptId] = inputVal;
 
-  /* UpdateUnitStats(total_unit_data);
-  UpdateTargetStats(total_target_data); */
-  console.log('SHOULD BE UPDATING')
     UpdateUnitAndTarget(total_unit_data, 0);
     CalcUnitDMG()
       } else {
         console.log('same val');
       }
-  })
+  });
+
+  $('#btn-clearExtraStats').on('click',function() {
+    var inputVal = 0;
+    var inptId = $(this).parent().parent().index();
+    
+    if (inptId < 3) {
+    clickedItem.text(clickedItem.val() + ' = ' + inputVal);
+    clickedItem.attr('subvalue',inputVal)
+    } else if ((inptId > 2) && (inptId < 6)) {
+      clickedItem.text(clickedItem.val() + ' = ' + inputVal);
+      clickedItem.attr('subvalue',inputVal)
+      } else {
+    clickedItem.text(clickedItem.val() + ' = ' + inputVal + '%');
+    
+    clickedItem.attr('subvalue',inputVal)
+    }
+    
+    
+  if (($('#checkbox_filterChanged').is(':checked') === true)) {
+    //$('#target_stat_data_list_values li').addClass('filter-hidden');
+    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    } else {
+    $('#stat_data_list_values li').removeClass('filter-hidden');
+    }
+    $('#SelectedStatValueInput input').val('');
+    if (unit_extra_bonus_stats[inptId] !== inputVal) {
+    unit_extra_bonus_stats[inptId] = inputVal;
+
+    UpdateUnitAndTarget(total_unit_data, 0);
+    CalcUnitDMG() 
+  }
+  });
   
   });
   
@@ -2825,7 +2882,7 @@ function AppendCustomStatsForUnits() {
   var clickedItem = $(this);
   
   
-  const searchFill = '<div class="d-flex" id="target_SelectedStatValueInput"><input name="searchFill" type="text" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-target_confirmExtraStats" type="button" class="btn btn-success">ok</button></div>'
+  const searchFill = '<div class="d-flex" id="target_SelectedStatValueInput"><input name="searchFill" type="text" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-target_clearExtraStats" type="button" class="btn btn-light">Clear</button><button id="btn-target_confirmExtraStats" type="button" class="btn btn-success">Ok</button></div>'
   
   
   
@@ -2891,7 +2948,39 @@ CalcUnitDMG()
     console.log('same val');
   }
   
-  })
+  });
+
+  $('#btn-target_clearExtraStats').on('click',function() {
+    var inputVal = 0;
+    var inptId = $(this).parent().parent().index();
+    
+    if (inptId < 3) {
+    clickedItem.text(clickedItem.val() + ' = ' + inputVal);
+    clickedItem.attr('subvalue',inputVal)
+    } else if ((inptId > 2) && (inptId < 6)) {
+      clickedItem.text(clickedItem.val() + ' = ' + inputVal);
+      clickedItem.attr('subvalue',inputVal)
+      } else {
+    clickedItem.text(clickedItem.val() + ' = ' + inputVal + '%');
+    
+    clickedItem.attr('subvalue',inputVal)
+    }
+    
+    
+  
+    if (($('#target_checkbox_filterChanged').is(':checked') === true)) {
+      $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+      } else {
+      $('#target_stat_data_list_values li').removeClass('filter-hidden');
+      }
+      $('#target_SelectedStatValueInput input').val('');
+    if (target_extra_bonus_stats[inptId] !== inputVal) {
+    target_extra_bonus_stats[inptId] = inputVal;
+
+    UpdateUnitAndTarget(total_unit_data, 0);
+    CalcUnitDMG()
+    }
+  });
   
   });
   
@@ -2943,7 +3032,7 @@ CalcUnitDMG()
     var clickedItem = $(this);
     
     
-    const searchFill = '<div class="d-flex" id="dummy_SelectedStatValueInput"><input name="searchFill" type="text" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-dummy_confirmExtraStats" type="button" class="btn btn-success">ok</button></div>'
+    const searchFill = '<div class="d-flex" id="dummy_SelectedStatValueInput"><input name="searchFill" type="text" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-dummy_clearExtraStats" type="button" class="btn btn-light">Clear</button><button id="btn-dummy_confirmExtraStats" type="button" class="btn btn-success">ok</button></div>'
     
     
     
@@ -3007,7 +3096,39 @@ CalcUnitDMG()
       console.log('same val');
     }
     
-    })
+    });
+
+    $('#btn-dummy_clearExtraStats').on('click',function() {
+      var inputVal = 0;
+      var inptId = $(this).parent().parent().index();
+      
+      if (inptId < 3) {
+      clickedItem.text(clickedItem.val() + ' = ' + inputVal);
+      clickedItem.attr('subvalue',inputVal)
+      } else if ((inptId > 2) && (inptId < 6)) {
+        clickedItem.text(clickedItem.val() + ' = ' + inputVal);
+        clickedItem.attr('subvalue',inputVal)
+        } else {
+      clickedItem.text(clickedItem.val() + ' = ' + inputVal + '%');
+      
+      clickedItem.attr('subvalue',inputVal)
+      }
+      
+      
+    if (($('#dummy_checkbox_filterChanged').is(':checked') === true)) {
+    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    } else {
+    $('#dummy_stat_data_list_values li').removeClass('filter-hidden');
+    }
+    
+    $('#dummy_SelectedStatValueInput input').val('');
+      if (dummy_extra_bonus_stats[inptId] !== inputVal) {
+      dummy_extra_bonus_stats[inptId] = inputVal;
+  
+      UpdateUnitAndTarget(total_unit_data);
+      CalcUnitDMG()
+      }
+    });
     
     });
     

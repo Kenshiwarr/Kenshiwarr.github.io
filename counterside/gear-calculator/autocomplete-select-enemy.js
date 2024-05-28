@@ -389,7 +389,8 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       }
 
-      enemy_cat1_res += Math.min(bonus_stats[68],0.8);
+      bonus_stats[68] = Math.max(Math.min(bonus_stats[68],0.8),-0.8);
+      enemy_cat1_res += bonus_stats[68];
 
       if (unit_advantage === 1) {
         enemy_cat3_res += bonus_stats[71];

@@ -1145,7 +1145,16 @@ color: #bebebe;
 
 #confirmActionModal {
   z-index: 99999999999999999999999;
+  
 }
+
+/* #confirmActionModalBd {
+  z-index: 9999999999999999999999;
+} */
+
+/* #confirmActionModal .modal-dialog {
+  z-index: 99999999999999999999999;
+} */
 
 .shake {
   animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both infinite;
