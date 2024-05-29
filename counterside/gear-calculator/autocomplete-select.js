@@ -1409,7 +1409,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     isForceCrit = true;
   }
   if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
-    chm_chance = [0,1,ecd];
+    chm_chance = [1,0,ecd];
   }
   
 

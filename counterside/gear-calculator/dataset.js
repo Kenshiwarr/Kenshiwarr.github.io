@@ -2536,6 +2536,7 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "Betatrix Gambler","hyper1","1","1","4.67","2.666666667","32","-","-","-","-","-","3","TRUE","TRUE","FALSE","FALSE","FALSE","-","52","-","USN_HYPER1","NST_HYPER'",
 "Betatrix Gambler","hyper1","1","1.6","4.67","3.5","3.833333333","-","-","-","-","-","3","TRUE","TRUE","FALSE","FALSE","FALSE","-","52","-","USN_HYPER1","NST_HYPER'",
 "Valentinus Monastery Agnes Abigail","attack1","1.2","1","3.15","0","33.33333333","-","-","-","-","1","1","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
+"Valentinus Monastery Agnes Abigail","attack_mark","1.2","1","3.15","0","33.33333333","-","-","0.03","-","1","1","TRUE","FALSE","FALSE","TRUE","FALSE","-","-","-","USN_ATTACK2","NST_ATTACK'",
 "Valentinus Monastery Agnes Abigail","hyper1","1.25","2","5.00","3","3.166666667","-","-","-","-","-","3","TRUE","TRUE","FALSE","FALSE","FALSE","-","16","1","USN_HYPER1","NST_HYPER'",
 "Valentinus Monastery Agnes Abigail","hyper1","1.25","2","5.00","3.5","3.666666667","-","-","-","-","-","3","TRUE","TRUE","FALSE","FALSE","FALSE","-","16","1","USN_HYPER1","NST_HYPER'",
 "The Gronia Department of National Security Christina Brecht","attack1","1.2","1","1.29","0.5333333333","0.6","-","-","-","-","-","1","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
