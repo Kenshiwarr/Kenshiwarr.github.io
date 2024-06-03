@@ -44,6 +44,9 @@ input[type="number"]::placeholder {
   color: rgba(183, 180, 190, 0.733);
 }
 
+#configBuffModal_CD-btn::placeholder, #configBuffModal_Duration-btn::placeholder {
+color: rgba(192, 0, 0, 0.726);
+}
 
 body {
   /* background-color: rgb(129, 163, 179); */
@@ -271,6 +274,12 @@ background-color: rgb(109, 114, 134);
 }
 
 .unitStats_of {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 25rem;
+}
+
+.unitBuffs_of {
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 25rem;
@@ -999,6 +1008,7 @@ margin-top: -8px;
 
 
 .cd_dropdown {
+  border: 2px solid silver;
   min-width: fit-content;
   color: white;
   z-index: 99999999999999;
@@ -1045,14 +1055,24 @@ color: #bebebe;
   position: absolute;
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent black transparent;
+  border-color: transparent transparent silver transparent;
   left: 50%;
   margin-left: -5px;
   margin-top: -15px;
 }
 
-.cd_dropdown_hover {
-  border-bottom: 1px dotted black;
+.cd_dropdown_hover:hover {
+  /* border-bottom: 1px dotted black; */
+  
+  cursor: pointer;
+}
+
+.badge_statBuff {
+  background-color: rgb(123, 132, 141);
+}
+
+.badge_statBuff:hover {
+  background-color: rgb(165, 179, 192);
 }
 
 .imgContainer_forCompare{
@@ -1144,7 +1164,7 @@ color: #bebebe;
 }
 
 #confirmActionModal {
-  z-index: 99999999999999999999999;
+  z-index: 9999999999;
   
 }
 
@@ -1280,3 +1300,25 @@ color: #bebebe;
 #Page_new_stuff.badge {
   background-color: rgb(220, 53, 69); ;
 }
+
+#applyBuffModal-body label:hover {
+  background-color: #435661;
+}
+
+.addBuffbtn_c:hover {
+  background-color: #505572;
+}
+
+#applyBuffModal-body {
+ /*  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 20rem;
+  margin-left: auto;
+  margin-right: auto; */
+
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+}
+

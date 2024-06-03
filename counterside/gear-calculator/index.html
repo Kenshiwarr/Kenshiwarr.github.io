@@ -243,6 +243,23 @@ jQuery.event.special.mousewheel = {
   </div>
   </div>
 </div>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+   Apply Buff
+  </button>
+  <ul class="dropdown-menu dropdown_addExtra" id="dropdown-buffList">
+    <div class="dropdownmenu_label mb-2"> Add buffs to unit
+    </div>
+    <div id="dropdown-buffList-container" class="unitBuffs_of">
+    <div id="dropdown-buffList_empty" class="text-center">No Buffs yet</div>
+    <!-- <li id=""><span class="dropdown-item"></span></li> -->
+  </div>
+  <div class="text-center mt-3 mb-1">
+  <button id="addBuff-btn" type="button" class="btn btn-primary addBuffbtn_c" data-bs-toggle="modal" data-bs-target="#applyBuffModal">Add buff</button>
+</div>
+  </ul>
+</div>
+
 </div>
 
 
@@ -347,6 +364,23 @@ jQuery.event.special.mousewheel = {
   </div>
 </div>
 
+<div id="target_BuffList_display" class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Apply Buff
+  </button>
+  <ul class="dropdown-menu dropdown_addExtra" id="target_dropdown-buffList">
+    <div class="dropdownmenu_label mb-2"> Add buffs to target
+    </div>
+    <div id="target_dropdown-buffList-container" class="unitBuffs_of">
+    <div id="target_dropdown-buffList_empty" class="text-center">No Buffs yet</div>
+    <!-- <li id=""><span class="dropdown-item"></span></li> -->
+  </div>
+  <div class="text-center mt-3 mb-1">
+  <button id="target_addBuff-btn" type="button" class="btn btn-primary addBuffbtn_c" data-bs-toggle="modal" data-bs-target="#applyBuffModal">Add buff</button>
+</div>
+  </ul>
+</div>
+
 <div class="dropdown" id="dummy_extra_stats_dropdown">
   <button class="btn btn-secondary dropdown-toggle" data-bs-auto-close="outside" type="button" id="dummy_stat_data_list" data-bs-toggle="dropdown" aria-expanded="false">
     Change stats
@@ -380,6 +414,24 @@ jQuery.event.special.mousewheel = {
  
   </div>
 </div>
+
+<div id="dummy_BuffList_display" class="btn-group" style="display: none !important;">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+   Apply Buff
+  </button>
+  <ul class="dropdown-menu dropdown_addExtra" id="dummy_dropdown-buffList">
+    <div class="dropdownmenu_label mb-2"> Add buffs to dummy
+    </div>
+    <div id="dummy_dropdown-buffList-container" class="unitBuffs_of">
+    <div id="dummy_dropdown-buffList_empty" class="text-center">No Buffs yet</div>
+    <!-- <li id=""><span class="dropdown-item"></span></li> -->
+  </div>
+  <div class="text-center mt-3 mb-1">
+  <button id="dummy_addBuff-btn" type="button" class="btn btn-primary addBuffbtn_c" data-bs-toggle="modal" data-bs-target="#applyBuffModal">Add buff</button>
+</div>
+  </ul>
+</div>
+
 </div>
 <div class="unit_statWindow">
 <div id="target-hp"></div>
@@ -627,6 +679,23 @@ jQuery.event.special.mousewheel = {
         <table class="table table-dark table-striped table-bordered">
           <tbody>
             <tr>
+              <th scope="row">2024-06-04</th>
+              <td>~</td>
+              <td><span class="text-success">Added <small class="text-secondary">[test]</small></span><br />System: <strong>Buffing</strong> (units can benefit from buffs, increasing their stats or gaining other temporal/permanent effects).
+                <br />Stats: [Sure Fire]<small>(buff effect)</small>, [Perfect Evasion]<small>(buff effect)</small>, [Invincibility]<small>(buff effect)</small>;
+                <p></p><span class="text-info">
+                  Updated</span><br /> Units: <strong>Ecclesia</strong> <small>(Damage data)</small>, <strong>Nao</strong> <small>(Damage data)</small>;
+                  <p></p><span class="text-danger">Fixed</span><br /> Calc: <strong>Sure Fire</strong> and <strong>Perfect Eva</strong> correctly negate each other if both effects persist, even if applied partially;
+                  <br /><strong>Enhanced Attacks</strong> properly affect main attack dps <small>(Ecclesia doesn't have negative dps on main attack anymore due to enhanced long windup)</small>.</td>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2024-06-03</th>
+              <td>+</td>
+              <td><span class="text-danger">Fixed</span><br /> Units: <strong>Woodpecker</strong> [Anti-Ranger <u>DMG RES</u>] <small>(+50%)</small> changed to [Anti-Ranger <u>DMG</u>] <small>(+50%)</small>;
+                <br /><strong>Judy Swift</strong> (properly unaffected by ASPD increase nor decrease).</td>
+            </tr>
+            <tr>
               <th scope="row">2024-05-29</th>
               <td>~</td>
               <td><span class="text-success">Added <small class="text-secondary">[test]</small></span><br />Units: <strong>Agnes</strong> (attack against marked targets).<br /></td>
@@ -634,12 +703,9 @@ jQuery.event.special.mousewheel = {
             <tr>
               <th scope="row">2024-05-28</th>
               <td>+</td>
-              <td><span class="text-danger">Fixed</span><br /> Calc: <strong>Sure Fire</strong> displays correctly chance to crit, since unit doesn't miss anymore. <strong>Sure Fire</strong> tooltip properly sets miss chance as 0%.</td>
-            </tr>
-            <tr>
-              <th scope="row">2024-05-28</th>
-              <td>+</td>
-              <td><span class="text-success">Added</span><br />System: Patch Notes (this) modal;<br /> Stats: [MDL]<small>(configuration)</small>, [DMG TLRNC], [AoE DMG RDC], [Role DISADV DMG INC], [Role DISADV DMG DEC].<br /></td>
+              <td><span class="text-success">Added</span><br />System: Patch Notes (this) modal;<br /> Stats: [MDL]<small>(configuration)</small>, [DMG TLRNC], [AoE DMG RDC], [Role DISADV DMG INC], [Role DISADV DMG DEC];
+                <p></p>
+                <span class="text-danger">Fixed</span><br /> Calc: <strong>Sure Fire</strong> displays correctly chance to crit, since unit doesn't miss anymore. <strong>Sure Fire</strong> tooltip properly sets miss chance as 0%.</td>
             </tr>
             <tr>
               <th scope="row">2024-05-21</th>
@@ -653,13 +719,11 @@ jQuery.event.special.mousewheel = {
             </tr>
             <tr>
               <th scope="row">2024-05-15</th>
-              <td>~</td>
-              <td><span class="text-success">Added</span><br /> Units: <strong>Nao</strong>  <small>(no Damage data)</small>.</td>
-            </tr>
-            <tr>
-              <th scope="row">2024-05-15</th>
               <td>+</td>
-              <td><span class="text-info">Updated</span><br /> Units: <strong>Eve</strong> <small>(Damage data)</small>.<br /><strong>Eve</strong> enhanced now unable to crit as it should be.</td>
+              <td>
+                <span class="text-success">Added</span><br /> Units: <strong>Nao</strong>  <small>(no Damage data)</small>.
+                <p></p>
+                <span class="text-info">Updated</span><br /> Units: <strong>Eve</strong> <small>(Damage data)</small>.<br /><strong>Eve</strong> enhanced attack now is unable to crit as it should be.</td>
             </tr>
           </tbody>
         </table>
@@ -728,8 +792,60 @@ jQuery.event.special.mousewheel = {
 </div>
 
 
+<!-- applyBuffModal (modal) -->
+<div class="modal fade" id="applyBuffModal" tabindex="-1" aria-labelledby="applyBuffModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Apply buffs to <span id="applyBuffModalLabel"></span><br /><small class="text-danger">Feature is under development</small></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="applyBuffModal-body"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary me-auto" data-bs-dismiss="modal">Close</button>
+        <button id="applyBuffModal_confirm-btn" type="button" class="btn btn-primary">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
+<!-- applyBuffModal-next (modal) -->
+<div class="modal fade" id="configBuffModal" aria-hidden="true" aria-labelledby="configBuffModalLabel" tabindex="-1" bconf-for="new">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><span id="configBuffModalLabel"></span><br /><small class="text-danger">Feature is under development</small></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="configBuffModal-body" >
+        <div class="d-flex"><div id="configBuffModal_sbuffs"></div></div>
+        <hr>
+        <div id="configBuffModal_sbconf"></div>
+        <hr>
+        <div class="d-flex" id="configBuffModal_cfg">
+          <div class="input-group mb-2">
+            <span class="input-group-text">CD</span>
+            <input id="configBuffModal_CD-input" type="number" aria-label="First name" class="form-control">
+            <span class="input-group-text">Duration</span>
+            <input id="configBuffModal_Duration-input" type="number" aria-label="First name" class="form-control">
+          </div>
+        </div>
+        <div class="input-group">
+          <span class="input-group-text" id="buffName_confirm-input">Name</span>
+          <input id="buffName-input" type="text" class="form-control" placeholder="Enter buff Name (optional)" aria-label="Buff Name" aria-describedby="buffName_confirm-input">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="delete_btn-configBuffModal" class="btn btn-danger me-auto" data-bs-toggle="modal" data-bs-dismiss="modal" hidden>Delete</button>
+        <button id="back_btn-configBuffModal" class="btn btn-primary" data-bs-target="#applyBuffModal" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button>
+        <button id="confirm_btn-configBuffModal" class="btn btn-success">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
 
  
   

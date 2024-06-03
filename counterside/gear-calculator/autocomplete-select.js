@@ -1,4 +1,7 @@
 const BONUS_STATS_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'DMG AMP','Basic Attack DMG AMP', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Basic Attack DMG RDC', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement', 'DMG RES Penetration', 'MDL', 'DEF per HP Loss', 'ATK per HP Loss', 'EVA per HP Loss', 'DMG TLRNC', 'AoE DMG RDC', 'Role DISADV DMG INC', 'Role DISADV DMG DEC'];
+const BUFF_STATS_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'DMG AMP','Basic Attack DMG AMP', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Basic Attack DMG RDC', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement', 'DMG RES Penetration', 'MDL', 'DEF per HP Loss', 'ATK per HP Loss', 'EVA per HP Loss', 'DMG TLRNC', 'AoE DMG RDC', 'Role DISADV DMG INC', 'Role DISADV DMG DEC','Sure Fire','Perfect Evasion','Invincibility'];
+
+const BSLL = BONUS_STATS_LIST.length;
 
 //const BONUS_STATS_GEAR_SET_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,HP_PERCENT,ATK_PERCENT,DEF_PERCENT,CRIT_PERCENT,HIT_PERCENT,EVA_PERCENT,'SPD', 'ASPD', 'CRIT DMG', 'Skill Haste', 'HP Recovery per Sec', CDMG_RES, 'Status Effect RES', 'Incoming Healing +', 'Outgoing Healing +', 'Anti-Counter DMG', 'Anti-Soldier DMG', 'Anti-Mech DMG', 'Anti-C.O. DMG', 'Anti-Replacer DMG', 'Anti-Striker DMG', 'Anti-Defender DMG', 'Anti-Ranger DMG', 'Anti-Sniper DMG', 'Anti-Supporter DMG', 'Anti-Siege DMG', 'Anti-Tower DMG', 'Anti-Air DMG', 'Anti-Ground DMG', 'Melee DMG', 'Ranged DMG', 'Anti-Counter DMG RES', 'Anti-Soldier DMG RES', 'Anti-Mech DMG RES', 'Anti-C.O. DMG RES', 'Anti-Replacer DMG RES', 'Anti-Striker DMG RES', 'Anti-Defender DMG RES', 'Anti-Ranger DMG RES', 'Anti-Sniper DMG RES', 'Anti-Supporter DMG RES', 'Anti-Siege DMG RES', 'Anti-Tower DMG RES', 'Anti-Air DMG RES', 'Anti-Ground DMG RES', 'Melee DMG RES', 'Ranged DMG RES', 'DMG Taken RDC', 'Special Skill DMG AMP', 'Ultimate Skill DMG AMP', 'DEF Penetration', 'Special Skill DMG RDC', 'Ultimate Skill DMG RDC', 'Barrier Enhancement'];
 
@@ -47,6 +50,10 @@ var active_skills_exclude = [];
 
 
 var SureFireMod = [];
+
+var unit_SureFireBuffUptime = 0;
+var unit_PerfectEvaBuffUptime = 0;
+var unit_InvincibilityBuffUptime = 0;
 
 
 
@@ -234,6 +241,55 @@ var SureFireMod = [];
 
         }
       }
+
+      let SureFireBuffUptime = 0;
+      let PerfectEvaBuffUptime = 0;
+      let InvincibilityBuffUptime = 0;
+
+      for (let i = 0, n = $('#dropdown-buffList-container li').length; i < n; i++) {
+        let baVal = $('#buff-apply_'+i).attr('value').split(',');
+        let baSVal = $('#buff-apply_'+i).attr('subvalue').split(',');
+        let baBcd = Number($('#buff-apply_'+i).attr('value_bcd'));
+        let baBd = Number($('#buff-apply_'+i).attr('value_bd'));
+
+       
+        let baSModifierFinal = 1;
+        
+
+        if (baBd < baBcd) {
+          baSModifierFinal = baBcd/baBd
+        }
+
+       for (let j = 0, nn = baVal.length; j < nn; j++) {
+        let baSValFinal;
+        if (Number(baVal[j]) < BSLL) {
+          if ((Number(baVal[j]) < 6)) {
+            baSValFinal = Number(baSVal[j])/baSModifierFinal;
+          } else {
+            baSValFinal = (Number(baSVal[j])/100)/baSModifierFinal;
+          }
+          bonus_stats[baVal[j]] += baSValFinal;
+        } else if (Number(baVal[j]) === BSLL) {
+          SureFireBuffUptime = (1+SureFireBuffUptime)/baSModifierFinal;
+        } else if (Number(baVal[j]) === Number(BSLL)+1) {
+          PerfectEvaBuffUptime = (1+PerfectEvaBuffUptime)/baSModifierFinal;
+        } else if (Number(baVal[j]) === Number(BSLL)+2) {
+          InvincibilityBuffUptime = (1+InvincibilityBuffUptime)/baSModifierFinal;
+        }
+       }
+      }
+
+      console.log('Check buffs')
+      console.log(SureFireBuffUptime)
+      console.log(PerfectEvaBuffUptime)
+      console.log(InvincibilityBuffUptime)
+
+      unit_SureFireBuffUptime = SureFireBuffUptime;
+      unit_PerfectEvaBuffUptime = PerfectEvaBuffUptime;
+      unit_InvincibilityBuffUptime = InvincibilityBuffUptime;
+
+      
+
       
       var bonus_stats_gear_set = [0,	0,	0,	0,	0,  0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0];
       const gear_set_stats = [Weapon.eqSet, Armor.eqSet, Accessory1.eqSet, Accessory2.eqSet];
@@ -249,12 +305,16 @@ var SureFireMod = [];
         }
         
     }); */
-    var checkVal = $('#flexCheckDefault');
+
+
+  /*   var checkVal = $('#flexCheckDefault');
         if (checkVal.is(':checked') === true) {
           bonus_stats[7] += 0.1;
         } else {
           bonus_stats[7] += 0;
-        }
+        } */
+
+        //NOTE tf is this? (Was Yoo Mina skill uptime thing)
 
       
 
@@ -560,6 +620,10 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       finalEHP = (unitEHP/(averageHIT+0.1)*chanceToDodgeAvg)+(unitEHP/(1+Math.max(averageCDMG-unit_cdmg_res,0))*(averageCRIT*(1-chanceToDodgeAvg)))+(unitEHP*(1-(averageCRIT*(1-chanceToDodgeAvg))-chanceToDodgeAvg));
       
 
+      if ((total_unit_data[0] + ' ' + total_unit_data[1]) == 'Old Management Bureau: Yaksha Squadron Judy Swift') { // Judy swift doesnt gain aspd from anything?
+        bonus_stats[13] = 0;
+        bonus_stats_gear_set[13] = 0;
+      }
       
       var untrole = unit_data[9].split(';');
       var unttype;
@@ -630,7 +694,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       
       
 
-      for (let i = 0; i < BONUS_STATS_LIST.length; i++) {
+      for (let i = 0; i < BSLL; i++) {
         unit_bonus_stats[i] = bonus_stats[i] + bonus_stats_gear_set[i];
         
       }
@@ -661,7 +725,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       unit_stats_to_save = [];
 
       
-    for (let i = 0, n = BONUS_STATS_LIST.length; i < n; i++) {
+    for (let i = 0, n = BSLL; i < n; i++) {
         
       if ( (i == 0)) {
         stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[6]+bonus_stats[6])+(bonus_stats[i]*0.1));
@@ -800,14 +864,16 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         }
         
       
+      var SFvPEmod = Math.max(target_PerfectEvaBuffUptime - unit_SureFireBuffUptime,0);
+    
+      var targetDodgeChance = (1-(1-enemy_EVA_percent) * (1-SFvPEmod))
 
 
+      var chance_to_crit = CRIT_pc*(1-targetDodgeChance);
+      var chance_to_hit = 1-chance_to_crit-targetDodgeChance;
+      var enemy_chance_to_dodge = targetDodgeChance;
 
-      var chance_to_crit = CRIT_pc*(1-enemy_EVA_percent);
-      var chance_to_hit = 1-chance_to_crit-enemy_EVA_percent;
-      var enemy_chance_to_dodge = enemy_EVA_percent;
-
-      if (HIT_pc > enemy_EVA_percent) {
+      if ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0)) {
         chance_to_crit = CRIT_pc;
         chance_to_hit = 1-chance_to_crit;
         enemy_chance_to_dodge = 0;
@@ -1277,14 +1343,14 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
 
       if (active_skills_exclude[0] !== false) {
         
-        if ((unit_mainAttack[unit_mainAttack_selected][13] == 'true') || (HIT_pc > enemy_EVA_percent)) {
-          ctc = CRIT_pc;
+        if ((unit_mainAttack[unit_mainAttack_selected][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
+          ctc = CRIT_pc*SFvPEmod;
           cth = (1-ctc);
           ecd = 0;
         } else {
-          ctc = CRIT_pc*(1-enemy_EVA_percent);
-          cth = 1-ctc-enemy_EVA_percent;
-          ecd = enemy_EVA_percent;
+          ctc = CRIT_pc*(1-targetDodgeChance);
+          cth = 1-ctc-targetDodgeChance;
+          ecd = targetDodgeChance;
         }
         var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*cth)+(unit_mainAttack[unit_mainAttack_selected][1]*ctc)+(unit_mainAttack[unit_mainAttack_selected][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
 
@@ -1306,18 +1372,18 @@ var rAtk_extra = '';
 
 for (let i = 0; i < unit_restAttacks.length; i++) {
   if (active_skills_exclude[i+1] !== false) { 
-    if ((unit_restAttacks[i][13] == 'true') || (HIT_pc > enemy_EVA_percent)) {
-      ctc = CRIT_pc;
+    if ((unit_restAttacks[i][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
+      ctc = CRIT_pc*SFvPEmod;
       cth = (1-ctc);
       ecd = 0;
     } else {
-      ctc = CRIT_pc*(1-enemy_EVA_percent);
-      cth = 1-ctc-enemy_EVA_percent;
-      ecd = enemy_EVA_percent;
+      ctc = CRIT_pc*(1-targetDodgeChance);
+      cth = 1-ctc-targetDodgeChance;
+      ecd = targetDodgeChance;
     }
   if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
-    unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1))
+    unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack[unit_mainAttack_selected][4])/(1+unit_final_aspd)),1)) // added: *unit_mainAttack[unit_mainAttack_selected][4] (testing) added another: /(1/unit_mainAttack[unit_mainAttack_selected][4]) added another: /(unit_mainAttack[unit_mainAttack_selected][4])
     //unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
     rAtk_extra = i;
   } else {
@@ -1347,6 +1413,7 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
 }
 
 Total_Unit_DPS += unit_mainAttackDPS;
+Total_Unit_DPS = Total_Unit_DPS*(1-target_InvincibilityBuffUptime);
 
 unit_mainAttack[unit_mainAttack_selected][unit_mainAttack[unit_mainAttack_selected].length] = unit_mainAttackDPS;
 
@@ -1382,14 +1449,14 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var isForceCrit = false;
 
 
-  if ((unit_totalAttacks[i][13] == 'true') || (HIT_pc > enemy_EVA_percent)) {
-    ctc = CRIT_pc;
+  if ((unit_totalAttacks[i][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
+    ctc = CRIT_pc*SFvPEmod;
     cth = (1-ctc);
     ecd = 0;
   } else {
-    ctc = CRIT_pc*(1-enemy_EVA_percent);
-    cth = 1-ctc-enemy_EVA_percent;
-    ecd = enemy_EVA_percent;
+    ctc = CRIT_pc*(1-targetDodgeChance);
+    cth = 1-ctc-targetDodgeChance;
+    ecd = targetDodgeChance;
   }
 
   var chm_chance = [ctc,cth,ecd];
@@ -2266,10 +2333,14 @@ function autocomplete(inp, arr) {
         
     $('#target_extra_stats_dropdown').hide();
     $('#dummy_extra_stats_dropdown').show();
+    $('#target_BuffList_display').hide();
+    $('#dummy_BuffList_display').show();
       } else {
         
     $('#target_extra_stats_dropdown').show();
     $('#dummy_extra_stats_dropdown').hide();
+    $('#target_BuffList_display').show();
+    $('#dummy_BuffList_display').hide();
       }
 
       $('#searchID').val(unit_stats[1])
@@ -2522,8 +2593,7 @@ tTooltip.children().addClass('cd_dropdown_item')
 
         
         
-        if (!($(this).hasClass('scrollable')) && (ttDrag.get(0).scrollHeight > ttDrag.height())) {
-
+        if (!($(ttDrag).hasClass('scrollable')) && (ttDrag.get(0).scrollHeight > ttDrag.height())) {
           
         //ttDrag.css('width','calc( 100% + '+getScrollbarWidth(sbWidth)+'px )')
         var clicked = false, clickY;
@@ -2553,7 +2623,7 @@ tTooltip.children().addClass('cd_dropdown_item')
                   ttDrag.scrollTop(ttDrag.scrollTop() + (clickY - e.pageY)/5);
               }
         }
-        $(this).addClass('scrollable');
+        $(ttDrag).addClass('scrollable');
 
         if (tTooltip.hasClass('active')) {
           tTooltip.removeClass('active')
@@ -2643,7 +2713,7 @@ function AppendCustomStatsForUnits() {
 
   if (($('#stat_data_list_values ol .dropdown-item').length === 0) && ($('#target_stat_data_list_values ol .dropdown-item').length === 0) && ($('#dummy_stat_data_list_values ol .dropdown-item').length === 0)) {
     
-    for (let i = 0, n = BONUS_STATS_LIST.length; i < n; i++) {
+    for (let i = 0, n = BSLL; i < n; i++) {
       if (unit_extra_bonus_stats[i] === undefined) {
         unit_extra_bonus_stats[i] = 0;
       }
@@ -2727,7 +2797,7 @@ function AppendCustomStatsForUnits() {
   var clickedItem = $(this);
   
   
-  const searchFill = '<div class="d-flex" id="SelectedStatValueInput"><input name="svalInpuit" searchFill="" type="text" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-clearExtraStats" type="button" class="btn btn-light">Clear</button><button id="btn-confirmExtraStats" type="button" class="btn btn-success">Ok</button></div>'
+  const searchFill = '<div class="d-flex" id="SelectedStatValueInput"><input name="svalInpuit" searchFill="" type="number" inputmode="numeric" maxlength="20" placeholder="Input value"  class="form-control" placeholder="Input amount"><button id="btn-clearExtraStats" type="button" class="btn btn-light">Clear</button><button id="btn-confirmExtraStats" type="button" class="btn btn-success">Ok</button></div>'
   
   
   //console.log($('#SelectedStatValueInput').get($('#SelectedStatValueInput').index()))

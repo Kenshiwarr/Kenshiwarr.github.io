@@ -25,6 +25,10 @@
       var Target_dps_stats = 0;
       var target_stat_data = 0;
 
+      var target_SureFireBuffUptime = 0;
+      var target_PerfectEvaBuffUptime = 0;
+      var target_InvincibilityBuffUptime = 0;
+
       
      
       
@@ -135,6 +139,61 @@ console.log(target_data)
 
         }
       }
+
+      let SureFireBuffUptime = 0;
+      let PerfectEvaBuffUptime = 0;
+      let InvincibilityBuffUptime = 0;
+      var bftr;
+
+      if (ifSelectTargetDummy) {
+        bftr = 'dummy_'
+      } else {
+        bftr = 'target_'
+      }
+
+      for (let i = 0, n = $('#'+bftr+'dropdown-buffList-container li').length; i < n; i++) {
+        let baVal = $('#'+bftr+'buff-apply_'+i).attr('value').split(',');
+        let baSVal = $('#'+bftr+'buff-apply_'+i).attr('subvalue').split(',');
+        let baBcd = Number($('#'+bftr+'buff-apply_'+i).attr('value_bcd'));
+        let baBd = Number($('#'+bftr+'buff-apply_'+i).attr('value_bd'));
+
+       
+        let baSModifierFinal = 1;
+        
+
+        if (baBd < baBcd) {
+          baSModifierFinal = baBcd/baBd
+        }
+
+       for (let j = 0, nn = baVal.length; j < nn; j++) {
+        let baSValFinal;
+        if (Number(baVal[j]) < BSLL) {
+          if ((Number(baVal[j]) <= 2)) {
+            baSValFinal = (Number(baSVal[j])*10)/baSModifierFinal;
+          } else if ((Number(baVal[j]) > 2) && (Number(baVal[j]) < 6)) {
+            baSValFinal = Number(baSVal[j])/baSModifierFinal;
+          } else {
+            baSValFinal = (Number(baSVal[j])/100)/baSModifierFinal;
+          }
+          bonus_stats[baVal[j]] += baSValFinal;
+        } else if (Number(baVal[j]) === BSLL) {
+          SureFireBuffUptime = (1+SureFireBuffUptime)/baSModifierFinal;
+        } else if (Number(baVal[j]) === Number(BSLL)+1) {
+          PerfectEvaBuffUptime = (1+PerfectEvaBuffUptime)/baSModifierFinal;
+        } else if (Number(baVal[j]) === Number(BSLL)+2) {
+          InvincibilityBuffUptime = (1+InvincibilityBuffUptime)/baSModifierFinal;
+        }
+       }
+      }
+
+      console.log('Check buffs Target')
+      console.log(SureFireBuffUptime)
+      console.log(PerfectEvaBuffUptime)
+      console.log(InvincibilityBuffUptime)
+
+      target_SureFireBuffUptime = SureFireBuffUptime;
+      target_PerfectEvaBuffUptime = PerfectEvaBuffUptime;
+      target_InvincibilityBuffUptime = InvincibilityBuffUptime;
 
       console.log('gear_stats2')
       console.log(gear_stats)

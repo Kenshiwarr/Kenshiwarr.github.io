@@ -57,6 +57,8 @@ if (ifDummy == 'false') {
   
 $('#dummy_extra_stats_dropdown').hide();
 $('#target_extra_stats_dropdown').show();
+$('#dummy_BuffList_display').hide();
+$('#target_BuffList_display').show();
 }
     
     if ((Tname != null) && (Ttitle != null)) {
@@ -81,8 +83,8 @@ $('#target_extra_stats_dropdown').show();
     var unit_titles = ['States of One', 'States of One', 'States of One', 'States of One', 'States of One', 'Abyssal Ravage', 'ESPR', 'Fennec Fox', 'Old Administration', 'Old Administration', 'Old Administration', 'Agent', 'Valentinus Monastery', 'Old Administration: Maze Division', 'Six Wings', 'Freedom Riders', 'Future-at-War', 'Zodiac Knights: Blue Shift', 'Special Hero Class', 'States of One', 'Type: Siegfried', 'Cold Case', 'Stormbringer', 'Arhat', 'Minerva', 'Ace of Wings', 'Kresnik', 'Garguantia', 'Six Wings', 'Nehemoth', 'Tenured President', 'Asmodeus', 'Altergressive', 'Singularity', 'Final Phase', 'Type: Fenrir', 'Solar Codex', 'Future-at-War', 'Miracle Investigation Council 9', 'Best Mascot', 'Best Streamer', 'Miracle Investigation Council 9', 'Black Tide', 'Blue Blood', 'HRT Berry', 'Breakbeat', 'Administration Counter Academy', 'Steel Lane', 'Lancelot Frontier', 'Knights of Redemption', 'Elysium Philharmonic', 'Official Support', 'Black Tide', 'R7 Irregular Scouts', 'White Rabbit', 'Daymine Mining Team 4', 'HRT Berry', 'The Militia', 'The Gronia Department of National Security', 'Academy Student Council', 'Miracle Investigation Council 9', 'Knights of Redemption', 'Miracle Investigation Council 9', 'The Iron Knight', 'Dark Seven', 'Horizon Finance', 'Suicide Squad', 'Delta Seven', 'OZ', 'Front Bay Sharks', 'R7 Irregular Scouts', 'ESPR', 'Academy Student Council', 'Jehuty Biotech', 'Prydwen Institution', 'Border Guards', 'Old Administration', 'Zodiac Knights: Blue Shift', 'ALT Squad', 'Gha&apos;agsheblah', 'Strega', 'Apex Predator', 'Expert Mercenary', 'Canary Squad', 'Zodiac Knights: Blue Shift', 'Fallen Hawk', 'Fallen Hawk', 'Freelancer', 'Full Moon', 'Alphatrix Innovation', 'HRT Berry', 'Galahad', 'Betatrix', 'Scavengers', 'Northern Union', 'Great Silence', 'Gremory&apos;s Bar', 'Northern Union', 'Griffin Rider', 'Fennec Fox', 'White Rabbit', 'Cronenworth Puppet Troupe', 'Nanahara Family Alliance', 'Nanahara Family Alliance', 'Hero Blossom', 'Hidden Challenger', 'Fenrir Squad', 'Freedom Riders', 'Horizon Finance', 'Steel Lane', 'Red Musician', 'Old Administration', 'Strega', 'Joint Investigation', 'Official Support', 'States of One', 'Delta Seven', 'Delta Seven', 'Mason Mercenary Office', 'Future-at-War', 'Chamber', 'R7 Irregular Scouts', 'Subculture Research Club', 'Mason Mercenary Office', 'Fenrir Squad', 'Delta Seven: Pathfinder', 'Old Management Bureau: Yaksha Squadron', 'Special Hero Class', 'GUREN TYPE-08 ELEMENTS "SEITEN"', 'The Militia', 'Police SWAT 4', 'Delta Seven: Pathfinder', 'Kestrel', 'Alphatrix Innovation', 'Yeoksam Residents&apos; Association', 'ALT Squad', 'Kostroma', 'Kubera', 'Delta Seven', 'Canary Squad', 'ESPR', 'Platina Express', 'Strega', 'Frontier', 'Alphatrix Innovation', 'Six Wings', 'Freedom Riders', 'Fenrir Division', 'Police SWAT 4', 'The Militia', 'Zero', 'Northern Union', 'Successor', 'Flora Maid Service', 'Freedom Riders', 'OZ', 'Zodiac Knights: Blue Shift', 'Lonely Villainess', 'Jehuty Biotech', 'Knights of Redemption', 'Nightmare Realization', 'HRT Berry', 'Elysium Philharmonic', 'Flora Maid Service', 'Old Administration: Maze Division', 'Fennec Fox', 'Scavengers', 'Elysium Philharmonic', 'Delta Seven', 'Jellyfish Pirates', 'Frontier', 'Subculture Research Club', 'Academy Student Council', 'Post-War Administration Bureau', 'Demon-type C.O.', 'HRT Berry', 'Flora Maid Service', 'Demon-type C.O.', 'Fennec Fox', 'Fenrir Division', 'Administration Counter Academy', 'Nanahara Family Alliance', 'Nanahara Family Alliance', 'Nanahara Family Alliance', 'Nanahara Family Alliance', 'Near Astraea', 'Nest Keeper', 'Gremory&apos;s Bar', 'Frontier', 'Fenrir Squad', 'Nanahara Family Alliance', 'Alphatrix Innovation', 'Successor', 'Orochinagi', 'Outlander', 'Scavengers', 'Charade', 'Fennec Fox', 'Daymine Mining Team 4', 'States of One', 'Elysium Philharmonic', 'Purple Mist', 'Illyria Commando Brigade', 'Alphatrix Innovation', 'Black Tide', 'Delta Seven: Pathfinder', 'Fennec Fox', 'ESPR', 'Replacer Syndicate', 'Replacer Syndicate', 'Replacer Syndicate', 'Replacer Syndicate', 'The Gronia Department of National Security', 'Steel Lane', 'Steel Lane', 'Horizon Finance', 'ESPR', 'Fallen Hawk', 'Prydwen Institution', 'Prydwen Institution', 'Black Tide', 'Secret Service', 'ALT Squad', 'Cronenworth Puppet Troupe', 'Elysium Philharmonic', 'Dino Mech', 'Steel Lane', 'Daymine Mining Team 4', 'Alphatrix Innovation', 'Future Strategy Department', 'OZ', 'Special Hero Class', 'The Sleeping Girl and the Yellow-billed Flock', 'Steel Lane', 'Flame of Corruption', 'Front Bay Sharks', 'Steel Lane', 'Special Force', 'Demon-type C.O.', 'Fennec Fox', 'Black Tide', 'Steel Lane', 'Black Tide', 'Delta Seven', 'Steel Lane', 'Front Bay Sharks', 'Old Administration', 'Black Tide', 'Prydwen Institution', 'Future-at-War', 'Tommy and the Losers', 'Triaina Plan', 'Fennec Fox', 'Flora Maid Service', 'Volume Up!', 'Border Guards', 'Steel Lane', 'ALT Squad', 'The Fallen Plague God', 'Zodiac Knights: Blue Shift', 'White Rabbit', 'Academy Student Council', 'Fenrir Squad', 'Strega', 'Fennec Fox', 'Official Support']
    
     var unit_types = ['Mech', 'Mech', 'Mech', 'Mech', 'Mech', 'Counter', 'Soldier;C.O.', 'Soldier', 'Soldier', 'Soldier', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Counter', 'Counter', 'Soldier', 'Counter', 'Mech', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter;C.O.', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Counter', 'Counter', 'Mech', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Counter', 'Counter', 'Counter', 'Soldier', 'Mech', 'Mech', 'Counter', 'Counter;C.O.', 'Counter', 'Mech', 'Soldier', 'Counter', 'Counter', 'Soldier', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Soldier', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech;Soldier', 'Mech', 'Counter', 'Counter', 'Mech', 'Counter;Mech', 'Mech', 'Soldier', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Mech', 'Counter;Mech', 'Mech', 'Counter', 'Soldier', 'Counter', 'Soldier', 'Counter', 'Counter', 'Soldier', 'Mech', 'Counter', 'Soldier', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Soldier', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter;C.O.', 'Counter', 'Counter', 'Mech', 'Counter', 'Counter;C.O.', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Soldier', 'Counter;C.O.', 'Counter', 'Counter', 'Mech;C.O.', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Soldier', 'Mech;Soldier', 'Counter', 'Mech', 'Counter', 'Soldier', 'Counter;C.O.', 'Counter', 'Counter', 'Counter', 'Mech', 'Counter', 'Soldier', 'Counter', 'Counter;Replacer', 'Counter;Replacer', 'Counter;Replacer', 'Counter;Replacer', 'Soldier', 'Mech', 'Soldier', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Soldier', 'Counter', 'Counter', 'Counter', 'Counter;C.O.', 'Mech;C.O.', 'Soldier', 'Counter', 'Counter', 'Mech', 'Mech;Soldier', 'Counter', 'Counter', 'Soldier', 'Counter', 'Counter', 'Mech', 'Soldier', 'Counter;C.O.', 'Soldier', 'Soldier', 'Soldier', 'Soldier', 'Counter', 'Mech', 'Counter', 'Mech', 'Soldier', 'Counter', 'Mech', 'Soldier', 'Mech', 'Soldier', 'Soldier', 'Counter', 'Soldier', 'Mech', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Counter', 'Mech', 'Counter'];
-    var unit_roles = ['Tower', 'Tower', 'Ranger', 'Ranger', 'Striker', 'Striker', 'Supporter', 'Sniper', 'Ranger', 'Defender', 'Striker', 'Sniper', 'Sniper', 'Striker', 'Sniper', 'Striker', 'Ranger', 'Supporter', 'Sniper', 'Ranger', 'Defender', 'Striker', 'Defender', 'Striker', 'Ranger', 'Ranger', 'Supporter', 'Ranger', 'Defender', 'Defender', 'Ranger', 'Sniper', 'Ranger', 'Supporter', 'Striker', 'Striker', 'Striker', 'Tower', 'Defender', 'Defender', 'Sniper', 'Ranger', 'Ranger', 'Ranger', 'Striker', 'Defender', 'Supporter', 'Sniper', 'Ranger', 'Defender', 'Supporter', 'Ranger', 'Striker', 'Defender', 'Ranger', 'Defender', 'Tower', 'Sniper', 'Ranger', 'Striker', 'Striker', 'Striker', 'Supporter', 'Sniper', 'Supporter', 'Sniper', 'Striker', 'Defender', 'Sniper', 'Striker', 'Ranger', 'Sniper', 'Tower', 'Striker', 'Ranger', 'Striker', 'Sniper', 'Striker', 'Striker', 'Striker', 'Supporter', 'Defender', 'Ranger', 'Defender', 'Defender', 'Ranger', 'Striker', 'Defender', 'Supporter', 'Tower', 'Ranger', 'Defender', 'Supporter', 'Striker', 'Siege', 'Defender', 'Supporter', 'Sniper', 'Supporter', 'Sniper', 'Ranger', 'Supporter', 'Striker', 'Sniper', 'Defender', 'Defender', 'Striker', 'Defender', 'Defender', 'Defender', 'Sniper', 'Striker', 'Striker', 'Ranger', 'Defender', 'Supporter', 'Sniper', 'Striker', 'Striker', 'Ranger', 'Striker', 'Striker', 'Sniper', 'Ranger', 'Ranger', 'Striker', 'Ranger', 'Defender', 'Striker', 'Defender', 'Ranger', 'Sniper', 'Sniper', 'Sniper', 'Defender', 'Ranger', 'Ranger', 'Ranger', 'Ranger', 'Ranger', 'Ranger', 'Tower', 'Supporter', 'Defender', 'Supporter', 'Supporter', 'Supporter', 'Striker', 'Defender', 'Ranger', 'Supporter', 'Striker', 'Defender', 'Supporter', 'Striker', 'Striker', 'Striker', 'Supporter', 'Sniper', 'Ranger', 'Supporter', 'Siege', 'Defender', 'Sniper', 'Sniper', 'Striker', 'Supporter', 'Tower', 'Tower', 'Supporter', 'Sniper', 'Striker', 'Supporter', 'Ranger', 'Ranger', 'Sniper', 'Defender', 'Defender', 'Tower', 'Ranger', 'Striker', 'Striker', 'Supporter', 'Counter', 'Ranger', 'Striker', 'Tower', 'Ranger', 'Striker', 'Sniper', 'Defender', 'Striker', 'Striker', 'Striker', 'Ranger', 'Defender', 'Striker', 'Siege', 'Striker', 'Ranger', 'Ranger', 'Supporter', 'Striker', 'Tower', 'Sniper', 'Striker', 'Ranger', 'Supporter', 'Striker', 'Defender', 'Defender', 'Sniper', 'Supporter', 'Siege', 'Ranger', 'Supporter', 'Ranger', 'Ranger', 'Striker', 'Defender', 'Ranger', 'Striker', 'Ranger', 'Defender', 'Sniper', 'Striker', 'Defender', 'Supporter', 'Ranger', 'Tower', 'Ranger', 'Supporter', 'Tower', 'Sniper', 'Defender', 'Supporter', 'Ranger', 'Ranger', 'Striker', 'Sniper', 'Defender', 'Striker', 'Sniper', 'Sniper', 'Tower', 'Sniper', 'Ranger', 'Striker', 'Ranger', 'Striker', 'Defender', 'Striker', 'Ranger', 'Striker', 'Ranger', 'Sniper', 'Striker', 'Sniper', 'Ranger', 'Ranger', 'Supporter', 'Striker', 'Ranger', 'Ranger', 'Ranger', 'Striker'];
-    var unit_mtypes = ['Air', 'Air', 'Air', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Air', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Counter', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground'];
+    var unit_roles = ['Tower', 'Tower', 'Ranger', 'Ranger', 'Striker', 'Striker', 'Supporter', 'Sniper', 'Ranger', 'Defender', 'Striker', 'Sniper', 'Sniper', 'Striker', 'Sniper', 'Striker', 'Ranger', 'Supporter', 'Sniper', 'Ranger', 'Defender', 'Striker', 'Defender', 'Striker', 'Ranger', 'Ranger', 'Supporter', 'Ranger', 'Defender', 'Defender', 'Ranger', 'Sniper', 'Ranger', 'Supporter', 'Striker', 'Striker', 'Striker', 'Tower', 'Defender', 'Defender', 'Sniper', 'Ranger', 'Ranger', 'Ranger', 'Striker', 'Defender', 'Supporter', 'Sniper', 'Ranger', 'Defender', 'Supporter', 'Ranger', 'Striker', 'Defender', 'Ranger', 'Defender', 'Tower', 'Sniper', 'Ranger', 'Striker', 'Striker', 'Striker', 'Supporter', 'Sniper', 'Supporter', 'Sniper', 'Striker', 'Defender', 'Sniper', 'Striker', 'Ranger', 'Sniper', 'Tower', 'Striker', 'Ranger', 'Striker', 'Sniper', 'Striker', 'Striker', 'Striker', 'Supporter', 'Defender', 'Ranger', 'Defender', 'Defender', 'Ranger', 'Striker', 'Defender', 'Supporter', 'Tower', 'Ranger', 'Defender', 'Supporter', 'Striker', 'Siege', 'Defender', 'Supporter', 'Sniper', 'Supporter', 'Sniper', 'Ranger', 'Supporter', 'Striker', 'Sniper', 'Defender', 'Defender', 'Striker', 'Defender', 'Defender', 'Defender', 'Sniper', 'Striker', 'Striker', 'Ranger', 'Defender', 'Supporter', 'Sniper', 'Striker', 'Striker', 'Ranger', 'Striker', 'Striker', 'Sniper', 'Ranger', 'Ranger', 'Striker', 'Ranger', 'Defender', 'Striker', 'Defender', 'Ranger', 'Sniper', 'Sniper', 'Sniper', 'Defender', 'Ranger', 'Ranger', 'Ranger', 'Ranger', 'Ranger', 'Ranger', 'Tower', 'Supporter', 'Defender', 'Supporter', 'Supporter', 'Supporter', 'Striker', 'Defender', 'Ranger', 'Supporter', 'Striker', 'Defender', 'Supporter', 'Striker', 'Striker', 'Striker', 'Supporter', 'Sniper', 'Ranger', 'Supporter', 'Siege', 'Defender', 'Sniper', 'Sniper', 'Striker', 'Supporter', 'Tower', 'Tower', 'Supporter', 'Sniper', 'Striker', 'Supporter', 'Ranger', 'Ranger', 'Sniper', 'Defender', 'Defender', 'Tower', 'Ranger', 'Striker', 'Striker', 'Supporter', 'Supporter', 'Ranger', 'Striker', 'Tower', 'Ranger', 'Striker', 'Sniper', 'Defender', 'Striker', 'Striker', 'Striker', 'Ranger', 'Defender', 'Striker', 'Siege', 'Striker', 'Ranger', 'Ranger', 'Supporter', 'Striker', 'Tower', 'Sniper', 'Striker', 'Ranger', 'Supporter', 'Striker', 'Defender', 'Defender', 'Sniper', 'Supporter', 'Siege', 'Ranger', 'Supporter', 'Ranger', 'Ranger', 'Striker', 'Defender', 'Ranger', 'Striker', 'Ranger', 'Defender', 'Sniper', 'Striker', 'Defender', 'Supporter', 'Ranger', 'Tower', 'Ranger', 'Supporter', 'Tower', 'Sniper', 'Defender', 'Supporter', 'Ranger', 'Ranger', 'Striker', 'Sniper', 'Defender', 'Striker', 'Sniper', 'Sniper', 'Tower', 'Sniper', 'Ranger', 'Striker', 'Ranger', 'Striker', 'Defender', 'Striker', 'Ranger', 'Striker', 'Ranger', 'Sniper', 'Striker', 'Sniper', 'Ranger', 'Ranger', 'Supporter', 'Striker', 'Ranger', 'Ranger', 'Ranger', 'Striker'];
+    var unit_mtypes = ['Air', 'Air', 'Air', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Air', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Air', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground', 'Ground'];
    
     autocomplete(document.getElementById("searchID"), unit_names);
 autocompleteTarget(document.getElementById("searchIDtarget"), unit_names);
@@ -166,6 +168,8 @@ $( "#enemy_hit_input" ).on( "input", function() {
     console.log('!_t yes');
     $('#target_extra_stats_dropdown').hide();
     $('#dummy_extra_stats_dropdown').show();
+    $('#dummy_BuffList_display').show();
+    $('#target_BuffList_display').hide();
 if (targetIsUpdated) {
   UpdateUnitAndTarget(total_unit_data);
     CalcUnitDMG()
@@ -180,6 +184,8 @@ if (targetIsUpdated) {
     console.log('!_t no');
     $('#dummy_extra_stats_dropdown').hide();
     $('#target_extra_stats_dropdown').show();
+    $('#dummy_BuffList_display').hide();
+    $('#target_BuffList_display').show();
     if (targetIsUpdated) {
       UpdateUnitAndTarget(total_unit_data);
         CalcUnitDMG()
@@ -645,4 +651,255 @@ for (var name in this)
  */ // adds background image behind another background image
 
 
- CreateTooltipForAnything($('#Page_new_stuff'),'New Units:<br /><hr> Mavka <img src="cs_icons/Icon_Mavka_Kostroma.png" height="34px" width="34px" alt=""><br /><hr>Alice <img src="cs_icons/Icon_Alice Braidwood_Kubera.png" height="34px" width="34px" alt=""><br /><hr>Jenica <img src="cs_icons/Icon_Jenica_Chamber.png" height="34px" width="34px" alt=""><br /><hr>Judy Swift <img src="cs_icons/Icon_Judy Swift_Old Management Bureau; Yaksha Squadron.png" height="34px" width="34px" alt=""><br /><hr>New Stats:<br />[Basic Attack DMG AMP]<br />[Basic Attack DMG RDC]<br />[Role DISADV DMG INC]<br />[Role DISADV DMG DEC]<br /><hr>New Bugs:<br />Tell me if you found any!','<div class="text-center fw-bold">Stuff added</div>','','bot')
+ CreateTooltipForAnything($('#Page_new_stuff'),'New Units:<br /><hr> Mavka <img src="cs_icons/Icon_Mavka_Kostroma.png" height="34px" width="34px" alt=""><br /><hr>Alice <img src="cs_icons/Icon_Alice Braidwood_Kubera.png" height="34px" width="34px" alt=""><br /><hr>Jenica <img src="cs_icons/Icon_Jenica_Chamber.png" height="34px" width="34px" alt=""><br /><hr>Judy Swift <img src="cs_icons/Icon_Judy Swift_Old Management Bureau; Yaksha Squadron.png" height="34px" width="34px" alt=""><br /><hr>New Features:<br />Units can recieve buffs<hr>Temporal/Permanent effects:<br />[Sure Fire]<br />[Perfect Evasion]<br />[Invincibility]<br /><hr>New Stats:<br />[Role DISADV DMG INC]<br />[Role DISADV DMG DEC]<br /><hr>New Bugs:<br />Tell me if you found any!','<div class="text-center fw-bold">Stuff added</div>','','bot')
+ 
+ for (let i = 0, n = BUFF_STATS_LIST.length; i < n; i++) {
+  if (i >= 65 && i < 68) {
+    
+  } else {
+    $('#applyBuffModal-body').append('<div class="form-check"> <input class="form-check-input" type="checkbox" value="'+BUFF_STATS_LIST[i]+'" id="applyBuffCheck_'+i+'"> <label class="form-check-label" for="applyBuffCheck_'+i+'">'+BUFF_STATS_LIST[i]+'</label> </div>');
+
+  }
+  
+ }
+ 
+
+ $('#applyBuffModal_confirm-btn').on('click',function() {
+  let cel = $('#applyBuffModal-body .form-check input:checked')
+  $('#configBuffModal_sbuffs').html('')
+  $('#configBuffModal_sbconf').html('')
+$.each(cel, function(index) {
+  $('#configBuffModal_sbuffs').append('<span id="celcfg_'+index+'" class="badge bg-secondary" value="'+$(this).attr('id').split('_')[1]+'" subvalue="0">'+$(this).val()+'</span> ')
+  if (!(Number($(this).attr('id').split('_')[1]) >= BONUS_STATS_LIST.length)) { 
+    $('#configBuffModal_sbconf').append('<div class="input-group mb-2"> <span class="input-group-text">'+$(this).val()+'</span> <input id="bcfg-input_'+index+'" type="number" class="form-control" placeholder="Amount" value="0"> </div>');
+  
+  $('#bcfg-input_'+index).on('input',function() {
+  $('#celcfg_'+index).attr('subvalue',$(this).val());
+})
+}
+})
+
+
+
+if (cel.length > 0) {
+  $('#applyBuffModal').modal('hide'); 
+  $('#configBuffModal').modal('show'); 
+}
+
+ });
+
+ $('#confirm_btn-configBuffModal').on('click',function() {
+
+  var buffApplyTo = $('#applyBuffModal_confirm-btn').attr('subvalue');
+
+  if ($('#configBuffModal').attr('bconf-for')==='new') {
+    
+  var cbm_cd = $('#configBuffModal_CD-input');
+  var cbm_d = $('#configBuffModal_Duration-input');
+  var cbm_name = $('#buffName-input').val();
+
+  var fcId = $('#' + buffApplyTo + 'dropdown-buffList li').length;
+    var emptyId = 0;
+    var usedIds = [];
+    for (let i = 0; i < fcId; i++) {
+      usedIds[i] = Number($('#' + buffApplyTo + 'dropdown-buffList li').eq(i).attr('id').slice(-1));
+    }
+
+    usedIds = usedIds.sort();
+
+    for (let i = 0, n = usedIds.length; i < n; i++) {
+      if (usedIds[i] === emptyId) {
+      emptyId++
+      }
+    }
+
+  if (cbm_name == '') {
+    cbm_name = 'Buff_'+emptyId;
+  }
+  if ((cbm_cd.val() != '') && (cbm_d.val() != '')) {
+    
+  
+  var buffStats = '';
+  var buffStatsValues = '';
+  var infoTT = '';
+  $.each($('#configBuffModal_sbuffs span'), function() {
+    if (!(Number($(this).attr('id').split('_')[1]) >= BONUS_STATS_LIST.length)) {
+      buffStats += $(this).attr('value') + ',';
+      buffStatsValues += $(this).attr('subvalue') + ',';
+    }
+    infoTT += '<span class="badge bg-secondary">'+BUFF_STATS_LIST[Number($(this).attr('value'))]+'</span>';
+    
+   
+  });
+  $('#' + buffApplyTo + 'dropdown-buffList-container').append('<li id="'+buffApplyTo + 'buff-apply_'+emptyId+'" class="dropdown-item" value="'+buffStats.slice(0,-1)+'" subvalue="'+buffStatsValues.slice(0,-1)+'" value_bcd="'+cbm_cd.val()+'" value_bd="'+cbm_d.val()+'">'+cbm_name+' <svg id="tt_buffapply'+buffApplyTo+'_'+emptyId+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/> </svg></li>');
+
+  
+  $('#'+buffApplyTo + 'buff-apply_'+emptyId).off('.btcf');
+  $('#'+buffApplyTo + 'buff-apply_'+emptyId).on('click.btcf',function() {
+    $('#configBuffModal').attr('bconf-for','#'+buffApplyTo + 'buff-apply_'+emptyId);
+    $('#configBuffModal_sbuffs').html('');
+    $('#configBuffModal_sbconf').html('');
+    var bsl = buffStats.slice(0,-1).split(',');
+    var bslv = buffStatsValues.slice(0,-1).split(',');
+    
+    for (let i = 0, n = bsl.length; i < n; i++) {
+      $('#configBuffModal_sbuffs').append('<span id="celcfg_'+i+'" class="badge bg-secondary" value="'+bsl[i]+'" subvalue="'+bslv[i]+'">'+BUFF_STATS_LIST[Number(bsl[i])]+'</span> ');
+      if (!(Number($('#celcfg_'+i).attr('value')) >= BONUS_STATS_LIST.length)) {  
+      $('#configBuffModal_sbconf').append('<div class="input-group mb-2"> <span class="input-group-text">'+BONUS_STATS_LIST[Number(bsl[i])]+'</span> <input id="bcfg-input_'+i+'" type="number" class="form-control" placeholder="Amount" value="'+bslv[i]+'"> </div>');
+      
+      $('#bcfg-input_'+i).on('input',function() {
+        $('#celcfg_'+i).attr('subvalue',$(this).val());
+      })
+    }
+    }
+    
+    $('#buffName-input').val(cbm_name)
+    $('#configBuffModal_CD-input').val($('#'+buffApplyTo + 'buff-apply_'+emptyId).attr('value_bcd'))
+    $('#configBuffModal_Duration-input').val($('#'+buffApplyTo + 'buff-apply_'+emptyId).attr('value_bd'))
+    $('#delete_btn-configBuffModal').prop('hidden',false)
+    $('#back_btn-configBuffModal').prop('hidden',true)
+    $('#configBuffModalLabel').text('Configure Buff - '+cbm_name);
+    $('#configBuffModal').modal('show');
+    
+  });
+  $('#configBuffModal').attr('bconf-for','#'+buffApplyTo + 'buff-apply_'+emptyId)
+  $('#buffName-input').val(cbm_name)
+  $('#' + buffApplyTo + 'dropdown-buffList_empty').hide();
+  $('#configBuffModal').modal('hide');
+  CreateTooltipForAnything($('#tt_buffapply'+buffApplyTo+'_'+emptyId),'<div style="max-width: 10rem;">'+infoTT+'</div>','CD: '+cbm_cd.val()+' sec, Duration: '+cbm_d.val() + ' sec','Uptime: ' + (Number(cbm_cd.val())*(Number(cbm_d.val())/Number(cbm_cd.val()))).toFixed(2).replace(/[.,]0+$/, "") + ' sec')
+  
+  UpdateUnitAndTarget(total_unit_data);
+  CalcUnitDMG();
+} else {
+  cbm_cd.attr('placeholder','Enter value!');
+  cbm_d.attr('placeholder','Enter value!');
+}
+  } else {
+    var btnconf = $('#configBuffModal').attr('bconf-for');
+  var cbm_cd = $('#configBuffModal_CD-input');
+  var cbm_d = $('#configBuffModal_Duration-input');
+  var cbm_name = $('#buffName-input').val();
+  
+
+    var emptyId = $($('#configBuffModal').attr('bconf-for'));
+  if (cbm_name == '') {
+    cbm_name = emptyId.text();
+  }
+  if ((cbm_cd.val() != '') && (cbm_d.val() != '')) {
+    
+  
+  var buffStats = '';
+  var buffStatsValues = '';
+  var infoTT = ''
+  $.each($('#configBuffModal_sbuffs span'), function() {
+    if (!(Number($(this).attr('id').split('_')[1]) >= BONUS_STATS_LIST.length)) {
+      buffStats += $(this).attr('value') + ',';
+      buffStatsValues += $(this).attr('subvalue') + ',';
+    }
+    
+    infoTT += '<span class="badge bg-secondary">'+BUFF_STATS_LIST[Number($(this).attr('value'))]+'</span>';
+  });
+  emptyId.text(cbm_name);
+  emptyId.append('<svg id="tt_buffapply'+buffApplyTo+'_'+emptyId.attr('id').slice(-1)+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/> </svg>')
+  $(btnconf).attr('value',buffStats.slice(0,-1));
+  $(btnconf).attr('subvalue',buffStatsValues.slice(0,-1));
+  $(btnconf).attr('value_bcd',cbm_cd.val());
+  $(btnconf).attr('value_bd',cbm_d.val());
+
+  $(btnconf).off('.btcf');
+  $(btnconf).on('click.btcf',function() {
+    $('#configBuffModal').attr('bconf-for',btnconf);
+    $('#configBuffModal_sbuffs').html('');
+    $('#configBuffModal_sbconf').html('');
+    var bsl = buffStats.slice(0,-1).split(',');
+    var bslv = buffStatsValues.slice(0,-1).split(',');
+    for (let i = 0, n = bsl.length; i < n; i++) {
+      $('#configBuffModal_sbuffs').append('<span id="celcfg_'+i+'" class="badge bg-secondary" value="'+bsl[i]+'" subvalue="'+bslv[i]+'">'+BUFF_STATS_LIST[Number(bsl[i])]+'</span> ');
+      if (!(Number($('#celcfg_'+i).attr('value')) >= BONUS_STATS_LIST.length)) {  
+      $('#configBuffModal_sbconf').append('<div class="input-group mb-2"> <span class="input-group-text">'+BONUS_STATS_LIST[Number(bsl[i])]+'</span> <input id="bcfg-input_'+i+'" type="number" class="form-control" placeholder="Amount" value="'+bslv[i]+'"> </div>');
+      
+      $('#buffName-input').val(emptyId.text())
+      $('#bcfg-input_'+i).on('input',function() {
+        $('#celcfg_'+i).attr('subvalue',$(this).val());
+      })
+    }
+    }
+    
+    
+    $('#configBuffModal_CD-input').val($(btnconf).attr('value_bcd'));
+    $('#configBuffModal_Duration-input').val($(btnconf).attr('value_bd'));
+    $('#configBuffModalLabel').text('Configure Buff - '+emptyId.text());
+    $('#configBuffModal').modal('show');
+  });
+  $('#configBuffModal').attr('bconf-for',btnconf);
+  $('#buffName-input').val(emptyId.text())
+  $('#' + buffApplyTo + 'dropdown-buffList_empty').hide();
+  $('#configBuffModal').modal('hide');
+
+  CreateTooltipForAnything($('#tt_buffapply'+buffApplyTo+'_'+emptyId.attr('id').slice(-1)),'<div style="max-width: 10rem;">'+infoTT+'</div>','CD: '+cbm_cd.val()+' sec, Duration: '+cbm_d.val() + ' sec','Uptime: ' + (Number(cbm_d.val())*(Number(cbm_d.val())/Number(cbm_cd.val()))).toFixed(2).replace(/[.,]0+$/, "") + ' sec')
+ 
+  
+  UpdateUnitAndTarget(total_unit_data);
+  CalcUnitDMG();
+} else {
+  cbm_cd.attr('placeholder','Enter value!');
+  cbm_d.attr('placeholder','Enter value!');
+}
+  }
+
+
+ });
+
+
+ $('#addBuff-btn').on('click',function() {
+  $('#applyBuffModal_confirm-btn').attr('subvalue','')
+  $('#applyBuffModalLabel').text('Unit');
+  $('#configBuffModal').attr('bconf-for','new');
+  $('#delete_btn-configBuffModal').prop('hidden',true);
+  $('#back_btn-configBuffModal').prop('hidden',false)
+  $('#applyBuffModal-body .form-check input').prop('checked',false);
+  $('#configBuffModalLabel').text('Configure New Buff')
+  $('#buffName-input').val('');
+  $('#configBuffModal_CD-input').val('');
+  $('#configBuffModal_Duration-input').val('');
+ });
+
+ $('#target_addBuff-btn').on('click',function() {
+  $('#applyBuffModal_confirm-btn').attr('subvalue','target_')
+  $('#applyBuffModalLabel').text('Target');
+  $('#configBuffModal').attr('bconf-for','new');
+  $('#delete_btn-configBuffModal').prop('hidden',true);
+  $('#back_btn-configBuffModal').prop('hidden',false)
+  $('#applyBuffModal-body .form-check input').prop('checked',false);
+  $('#configBuffModalLabel').text('Configure New Buff')
+  $('#buffName-input').val('');
+  $('#configBuffModal_CD-input').val('');
+  $('#configBuffModal_Duration-input').val('');
+ });
+ 
+ $('#dummy_addBuff-btn').on('click',function() {
+  $('#applyBuffModal_confirm-btn').attr('subvalue','dummy_')
+  $('#applyBuffModalLabel').text('Target');
+  $('#configBuffModal').attr('bconf-for','new');
+  $('#delete_btn-configBuffModal').prop('hidden',true);
+  $('#back_btn-configBuffModal').prop('hidden',false)
+  $('#applyBuffModal-body .form-check input').prop('checked',false);
+  $('#configBuffModalLabel').text('Configure New Buff')
+  $('#buffName-input').val('');
+  $('#configBuffModal_CD-input').val('');
+  $('#configBuffModal_Duration-input').val('');
+ });
+
+
+
+ $('#delete_btn-configBuffModal').on('click',function() {
+  var buffApplyTo = $('#applyBuffModal_confirm-btn').attr('subvalue');
+  $($('#configBuffModal').attr('bconf-for')).remove();
+  if (Number($('#' + buffApplyTo + 'dropdown-buffList li').length) < 1) {
+    $('#' + buffApplyTo + 'dropdown-buffList_empty').show();
+  }
+ 
+
+  UpdateUnitAndTarget(total_unit_data);
+  CalcUnitDMG();
+ });
