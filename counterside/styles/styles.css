@@ -693,11 +693,11 @@ margin-top: -8px;
 
 
 .filter-hidden {
-  display: none;
+  display: none !important;
 }
 
 .filter_search-hidden {
-  display: none;
+  display: none !important;
 }
 
 

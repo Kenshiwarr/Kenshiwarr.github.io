@@ -2754,10 +2754,10 @@ function AppendCustomStatsForUnits() {
   
   $("#stat_data_list_values li .dropdown-item").filter(function () {
   if (tval !== '') {
-  $(this).parent().not().addClass('filter_search-hidden')
+  $(this).parents('li').not().addClass('filter_search-hidden')
   }
   return $(this).val().toLowerCase().indexOf(tval) > -1;
-  }).parent().removeClass('filter_search-hidden')
+  }).parents('li').removeClass('filter_search-hidden')
   
   
   
@@ -2768,10 +2768,10 @@ function AppendCustomStatsForUnits() {
   
   $("#target_stat_data_list_values li .dropdown-item").filter(function () {
   if (tval !== '') {
-  $(this).parent().not().addClass('filter_search-hidden')
+  $(this).parents('li').not().addClass('filter_search-hidden')
   }
   return $(this).val().toLowerCase().indexOf(tval) > -1;
-  }).parent().removeClass('filter_search-hidden')
+  }).parents('li').removeClass('filter_search-hidden')
   
   
   
@@ -2782,10 +2782,10 @@ function AppendCustomStatsForUnits() {
     
     $("#dummy_stat_data_list_values li .dropdown-item").filter(function () {
     if (tval !== '') {
-    $(this).parent().not().addClass('filter_search-hidden')
+    $(this).parents('li').not().addClass('filter_search-hidden')
     }
     return $(this).val().toLowerCase().indexOf(tval) > -1;
-    }).parent().removeClass('filter_search-hidden')
+    }).parents('li').removeClass('filter_search-hidden')
     
     
     
@@ -2857,7 +2857,7 @@ function AppendCustomStatsForUnits() {
   
   if (($('#checkbox_filterChanged').is(':checked') === true)) {
   //$('#target_stat_data_list_values li').addClass('filter-hidden');
-  $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+  $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
   } else {
   $('#stat_data_list_values li').removeClass('filter-hidden');
   }
@@ -2893,7 +2893,7 @@ function AppendCustomStatsForUnits() {
     
   if (($('#checkbox_filterChanged').is(':checked') === true)) {
     //$('#target_stat_data_list_values li').addClass('filter-hidden');
-    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#stat_data_list_values li').removeClass('filter-hidden');
     }
@@ -2910,7 +2910,7 @@ function AppendCustomStatsForUnits() {
   
   $('#checkbox_filterChanged').on('change',function() {
     if ((this.checked === true)) {
-    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#stat_data_list_values li').removeClass('filter-hidden');
     }
