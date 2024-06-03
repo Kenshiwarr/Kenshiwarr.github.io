@@ -2931,7 +2931,7 @@ function AppendCustomStatsForUnits() {
     $('#stat_data_list_values .dropdown-item').eq(i).attr('subvalue',0)
     }
     if (($('#checkbox_filterChanged').is(':checked') === true)) {
-    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent('li').addClass('filter-hidden');
+    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#stat_data_list_values li').removeClass('filter-hidden');
     }
@@ -3000,7 +3000,7 @@ function AppendCustomStatsForUnits() {
   
   
   if (($('#target_checkbox_filterChanged').is(':checked') === true)) {
-  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
   } else {
   $('#target_stat_data_list_values li').removeClass('filter-hidden');
   }
@@ -3039,7 +3039,7 @@ CalcUnitDMG()
     
   
     if (($('#target_checkbox_filterChanged').is(':checked') === true)) {
-      $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+      $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
       } else {
       $('#target_stat_data_list_values li').removeClass('filter-hidden');
       }
@@ -3059,7 +3059,7 @@ CalcUnitDMG()
   $('#target_checkbox_filterChanged').on('change',function() {
   if ((this.checked === true)) {
   //$('#target_stat_data_list_values li').addClass('filter-hidden');
-  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
   } else {
   $('#target_stat_data_list_values li').removeClass('filter-hidden');
   }
@@ -3080,7 +3080,7 @@ CalcUnitDMG()
   $('#target_stat_data_list_values .dropdown-item').eq(i).attr('subvalue',0)
   }
   if (($('#target_checkbox_filterChanged').is(':checked') === true)) {
-  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
   } else {
   $('#target_stat_data_list_values li').removeClass('filter-hidden');
   }
@@ -3150,7 +3150,7 @@ CalcUnitDMG()
     
     
     if (($('#dummy_checkbox_filterChanged').is(':checked') === true)) {
-    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#dummy_stat_data_list_values li').removeClass('filter-hidden');
     }
@@ -3186,7 +3186,7 @@ CalcUnitDMG()
       
       
     if (($('#dummy_checkbox_filterChanged').is(':checked') === true)) {
-    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#dummy_stat_data_list_values li').removeClass('filter-hidden');
     }
@@ -3207,7 +3207,7 @@ CalcUnitDMG()
     $('#dummy_checkbox_filterChanged').on('change',function() {
     if ((this.checked === true)) {
     //$('#dummy_stat_data_list_values li').addClass('filter-hidden');
-    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#dummy_stat_data_list_values li').removeClass('filter-hidden');
     }
@@ -3228,7 +3228,7 @@ CalcUnitDMG()
     $('#dummy_stat_data_list_values .dropdown-item').eq(i).attr('subvalue',0)
     }
     if (($('#dummy_checkbox_filterChanged').is(':checked') === true)) {
-    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#dummy_stat_data_list_values li').removeClass('filter-hidden');
     }
@@ -3253,7 +3253,7 @@ for (let i = 0, n = unit_extra_bonus_stats.length; i < n; i++) {
   }
   }
   if (($('#checkbox_filterChanged').is(':checked') === true)) {
-  $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+  $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
   } else {
   $('#stat_data_list_values li').removeClass('filter-hidden');
   }
@@ -3273,7 +3273,7 @@ for (let i = 0, n = target_extra_bonus_stats.length; i < n; i++) {
   }
   }
   if (($('#target_checkbox_filterChanged').is(':checked') === true)) {
-  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+  $('#target_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
   } else {
   $('#target_stat_data_list_values li').removeClass('filter-hidden');
   }
@@ -3292,7 +3292,7 @@ for (let i = 0, n = target_extra_bonus_stats.length; i < n; i++) {
     }
     }
     if (($('#dummy_checkbox_filterChanged').is(':checked') === true)) {
-    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#dummy_stat_data_list_values li .dropdown-item[subvalue="0"]').parents('li').addClass('filter-hidden');
     } else {
     $('#dummy_stat_data_list_values li').removeClass('filter-hidden');
     }
