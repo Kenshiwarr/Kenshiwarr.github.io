@@ -1344,7 +1344,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
       if (active_skills_exclude[0] !== false) {
         
         if ((unit_mainAttack[unit_mainAttack_selected][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
-          ctc = CRIT_pc*SFvPEmod;
+          ctc = CRIT_pc*(1+SFvPEmod);
           cth = (1-ctc);
           ecd = 0;
         } else {
@@ -1373,7 +1373,7 @@ var rAtk_extra = '';
 for (let i = 0; i < unit_restAttacks.length; i++) {
   if (active_skills_exclude[i+1] !== false) { 
     if ((unit_restAttacks[i][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
-      ctc = CRIT_pc*SFvPEmod;
+      ctc = CRIT_pc*(1+SFvPEmod);
       cth = (1-ctc);
       ecd = 0;
     } else {
@@ -1450,7 +1450,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
 
   if ((unit_totalAttacks[i][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
-    ctc = CRIT_pc*SFvPEmod;
+    ctc = CRIT_pc*(1+SFvPEmod);
     cth = (1-ctc);
     ecd = 0;
   } else {
