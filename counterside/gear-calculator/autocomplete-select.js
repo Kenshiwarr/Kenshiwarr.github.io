@@ -2931,7 +2931,7 @@ function AppendCustomStatsForUnits() {
     $('#stat_data_list_values .dropdown-item').eq(i).attr('subvalue',0)
     }
     if (($('#checkbox_filterChanged').is(':checked') === true)) {
-    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent().addClass('filter-hidden');
+    $('#stat_data_list_values li .dropdown-item[subvalue="0"]').parent('li').addClass('filter-hidden');
     } else {
     $('#stat_data_list_values li').removeClass('filter-hidden');
     }
