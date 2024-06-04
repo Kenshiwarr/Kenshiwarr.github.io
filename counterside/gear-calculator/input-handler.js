@@ -766,7 +766,7 @@ if (cel.length > 0) {
   $('#buffName-input').val(cbm_name)
   $('#' + buffApplyTo + 'dropdown-buffList_empty').hide();
   $('#configBuffModal').modal('hide');
-  CreateTooltipForAnything($('#tt_buffapply'+buffApplyTo+'_'+emptyId),'<div style="max-width: 10rem;">Buffs: '+infoTT+'</div>','CD: '+cbm_cd.val()+' sec, Duration: '+cbm_d.val() + ' sec','Uptime: ' + (Number(cbm_cd.val())*(Number(cbm_d.val())/Number(cbm_cd.val()))).toFixed(2).replace(/[.,]0+$/, "") + ' sec')
+  CreateTooltipForAnything($('#tt_buffapply'+buffApplyTo+'_'+emptyId),'<div style="max-width: 10rem;">Buffs: '+infoTT+'</div>','CD: '+cbm_cd.val()+' sec, Duration: '+cbm_d.val() + ' sec','Uptime: ' + (Number(cbm_cd.val()) < Number(cbm_d.val()) ? ' Permanent':(1/(Number(cbm_cd.val())/Number(cbm_d.val()))*Number(cbm_d.val())).toFixed(2) + ' sec'))
   
   UpdateUnitAndTarget(total_unit_data);
   CalcUnitDMG();
@@ -836,7 +836,7 @@ if (cel.length > 0) {
   $('#' + buffApplyTo + 'dropdown-buffList_empty').hide();
   $('#configBuffModal').modal('hide');
 
-  CreateTooltipForAnything($('#tt_buffapply'+buffApplyTo+'_'+emptyId.attr('id').slice(-1)),'<div style="max-width: 10rem;">Buffs: '+infoTT+'</div>','CD: '+cbm_cd.val()+' sec, Duration: '+cbm_d.val() + ' sec','Uptime: ' + (Number(cbm_d.val())*(Number(cbm_d.val())/Number(cbm_cd.val()))).toFixed(2).replace(/[.,]0+$/, "") + ' sec')
+  CreateTooltipForAnything($('#tt_buffapply'+buffApplyTo+'_'+emptyId.attr('id').slice(-1)),'<div style="max-width: 10rem;">Buffs: '+infoTT+'</div>','CD: '+cbm_cd.val()+' sec, Duration: '+cbm_d.val() + ' sec','Uptime: ' + (Number(cbm_cd.val()) < Number(cbm_d.val()) ? ' Permanent':(1/(Number(cbm_cd.val())/Number(cbm_d.val()))*Number(cbm_d.val())).toFixed(2) + ' sec'))
  
   
   UpdateUnitAndTarget(total_unit_data);

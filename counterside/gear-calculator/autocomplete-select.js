@@ -617,9 +617,16 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         chanceToDodgeAvg = 0;
       }
 
+      chanceToDodgeAvg = (1-(1-chanceToDodgeAvg) * (1-(unit_PerfectEvaBuffUptime)))
+
       unitEHP = Number(unit_hp)*((1000+Number(unit_def))/1000*(1+Math.max(Number(cat1_res-(average_cat1_dmg)/(1+average_cat1_res*0.6)),0))*(1+Number(cat2_res)));
       finalEHP = (unitEHP/(averageHIT+0.1)*chanceToDodgeAvg)+(unitEHP/(1+Math.max(averageCDMG-unit_cdmg_res,0))*(averageCRIT*(1-chanceToDodgeAvg)))+(unitEHP*(1-(averageCRIT*(1-chanceToDodgeAvg))-chanceToDodgeAvg));
       
+      if (unit_InvincibilityBuffUptime < 1) {
+        finalEHP = finalEHP*(1+unit_InvincibilityBuffUptime)
+      } else {
+        finalEHP = Infinity
+      }
 
       if ((total_unit_data[0] + ' ' + total_unit_data[1]) == 'Old Management Bureau: Yaksha Squadron Judy Swift') { // Judy swift doesnt gain aspd from anything?
         bonus_stats[13] = 0;

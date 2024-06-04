@@ -490,11 +490,17 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       }
 
 
-      
+      chanceToDodgeAvg = (1-(1-chanceToDodgeAvg) * (1-(target_PerfectEvaBuffUptime)))
 
       targetEHP = Number(target_hp)*((1000+Number(target_def))/1000*(1+Math.max(Number(enemy_cat1_res-(average_cat1_dmg)/(1+average_cat1_res*0.6)),0))*(1+Number(enemy_cat2_res)));
       targetfinalEHP = (targetEHP/(averageHIT+0.1)*chanceToDodgeAvg)+(targetEHP/(1+Math.max(averageCDMG-target_cdmg_res,0))*(averageCRIT*(1-chanceToDodgeAvg)))+(targetEHP*(1-(averageCRIT*(1-chanceToDodgeAvg))-chanceToDodgeAvg));
       
+
+      if (target_InvincibilityBuffUptime < 1) {
+        targetfinalEHP = targetfinalEHP*(1+target_InvincibilityBuffUptime)
+      } else {
+        targetfinalEHP = Infinity
+      }
 
 
       //+ ((stat_bonus-target_data[i+2]) > 0 ? (' (+' + (stat_bonus-target_data[i+2]) + ')'):'') +
