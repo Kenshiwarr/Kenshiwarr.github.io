@@ -753,11 +753,11 @@ if (cel.length > 0) {
     }
     }
     
-    $('#buffName-input').val(cbm_name)
-    $('#configBuffModal_CD-input').val($('#'+buffApplyTo + 'buff-apply_'+emptyId).attr('value_bcd'))
-    $('#configBuffModal_Duration-input').val($('#'+buffApplyTo + 'buff-apply_'+emptyId).attr('value_bd'))
-    $('#delete_btn-configBuffModal').prop('hidden',false)
-    $('#back_btn-configBuffModal').prop('hidden',true)
+    $('#buffName-input').val(cbm_name);
+    $('#configBuffModal_CD-input').val($('#'+buffApplyTo + 'buff-apply_'+emptyId).attr('value_bcd'));
+    $('#configBuffModal_Duration-input').val($('#'+buffApplyTo + 'buff-apply_'+emptyId).attr('value_bd'));
+    $('#delete_btn-configBuffModal').prop('hidden',false);
+    $('#back_btn-configBuffModal').prop('hidden',true);
     $('#configBuffModalLabel').text('Configure Buff - '+cbm_name);
     $('#configBuffModal').modal('show');
     

@@ -610,9 +610,10 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         chanceToDodge = 0;
       }
 
-      var chanceToDodgeAvg = target_EVA_pc;
+      var chanceToDodgeAvg = EVA_pc;
+      
 
-      if (target_EVA_pc <= averageHIT) {
+      if (EVA_pc <= averageHIT) {
         chanceToDodgeAvg = 0;
       }
 
@@ -3481,3 +3482,6 @@ function LoadSessionFromLocalStorage() {
 // NOTE_
 
 // array1 = array2.slice(0) puts values of another array intead of reference to this array (so when u change array1, array 2 doesn't change) 
+
+
+
