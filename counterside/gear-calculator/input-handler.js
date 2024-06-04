@@ -898,6 +898,7 @@ if (cel.length > 0) {
   if (Number($('#' + buffApplyTo + 'dropdown-buffList li').length) < 1) {
     $('#' + buffApplyTo + 'dropdown-buffList_empty').show();
   }
+  $('#configBuffModal').modal('hide');
  
 
   UpdateUnitAndTarget(total_unit_data);
