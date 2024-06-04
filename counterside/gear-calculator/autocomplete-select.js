@@ -1638,6 +1638,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
   var sCounter = 0;
 
+  var sDmg_Tdcm = 0;
+
   if (unitCalculatedDmg.length > 1) {
     
   for (let j = 0; j < unitCalculatedDmg.length; j++) {
@@ -1662,7 +1664,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     var sDmg_hit = ((Number(unitCalculatedDmg[j][2]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
     var sDmg_crit = ((Number(unitCalculatedDmg[j][1]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
     var sDmg_miss = ((Number(unitCalculatedDmg[j][3]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
-    var sDmg_Tdcm = Math.round(Number((unit_totalAttacks[i][2]*chm_chance[1])+(unit_totalAttacks[i][1]*chm_chance[0])+(unit_totalAttacks[i][3]*chm_chance[2])));
+    sDmg_Tdcm = Math.round(Number((unit_totalAttacks[i][2]*chm_chance[1])+(unit_totalAttacks[i][1]*chm_chance[0])+(unit_totalAttacks[i][3]*chm_chance[2])));
     //sDmg_chpd = (Math.round(Number(unitCalculatedDmg[j][9]))) > 0 ?  ('Target current hp% as dmg: ' + (Math.round(Number(unitCalculatedDmg[j][9])))) + '<br />':'';
     //sDmg_mhpd = (Math.round(Number(unitCalculatedDmg[j][10]))) > 0 ? ('Target max hp% as dmg: ') + (Math.round(Number(unitCalculatedDmg[j][10]))) + '<br />':'';
 
@@ -1757,6 +1759,8 @@ if (sCounter > 1) {
  CreateTooltipForAnything($('#dcm_inf'),'Summ of hit, crit and miss damage values multiplied by its chances.')
 
  if (active_skills_exclude[i] != '') {
+  
+
   dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "") + '%)',String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)');
 
  }
