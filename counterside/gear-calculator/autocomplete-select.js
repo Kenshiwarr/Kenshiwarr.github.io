@@ -865,9 +865,21 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         }
         
       
-      var SFvPEmod = Math.max(target_PerfectEvaBuffUptime - unit_SureFireBuffUptime,0);
-    
-      var targetDodgeChance = (1-(1-enemy_EVA_percent) * (1-SFvPEmod))
+      var SFvPEmod = target_PerfectEvaBuffUptime - unit_SureFireBuffUptime
+      var targetDodgeChance;
+      var natSureHitMod;
+
+      if (HIT_pc > enemy_EVA_percent) {
+        natSureHitMod = 0
+      } else {
+        natSureHitMod = enemy_EVA_percent;
+      }
+
+      if (SFvPEmod < 0) {
+        targetDodgeChance = 1-(1-(natSureHitMod) * (1-Math.abs(SFvPEmod)))
+      } else {
+        targetDodgeChance = (1-(1-natSureHitMod) * (1-SFvPEmod))
+      }
 
 
       var chance_to_crit = CRIT_pc*(1-targetDodgeChance);
@@ -992,7 +1004,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             var sd_anim = uatkd[3];
             var sd_cd = uatkd[18];
             var sd_cdtype = uatkd[19];
-            if (((ifForceCrit == 'false') && (ifSureFire == 'false')) && (sd_cdtype != '23') ) {
+            /* if (((ifForceCrit == 'false') && (ifSureFire == 'false')) && (sd_cdtype != '23') ) {
               if (source_dmg*crit_multiplier >= enemy_mdl) {
                 sdcrit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
                 
@@ -1049,20 +1061,57 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
                 sdhit = source_dmg;
                 sdmiss = source_dmg;
               }
-            } else if (sd_cdtype == '23') {
-               if (source_dmg >= enemy_mdl) {
-                sdcrit = enemy_mdl+((source_dmg-enemy_mdl)*0.04);
-                sdhit = enemy_mdl+((source_dmg-enemy_mdl)*0.04);
+            } else */ 
+            
+            if (ifForceCrit == 'true') {
+              if (source_dmg*crit_multiplier >= enemy_mdl) {
+                sdcrit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
+                sdhit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
               } else {
-                sdcrit = source_dmg;
+                sdcrit = source_dmg*crit_multiplier;
+                sdhit = source_dmg*crit_multiplier;
+              }
+              if (source_dmg*crit_multiplier*miss_multiplier >= enemy_mdl) {
+                sdmiss = enemy_mdl+(((source_dmg*crit_multiplier*miss_multiplier-enemy_mdl))*0.04);
+              } else {
+                sdmiss = source_dmg*crit_multiplier*miss_multiplier;
+              }
+            } else if (sd_cdtype == '23') { //part of last else
+              if (source_dmg >= enemy_mdl) {
+               sdcrit = enemy_mdl+((source_dmg-enemy_mdl)*0.04);
+               sdhit = enemy_mdl+((source_dmg-enemy_mdl)*0.04);
+             } else {
+               sdcrit = source_dmg;
+               sdhit = source_dmg;
+             }
+             if (source_dmg*miss_multiplier >= enemy_mdl) {
+               sdmiss = enemy_mdl+(((source_dmg*miss_multiplier-enemy_mdl))*0.04);
+             } else {
+               sdmiss = source_dmg*miss_multiplier;
+             }
+           } else {
+              if (source_dmg*crit_multiplier >= enemy_mdl) {
+                sdcrit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
+                
+              } else {
+                sdcrit = source_dmg*crit_multiplier;
+              }
+              if (source_dmg >= enemy_mdl) {
+                sdhit = enemy_mdl+((source_dmg-enemy_mdl)*0.04);
+                
+              } else {
                 sdhit = source_dmg;
+                
               }
               if (source_dmg*miss_multiplier >= enemy_mdl) {
                 sdmiss = enemy_mdl+(((source_dmg*miss_multiplier-enemy_mdl))*0.04);
               } else {
                 sdmiss = source_dmg*miss_multiplier;
               }
-            } 
+  
+            }
+            
+            
             
             /* if (sdcurrhpd >= enemy_mdl) {
               sdcurrhpd = enemy_mdl+((enemy_HP*(unit_attack_data[i].split(',')[7]*attack1_mod))*0.04);
@@ -1351,13 +1400,39 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
 
       if (active_skills_exclude[0] !== false) {
         
-        if ((unit_mainAttack[unit_mainAttack_selected][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
-          ctc = CRIT_pc*(1+SFvPEmod);
-          cth = (1-ctc);
-          ecd = 0;
+        if (unit_mainAttack[unit_mainAttack_selected][13] == 'true') {
+          var sfpe = target_PerfectEvaBuffUptime - 1;
+          var tdc_p;
+          var eepc;
+          if ((HIT_pc > enemy_EVA_percent)) { 
+            eepc = 0;
+          } else {
+            eepc = enemy_EVA_percent;
+          }
+          if (sfpe < 0) {
+            tdc_p = 1-(1-(eepc) * (1-Math.abs(sfpe)))
+          } else {
+            tdc_p = (1-(1-eepc) * (1-sfpe))
+          }
+          ctc = CRIT_pc*(1-tdc_p);
+          if (unit_mainAttack[unit_mainAttack_selected][14] == 'true') {
+            cth = 0
+          } else {
+            cth = 1-ctc-tdc_p;
+          }
+          ecd = tdc_p;
         } else {
-          ctc = CRIT_pc*(1-targetDodgeChance);
-          cth = 1-ctc-targetDodgeChance;
+          if (unit_mainAttack[unit_mainAttack_selected][14] == 'true') { // force crit
+            if ((HIT_pc > enemy_EVA_percent)) {  
+              ctc = 1;
+            } else {
+              ctc = 1*(1-targetDodgeChance);
+            }
+            cth = 0
+          } else {
+            ctc = CRIT_pc*(1-targetDodgeChance);
+            cth = 1-ctc-targetDodgeChance;
+          }
           ecd = targetDodgeChance;
         }
         var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*cth)+(unit_mainAttack[unit_mainAttack_selected][1]*ctc)+(unit_mainAttack[unit_mainAttack_selected][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
@@ -1380,15 +1455,41 @@ var rAtk_extra = '';
 
 for (let i = 0; i < unit_restAttacks.length; i++) {
   if (active_skills_exclude[i+1] !== false) { 
-    if ((unit_restAttacks[i][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
-      ctc = CRIT_pc*(1+SFvPEmod);
-      cth = (1-ctc);
-      ecd = 0;
+    if ((unit_restAttacks[i][13] == 'true')) {
+      var sfpe = target_PerfectEvaBuffUptime - 1;
+      var tdc_p;
+      var eepc;
+      if ((HIT_pc > enemy_EVA_percent)) { 
+        eepc = 0;
+      } else {
+        eepc = enemy_EVA_percent;
+      }
+      if (sfpe < 0) {
+        tdc_p = 1-(1-(eepc) * (1-Math.abs(sfpe)))
+      } else {
+        tdc_p = (1-(1-eepc) * (1-sfpe))
+      }
+      ctc = CRIT_pc*(1-tdc_p);
+      if (unit_restAttacks[i][14] == 'true') {
+        cth = 0
+      } else {
+        cth = 1-ctc-tdc_p;
+      }
+      ecd = tdc_p;
+    } else {
+    if (unit_restAttacks[i][14] == 'true') { // force crit
+      if ((HIT_pc > enemy_EVA_percent)) {  
+        ctc = 1;
+      } else {
+        ctc = 1*(1-targetDodgeChance);
+      }
+      cth = 0
     } else {
       ctc = CRIT_pc*(1-targetDodgeChance);
       cth = 1-ctc-targetDodgeChance;
-      ecd = targetDodgeChance;
     }
+    ecd = targetDodgeChance;
+  }
   if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
     unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack[unit_mainAttack_selected][4])/(1+unit_final_aspd)),1)) // added: *unit_mainAttack[unit_mainAttack_selected][4] (testing) added another: /(1/unit_mainAttack[unit_mainAttack_selected][4]) added another: /(unit_mainAttack[unit_mainAttack_selected][4])
@@ -1457,13 +1558,39 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var isForceCrit = false;
 
 
-  if ((unit_totalAttacks[i][13] == 'true') || ((HIT_pc > enemy_EVA_percent) && (SFvPEmod === 0))) {
-    ctc = CRIT_pc*(1+SFvPEmod);
-    cth = (1-ctc);
-    ecd = 0;
+  if ((unit_totalAttacks[i][13] == 'true')) { // sure fire
+    var sfpe = target_PerfectEvaBuffUptime - 1;
+    var tdc_p;
+    var eepc;
+    if ((HIT_pc > enemy_EVA_percent)) { 
+      eepc = 0;
+    } else {
+      eepc = enemy_EVA_percent;
+    }
+    if (sfpe < 0) {
+      tdc_p = 1-(1-(eepc) * (1-Math.abs(sfpe)))
+    } else {
+      tdc_p = (1-(1-eepc) * (1-sfpe))
+    }
+    ctc = CRIT_pc*(1-tdc_p);
+    if (unit_totalAttacks[i][14] == 'true') { // force crit
+      cth = 0
+    } else {
+      cth = 1-ctc-tdc_p;
+    }
+    ecd = tdc_p;
   } else {
-    ctc = CRIT_pc*(1-targetDodgeChance);
-    cth = 1-ctc-targetDodgeChance;
+    if (unit_totalAttacks[i][14] == 'true') { // force crit
+      if ((HIT_pc > enemy_EVA_percent)) {  
+        ctc = 1;
+      } else {
+        ctc = 1*(1-targetDodgeChance);
+      }
+      cth = 0
+    } else {
+      ctc = CRIT_pc*(1-targetDodgeChance);
+      cth = 1-ctc-targetDodgeChance;
+    }
     ecd = targetDodgeChance;
   }
 
@@ -1472,19 +1599,22 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
 
   if (ecd === 0) {
-    chm_chance[2] = 0;
+   /*  chm_chance[2] = 0; */
     isSureFireNat = true;
   }
   if (unit_totalAttacks[i][13] == 'true') {
-    chm_chance[2] = 0;
+    /* chm_chance[0] = CRIT_pc*(1-targetDodgeChance*Math.max(SFvPEmod,0));
+    chm_chance[1] = 1-chm_chance[0]-targetDodgeChance*Math.max(SFvPEmod,0);
+    chm_chance[2] = targetDodgeChance*Math.max(SFvPEmod,0); */
     isSureFire = true;
   }
   if (unit_totalAttacks[i][14] == 'true') {
-    chm_chance[0] = 0;
+    /* chm_chance[0] = 1-targetDodgeChance;
+    chm_chance[1] = 0; */
     isForceCrit = true;
   }
   if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
-    chm_chance = [1,0,ecd];
+    /* chm_chance = [1,0,ecd]; */
   }
   
 
@@ -1589,7 +1719,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
     //aTooltip += '<div class="tttext"> ' + sDmg_scale + 'Damage modifier: ' + (unitCalculatedDmg[j][12]).toFixed(2) + ' </div>';
-    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+dmgAppl[0] + mdl_redc[0]+' </td>  <td> '+dmgAppl[1] + mdl_redc[1]+' </td>  <td> '+dmgAppl[2] + mdl_redc[2]+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*cth)+(unit_totalAttacks[i][1]*ctc)+(unit_totalAttacks[i][3]*ecd))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
+    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0) +' </td>  <td> '+(chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+' </td>  <td> '+(chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*cth)+(unit_totalAttacks[i][1]*ctc)+(unit_totalAttacks[i][3]*ecd))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
     totalSkillMod += unitCalculatedDmg[j][11];
     
    }
@@ -1600,10 +1730,10 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   
 }
 if (sCounter > 1) {
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+Math.round(unit_totalAttacks[i][2])+' </th> <th> '+Math.round(unit_totalAttacks[i][1])+' </th> <th> '+Math.round(unit_totalAttacks[i][3])+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+ (chm_chance[1] > 0 ? Math.round(unit_totalAttacks[i][2]):0)+' </th> <th> '+ (chm_chance[0] > 0 ? Math.round(unit_totalAttacks[i][1]):0)+' </th> <th> '+ (chm_chance[2] > 0 ? Math.round(unit_totalAttacks[i][3]):0)+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+dmgAppl[0] + mdl_redc[0]+'  </th> <th> '+dmgAppl[1] + mdl_redc[1]+'  </th> <th> '+dmgAppl[2] + mdl_redc[2]+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> '+cdskill+' </th> <th> '+sanim+' </th> <th> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0)+'  </th> <th> '+ (chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+'  </th> <th> '+ (chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
 
