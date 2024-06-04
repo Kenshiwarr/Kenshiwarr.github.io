@@ -676,19 +676,19 @@ console.timeEnd('LoadingSaved_timer')
         uctI[5] = $('#unit-container_icon_5');
         uctI[6] = $('#unit-container_icon_6');
         uctI[7] = $('#unit-container_icon_7');
-        uctI[0].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span> <div class="uct_header" id="ucth_0"> <img src="'+cUnitID.children().eq(0).attr('src')+'" alt="" draggable="false">  </div> <div class="text-truncate" style="width: max-content;"> <small>' +cUnit_subvalue[0]+'</small><br/> '+cUnit_subvalue[1]+'</div> </div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
+        uctI[0].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span> <div class="uct_header" id="ucth_0"> <img src="'+cUnitID.children().eq(0).attr('src')+'" alt="" draggable="false">  </div> <div class="text-truncate" style="width: max-content;"> <small class="text-secondary">' +cUnit_subvalue[0]+'</small><br/> <span class="fw-bold">'+cUnit_subvalue[1]+'</span></div> </div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
         uctI[0].append('<div id="unit-compare_container_mainstats_0"> </div>');
         uctI[0].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_0"> </div>');
 
-        uctI[1].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span> <div class="uct_header" id="ucth_1"> <img src="'+sau[2]+'" alt="" draggable="false"></div> <div class="text-truncate" style="width: max-content;"><small>' +sau[0]+'</small><br/>  '+sau[1]+'</div>  </div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
+        uctI[1].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span> <div class="uct_header" id="ucth_1"> <img src="'+sau[2]+'" alt="" draggable="false"></div> <div class="text-truncate" style="width: max-content;"><small class="text-secondary">' +sau[0]+'</small><br/>  <span class="fw-bold">'+sau[1]+'</span></div>  </div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
         uctI[1].append('<div id="unit-compare_container_mainstats_1"> </div>');
         uctI[1].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_1"> </div>');
 
-        uctI[2].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span><div class="uct_header" id="ucth_2"><img src="'+cTargetID.children().eq(0).attr('src')+'" alt="" draggable="false"> </div> <div class="text-truncate" style="width: max-content;"><small>' +cTarget_subvalue[0]+'</small><br/>  '+cTarget_subvalue[1]+'</div></div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
+        uctI[2].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span><div class="uct_header" id="ucth_2"><img src="'+cTargetID.children().eq(0).attr('src')+'" alt="" draggable="false"> </div> <div class="text-truncate" style="width: max-content;"><small class="text-secondary">' +cTarget_subvalue[0]+'</small><br/>  <span class="fw-bold">'+cTarget_subvalue[1]+'</span></div></div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
         uctI[2].append('<div id="unit-compare_container_mainstats_2"> </div>');
         uctI[2].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_2"> </div>');
 
-        uctI[3].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span><div class="uct_header" id="ucth_3"><img src="'+sau[6]+'" alt="" draggable="false">  </div> <div class="text-truncate" style="width: max-content;"><small>' + sau[4]+'</small><br/>  '+sau[5]+'</div> </div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
+        uctI[3].html('<div class="uct_header_outer"> <span class="uHeaderName"> </span><div class="uct_header" id="ucth_3"><img src="'+sau[6]+'" alt="" draggable="false">  </div> <div class="text-truncate" style="width: max-content;"><small class="text-secondary">' + sau[4]+'</small><br/>  <span class="fw-bold">'+sau[5]+'</span></div> </div><div class="uctIc"><br/><br/>  <img src="" alt=""></div>');
         uctI[3].append('<div id="unit-compare_container_mainstats_3"> </div>');
         uctI[3].append('<div class="unit-compare_container_otherstats" id="unit-compare_container_otherstats_3"> </div>');
 

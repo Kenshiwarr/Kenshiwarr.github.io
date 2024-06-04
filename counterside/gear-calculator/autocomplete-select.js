@@ -1702,7 +1702,11 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_h" class="dt_tooltip">' + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + sDmg_chpd + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + sDmg_mhpd + '<br />'):'') + '</div>')
     $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_c" class="dt_tooltip">' + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + Math.round(sDmg_chpd*crit_multiplier) + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + Math.round(sDmg_mhpd*crit_multiplier) + '<br />'):'') + '</div>')
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_m" class="dt_tooltip">' + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + Math.round(sDmg_chpd*miss_multiplier) + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + Math.round(sDmg_mhpd*miss_multiplier) + '<br />'):'') + '</div>')
+    if (isForceCrit === true) {
+      $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_m" class="dt_tooltip">' + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + Math.round(sDmg_chpd*crit_multiplier*miss_multiplier) + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + Math.round(sDmg_mhpd*crit_multiplier*miss_multiplier) + '<br />'):'') + '</div>')
+    } else {
+      $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_m" class="dt_tooltip">' + (sDmg_chpd !== 0 ? ('Target current hp% as dmg: ' + Math.round(sDmg_chpd*miss_multiplier) + '<br />'):'') + (sDmg_mhpd !== 0 ? ('Target max hp% as dmg: ' + Math.round(sDmg_mhpd*miss_multiplier) + '<br />'):'') + '</div>')
+    }
 
     } else {
       dmgAppl[0] = Math.round(sDmg_hit);
