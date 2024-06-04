@@ -906,11 +906,12 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
 }
       
       for (let i = 0; i < unit_attack_data.length; i++) {
+        let uatkd = unit_attack_data[i].split(',');
         //console.log('unit_attack_data ['+ i + '] = ' + unit_attack_data[i])
         
         if (
-          ((unit_attack_data[i].split(',')[19] !== '01') && (Number(unit_attack_data[i].split(',')[3]) !== 0) &&
-          ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (unit_attack_data[i].split(',')[17] == 0))) /* || ((unit_attack_data[i].split(',')[20].toLowerCase().includes('start') === true) && (unit_attack_data[i].split(',')[3] != 0)) */
+          ((uatkd[19] !== '01') && (Number(uatkd[3]) !== 0) &&
+          ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0))) /* || ((unit_attack_data[i].split(',')[20].toLowerCase().includes('start') === true) && (unit_attack_data[i].split(',')[3] != 0)) */
            /* && 
           ((unit_attack_data[i].split(',')[12].toLowerCase() === 'true' && enemy_movement_type === 'Ground') || 
            ((unit_attack_data[i].split(',')[13].toLowerCase() === 'true' && enemy_movement_type === 'Air')) || (unit_attack_data[i].split(',')[0].includes('air') === true && enemy_movement_type === 'Air') ||
@@ -921,9 +922,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
               
          /*  var hitsLand = unit_attack_data[i].split(',')[12].toLowerCase();
           var hitsAir = unit_attack_data[i].split(',')[13].toLowerCase(); */
-          var ifSureFire = unit_attack_data[i].split(',')[14].toLowerCase();
-          var ifForceCrit = unit_attack_data[i].split(',')[15].toLowerCase();
-          var validHitAmt = unit_attack_data[i].split(',')[11];
+          var ifSureFire = uatkd[14].toLowerCase();
+          var ifForceCrit = uatkd[15].toLowerCase();
+          var validHitAmt = uatkd[11];
 
          /*  if (ifSureFire == 'true') {
             SureFireMod[i] = 1;
@@ -931,8 +932,8 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             SureFireMod[i] = 0;
           } */
 
-          var srcName = unit_attack_data[i].split(',')[20];
-          var srcType = unit_attack_data[i].split(',')[21];
+          var srcName = uatkd[20];
+          var srcType = uatkd[21];
           var dmgMod = 1;
           if (i < unit_attack_data.length) {
             var source_dmg = 0;
@@ -958,12 +959,18 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             } else {
               dmgMod = attack1_mod;
             };
-            var scaleMod = (unit_attack_data[i].split(',')[2])*(unit_attack_data[i].split(',')[1]);
+            var scaleMod;
+            if (uatkd[9] == 0) {
+              scaleMod = (uatkd[2])*(uatkd[1]);
+            } else {
+              scaleMod = (uatkd[9])*(uatkd[1]);
+            }
+            
             
             source_dmg = unit_atk*scaleMod*dmgMod;
-            var sdcurrhpd = (enemy_HP*enemy_remaining_hp_percent)*(unit_attack_data[i].split(',')[7]*dmgMod);
-            var sdmaxhpd = enemy_HP*(unit_attack_data[i].split(',')[8]*dmgMod);
-            var source_dmg_name = unit_attack_data[i].split(',')[0];
+            var sdcurrhpd = (enemy_HP*enemy_remaining_hp_percent)*(uatkd[7]*dmgMod);
+            var sdmaxhpd = enemy_HP*(uatkd[8]*dmgMod);
+            var source_dmg_name = uatkd[0];
             var sdcrit = 0;
             var sdhit = 0;
             var sdmiss = 0;
@@ -982,9 +989,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             source_dmg += sdmaxhpd;
 
 
-            var sd_anim = unit_attack_data[i].split(',')[3];
-            var sd_cd = unit_attack_data[i].split(',')[18];
-            var sd_cdtype = unit_attack_data[i].split(',')[19];
+            var sd_anim = uatkd[3];
+            var sd_cd = uatkd[18];
+            var sd_cdtype = uatkd[19];
             if (((ifForceCrit == 'false') && (ifSureFire == 'false')) && (sd_cdtype != '23') ) {
               if (source_dmg*crit_multiplier >= enemy_mdl) {
                 sdcrit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
