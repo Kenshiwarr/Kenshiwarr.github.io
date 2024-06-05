@@ -175,6 +175,12 @@ const VOLCANO_LATENT_STATS_OPTION_LIST = [SPEC_AMP, ULT_AMP, ATK_PERCENT, CDMG, 
 const VOLCANO_GEAR_LATENT_STATS_VALUES_LIST = [0.109, 0.109, 0.076, 0.15, 0.063, 0.063, 0.069, 0.128, 0.128, 0.128];
 const VOLCANO_ACCS_LATENT_STATS_VALUES_LIST = [0.119, 0.119, 0.083, 0.163, 0.068, 0.068, 0.079, 0.142, 0.142, 0.142];
 
+// units EE's
+const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage']
+
+const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1 = [0.242];
+const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2 = [1862,194,102,102,0.183,0.138,0.5,0.75,0.183];
+
 
 /* const SET_HEALING_AMP = "Healing Enhancement";
 const SET_AIR_DMG = "Healing Enhancment";
@@ -697,12 +703,14 @@ var GearSetsListTrinity = {
       console.log(gdata.split(',')[4]); */
       
       if (GearData.indexOf(gdata) > -1) {
+        let gdis = gdata.split(',');
 
 
-      this.#selectedGearData = gdata;
-      this.#eqIcon = 'cs_gears-icons/Special Gear/'+GearForType+'/' + gdata.split(',')[4] +  '.png';
-      this.#mainStat[1] = GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(gdata.split(',')[5])]
-      $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"url('"+`${this.#eqIcon}`+"')");
+        this.#selectedGearData = gdata;
+          this.#eqIcon = 'cs_gears-icons/Special Gear/'+GearForType+'/' + gdis[4] +  '.png';
+          this.#mainStat[1] = GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(gdis[5])]
+          $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"url('"+`${this.#eqIcon}`+"')");
+      
     } else {
       this.removeGear(ContainerType);
     }
@@ -874,6 +882,7 @@ var selectedGearFor;
 
 
 var selectedGearUnitType;
+// var selectedGear_Extra; planned for ee's but too laze
 
 
 
@@ -959,11 +968,14 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
   $('#gearSelectionModal').html('');
   //$('#gearSelectionModal').html('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="0"> <img src="" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title"> Remove Gear</h5>  <p class="card-text">Some random text.</p> </div> </div> </div>')
  
+
   for (var i = 0; i < gear_data.length; i++) {
-    if( gear_data[i].split(',').indexOf(selectedGearAcc) > -1 ) {
+    let gdis = gear_data[i].split(',');
+    if( (gdis.indexOf(selectedGearAcc) > -1)) {
+      
 
       /* console.log("Found: " + gear_data[i]) */
-      $('#gearSelectionModal').append('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data[i].split(',')[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gear_data[i].split(',')[1] + '</h5>  <p class="card-text"> Main stat: '+ gear_data[i].split(',')[5] +' </p> </div> </div> </div>')
+      $('#gearSelectionModal').append('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gdis[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gdis[1] + '</h5>  <p class="card-text"> Main stat: '+ gdis[5] +' </p> </div> </div> </div>')
       
     }
     
@@ -1366,10 +1378,16 @@ console.timeEnd('subs_alt')
     }
     selectedGearSetList = GearSetsListTrinity;
     break;
+    case "Cat Brooch":
+    if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
+    selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
   default:
     break;
  };
-
 
  
  
@@ -1526,15 +1544,16 @@ if (isRelic.length > 0) {
   $('#gearSelectionModal').html('');
   //$('#gearSelectionModal').html('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="0"> <img src="" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title"> Remove Gear</h5>  <p class="card-text">Some random text.</p> </div> </div> </div>')
   for (var i = 0; i < gear_data.length; i++) {
-    if( gear_data[i].split(',').indexOf(selectedGearAcc) > -1 ) {
+    let gdis = gear_data[i].split(',');
+    if( (gdis.indexOf(selectedGearAcc) > -1)) {
       /* console.log("Found: " + gear_data[i]) */
-      $('#gearSelectionModal').append('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data[i].split(',')[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gear_data[i].split(',')[1] + '</h5> <p class="card-text"> Main stat: ' +  gear_data[i].split(',')[5] + '</p> </div> </div> </div>')
+      $('#gearSelectionModal').append('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gdis[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gdis[1] + '</h5> <p class="card-text"> Main stat: ' +  gdis[5] + '</p> </div> </div> </div>')
       
     }
     
    }
 
-   $('#selectedGearConfirmation .card-title').append(' <p>'+ selected_eqMainstat[0] +' +' + selected_eqMainstat[1] +'</p>')
+   $('#selectedGearConfirmation .card-title').append(' <p>'+ selected_eqMainstat[0] +' +' + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selected_eqMainstat[0])) ? selected_eqMainstat[1]:((selected_eqMainstat[1] + Number.EPSILON) * 100).toFixed(1) + '% ') +'</p>')
   $('#selectedGearConfirmation .card-title').attr('value', selected_eqMainstat[0]);
   $('#selectedGearConfirmation .card-title').attr('subvalue', selected_eqMainstat[1]);
   
@@ -1818,6 +1837,13 @@ var isRelic = [];
     }
     selectedGearSetList = GearSetsListTrinity;
     break;
+    case "Cat Brooch":
+    if (gear_slot_loc == (SLOT_ACCESSORY)) {
+    selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
   default:
     break;
  };
@@ -1935,8 +1961,8 @@ if (isRelic.length > 0) {
 
   const gear_mainstat_loc = selection_modal_gear_data.split(',')[5];
   
-  
-  $('#selectedGearConfirmation .card-title').append(' <p>'+ gear_mainstat_loc +' +' + GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)] +'</p>')
+  //+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]:((GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)] + Number.EPSILON) * 100).toFixed(1) + '% ') +
+  $('#selectedGearConfirmation .card-title').append(' <p>'+ gear_mainstat_loc +' +' + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]:((GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)] + Number.EPSILON) * 100).toFixed(1) + '% ') +'</p>')
   $('#selectedGearConfirmation .card-title').attr('value', gear_mainstat_loc);
   $('#selectedGearConfirmation .card-title').attr('subvalue', GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]);
   

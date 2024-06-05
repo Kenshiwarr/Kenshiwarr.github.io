@@ -55,6 +55,8 @@ var unit_SureFireBuffUptime = 0;
 var unit_PerfectEvaBuffUptime = 0;
 var unit_InvincibilityBuffUptime = 0;
 
+var unitHasEE = '';
+
 
 
 /* BONUS_STATS_LIST.forEach(e => {
@@ -2435,8 +2437,8 @@ function autocomplete(inp, arr) {
               
               Unit_dps_stats = udpst;
 
-              total_gear_data_unit = ugr;
-              $('#gearData').html(ugr);
+              
+              
               switch (currentUnitType) {
                 case COUNTER:
                   GEAR_MAIN_STATS_VALUES_T7_unit = [ATK, HP, EVA, HIT, 399, 3814, 274, 274];
@@ -2450,7 +2452,21 @@ function autocomplete(inp, arr) {
                 default:
                   break;
               }
-              
+              let checkEE = UNITS_W_EE.indexOf((total_unit_data[0] + ' ' + total_unit_data[1]));
+              if (checkEE > -1) {
+                switch (UNITS_W_EE[checkEE]) {
+                  case 'Post-War Administration Bureau Millia Rage':
+                    ugr += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,2,2,2,2,,,,,1,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,,';
+                    GEAR_MAIN_STATS_VALUES_T7_unit.splice(GEAR_MAIN_STATS_VALUES_T7_unit.length/2, 0, ASPD);
+                    GEAR_MAIN_STATS_VALUES_T7_unit.push(0.326)
+                    break;
+                
+                  default:
+                    break;
+                }
+              }
+              total_gear_data_unit = ugr;
+              $('#gearData').html(ugr);
       
               AppendCustomStatsForUnits();
       
