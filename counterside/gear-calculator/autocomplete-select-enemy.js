@@ -186,6 +186,8 @@ console.log(target_data)
        }
       }
 
+      
+
       console.log('Check buffs Target')
       console.log(SureFireBuffUptime)
       console.log(PerfectEvaBuffUptime)
@@ -210,12 +212,16 @@ console.log(target_data)
         }
         
     }); */
-    var checkVal = $('#flexCheckDefault');
+
+
+   /*  var checkVal = $('#flexCheckDefault');
         if (checkVal.is(':checked') === true) {
           bonus_stats[7] += 0.1;
         } else {
           bonus_stats[7] += 0;
-        }
+        } */
+        // NOTE old rmina cdmg check
+        
 
 
       switch (selectedGearSlotList) {
