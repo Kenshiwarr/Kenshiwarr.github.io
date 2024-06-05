@@ -1761,7 +1761,7 @@ if (sCounter > 1) {
  if (active_skills_exclude[i] != '') {
   
 
-  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "") + '%)',String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)');
+  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)',String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "") + '%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)');
 
  }
  
