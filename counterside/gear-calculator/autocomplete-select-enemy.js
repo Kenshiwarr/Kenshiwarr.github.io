@@ -503,7 +503,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       
 
       if (target_InvincibilityBuffUptime < 1) {
-        targetfinalEHP = targetfinalEHP*(1+target_InvincibilityBuffUptime)
+        targetfinalEHP = targetfinalEHP/(1-target_InvincibilityBuffUptime)
       } else {
         targetfinalEHP = Infinity
       }

@@ -623,7 +623,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       finalEHP = (unitEHP/(averageHIT+0.1)*chanceToDodgeAvg)+(unitEHP/(1+Math.max(averageCDMG-unit_cdmg_res,0))*(averageCRIT*(1-chanceToDodgeAvg)))+(unitEHP*(1-(averageCRIT*(1-chanceToDodgeAvg))-chanceToDodgeAvg));
       
       if (unit_InvincibilityBuffUptime < 1) {
-        finalEHP = finalEHP*(1+unit_InvincibilityBuffUptime)
+        finalEHP = finalEHP/(1-unit_InvincibilityBuffUptime)
       } else {
         finalEHP = Infinity
       }
