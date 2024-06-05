@@ -2459,7 +2459,7 @@ function autocomplete(inp, arr) {
                   case 'Post-War Administration Bureau Millia Rage':
                     ugr += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,2,2,2,2,,,,,1,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,,';
                     GEAR_MAIN_STATS_VALUES_T7_unit.splice(GEAR_MAIN_STATS_VALUES_T7_unit.length/2, 0, ASPD);
-                    GEAR_MAIN_STATS_VALUES_T7_unit.push(0.326)
+                    GEAR_MAIN_STATS_VALUES_T7_unit.push(0.306)
                     break;
                 
                   default:
