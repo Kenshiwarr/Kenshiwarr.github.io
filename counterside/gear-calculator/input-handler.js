@@ -411,18 +411,7 @@ function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_
           default:
             break;
         }
-        let checkEE = UNITS_W_EE.indexOf((total_unit_data[0] + ' ' + total_unit_data[1]));
-              if (checkEE > -1) {
-                switch (UNITS_W_EE[checkEE]) {
-                  case 'Post-War Administration Bureau Millia Rage':
-                    GEAR_MAIN_STATS_VALUES_T7_unit.splice(GEAR_MAIN_STATS_VALUES_T7_unit.length/2, 0, ASPD);
-                    GEAR_MAIN_STATS_VALUES_T7_unit.push(0.306)
-                    break;
-                
-                  default:
-                    break;
-                }
-              }
+        UpdUnitEE(GEAR_MAIN_STATS_VALUES_T7_unit)
         
 }
 
@@ -476,18 +465,7 @@ function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS
             default:
               break;
           }
-          let checkEE = UNITS_W_EE.indexOf((total_target_data[0] + ' ' + total_target_data[1]));
-              if (checkEE > -1) {
-                switch (UNITS_W_EE[checkEE]) {
-                  case 'Post-War Administration Bureau Millia Rage':
-                    GEAR_MAIN_STATS_VALUES_T7_target.splice(GEAR_MAIN_STATS_VALUES_T7_target.length/2, 0, ASPD);
-                    GEAR_MAIN_STATS_VALUES_T7_target.push(0.306)
-                    break;
-                
-                  default:
-                    break;
-                }
-              }
+          UpdUnitEE(GEAR_MAIN_STATS_VALUES_T7_target)
   }
 
   $('#target-current_hp_range').val(Number(LS_currhp_range));

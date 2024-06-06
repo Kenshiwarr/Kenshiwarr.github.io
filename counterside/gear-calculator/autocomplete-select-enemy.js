@@ -1002,18 +1002,7 @@ function autocompleteTarget(inp, arr) {
                   default:
                     break;
                 }
-                let checkEE = UNITS_W_EE.indexOf((total_target_data[0] + ' ' + total_target_data[1]));
-              if (checkEE > -1) {
-                switch (UNITS_W_EE[checkEE]) {
-                  case 'Post-War Administration Bureau Millia Rage':
-                    ugr += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,2,2,2,2,,,,,1,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,,';
-                    GEAR_MAIN_STATS_VALUES_T7_target.splice(GEAR_MAIN_STATS_VALUES_T7_target.length/2, 0, ASPD);
-                    GEAR_MAIN_STATS_VALUES_T7_target.push(0.306)
-                    break;
-                  default:
-                    break;
-                }
-              }
+                ugr += UpdUnitEE(GEAR_MAIN_STATS_VALUES_T7_target, true)
               total_gear_data_target = ugr;
               $('#gearData_enemy').html(ugr);
         
