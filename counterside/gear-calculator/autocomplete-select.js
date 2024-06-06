@@ -1458,7 +1458,8 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             tdc_p = (1-(1-eepc) * (1-sfpe))
           }
           ctc = CRIT_pc*(1-tdc_p);
-          if (unit_mainAttack[unit_mainAttack_selected[i]][14] == 'true') {
+          if (unit_mainAttack[unit_mainAttack_selected[i]][14] == 'true') { // sure fire
+            unit_mainAttack_mixed[13] = 'true';
             cth = 0
           } else {
             cth = 1-ctc-tdc_p;
@@ -1466,6 +1467,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
           ecd = tdc_p;
         } else {
           if (unit_mainAttack[unit_mainAttack_selected[i]][14] == 'true') { // force crit
+            unit_mainAttack_mixed[14] = 'true';
             if ((HIT_pc > enemy_EVA_percent)) {  
               ctc = 1;
             } else {
