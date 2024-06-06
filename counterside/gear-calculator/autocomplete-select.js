@@ -1408,6 +1408,11 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
         $('#Unit_Extra').append('<div class="form-check"> <input value="'+i+'" class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault'+i+'"> <label class="form-check-label" for="flexRadioDefault'+i+'"> '+ unit_mainAttack[i][0] + ' ' + unit_mainAttack[i][7] +'</label> </div>')
 
       }
+      if ((unit_mainAttack_selected.length < 2)/*  && unit_mainAttack_selected[0] === 0 */) {
+        $('#flexRadioDefault'+unit_mainAttack_selected[0]).prop('disabled',true);
+      } else {
+        $('#flexRadioDefault'+unit_mainAttack_selected[0]).prop('disabled',false);
+      }
       for (let i = 0, n = unit_mainAttack_selected.length; i < n; i++) {
         $('#flexRadioDefault'+unit_mainAttack_selected[i]).prop('checked',true);
       }
