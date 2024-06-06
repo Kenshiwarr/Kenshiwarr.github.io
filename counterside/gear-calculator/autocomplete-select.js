@@ -142,7 +142,7 @@ var unitHasEE = '';
       var distance_to_target_frequency_melee = 0.5;
       var distance_to_target_frequency_ranged = 0.5;
 
-      var unit_mainAttack_selected = 0;
+      var unit_mainAttack_selected = [0];
       
 
       
@@ -940,7 +940,7 @@ $('#t-ch_needed').hide();
 
 
 
-if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && unit_mainAttack_selected == '1') {
+if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && (unit_mainAttack_selected.indexOf(1) > -1)) {
   unit_attack_data.push("freeze_loop,1,0.5,1,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
 }
       
@@ -1401,21 +1401,22 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
         
           
 
-        if (unit_mainAttack_selected == i) {
-          $('#Unit_Extra').append('<div class="form-check"> <input value="'+i+'" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault'+i+'" checked> <label class="form-check-label" for="flexRadioDefault'+i+'"> '+ unit_mainAttack[i][0] + ' ' + unit_mainAttack[i][7] +'</label> </div>')
-        } else{
-          $('#Unit_Extra').append('<div class="form-check"> <input value="'+i+'" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault'+i+'"> <label class="form-check-label" for="flexRadioDefault'+i+'"> '+ unit_mainAttack[i][0] + ' ' + unit_mainAttack[i][7] +'</label> </div>')
-        
-          
-        
-        }
+
+        $('#Unit_Extra').append('<div class="form-check"> <input value="'+i+'" class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault'+i+'"> <label class="form-check-label" for="flexRadioDefault'+i+'"> '+ unit_mainAttack[i][0] + ' ' + unit_mainAttack[i][7] +'</label> </div>')
+
+      }
+      for (let i = 0, n = unit_mainAttack_selected.length; i < n; i++) {
+        $('#flexRadioDefault'+unit_mainAttack_selected[i]).prop('checked',true);
       }
 
       $('#Unit_Extra .form-check').on('change',function() {
-        if (($('#Unit_Extra .form-check input:radio:checked').length > 0) && (unit_mainAttack.length > 1)) {
-          unit_mainAttack_selected = $('#Unit_Extra .form-check input:radio:checked').attr('value');
+        if (($('#Unit_Extra .form-check input:checkbox:checked').length > 0) && (unit_mainAttack.length > 1)) {
+          unit_mainAttack_selected = [0]
+          $.each($('#Unit_Extra .form-check input:checkbox:checked'),function(index) {
+            unit_mainAttack_selected[index] = (Number($(this).attr('value')));
+          })
          } else {
-          unit_mainAttack_selected = 0;
+          unit_mainAttack_selected = [0];
          }
 
          UpdateUnitAndTarget(total_unit_data);
@@ -1425,10 +1426,16 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
         let ctc;
         let cth;
         let ecd;
+        let ma_len = unit_mainAttack_selected.length;
+        var unit_mainAttack_mixed = ['attack1',0,0,0,0,'0','0','USN_ATTACK1','NST_ATTACK',0,0,0,0,'false','false'];
+        var unit_mainAttackDPS = 0;
+
 
       if (active_skills_exclude[0] !== false) {
+        for (let i = 0; i < ma_len; i++) {
+          
         
-        if (unit_mainAttack[unit_mainAttack_selected][13] == 'true') {
+        if (unit_mainAttack[unit_mainAttack_selected[i]][13] == 'true') {
           var sfpe = target_PerfectEvaBuffUptime - 1;
           var tdc_p;
           var eepc;
@@ -1443,14 +1450,14 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             tdc_p = (1-(1-eepc) * (1-sfpe))
           }
           ctc = CRIT_pc*(1-tdc_p);
-          if (unit_mainAttack[unit_mainAttack_selected][14] == 'true') {
+          if (unit_mainAttack[unit_mainAttack_selected[i]][14] == 'true') {
             cth = 0
           } else {
             cth = 1-ctc-tdc_p;
           }
           ecd = tdc_p;
         } else {
-          if (unit_mainAttack[unit_mainAttack_selected][14] == 'true') { // force crit
+          if (unit_mainAttack[unit_mainAttack_selected[i]][14] == 'true') { // force crit
             if ((HIT_pc > enemy_EVA_percent)) {  
               ctc = 1;
             } else {
@@ -1463,18 +1470,48 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
           }
           ecd = targetDodgeChance;
         }
-        var unit_mainAttackDPS = Math.max(Number((unit_mainAttack[unit_mainAttack_selected][2]*cth)+(unit_mainAttack[unit_mainAttack_selected][1]*ctc)+(unit_mainAttack[unit_mainAttack_selected][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd)),0);
+        
+        unit_mainAttack_mixed[1] += unit_mainAttack[unit_mainAttack_selected[i]][1];
+          unit_mainAttack_mixed[2] += unit_mainAttack[unit_mainAttack_selected[i]][2];
+          unit_mainAttack_mixed[3] += unit_mainAttack[unit_mainAttack_selected[i]][3];
+          unit_mainAttack_mixed[4] += Number(unit_mainAttack[unit_mainAttack_selected[i]][4]);
 
-      } else {
-        var unit_mainAttackDPS = 0
+          unit_mainAttack_mixed[9] += unit_mainAttack[unit_mainAttack_selected[i]][9];
+          unit_mainAttack_mixed[10] += unit_mainAttack[unit_mainAttack_selected[i]][10];
+          unit_mainAttack_mixed[11] += unit_mainAttack[unit_mainAttack_selected[i]][11];
+          unit_mainAttack_mixed[12] += unit_mainAttack[unit_mainAttack_selected[i]][12];
 
-      } 
+          unit_mainAttackDPS += Math.max(Number((unit_mainAttack[unit_mainAttack_selected[i]][2]*cth)+(unit_mainAttack[unit_mainAttack_selected[i]][1]*ctc)+(unit_mainAttack[unit_mainAttack_selected[i]][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected[i]][4]/(1+unit_final_aspd)),0);
 
- 
+       
+
+
+        
+      }
+      unit_mainAttack_mixed[1] = unit_mainAttack_mixed[1]/ma_len;
+      unit_mainAttack_mixed[2] = unit_mainAttack_mixed[2]/ma_len;
+      unit_mainAttack_mixed[3] = unit_mainAttack_mixed[3]/ma_len;
+      unit_mainAttack_mixed[4] = unit_mainAttack_mixed[4]/ma_len;
+      unit_mainAttack_mixed[4] = String(unit_mainAttack_mixed[4])
+
+      unit_mainAttack_mixed[9] = unit_mainAttack_mixed[9]/ma_len;
+      unit_mainAttack_mixed[10] = unit_mainAttack_mixed[10]/ma_len;
+      unit_mainAttack_mixed[11] = unit_mainAttack_mixed[11]/ma_len;
+      unit_mainAttack_mixed[12] = unit_mainAttack_mixed[12]/ma_len;
+      unit_mainAttackDPS = unit_mainAttackDPS/ma_len;
+
+      }
+
+      console.log('unit_mainAttack');
+      console.log(unit_mainAttack);
+      console.log(unit_mainAttack_mixed);
+      console.log(unit_mainAttackDPS);
+
+
 var Total_Unit_DPS = 0;
 
 
-var unit_restAttacks_last = unit_mainAttack[unit_mainAttack_selected].length;
+var unit_restAttacks_last = unit_mainAttack_mixed.length;
 if (unit_restAttacks.length > 0) {
   unit_restAttacks_last = unit_restAttacks[unit_restAttacks.length-1].length
 }
@@ -1519,8 +1556,8 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
     ecd = targetDodgeChance;
   }
   if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
-    unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
-    unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack[unit_mainAttack_selected][4])/(1+unit_final_aspd)),1)) // added: *unit_mainAttack[unit_mainAttack_selected][4] (testing) added another: /(1/unit_mainAttack[unit_mainAttack_selected][4]) added another: /(unit_mainAttack[unit_mainAttack_selected][4])
+    unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
+    unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd)),1)) // added: *unit_mainAttack[unit_mainAttack_selected][4] (testing) added another: /(1/unit_mainAttack[unit_mainAttack_selected][4]) added another: /(unit_mainAttack[unit_mainAttack_selected][4])
     //unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
     rAtk_extra = i;
   } else {
@@ -1552,10 +1589,10 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
 Total_Unit_DPS += unit_mainAttackDPS;
 Total_Unit_DPS = Total_Unit_DPS*(1-target_InvincibilityBuffUptime);
 
-unit_mainAttack[unit_mainAttack_selected][unit_mainAttack[unit_mainAttack_selected].length] = unit_mainAttackDPS;
+unit_mainAttack_mixed[unit_mainAttack_mixed.length] = unit_mainAttackDPS;
 
 
-unit_totalAttacks.push(unit_mainAttack[unit_mainAttack_selected])
+unit_totalAttacks.push(unit_mainAttack_mixed)
 unit_totalAttacks = unit_totalAttacks.concat(unit_restAttacks)
 
 
@@ -1568,7 +1605,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var cdskill = 0;
   var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2);
   if (((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && (unit_totalAttacks[i][6] !== '01')) {
-    cdskill = ((unit_mainAttack[unit_mainAttack_selected][4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5])).toFixed(2);
+    cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5])).toFixed(2);
   } else if ((unit_totalAttacks[i][6] === '100') || (unit_totalAttacks[i][6] === '12')) {
     cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
   } else if (unit_totalAttacks[i][6] === '101') {
@@ -2436,7 +2473,7 @@ function autocomplete(inp, arr) {
                 $("#unit-eva").html(unit_data[7])
                
         
-              unit_mainAttack_selected = 0;
+              unit_mainAttack_selected = [0];
         
         
               total_unit_data = unit_data;

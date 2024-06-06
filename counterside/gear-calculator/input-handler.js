@@ -393,7 +393,7 @@ function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_
   unit_eva = unit_data[7]
   EVA_pc = unit_eva/(unit_eva+800);
 
-  unit_mainAttack_selected = 0;
+  unit_mainAttack_selected = [0];
 
   currentUnitType = unit_data[9].split(';')[0];
 
