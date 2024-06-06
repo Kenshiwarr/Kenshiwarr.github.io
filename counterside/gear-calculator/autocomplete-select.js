@@ -938,6 +938,9 @@ var unitCalculatedDmgTotal = [];
 var needCurrHPind = false;
 $('#t-ch_needed').hide();
 
+if (Object.prototype.toString.call(unit_mainAttack_selected) !== '[object Array]') {
+  unit_mainAttack_selected = [0]
+}
 
 
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && (unit_mainAttack_selected.indexOf(1) > -1)) {
