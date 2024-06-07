@@ -411,7 +411,7 @@ function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_
           default:
             break;
         }
-        UpdUnitEE(GEAR_MAIN_STATS_VALUES_T7_unit)
+        UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_unit_EE',undefined,(total_unit_data[0] + ' ' + total_unit_data[1]))
         
 }
 
@@ -465,7 +465,7 @@ function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS
             default:
               break;
           }
-          UpdUnitEE(GEAR_MAIN_STATS_VALUES_T7_target)
+          UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_target_EE',undefined,(total_target_data[0] + ' ' + total_target_data[1]))
   }
 
   $('#target-current_hp_range').val(Number(LS_currhp_range));

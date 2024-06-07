@@ -176,10 +176,13 @@ const VOLCANO_GEAR_LATENT_STATS_VALUES_LIST = [0.109, 0.109, 0.076, 0.15, 0.063,
 const VOLCANO_ACCS_LATENT_STATS_VALUES_LIST = [0.119, 0.119, 0.083, 0.163, 0.068, 0.068, 0.079, 0.142, 0.142, 0.142];
 
 // units EE's
-const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage']
+const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy']
 
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1 = [0.242];
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2 = [1862,194,102,102,0.183,0.138,0.5,0.75,0.183];
+
+const SOL_BADGUY_GEAR_STATS_VALUES_LIST_1 = [0.052];
+const SOL_BADGUY_GEAR_STATS_VALUES_LIST_2 = [1538,160,84,84,0.166,0.114,0.415,0.062,0.166];
 
 
 /* const SET_HEALING_AMP = "Healing Enhancement";
@@ -708,7 +711,17 @@ var GearSetsListTrinity = {
 
         this.#selectedGearData = gdata;
           this.#eqIcon = 'cs_gears-icons/Special Gear/'+GearForType+'/' + gdis[4] +  '.png';
+          if (gdis[0] !== 'Exclusive') {
           this.#mainStat[1] = GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(gdis[5])]
+            
+          } else {
+            if (ContainerType === 'Container') {
+              this.#mainStat[1] = GEAR_MAIN_STATS_VALUES_T7_unit_EE;
+          } else {
+              this.#mainStat[1] = GEAR_MAIN_STATS_VALUES_T7_target_EE;
+            }
+
+          }
           $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"url('"+`${this.#eqIcon}`+"')");
       
     } else {
@@ -874,8 +887,11 @@ var selectedGearSlotList;
 
 var GEAR_MAIN_STATS_VALUES_T7_unit;
 var GEAR_MAIN_STATS_VALUES_T7_target;
+var GEAR_MAIN_STATS_VALUES_T7_unit_EE;
+var GEAR_MAIN_STATS_VALUES_T7_target_EE;
 
 var GEAR_MAIN_STATS_VALUES_T7;
+var GEAR_MAIN_STATS_VALUES_T7_EE;
 
 
 var selectedGearFor;
@@ -900,10 +916,12 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
     selectedGearUnitType = currentUnitType;
     full_gear_data = $('#gearData').html().slice(1); 
     GEAR_MAIN_STATS_VALUES_T7 = GEAR_MAIN_STATS_VALUES_T7_unit;
+    GEAR_MAIN_STATS_VALUES_T7_EE = GEAR_MAIN_STATS_VALUES_T7_unit_EE;
   } else {
     selectedGearUnitType = currentTargetType;
     full_gear_data = $('#gearData_enemy').html().slice(1); 
     GEAR_MAIN_STATS_VALUES_T7 = GEAR_MAIN_STATS_VALUES_T7_target;
+    GEAR_MAIN_STATS_VALUES_T7_EE = GEAR_MAIN_STATS_VALUES_T7_target_EE;
   }
 
 
@@ -1385,6 +1403,13 @@ console.timeEnd('subs_alt')
   }
   selectedGearSetList = GearSetsListBasic;
   break;
+  case "Gear Cell Suppressor":
+    if ((selectedGear == SLOT_ARMOR)) {
+    selectedGearSub1List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
   default:
     break;
  };
@@ -1844,6 +1869,13 @@ var isRelic = [];
   }
   selectedGearSetList = GearSetsListBasic;
   break;
+  case "Gear Cell Suppressor":
+    if (gear_slot_loc == (SLOT_ARMOR)) {
+    selectedGearSub1List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
   default:
     break;
  };
@@ -1960,11 +1992,18 @@ if (isRelic.length > 0) {
   
 
   const gear_mainstat_loc = selection_modal_gear_data.split(',')[5];
+  let gear_mainstat_val;
+  if (selection_modal_gear_data.split(',')[0] !== 'Exclusive') {
+    gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)];
+  } else {
+    gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7_EE;
+  }
+  
   
   //+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]:((GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)] + Number.EPSILON) * 100).toFixed(1) + '% ') +
-  $('#selectedGearConfirmation .card-title').append(' <p>'+ gear_mainstat_loc +' +' + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]:((GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)] + Number.EPSILON) * 100).toFixed(1) + '% ') +'</p>')
+  $('#selectedGearConfirmation .card-title').append(' <p>'+ gear_mainstat_loc +' +' + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? gear_mainstat_val:((gear_mainstat_val + Number.EPSILON) * 100).toFixed(1) + '% ') +'</p>')
   $('#selectedGearConfirmation .card-title').attr('value', gear_mainstat_loc);
-  $('#selectedGearConfirmation .card-title').attr('subvalue', GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]);
+  $('#selectedGearConfirmation .card-title').attr('subvalue', gear_mainstat_val);
   
 
   console.timeEnd('CreateTooltip')
@@ -2060,7 +2099,12 @@ $('#GearConfirmationBtn').on('click' , function(){
   /* var selectedGearSetOption = selectedGearSetList[gear_set_value]; */
 
   const gear_mainstat_loc = confirmation_gear_data.split(',')[5];
-  
+  let gear_mainstat_val;
+  if (confirmation_gear_data.split(',')[0] !== 'Exclusive') {
+    gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)];
+  } else {
+    gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7_EE;
+  }
 
 
  /* gear = new Gear('Maze',SLOT_WEAPON,'7','HP','Anti-Ground DMG RES','Crit DMG RES','cs_gears-icons/Special Gear/Icon_Counter_Weapon_Maze.png'); */
@@ -2080,7 +2124,7 @@ $('#GearConfirmationBtn').on('click' , function(){
     Weapon.sub2 = [substat2_value,substat2_subvalue];
     Weapon.latent = [latent_value,latent_subvalue];
     Weapon.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-    Weapon.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+    Weapon.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
     Weapon.setGear(0);
     //Weapon.showMainStat();
     weaponIsConfirmed = true;
@@ -2096,7 +2140,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       enemy_Weapon.sub2 = [substat2_value,substat2_subvalue];
       enemy_Weapon.latent = [latent_value,latent_subvalue];
       enemy_Weapon.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-      enemy_Weapon.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+      enemy_Weapon.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
       enemy_Weapon.setGear();
     //Weapon.showMainStat();
     enemy_weaponIsConfirmed = true;
@@ -2117,7 +2161,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       Armor.sub2 = [substat2_value,substat2_subvalue];
       Armor.latent = [latent_value,latent_subvalue];
       Armor.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-      Armor.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+      Armor.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
       Armor.setGear(0);
       //Armor.showMainStat();
       armorIsConfirmed = true;
@@ -2133,7 +2177,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       enemy_Armor.sub2 = [substat2_value,substat2_subvalue];
       enemy_Armor.latent = [latent_value,latent_subvalue];
       enemy_Armor.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-      enemy_Armor.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+      enemy_Armor.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
       enemy_Armor.setGear();
       //enemy_Armor.showMainStat();
       enemy_ArmorIsConfirmed = true;
@@ -2154,7 +2198,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           Accessory1.sub2 = [substat2_value,substat2_subvalue];
           Accessory1.latent = [latent_value,latent_subvalue];
           Accessory1.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-          Accessory1.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+          Accessory1.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           Accessory1.setGear(0);
           //Accessory1.showMainStat();
           accessory1IsConfirmed = true;
@@ -2170,7 +2214,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           enemy_Accessory1.sub2 = [substat2_value,substat2_subvalue];
           enemy_Accessory1.latent = [latent_value,latent_subvalue];
           enemy_Accessory1.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-          enemy_Accessory1.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+          enemy_Accessory1.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           enemy_Accessory1.setGear();
           //enemy_Accessory1.showMainStat();
           enemy_Accessory1IsConfirmed = true;
@@ -2192,7 +2236,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           Accessory2.sub2 = [substat2_value,substat2_subvalue];
           Accessory2.latent = [latent_value,latent_subvalue];
           Accessory2.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-          Accessory2.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+          Accessory2.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           Accessory2.setGear(0);
           //Accessory2.showMainStat();
           accessory2IsConfirmed = true;
@@ -2208,7 +2252,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           enemy_Accessory2.sub2 = [substat2_value,substat2_subvalue];
           enemy_Accessory2.latent = [latent_value,latent_subvalue];
           enemy_Accessory2.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
-          enemy_Accessory2.mainStat = [gear_mainstat_loc,GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]]; 
+          enemy_Accessory2.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           enemy_Accessory2.setGear();
           //enemy_Accessory2.showMainStat();
           enemy_Accessory2IsConfirmed = true;

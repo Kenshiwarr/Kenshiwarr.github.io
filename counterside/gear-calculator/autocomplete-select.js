@@ -151,20 +151,28 @@ var unitHasEE = '';
      /* var checkSubs = []; */
 
   
-     function UpdUnitEE(statval, eestat) {
+     function UpdUnitEE(statval, eestat, unt) {
       let eeinf = '';
-      let checkEE = UNITS_W_EE.indexOf((total_unit_data[0] + ' ' + total_unit_data[1]));
+      window[statval] = 0
+      let checkEE = UNITS_W_EE.indexOf(unt);
       if (checkEE > -1) {
         switch (UNITS_W_EE[checkEE]) {
           case 'Post-War Administration Bureau Millia Rage':
             if (eestat === true) {
               eeinf += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,2,2,2,2,,,,,1,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,,';
             }
-            statval.splice(statval.length/2, 0, ASPD);
-            statval.push(0.306)
+            window[statval] += 0.306
             break;
-        
+          case 'Flame of Corruption Sol Badguy':
+            if (eestat === true) {
+              eeinf += '"Exclusive,Gear Cell Suppressor,Armor,Counter,Icon_Counter_Armor_Gear Cell Suppressor_EE,HP,2,2,2,2,,,,,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,2,2,2,2,,,,2,2,,,1,,,,,,';
+            }
+            window[statval] += 4292
+            break;
           default:
+            
+      GEAR_MAIN_STATS_VALUES_T7_unit_EE = 0;
+      GEAR_MAIN_STATS_VALUES_T7_target_EE = 0;
             break;
         }
       }
@@ -946,6 +954,10 @@ if (Object.prototype.toString.call(unit_mainAttack_selected) !== '[object Array]
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && (unit_mainAttack_selected.indexOf(1) > -1)) {
   unit_attack_data.push("freeze_loop,1,0.5,1,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
 }
+if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Friede')) {
+  unit_attack_data.unshift("attack2,1.2,0.82,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,102,USN_ATTACK2,0");
+  unit_attack_data.unshift("attack_air2,1.2,0.82,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,102,USN_ATTACK2_AIR,0");
+}
       
       for (let i = 0; i < unit_attack_data.length; i++) {
         let uatkd = unit_attack_data[i].split(',');
@@ -1435,7 +1447,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
         let cth;
         let ecd;
         let ma_len = unit_mainAttack_selected.length;
-        var unit_mainAttack_mixed = ['attack1',0,0,0,0,'0','0','USN_ATTACK1','NST_ATTACK',0,0,0,0,'false','false'];
+        var unit_mainAttack_mixed = ['attack1',0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false'];
         var unit_mainAttackDPS = 0;
 
 
@@ -1479,6 +1491,12 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
             cth = 1-ctc-targetDodgeChance;
           }
           ecd = targetDodgeChance;
+        }
+
+        if (i === 0) {
+          unit_mainAttack_mixed[0] = unit_mainAttack[unit_mainAttack_selected[i]][0];
+          unit_mainAttack_mixed[7] = unit_mainAttack[unit_mainAttack_selected[i]][7];
+          unit_mainAttack_mixed[8] = unit_mainAttack[unit_mainAttack_selected[i]][8];
         }
         
         unit_mainAttack_mixed[1] += unit_mainAttack[unit_mainAttack_selected[i]][1];
@@ -1526,9 +1544,12 @@ if (unit_restAttacks.length > 0) {
   unit_restAttacks_last = unit_restAttacks[unit_restAttacks.length-1].length
 }
  
-var rAtk_extra = '';
+var rAtk_extra = [];
+var rAtk_extra_main = [];
+var rAtk_extra_mod = 1;
+var rAtk_extra_mod_main = 1;
 
-for (let i = 0; i < unit_restAttacks.length; i++) {
+for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
   if (active_skills_exclude[i+1] !== false) { 
     if ((unit_restAttacks[i][13] == 'true')) {
       var sfpe = target_PerfectEvaBuffUptime - 1;
@@ -1565,35 +1586,73 @@ for (let i = 0; i < unit_restAttacks.length; i++) {
     }
     ecd = targetDodgeChance;
   }
-  if ((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) {
+  if (((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) && unit_restAttacks[i][6] !== '22') {
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // (unit_restAttacks[i][5]/(1+unit_final_aspd))
     unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd)),1)) // added: *unit_mainAttack[unit_mainAttack_selected][4] (testing) added another: /(1/unit_mainAttack[unit_mainAttack_selected][4]) added another: /(unit_mainAttack[unit_mainAttack_selected][4])
     //unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
-    rAtk_extra = i;
+    if (i !== 0) {
+      rAtk_extra_main.push(i)
+    }
+    
   } else {
     if (unit_restAttacks[i][6] === '12') {
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]),0);
   
       unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
-    } else if (unit_restAttacks[i][6] !== '101') {
+    } else if (unit_restAttacks[i][6] === '102') {
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0);
+      rAtk_extra_main.push(i)
+       
+    } else if (unit_restAttacks[i][6] === '22') {
+      const cfeedback_uptime = 1+CRIT_pc;
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/((unit_restAttacks[i][5]))*cfeedback_uptime),0);
+      unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd)),1))/cfeedback_uptime // added: *unit_mainAttack[unit_mainAttack_selected][4] (testing) added another: /(1/unit_mainAttack[unit_mainAttack_selected][4]) added another: /(unit_mainAttack[unit_mainAttack_selected][4])
+      
+      rAtk_extra.push(i)
+      rAtk_extra_mod_main *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))/cfeedback_uptime;
+       
+    } else if ((unit_restAttacks[i][6] !== '101')) {
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
-     if (rAtk_extra !== '') {
-      unit_restAttacks[rAtk_extra][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // stuff like accumulated attacks offsets with other skills
+     /* if (rAtk_extra.length > -1) {
+       //unit_restAttacks[rAtk_extra][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // stuff like accumulated attacks offsets with other skills
 
-     }
+
+     } */
+    // rAtk_extra.push(i);
+      rAtk_extra_mod_main *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1));
+      rAtk_extra_mod *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1));
+     
         unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
+        
       } else {
-      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]),0);
-  
+        unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]),0);
+    
       }
     
     
   }
-   Total_Unit_DPS += unit_restAttacks[i][unit_restAttacks_last];
+   
   } else {
-    Total_Unit_DPS += 0
     unit_restAttacks[i][unit_restAttacks_last] = 0
   }
+}
+
+console.log('rAtk_extra_mod')
+console.log(rAtk_extra_mod)
+console.log(rAtk_extra)
+console.log(rAtk_extra_main)
+
+
+
+for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
+  if (rAtk_extra.indexOf(i) > -1) {
+    unit_restAttacks[i][unit_restAttacks_last] *= rAtk_extra_mod;
+    rAtk_extra.splice(i, 1);
+  } else if (rAtk_extra_main.indexOf(i) > -1) {
+    unit_restAttacks[i][unit_restAttacks_last] *= rAtk_extra_mod_main;
+    rAtk_extra_main.splice(i, 1);
+  }
+  Total_Unit_DPS += unit_restAttacks[i][unit_restAttacks_last];
 }
 
 Total_Unit_DPS += unit_mainAttackDPS;
@@ -1606,6 +1665,7 @@ unit_totalAttacks.push(unit_mainAttack_mixed)
 unit_totalAttacks = unit_totalAttacks.concat(unit_restAttacks)
 
 
+
 dTableCompare_values = [];
      
 if (unit_mainAttack.length > 0) {
@@ -1614,13 +1674,16 @@ if (unit_mainAttack.length > 0) {
 for (let i = 0; i < unit_totalAttacks.length; i++) {
   var cdskill = 0;
   var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2);
-  if (((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && (unit_totalAttacks[i][6] !== '01')) {
+  if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && (unit_totalAttacks[i][6] !== '01')) && unit_totalAttacks[i][6] !== '22') {
     cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5])).toFixed(2);
   } else if ((unit_totalAttacks[i][6] === '100') || (unit_totalAttacks[i][6] === '12')) {
     cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
   } else if (unit_totalAttacks[i][6] === '101') {
     cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
     sanim = '1.00';
+  } else if (unit_totalAttacks[i][6] === '22') {
+    const cfeedback_uptime = 1+CRIT_pc;
+    cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5])/cfeedback_uptime).toFixed(2);
   } else {
     cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr)).toFixed(2);
   }
@@ -1691,8 +1754,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
     /* chm_chance = [1,0,ecd]; */
   }
-  
-
 
   var hitsMdl = ['','',''];
   var mdl_redc = ['','',''];
@@ -1713,7 +1774,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   for (let j = 0; j < unitCalculatedDmg.length; j++) {
     
 
-   if (((unitCalculatedDmg[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (unitCalculatedDmg[j][7].indexOf(unit_totalAttacks[i][7].replace(/_END/i, "")) > -1) && (unitCalculatedDmg[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(unitCalculatedDmg[j][2]) > 0))) {
+   if (((unitCalculatedDmg[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (unitCalculatedDmg[j][7].includes(unit_totalAttacks[i][7].replace(/_END/i, "")) === true) && (unitCalculatedDmg[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(unitCalculatedDmg[j][2]) > 0))) {
     sCounter++;
     if (j>0) {
       if ((unitCalculatedDmg[j][0] !== unitCalculatedDmg[j-1][0]) && (unitCalculatedDmg[j][7] !== unitCalculatedDmg[j-1][7]) && (unitCalculatedDmg[j][8] !== unitCalculatedDmg[j-1][8])) {
@@ -1735,6 +1796,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     sDmg_Tdcm = Math.round(Number((unit_totalAttacks[i][2]*chm_chance[1])+(unit_totalAttacks[i][1]*chm_chance[0])+(unit_totalAttacks[i][3]*chm_chance[2])));
     //sDmg_chpd = (Math.round(Number(unitCalculatedDmg[j][9]))) > 0 ?  ('Target current hp% as dmg: ' + (Math.round(Number(unitCalculatedDmg[j][9])))) + '<br />':'';
     //sDmg_mhpd = (Math.round(Number(unitCalculatedDmg[j][10]))) > 0 ? ('Target max hp% as dmg: ') + (Math.round(Number(unitCalculatedDmg[j][10]))) + '<br />':'';
+
 
 
     //var sDmg_scale = 'Skill modifier: ' + (unitCalculatedDmg[j][11]).toFixed(2) + '<br />';
@@ -2520,7 +2582,7 @@ function autocomplete(inp, arr) {
               }
               
               
-              ugr += UpdUnitEE(GEAR_MAIN_STATS_VALUES_T7_unit, true)
+              ugr += UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_unit_EE', true, (total_unit_data[0] + ' ' + total_unit_data[1]))
               total_gear_data_unit = ugr;
               $('#gearData').html(ugr);
       
