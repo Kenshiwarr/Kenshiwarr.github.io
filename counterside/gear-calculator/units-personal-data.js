@@ -1,5 +1,5 @@
 /* .split(",") */
-
+/* 
 var unit_stats_data;
 
 if (unit_stat_data != 0) {
@@ -108,4 +108,4 @@ switch (unit_stats_data[0] + ' ' + unit_stats_data[1]) {
     default:
       break;
   } 
-}
+} */

@@ -43,7 +43,7 @@ if (localStorageAvailable) {
     }
   
   } else if ((Uname != null) && (Utitle != null)) {
-    console.log('yess')
+    //var SessionData = [url_query_params.tud,url_query_params.Uds,url_query_params.tgu,url_query_params.uebs,'','','','',url_query_params.ttd,url_query_params.gd_h,url_query_params.tebs,'','','','',url_query_params.rmd_p,url_query_params.tch,url_query_params.debs,url_query_params.tiu,url_query_params.tdd,url_query_params.ums];
     
     searchvcsv(Utitle.replace(/_/g, ' '),Uname.replace(/_/g, ' '),true)
     
