@@ -1785,11 +1785,11 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     }
     if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
       dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg  dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
+    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
 
     } else {
       dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg  dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "")+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'% </div>')
+    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
 
     }
     
@@ -1822,14 +1822,14 @@ if (sCounter > 1) {
 
 
  $('#unit_dps_table').append(listForMultiAtkTable)
- CreateTooltipForAnything($('#sdmg_Crit'),'Crit modifier: ' + ((1 + unit_bonus_stats[14] - target_bonus_stats[17])*100).toFixed(1).replace(/[.,]0+$/, "") + '%<br/>')
- CreateTooltipForAnything($('#sdmg_Miss'),'Miss modifier: ' + ((HIT_pc+0.1)*100).toFixed(1).replace(/[.,]0+$/, "") + '%<br/>');
+ CreateTooltipForAnything($('#sdmg_Crit'),'Crit modifier: ' + ((1 + unit_bonus_stats[14] - target_bonus_stats[17])*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%<br/>')
+ CreateTooltipForAnything($('#sdmg_Miss'),'Miss modifier: ' + ((HIT_pc+0.1)*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%<br/>');
  CreateTooltipForAnything($('#dcm_inf'),'Summ of hit, crit and miss damage values multiplied by its chances.')
 
  if (active_skills_exclude[i] != '') {
   
 
-  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)',String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/[.,]0+$/, "") + '%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/[.,]0+$/, "")+'%)');
+  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(sDmg_Tdcm),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)',String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)');
 
  }
  

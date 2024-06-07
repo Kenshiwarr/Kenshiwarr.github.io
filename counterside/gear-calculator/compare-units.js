@@ -443,7 +443,7 @@ console.timeEnd('LoadingSaved_timer')
         if (['EHP','Final EHP','DPS'].some((t) => t === unit_stats_to_save[i])) {
             sau_o[3] += unit_stats_to_save[i]+': '+ unit_stats_to_save[n+i] +'<br />';
         } else {
-            sau_o[3] += unit_stats_to_save[i]+': '+ (unit_stats_to_save[n+i]*100).toFixed(1).replace(/[.,]0+$/, "") +'% <br />';
+            sau_o[3] += unit_stats_to_save[i]+': '+ (unit_stats_to_save[n+i]*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') +'% <br />';
         }
         
           
@@ -458,7 +458,7 @@ console.timeEnd('LoadingSaved_timer')
         if (['EHP','Final EHP','Durability'].some((t) => t === target_stats_to_save[i])) {
             sau_o[7] += target_stats_to_save[i] +': '+ target_stats_to_save[n+i] +'<br />';
         } else {
-            sau_o[7] += target_stats_to_save[i]+': '+ (target_stats_to_save[n+i]*100).toFixed(1).replace(/[.,]0+$/, "") +'% <br />';
+            sau_o[7] += target_stats_to_save[i]+': '+ (target_stats_to_save[n+i]*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') +'% <br />';
         }
         
       }
@@ -858,18 +858,18 @@ console.timeEnd('LoadingSaved_timer')
                                 if (u_1stat-u_2stat == 0) {
                                     uctI_o[5].append('<span class="text-secondary">'+ 0 + '</span>' +  '<br />');
                                 } else {
-                                    uctI_o[5].append((u_1stat >= u_2stat ? '<span class="text-success">+'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>':'<span class="text-danger">'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>') +  '<br />');
+                                    uctI_o[5].append((u_1stat >= u_2stat ? '<span class="text-success">+'+ ((u_1stat-u_2stat)*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%</span>':'<span class="text-danger">'+ ((u_1stat-u_2stat)*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%</span>') +  '<br />');
 
                                 }
                                 if (indxOfval !== -1) {
-                            u_1stat = (Number(cUnit_val[indxOfval+(cCompares_Length[0]/2)])*100).toFixed(1).replace(/[.,]0+$/, ""); 
+                            u_1stat = (Number(cUnit_val[indxOfval+(cCompares_Length[0]/2)])*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1'); 
                             uctI_o[0].append((u_1stat) + '%' +  '<br />');
                            
                         } else {
                             uctI_o[0].append('- <br />');
                         }
                         if (indxOfval2 !== -1) {
-                            u_2stat = (Number(sau[10][indxOfval2+(cCompares_Length[1]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
+                            u_2stat = (Number(sau[10][indxOfval2+(cCompares_Length[1]/2)])*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
                             uctI_o[1].append((u_2stat) + '%' +  '<br />');
                         } else {
                             uctI_o[1].append('- <br />');
@@ -925,7 +925,7 @@ console.timeEnd('LoadingSaved_timer')
                             if (u_1stat-u_2stat == 0) {
                                 uctI_o[7].append('<span class="text-secondary">'+ 0 + '</span>' +  '<br />');
                             } else {
-                                uctI_o[7].append( (u_1stat >= u_2stat ? '<span class="text-success">+'+ (u_1stat-u_2stat).toFixed(2).replace(/[.,]0+$/, "") + ' sec.</span>':'<span class="text-danger">'+ (u_1stat-u_2stat).toFixed(2).replace(/[.,]0+$/, "") + ' sec. </span>') +  '<br />');
+                                uctI_o[7].append( (u_1stat >= u_2stat ? '<span class="text-success">+'+ (u_1stat-u_2stat).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + ' sec.</span>':'<span class="text-danger">'+ (u_1stat-u_2stat).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + ' sec. </span>') +  '<br />');
 
                             }
 
@@ -938,17 +938,17 @@ console.timeEnd('LoadingSaved_timer')
                         uctI_o[7].append('<span class="text-secondary">'+ 0 + '</span>' +  '<br />');
                           
                     } else {
-                        uctI_o[7].append( (u_1stat >= u_2stat ? '<span class="text-success">+'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>':'<span class="text-danger">'+ ((u_1stat-u_2stat)*100).toFixed(1).replace(/[.,]0+$/, "") + '%</span>') +  '<br />');
+                        uctI_o[7].append( (u_1stat >= u_2stat ? '<span class="text-success">+'+ ((u_1stat-u_2stat)*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%</span>':'<span class="text-danger">'+ ((u_1stat-u_2stat)*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%</span>') +  '<br />');
                         
                     }
                                 if (indxOfval3 !== -1) {
-                            u_1stat = (Number(cTarget_val[indxOfval3+(cCompares_Length[2]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
+                            u_1stat = (Number(cTarget_val[indxOfval3+(cCompares_Length[2]/2)])*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
                             uctI_o[2].append((u_1stat) + '%' +  '<br />');
                         } else {
                             uctI_o[2].append('- <br />');
                         }
                         if (indxOfval4 !== -1) {
-                            u_2stat = (Number(sau[11][indxOfval4+(cCompares_Length[3]/2)])*100).toFixed(1).replace(/[.,]0+$/, "");
+                            u_2stat = (Number(sau[11][indxOfval4+(cCompares_Length[3]/2)])*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
                             uctI_o[3].append((u_2stat) + '%' +  '<br />');
                         } else {
                             uctI_o[3].append('- <br />');

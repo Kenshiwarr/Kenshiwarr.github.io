@@ -134,7 +134,7 @@ function removeElement(arrayName,arrayElement) {
     })
     
   };
-  //.toFixed(1).replace(/[.,]0+$/, "") 
+  //.toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') 
   function msToTime(ms) {
     //ms = ms + 60000*1440
     let seconds = Math.floor(ms / 1000);
