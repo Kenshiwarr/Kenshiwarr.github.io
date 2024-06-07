@@ -786,7 +786,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       }
       }
       if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 6)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%, or i>=11 otherwise
-        stat_bonus = ((bonus_stats[i]+bonus_stats_gear_set[i])*100).toFixed(1);
+        stat_bonus = parseFloat(((bonus_stats[i]+bonus_stats_gear_set[i])*100).toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1'));
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
         unit_stats_to_save[n+i] = Number(stat_bonus)/100;
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'">  <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + "%" + '</span></li>');

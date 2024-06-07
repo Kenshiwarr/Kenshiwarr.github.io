@@ -205,7 +205,7 @@ $('#range-SetLatent').on('change input', function() {
   
   latentValS = ([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === val)) ? Number($('#range-SetLatent').val()):(Number($('#range-SetLatent').val())/100);
   $('#latentValS').text((([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === val)) ? latentValS:(latentValS*100).toFixed(1) + '% '));
-  $('#sub3formSelect option[value="'+ val +'"]').attr('latent',latentValS.toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1'));
+  $('#sub3formSelect option[value="'+ val +'"]').attr('latent',latentValS.toFixed(3).replace(/[.,]0+$/, ""));
 });
 }
 
