@@ -179,10 +179,10 @@ const VOLCANO_ACCS_LATENT_STATS_VALUES_LIST = [0.119, 0.119, 0.083, 0.163, 0.068
 const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy']
 
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1 = [0.242];
-const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2 = [1862,194,102,102,0.183,0.138,0.5,0.75,0.183];
+const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2 = [0.244,0.122,0.488,0.061,0.183];
 
 const SOL_BADGUY_GEAR_STATS_VALUES_LIST_1 = [0.052];
-const SOL_BADGUY_GEAR_STATS_VALUES_LIST_2 = [1538,160,84,84,0.166,0.114,0.415,0.062,0.166];
+const SOL_BADGUY_GEAR_STATS_VALUES_LIST_2 = [0.11,0.44,0.055,0.165,];
 
 
 /* const SET_HEALING_AMP = "Healing Enhancement";
@@ -1174,13 +1174,14 @@ var sub2Final = [];
 
 for (let i = 0, n = STATS_OPTION_LIST.length; i < n; i++) {
   if (sc[i] !== '') {
-    if (sc[i] == '1') {
+    if (sc[i].includes('1') === true) {
       if (STATS_OPTION_LIST[i] == HP && gear_type_loc == "Jungle") {
         sub1Final.push(HP_PERCENT)
       } else {
         sub1Final.push(STATS_OPTION_LIST[i])
       }
-    } else if (sc[i] == '2') {
+    } 
+    if (sc[i].includes('2') === true) {
       sub2Final.push(STATS_OPTION_LIST[i])
     }
   }
@@ -1657,13 +1658,14 @@ var sub2Final = [];
 
 for (let i = 0, n = STATS_OPTION_LIST.length; i < n; i++) {
   if (sc[i] !== '') {
-    if (sc[i] == '1') {
+    if (sc[i].includes('1') === true) {
       if (STATS_OPTION_LIST[i] == HP && gear_type_loc == "Jungle") {
         sub1Final.push(HP_PERCENT)
       } else {
         sub1Final.push(STATS_OPTION_LIST[i])
       }
-    } else if (sc[i] == '2') {
+    } 
+    if (sc[i].includes('2') === true) {
       sub2Final.push(STATS_OPTION_LIST[i])
     }
   }

@@ -159,13 +159,13 @@ var unitHasEE = '';
         switch (UNITS_W_EE[checkEE]) {
           case 'Post-War Administration Bureau Millia Rage':
             if (eestat === true) {
-              eeinf += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,2,2,2,2,,,,,1,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,,';
+              eeinf += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,,,,,,,,,1;2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,,';
             }
             window[statval] += 0.306
             break;
           case 'Flame of Corruption Sol Badguy':
             if (eestat === true) {
-              eeinf += '"Exclusive,Gear Cell Suppressor,Armor,Counter,Icon_Counter_Armor_Gear Cell Suppressor_EE,HP,2,2,2,2,,,,,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,2,2,2,2,,,,2,2,,,1,,,,,,';
+              eeinf += '"Exclusive,Gear Cell Suppressor,Armor,Counter,Icon_Counter_Armor_Gear Cell Suppressor_EE,HP,,,,,,,,,,2,,2,2,,,,,,,,,,,,,,,,,,,,,,,,2,2,2,2,,,,2,2,,,1,,,,,,';
             }
             window[statval] += 4292
             break;
