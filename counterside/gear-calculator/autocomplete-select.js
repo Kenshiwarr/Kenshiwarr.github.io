@@ -955,8 +955,8 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regi
   unit_attack_data.push("freeze_loop,1,0.5,1,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
 }
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Friede')) {
-  unit_attack_data.unshift("attack2,1.2,0.82,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,102,USN_ATTACK2,0");
-  unit_attack_data.unshift("attack_air2,1.2,0.82,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,102,USN_ATTACK2_AIR,0");
+  unit_attack_data.unshift("attack2,1.2,0.92,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,102,USN_ATTACK2,0");
+  unit_attack_data.unshift("attack_air2,1.2,0.92,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,102,USN_ATTACK2_AIR,0");
 }
       
       for (let i = 0; i < unit_attack_data.length; i++) {
