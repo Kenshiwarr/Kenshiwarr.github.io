@@ -24,6 +24,9 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
 
     var currDate = '';
 
+    Loadouts_LoadOrder.push(String(storageID))
+
+
     if (sau[9] === '') {
         saveDate = new Date();
     } else {
@@ -99,14 +102,17 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
     } */
     
     if (overwrite === false) {
-        $('#compareUnitsModal .modal-body .unit_container ol').append(' <li id="storage_loadout-'+ storageID +'" class="list-group-item d-flex justify-content-between align-items-start"> <div class="ms-2 me-auto" style="width: 15rem; overflow: auto;"> <span class="badge bg-primary rounded-pill">'+currDate+'<br /> '+''+'</span> <div class="fw-bold"><span class="text-truncate h_main_text"> '+headerName+' </span><svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square edittext" viewBox="0 0 16 16"> <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/> <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/> </svg><div class="textedit_group" style="display: none;"><input name="compareUnitsChangeName" maxlength="24" type="text" class="form-control" aria-label="Sizing example input"><button type="button" class="btn btn-success confirmTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"> <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/> </svg></button><button type="button" class="btn btn-danger cancelTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"> <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/> </svg></button></div></div> <div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cUnit" value="'+sau[10]+'" subvalue="'+sau[0]+','+sau[1]+'" dtable="'+sau[26]+'"> <img src="'+sau[2]+'" alt="">  </div><button class="btn btn-primary dropdown_btn-unit">Stats</button></div><div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cTarget" value="'+sau[11]+'" subvalue="'+sau[4]+','+sau[5]+'"><img src="'+sau[6]+'" alt=""> </div><button class="btn btn-primary dropdown_btn-target">Stats</button></div></div></div>   </div> <div class="d-grid me-auto">  <button type="button" class="btn btn-warning btn_chooseToCompare">Compare</button> <button style="display: none;" type="button" class="btn btn-success btn_selectForCompare">Select</button> <button style="display: none;" type="button" class="btn btn-danger btn_chooseToCompareCancel">Cancel</button> </div>  <div class="btn-group dropstart"> <svg width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical dropdown-toggle" viewBox="0 0 16 16" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"> <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/> </svg> <ul class="dropdown-menu dropdown-menu-dark""> <li><a class="dropdown-item" mtd-action="load" href="#">Load</a></li> <li><a class="dropdown-item" mtd-action="rename" href="#">Reset name</a></li> <li><a class="dropdown-item disabled" mtd-action="overwrite" href="#">Overwrite</a></li><li><hr class="dropdown-divider"></li> <li><a class="dropdown-item text-danger" mtd-action="delete" href="#">Delete</a></li> </ul> </div> </li>')
+        $('#compareUnitsModal .modal-body .unit_container ol').append(' <li id="storage_loadout-'+ storageID +'" class="list-group-item d-flex justify-content-between align-items-start"> <div class="ms-2 me-auto" style="width: 15rem; overflow: auto;"> <span class="badge bg-primary rounded-pill">'+currDate+'<br /> '+''+'</span> <div class="fw-bold"><span class="text-truncate h_main_text"> '+headerName+' </span><svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square edittext" viewBox="0 0 16 16"> <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/> <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/> </svg><div class="textedit_group" style="display: none;"><input name="compareUnitsChangeName" maxlength="24" type="text" class="form-control" aria-label="Sizing example input"><button type="button" class="btn btn-success confirmTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"> <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/> </svg></button><button type="button" class="btn btn-danger cancelTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"> <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/> </svg></button></div></div> <div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cUnit" value="'+sau[10]+'" subvalue="'+sau[0]+','+sau[1]+'" dtable="'+sau[26]+'"> <img src="'+sau[2]+'" alt="">  </div><button class="btn btn-primary dropdown_btn-unit">Stats</button></div><div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cTarget" value="'+sau[11]+'" subvalue="'+sau[4]+','+sau[5]+'"><img src="'+sau[6]+'" alt=""> </div><button class="btn btn-primary dropdown_btn-target">Stats</button></div></div></div>   </div> <div class="d-grid me-auto">  <button type="button" class="btn btn-warning btn_chooseToCompare">Compare</button> <button style="display: none;" type="button" class="btn btn-success btn_selectForCompare">Select</button> <button style="display: none;" type="button" class="btn btn-danger btn_chooseToCompareCancel">Cancel</button> </div>  <div class="btn-group dropstart"> <svg width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical dropdown-toggle" viewBox="0 0 16 16" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"> <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/> </svg> <ul class="dropdown-menu dropdown-menu-dark""> <li><a class="dropdown-item" mtd-action="load" href="#">Load</a></li> <li><a class="dropdown-item" mtd-action="rename" href="#">Reset name</a></li> <li><a class="dropdown-item disabled" mtd-action="overwrite" href="#">Overwrite</a></li><li><hr class="dropdown-divider"></li> <li><a class="dropdown-item text-danger" mtd-action="delete" href="#">Delete</a></li> </ul> </div> </div> </li>')
             //currIndexLi = $('#compareUnitsModal .modal-body .unit_container .list-group-item').last();
             currIndexLi = $('#storage_loadout-'+storageID);
             
     } else if (overwrite === true) {
-        currIndexLi.html(' <div class="ms-2 me-auto" style="width: 15rem; overflow: auto;"> <span class="badge bg-primary rounded-pill">'+currDate+'<br /> '+''+'</span> <div class="fw-bold"><span class="text-truncate h_main_text"> '+headerName+' </span><svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square edittext" viewBox="0 0 16 16"> <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/> <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/> </svg><div class="textedit_group" style="display: none;"><input name="compareUnitsChangeName" maxlength="24" type="text" class="form-control" aria-label="Sizing example input"><button type="button" class="btn btn-success confirmTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"> <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/> </svg></button><button type="button" class="btn btn-danger cancelTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"> <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/> </svg></button></div></div> <div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cUnit" value="'+sau[10]+'" subvalue="'+sau[0]+','+sau[1]+'" dtable="'+sau[26]+'"> <img src="'+sau[2]+'" alt="">  </div><button class="btn btn-primary dropdown_btn-unit">Stats</button></div><div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cTarget" value="'+sau[11]+'" subvalue="'+sau[4]+','+sau[5]+'"><img src="'+sau[6]+'" alt=""> </div><button class="btn btn-primary dropdown_btn-target">Stats</button></div></div></div>   </div> <div class="d-grid me-auto">  <button type="button" class="btn btn-warning btn_chooseToCompare">Compare</button> <button style="display: none;" type="button" class="btn btn-success btn_selectForCompare">Select</button> <button style="display: none;" type="button" class="btn btn-danger btn_chooseToCompareCancel">Cancel</button> </div>  <div class="btn-group dropstart"> <svg width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical dropdown-toggle" viewBox="0 0 16 16" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"> <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/> </svg> <ul class="dropdown-menu dropdown-menu-dark""> <li><a class="dropdown-item" mtd-action="load" href="#">Load</a></li> <li><a class="dropdown-item" mtd-action="rename" href="#">Reset name</a></li> <li><a class="dropdown-item" mtd-action="overwrite" href="#">Overwrite</a></li><li><hr class="dropdown-divider"></li> <li><a class="dropdown-item text-danger" mtd-action="delete" href="#">Delete</a></li> </ul> </div>')
+        currIndexLi.html('<div class="ms-2 me-auto" style="width: 15rem; overflow: auto;"> <span class="badge bg-primary rounded-pill">'+currDate+'<br /> '+''+'</span> <div class="fw-bold"><span class="text-truncate h_main_text"> '+headerName+' </span><svg width="16" height="16" fill="currentColor" class="bi bi-pencil-square edittext" viewBox="0 0 16 16"> <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/> <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/> </svg><div class="textedit_group" style="display: none;"><input name="compareUnitsChangeName" maxlength="24" type="text" class="form-control" aria-label="Sizing example input"><button type="button" class="btn btn-success confirmTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"> <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/> </svg></button><button type="button" class="btn btn-danger cancelTextEdit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"> <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/> </svg></button></div></div> <div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cUnit" value="'+sau[10]+'" subvalue="'+sau[0]+','+sau[1]+'" dtable="'+sau[26]+'"> <img src="'+sau[2]+'" alt="">  </div><button class="btn btn-primary dropdown_btn-unit">Stats</button></div><div class="Unit_Compare_Container"> <div class="imgContainer_forCompare cTarget" value="'+sau[11]+'" subvalue="'+sau[4]+','+sau[5]+'"><img src="'+sau[6]+'" alt=""> </div><button class="btn btn-primary dropdown_btn-target">Stats</button></div></div></div>   </div> <div class="d-grid me-auto">  <button type="button" class="btn btn-warning btn_chooseToCompare">Compare</button> <button style="display: none;" type="button" class="btn btn-success btn_selectForCompare">Select</button> <button style="display: none;" type="button" class="btn btn-danger btn_chooseToCompareCancel">Cancel</button> </div>  <div class="btn-group dropstart"> <svg width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical dropdown-toggle" viewBox="0 0 16 16" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"> <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/> </svg> <ul class="dropdown-menu dropdown-menu-dark""> <li><a class="dropdown-item" mtd-action="load" href="#">Load</a></li> <li><a class="dropdown-item" mtd-action="rename" href="#">Reset name</a></li> <li><a class="dropdown-item" mtd-action="overwrite" href="#">Overwrite</a></li><li><hr class="dropdown-divider"></li> <li><a class="dropdown-item text-danger" mtd-action="delete" href="#">Delete</a></li> </ul> </div> </div>')
     }
+
+    
         
+    //var currIndexLi_loadout_content = currIndexLi.find('.loadout_content');
             
 
             
@@ -154,9 +160,69 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             var currIndexLi_header_cancel_btn = currIndexLi.find('.fw-bold .textedit_group .cancelTextEdit');
             var currIndexLi_header_edittext_btn = currIndexLi.find('.fw-bold .edittext')
             var currIndexLi_header_badge = currIndexLi.find('.badge')
-            
-           
 
+            //var liPos = Number(currIndexLi.index());
+            
+            
+            currIndexLi.append('<div id="btn_group-swapLoadout_'+storageID+'" class="mt-auto loadoutSwapOrder">'+(currIndexLi.index() > 0 ? (currIndexLi.index() < cScount.index() ? '<svg class="swap_pos-btn" id="move_loadoutUp_'+storageID+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16"> <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/> </svg><svg class="swap_pos-btn" id="move_loadoutDown_'+storageID+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"> <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/> </svg>':'<svg class="swap_pos-btn" id="move_loadoutUp_'+storageID+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16"> <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/> </svg><svg class="swap_pos-btn dp_hide" id="move_loadoutDown_'+storageID+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"> <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/> </svg>'):'<svg class="swap_pos-btn dp_hide" id="move_loadoutUp_'+storageID+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16"> <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/> </svg><svg class="swap_pos-btn" id="move_loadoutDown_'+storageID+'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"> <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/> </svg>')+'</div>')
+
+            console.log('diff');
+            if ((currIndexLi.index()) != 0) {
+                let prevId = $('#storage_loadout-'+(storageID)).prev().attr('id').slice(-1);
+                
+                console.log(prevId)
+                $('#move_loadoutDown_'+prevId).removeClass('dp_hide')
+            }
+
+            $('#move_loadoutUp_'+storageID).on('click',function() {
+               console.log('moving up');
+               if (currIndexLi.index() > 0) {
+                let curr = $('#storage_loadout-'+(storageID))
+                let target = curr.prev()
+                console.log(curr.index())
+                console.log(target.index())
+                if (target.index() === 0) {
+                    $('#move_loadoutUp_'+(storageID)).addClass('dp_hide')
+                    $('#move_loadoutUp_'+(target.attr('id').slice(-1))).removeClass('dp_hide')
+                } else if (curr.index() === (($('#compareUnitsModal .modal-body .unit_container .list-group-item').length)-1)) {
+                    $('#move_loadoutDown_'+(storageID)).removeClass('dp_hide');
+                    $('#move_loadoutDown_'+(target.attr('id').slice(-1))).addClass('dp_hide')
+                }
+                Loadouts_LoadOrder.ArraySwapEl(target.index(),curr.index())
+                let updOrderLS = '';
+                for (let i = 0, n = Loadouts_LoadOrder.length; i < n; i++) {
+                    updOrderLS += (i < n-1 ? (Loadouts_LoadOrder[i])+',':Loadouts_LoadOrder[i])
+                }
+                localStorage.setItem('units_load_order',updOrderLS)
+                target.before(curr);
+               }
+               
+
+            });
+            $('#move_loadoutDown_'+storageID).on('click',function() {
+                console.log('moving down')
+                if (currIndexLi.index() < (($('#compareUnitsModal .modal-body .unit_container .list-group-item').length)-1)) {
+                    let curr = $('#storage_loadout-'+(storageID))
+                    let target = curr.next()
+                    
+                    if (target.index() === (($('#compareUnitsModal .modal-body .unit_container .list-group-item').length)-1)) {
+                        $('#move_loadoutDown_'+(storageID)).addClass('dp_hide')
+                        $('#move_loadoutDown_'+(target.attr('id').slice(-1))).removeClass('dp_hide')
+                    } else if (curr.index() === 0) {
+                        $('#move_loadoutUp_'+(storageID)).removeClass('dp_hide');
+                        $('#move_loadoutUp_'+(target.attr('id').slice(-1))).addClass('dp_hide')
+                    }
+                    
+                    Loadouts_LoadOrder.ArraySwapEl(target.index(),curr.index())
+                    let updOrderLS = '';
+                    for (let i = 0, n = Loadouts_LoadOrder.length; i < n; i++) {
+                        updOrderLS += (i < n-1 ? (Loadouts_LoadOrder[i])+',':Loadouts_LoadOrder[i])
+                    }
+                    localStorage.setItem('units_load_order',updOrderLS)
+                    target.after(curr);
+                }
+                
+             });
             
             setInterval(function() {
                 currIndexLi_header_badge.text(msToTime((Math.abs(new Date() - saveDate))));
@@ -389,10 +455,23 @@ console.timeEnd('LoadingSaved_timer')
         localStorageData_tooltip_gear = null;
         localStorageData_gear_info = null; */
         console.log('deleted: ' + storageID)
-        currIndexLi.remove();
-        if ($('#compareUnitsModal .modal-body .unit_container .list-group-item').length === 0) {
+        let lgi_l = ($('#compareUnitsModal .modal-body .unit_container .list-group-item').length);
+
+        if (lgi_l === 0) {
             $('#deleteAllDataForCompare').prop('hidden', true);
         } 
+        if (currIndexLi.index() == (lgi_l-1)) {
+            const lgi_id = currIndexLi.prev().attr('id').slice(-1);
+            $('#move_loadoutDown_'+(lgi_id)).addClass('dp_hide')
+        }
+        Loadouts_LoadOrder.splice(currIndexLi.index(), 1);
+        let updOrderLS = '';
+        for (let i = 0, n = Loadouts_LoadOrder.length; i < n; i++) {
+            updOrderLS += (i < n-1 ? (Loadouts_LoadOrder[i])+',':Loadouts_LoadOrder[i])
+        }
+        localStorage.setItem('units_load_order',updOrderLS)
+        currIndexLi.remove();
+        
         clearInterval(nUndoIntervalID);
         nUndoIntervalID = null;
     

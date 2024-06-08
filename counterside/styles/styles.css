@@ -1322,3 +1322,19 @@ color: #bebebe;
   column-count: 2;
 }
 
+.swap_pos-btn {
+  cursor: pointer;
+}
+.swap_pos-btn:hover {
+  color: #a0a0a0;
+}
+
+.dp_hide {
+  display: none !important;
+}
+
+.loadoutSwapOrder {
+  position: absolute;
+    bottom: 0;
+    right: 5%;
+}

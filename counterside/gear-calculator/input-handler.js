@@ -9,14 +9,27 @@ var Tname = url_query_params.tTn; // "some_value"
 var Ttitle = url_query_params.tTt; // "some_value"
 var ifDummy = url_query_params.Isdmmy; // "some_value"
 
+var Loadouts_LoadOrder = [];
+
 
 if (localStorageAvailable) {
+  var loadOrder = ''
+  var uorder = localStorage.getItem('units_load_order');
+  if (uorder !== null) {
+    loadOrder = uorder;
+  } else {
+    for (let i = 0, n = 10; i < n; i++) {
+    loadOrder += (i+',');
+    }
+    loadOrder = loadOrder.slice(0,-1);
+  }
+  let lOrder = loadOrder.split(',')
   
   console.time('LoadFromLocalStorageTime');
   for (let i = 0; i < 10; i++) {
-    var locString_compare_units = 'localStorageData_compare_units'+i;
-    var localStorageData_tooltip_gear = 'localStorageData_tooltip_gear'+i;
-    var localStorageData_gear_info = 'gearFullDataForCompare'+i;
+    var locString_compare_units = 'localStorageData_compare_units'+lOrder[i];
+    var localStorageData_tooltip_gear = 'localStorageData_tooltip_gear'+lOrder[i];
+    var localStorageData_gear_info = 'gearFullDataForCompare'+lOrder[i];
     var locDataUnit;
     var locDataUnit_gear_tooltip;
     var locDataUnit_gear_info;
@@ -24,13 +37,15 @@ if (localStorageAvailable) {
       locDataUnit = JSON.parse(localStorage.getItem(locString_compare_units));
       locDataUnit_gear_tooltip = JSON.parse(localStorage.getItem(localStorageData_tooltip_gear));
       locDataUnit_gear_info = JSON.parse(localStorage.getItem(localStorageData_gear_info));
-
       
-    console.log('loading: ' + i)
-      UpdateCompareUnitsModal(locDataUnit,locDataUnit_gear_tooltip,locDataUnit_gear_info,false, true, i);
+    console.log('loading: ' + lOrder[i])
+      UpdateCompareUnitsModal(locDataUnit,locDataUnit_gear_tooltip,locDataUnit_gear_info,false, true, lOrder[i]);
       
     }
     
+  }
+  if (uorder === null) {
+    localStorage.setItem('units_load_order',loadOrder);
   }
   if (localStorage.getItem('SessionLocalData') !== null) {
     try {
@@ -351,6 +366,7 @@ $('#deleteAllDataForCompare').on('click',function() {
     console.log('saving: ' + fcId)
   
   
+    //localStorage.setItem('units_load_order')
   
       UpdateCompareUnitsModal(sau,sGear,gearSaveData,false,false,emptyId)
     } else {
