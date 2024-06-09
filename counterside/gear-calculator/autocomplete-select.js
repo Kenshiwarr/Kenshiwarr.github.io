@@ -1548,6 +1548,7 @@ var rAtk_extra_main = [];
 var rAtk_extra_mod = 1;
 var rAtk_extra_mod_main = 1;
 
+
 for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
   if (active_skills_exclude[i+1] !== false) { 
     if ((unit_restAttacks[i][13] == 'true')) {
@@ -1586,12 +1587,18 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
     ecd = targetDodgeChance;
   }
   if (((unit_restAttacks[i][8] === 'NST_ATTACK' && unit_restAttacks[i][11] > 0) || (unit_restAttacks[i][6] === '1')) && unit_restAttacks[i][6] !== '22') {
+    let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1);
+    let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a
+    unit_mainAttackDPS *= ndm;
+    
     unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1))/(Number(unit_restAttacks[i][5])+1)),0);
     //unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])),0); // old variant
     //unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd)),1)) // old variant
     //unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
-    unit_mainAttackDPS *= IFERROR(1/((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1)
-    rAtk_extra_main.push(i)
+    unit_mainAttackDPS *= (1-(1/(Number(unit_restAttacks[i][5])+1))) // *(1-(1/unit_restAttacks[i][5]))/(1/(unit_restAttacks[i][5]/(unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))))
+    rAtk_extra_main.push(i);
+    //rAtk_extra_mod_main *= (1-(1/(Number(unit_restAttacks[i][5])+1))) // (IFERROR((1-(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])/unit_mainAttack_mixed[4]/cfeedback_uptime),1)) // this would make rosa enhanced a dps gain but i think its wrong formula
+      
     
   } else {
     if (unit_restAttacks[i][6] === '12') {
@@ -1603,20 +1610,27 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
       rAtk_extra_main.push(i)
        
     } else if (unit_restAttacks[i][6] === '22') {
-      const cfeedback_uptime = 1+CRIT_pc*(1-targetDodgeChance);
+      console.log('avg_a');
+      let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1);
+  
+      /* let prva = Math.max(Number((unit_mainAttack_mixed[2]*cth)+(unit_mainAttack_mixed[1]*ctc)+(unit_mainAttack_mixed[3]*ecd)));
+      let prevDps = prva/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))
+      let nxt_dps = prva/avg_a;
+      let next_dps_multi = nxt_dps/prevDps */
+      let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a
+      unit_mainAttackDPS *= ndm;
+      rAtk_extra_mod_main *= ndm;
+   
+      const cfeedback_uptime = 1
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_restAttacks[i][5]/cfeedback_uptime)+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number((unit_restAttacks[i][5]))+1)/cfeedback_uptime),1))/((Number(unit_restAttacks[i][5])+1))/cfeedback_uptime),0);
-      unit_mainAttackDPS *= IFERROR(1/((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_restAttacks[i][5]/cfeedback_uptime)+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)/cfeedback_uptime),1)
+      unit_mainAttackDPS *= (1-(1/(Number(unit_restAttacks[i][5]/cfeedback_uptime)+1)))
       
       rAtk_extra.push(i)
-      rAtk_extra_mod_main *= IFERROR(1/((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_restAttacks[i][5]/cfeedback_uptime)+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)/cfeedback_uptime),1) // (IFERROR((1-(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])/unit_mainAttack_mixed[4]/cfeedback_uptime),1)) // this would make rosa enhanced a dps gain but i think its wrong formula
+      rAtk_extra_mod_main *= (1-(1/(Number(unit_restAttacks[i][5]/cfeedback_uptime)+1))) // (IFERROR((1-(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])/unit_mainAttack_mixed[4]/cfeedback_uptime),1)) // this would make rosa enhanced a dps gain but i think its wrong formula
        
     } else if ((unit_restAttacks[i][6] !== '101')) {
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
-     /* if (rAtk_extra.length > -1) {
-       //unit_restAttacks[rAtk_extra][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // stuff like accumulated attacks offsets with other skills
-
-
-     } */
+     
     // rAtk_extra.push(i);
       rAtk_extra_mod_main *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1));
       rAtk_extra_mod *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1));
