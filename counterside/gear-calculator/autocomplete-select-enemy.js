@@ -37,14 +37,7 @@
 
       function UpdateTargetStats(target_data) {
 
-        console.log('TARGET DATA = ' + target_data)
 
-        console.log('total_target_data')
-        console.log(total_target_data)
-
-        
-
-       
 
       //  var unitcdmg = Number($('#unit-stats-details .unit-CRIT_DMG').attr('subvalue'))/100;
 
@@ -53,8 +46,6 @@
           
           
           if (ifSelectTargetDummy === true) {
-console.log('THIS ALSO SHOULD WORK FINE')
-console.log(target_data)
             enemy_class = target_dummy_data[10];
             enemy_movement_type = target_dummy_data[11];
             enemy_type = target_dummy_data[9];

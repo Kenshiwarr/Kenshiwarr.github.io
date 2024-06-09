@@ -294,6 +294,10 @@ var Cat1List = {
     1: "Ranged DMG",
     2: "Ranged DMG RES",
   },
+  "None": { 
+    1: "All DMG",
+    2: "All DMG RES",
+  },
   "DMG+": "DMG-Increase Suppression",
   "DMG-": "DMG-Increase Defense",
   "DMG RES+": "DMG RES Suppression",

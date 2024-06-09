@@ -192,6 +192,9 @@ var unitHasEE = '';
           var cat1_res_list = [Cat1List[enemy_class][2],Cat1List[enemy_movement_type][2],Cat1List[enemy_type][2],Cat1List[enemy_subtype][2],Cat1List['Melee'][2],Cat1List['Ranged'][2]];
           var cat1_dmg_list = [Cat1List[enemy_class][1],Cat1List[enemy_movement_type][1],Cat1List[enemy_type][1],Cat1List[enemy_subtype][1],Cat1List['Melee'][1],Cat1List['Ranged'][1]];
         
+          var cat1_dmg_All_role = ['Anti-Counter DMG','Anti-Soldier DMG','Anti-Mech DMG','Anti-C.O. DMG','Anti-Replacer DMG'];
+          var cat1_dmg_All_class = ['Anti-Striker DMG','Anti-Defender DMG','Anti-Ranger DMG','Anti-Sniper DMG','Anti-Supporter DMG','Anti-Siege DMG','Anti-Tower DMG'];
+
           /* if (enemyDistanceCtr.length > 1) {
             cat1_res_list.push(Cat1List[enemyDistanceCtr[1]][2])
             cat1_res_list.push(Cat1List[enemyDistanceCtr[1]][1])
@@ -225,6 +228,8 @@ var unitHasEE = '';
         (unit_class === SNIPER && enemy_class === STRIKER)) && !(([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_class)))
       ) {
         unit_advantage = 1;
+      } else if (enemy_class === 'None') {
+        unit_advantage = 0;
       } else {
         unit_advantage = -1;
       }
@@ -500,6 +505,17 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
             cat1_dmg += bonus_stats[i] + bonus_stats_gear_set[i];
           }
 
+          
+        } else if (ifSelectTargetDummy) {
+          if ((cat1_dmg_All_role.indexOf(BONUS_STATS_LIST[i]) > -1) && target_dummy_data[9] === 'None') {
+            
+          
+            cat1_dmg += bonus_stats[i] + bonus_stats_gear_set[i];
+        }
+          if ((cat1_dmg_All_class.indexOf(BONUS_STATS_LIST[i]) > -1) && target_dummy_data[10] === 'None') {
+           
+            cat1_dmg += bonus_stats[i] + bonus_stats_gear_set[i];
+        }
           
         }
         if (BONUS_STATS_LIST[i] === Cat2List['DMG+']) {
