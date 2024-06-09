@@ -1601,14 +1601,12 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
       rAtk_extra_main.push(i)
        
     } else if (unit_restAttacks[i][6] === '22') {
-      const cfeedback_uptime = 1+CRIT_pc;
-      console.log('cfeedback_uptime check')
-      console.log((IFERROR(((unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd)),1)))
-      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/((unit_restAttacks[i][5]))*cfeedback_uptime),0);
-      unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd)/cfeedback_uptime),1)) // added: *unit_mainAttack[unit_mainAttack_selected][4] (testing) added another: /(1/unit_mainAttack[unit_mainAttack_selected][4]) added another: /(unit_mainAttack[unit_mainAttack_selected][4])
+      const cfeedback_uptime = 1+CRIT_pc*(1-targetDodgeChance);
+      unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_mainAttack_mixed[4]/cfeedback_uptime/(1+unit_final_aspd))/((unit_restAttacks[i][5]))),0);
+      unit_mainAttackDPS *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd/cfeedback_uptime)),1))
       
       rAtk_extra.push(i)
-      rAtk_extra_mod_main *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)/cfeedback_uptime),1));
+      rAtk_extra_mod_main *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd/cfeedback_uptime)),1)) // (IFERROR((1-(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])/unit_mainAttack_mixed[4]/cfeedback_uptime),1)) // this would make rosa enhanced a dps gain but i think its wrong formula
        
     } else if ((unit_restAttacks[i][6] !== '101')) {
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
@@ -1681,7 +1679,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
     sanim = '1.00';
   } else if (unit_totalAttacks[i][6] === '22') {
-    const cfeedback_uptime = 1+CRIT_pc;
+    const cfeedback_uptime = 1+(CRIT_pc*(1-targetDodgeChance));
     cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5])/cfeedback_uptime).toFixed(2);
   } else {
     cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr)).toFixed(2);
