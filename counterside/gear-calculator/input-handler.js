@@ -387,6 +387,8 @@ function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_
   Unit_dps_stats = LS_unit_dps_stats;
   total_gear_data_unit = LS_total_gear_data_unit;
 
+  active_skills_exclude = [];
+
   $("#unit-icon").html(unit_data[8])
   $("#unit-title").html(unit_data[0])
   $("#unit-name").html(unit_data[1])
