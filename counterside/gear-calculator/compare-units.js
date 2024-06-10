@@ -24,7 +24,18 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
 
     var currDate = '';
 
-    Loadouts_LoadOrder.push(String(storageID))
+    if (Loadouts_LoadOrder[Loadouts_LoadOrder.length-2] !== String(storageID)) {
+        Loadouts_LoadOrder.push(String(storageID))
+        if (localStorageAvailable && (loading === false)) {
+            let updOrderLS = '';
+            for (let i = 0, n = Loadouts_LoadOrder.length; i < n; i++) {
+                updOrderLS += (i < n-1 ? (Loadouts_LoadOrder[i])+',':Loadouts_LoadOrder[i])
+            }
+            localStorage.setItem('units_load_order',updOrderLS)
+        }
+        
+    }
+    
 
 
     if (sau[9] === '') {
@@ -183,7 +194,9 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
                 console.log(target.index())
                 if (target.index() === 0) {
                     $('#move_loadoutUp_'+(storageID)).addClass('dp_hide')
+                    $('#move_loadoutDown_'+(storageID)).removeClass('dp_hide')
                     $('#move_loadoutUp_'+(target.attr('id').slice(-1))).removeClass('dp_hide')
+                    $('#move_loadoutDown_'+(target.attr('id').slice(-1))).addClass('dp_hide')
                 } else if (curr.index() === (($('#compareUnitsModal .modal-body .unit_container .list-group-item').length)-1)) {
                     $('#move_loadoutDown_'+(storageID)).removeClass('dp_hide');
                     $('#move_loadoutDown_'+(target.attr('id').slice(-1))).addClass('dp_hide')
@@ -206,8 +219,10 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
                     let target = curr.next()
                     
                     if (target.index() === (($('#compareUnitsModal .modal-body .unit_container .list-group-item').length)-1)) {
+                        $('#move_loadoutUp_'+(storageID)).removeClass('dp_hide')
                         $('#move_loadoutDown_'+(storageID)).addClass('dp_hide')
                         $('#move_loadoutDown_'+(target.attr('id').slice(-1))).removeClass('dp_hide')
+                        $('#move_loadoutUp_'+(target.attr('id').slice(-1))).addClass('dp_hide')
                     } else if (curr.index() === 0) {
                         $('#move_loadoutUp_'+(storageID)).removeClass('dp_hide');
                         $('#move_loadoutUp_'+(target.attr('id').slice(-1))).addClass('dp_hide')
@@ -460,15 +475,17 @@ console.timeEnd('LoadingSaved_timer')
         if (lgi_l === 0) {
             $('#deleteAllDataForCompare').prop('hidden', true);
         } 
-        if (currIndexLi.index() == (lgi_l-1)) {
+        if (currIndexLi.index() == (lgi_l-1) && (currIndexLi.index() != 0)) {
             const lgi_id = currIndexLi.prev().attr('id').slice(-1);
             $('#move_loadoutDown_'+(lgi_id)).addClass('dp_hide')
         }
-        Loadouts_LoadOrder.splice(currIndexLi.index(), 1);
+        Loadouts_LoadOrder.splice(String(storageID), 1);
+        Loadouts_LoadOrder = [...new Set(Loadouts_LoadOrder)];
         let updOrderLS = '';
         for (let i = 0, n = Loadouts_LoadOrder.length; i < n; i++) {
             updOrderLS += (i < n-1 ? (Loadouts_LoadOrder[i])+',':Loadouts_LoadOrder[i])
         }
+
         localStorage.setItem('units_load_order',updOrderLS)
         currIndexLi.remove();
         

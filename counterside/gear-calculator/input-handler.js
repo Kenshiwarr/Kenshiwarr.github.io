@@ -12,18 +12,21 @@ var ifDummy = url_query_params.Isdmmy; // "some_value"
 var Loadouts_LoadOrder = [];
 
 
+
 if (localStorageAvailable) {
   var loadOrder = ''
+  let loEx = '';
   var uorder = localStorage.getItem('units_load_order');
   if (uorder !== null) {
     loadOrder = uorder;
-  } else {
-    for (let i = 0, n = 10; i < n; i++) {
-    loadOrder += (i+',');
+  } 
+  for (let i = 0, n = 10; i < n; i++) {
+    loEx += (i+',');
     }
-    loadOrder = loadOrder.slice(0,-1);
-  }
+    loEx = loEx.slice(0,-1)
+    loadOrder += ','+ loEx;
   let lOrder = loadOrder.split(',')
+  lOrder = [...new Set(lOrder)];
   
   console.time('LoadFromLocalStorageTime');
   for (let i = 0; i < 10; i++) {
@@ -367,6 +370,8 @@ $('#deleteAllDataForCompare').on('click',function() {
   
   
     //localStorage.setItem('units_load_order')
+
+    
   
       UpdateCompareUnitsModal(sau,sGear,gearSaveData,false,false,emptyId)
     } else {
