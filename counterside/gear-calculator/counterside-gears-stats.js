@@ -219,7 +219,6 @@ $('#range-SetLatent').on('change input', function() {
 
 
 
-var selectedGearStats;
 var weaponIsConfirmed = false;
 var armorIsConfirmed = false;
 var accessory1IsConfirmed = false;
@@ -954,8 +953,6 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
   
 
 
-  selectedGearStats = selected_gear_data; //$('#selectedGearConfirmation').attr('value');
-
 
   
   selectedGearSlot = $( this ).attr('value');
@@ -1221,8 +1218,8 @@ console.timeEnd('subs_alt')
     break;
  };
 
- selectedGearStats = selected_gear_data;
- selectedGearType = selectedGearStats.split(',')[1];
+ let selectedGearStats = selected_gear_data.split(',');
+ selectedGearType = selectedGearStats[1];
 
 
 
@@ -1440,9 +1437,20 @@ console.timeEnd('subs_alt')
 
 
 
-    $('#selectedGearModal').html('<div class="text-center"><div class="fw-bold">Select Set</div><div id="gearSetOptions"></div></div> <div class="img-fluid rounded mx-auto d-block" id="selectedGearConfirmation" value="' + selected_gear_data +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + selected_gear_data.split(',')[4] +  '.png' + '" class="card-img-top mx-auto d-block" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + selected_gear_data.split(',')[1] + '</h5> <div id="subNameValueSplit" class="row row-cols-md-2 g-4"> <p class="card-text">  </p> <p class="card-value"> </p> </div> </div>  </div>')
+    $('#selectedGearModal').html('<div class="text-center"><div class="fw-bold">Select Set</div><div id="gearSetOptions"></div></div> <div class="img-fluid rounded mx-auto d-block" id="selectedGearConfirmation" value="' + selected_gear_data +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + selectedGearStats[4] +  '.png' + '" class="card-img-top mx-auto d-block" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + selectedGearStats[1] + '</h5> <div id="subNameValueSplit" class="row row-cols-md-2 g-4"> <p class="card-text">  </p> <p class="card-value"> </p> </div> </div>  </div>')
 
-    $('#GearModalTitle').text(selectedGearUnitType + ' ' + gear_slot_loc);
+    if (selectedGearStats[0] != 'Exclusive' ) {
+      $('#GearModalTitle').text(selectedGearUnitType + ' ' + gear_slot_loc);
+    } else {
+      if (selectedGearFor == selectedGear+'Container') {
+        $('#GearModalTitle').text(total_unit_data[1] + ' Exclusive equipment');
+      } else {
+        $('#GearModalTitle').text(total_target_data[1] + ' Exclusive equipment');
+      }
+      
+
+    }
+    
 
     for (let i = 0; i < selectedGearSetList_length_loc; i++) {
       $('#gearSetOptions').append('<button style="background-image: url(&quot;cs_gears-icons/Set Icons/Icon_Set_'+ selectedGearSetList[selectedGearSetList_loc[i]]["name"] +'.png&quot;);" type="button" value="'+ selectedGearSetList[selectedGearSetList_loc[i]]["name"] +'" class="btn btn-primary" name="options" id="gearSetOption'+ [i] +'"> <div style="max-width:20px; display:block"> </div> </button>');
@@ -1691,7 +1699,7 @@ for (let i = 0, n = STATS_OPTION_LIST.length; i < n; i++) {
 
 console.timeEnd('subs_alt')
 
-/* selectedGearStats = selection_modal_gear_data; */
+let selectedGearStats = selection_modal_gear_data.split(',');
 
 var isRelic = [];
 
@@ -1912,9 +1920,19 @@ var isRelic = [];
  const selectedGearSetList_loc = Object.keys(selectedGearSetList);
 
 
- $('#selectedGearModal').html('<div class="text-center"><div class="fw-bold">Select Set</div><div id="gearSetOptions"></div> </div> <div class="img-fluid rounded mx-auto d-block" id="selectedGearConfirmation" value="' + selection_modal_gear_data +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + selection_modal_gear_data.split(',')[4] +  '.png' + '" class="card-img-top mx-auto d-block" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gear_type_loc + '</h5> <div id="subNameValueSplit" class="row row-cols-md-2 g-4"> <p class="card-text">  </p> <p class="card-value"> </p> </div> </div>  </div>')
+ $('#selectedGearModal').html('<div class="text-center"><div class="fw-bold">Select Set</div><div id="gearSetOptions"></div> </div> <div class="img-fluid rounded mx-auto d-block" id="selectedGearConfirmation" value="' + selection_modal_gear_data +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + selectedGearStats[4] +  '.png' + '" class="card-img-top mx-auto d-block" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gear_type_loc + '</h5> <div id="subNameValueSplit" class="row row-cols-md-2 g-4"> <p class="card-text">  </p> <p class="card-value"> </p> </div> </div>  </div>')
  
- $('#GearModalTitle').text(selectedGearUnitType + ' ' + gear_slot_loc);
+ if (selectedGearStats[0] != 'Exclusive' ) {
+  $('#GearModalTitle').text(selectedGearUnitType + ' ' + gear_slot_loc);
+} else {
+  if (selectedGearFor == selectedGear+'Container') {
+    $('#GearModalTitle').text(total_unit_data[1] + ' Exclusive Equipment');
+  } else {
+    $('#GearModalTitle').text(total_target_data[1] + ' Exclusive Equipment');
+  }
+  
+
+}
 
  for (let i = 0; i < selectedGearSetList_length_loc; i++) {
   $('#gearSetOptions').append('<button style="background-image: url(&quot;cs_gears-icons/Set Icons/Icon_Set_'+ selectedGearSetList[selectedGearSetList_loc[i]]["name"] +'.png&quot;);" type="button" value="'+ selectedGearSetList[selectedGearSetList_loc[i]]["name"] +'" class="btn btn-primary" name="options" id="gearSetOption'+ [i] +'"> <div style="max-width:20px; display:block"> </div> </button>');
@@ -2017,13 +2035,14 @@ if (isRelic.length > 0) {
 
   
 
-  const gear_mainstat_loc = selection_modal_gear_data.split(',')[5];
+  const gear_mainstat_loc = selectedGearStats[5];
   let gear_mainstat_val;
-  if (selection_modal_gear_data.split(',')[0] !== 'Exclusive') {
+  if (selectedGearStats[0] !== 'Exclusive') {
     gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)];
   } else {
     gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7_EE;
   }
+
   
   
   //+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]:((GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)] + Number.EPSILON) * 100).toFixed(1) + '% ') +
@@ -2124,7 +2143,9 @@ $('#GearConfirmationBtn').on('click' , function(){
 
   /* var selectedGearSetOption = selectedGearSetList[gear_set_value]; */
 
-  const gear_mainstat_loc = confirmation_gear_data.split(',')[5];
+  const gear_data_loc = confirmation_gear_data.split(',');
+  const gear_mainstat_loc = gear_data_loc[5];
+ 
   let gear_mainstat_val;
   if (confirmation_gear_data.split(',')[0] !== 'Exclusive') {
     gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)];
@@ -2141,7 +2162,7 @@ $('#GearConfirmationBtn').on('click' , function(){
   case SLOT_WEAPON:
     if (selectedGearFor == selectedGear+'Container') {
       Weapon.selectedGearData = confirmation_gear_data;
-    Weapon.name = confirmation_gear_data.split(',')[1];
+    Weapon.name = gear_data_loc[1];
     Weapon.eqSlot = selectedGear;
     Weapon.eqTier = "7";
     Weapon.eqSet = gear_set_value;
@@ -2149,7 +2170,7 @@ $('#GearConfirmationBtn').on('click' , function(){
     Weapon.sub1 = [substat1_value,substat1_subvalue];
     Weapon.sub2 = [substat2_value,substat2_subvalue];
     Weapon.latent = [latent_value,latent_subvalue];
-    Weapon.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+    Weapon.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
     Weapon.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
     Weapon.setGear(0);
     //Weapon.showMainStat();
@@ -2157,7 +2178,7 @@ $('#GearConfirmationBtn').on('click' , function(){
     //$('#WeaponContainer').attr('isConfirmed','true');
     } else {
       enemy_Weapon.selectedGearData = confirmation_gear_data;
-      enemy_Weapon.name = confirmation_gear_data.split(',')[1];
+      enemy_Weapon.name = gear_data_loc[1];
       enemy_Weapon.eqSlot = selectedGear;
       enemy_Weapon.eqTier = "7";
       enemy_Weapon.eqSet = gear_set_value;
@@ -2165,7 +2186,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       enemy_Weapon.sub1 = [substat1_value,substat1_subvalue];
       enemy_Weapon.sub2 = [substat2_value,substat2_subvalue];
       enemy_Weapon.latent = [latent_value,latent_subvalue];
-      enemy_Weapon.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+      enemy_Weapon.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
       enemy_Weapon.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
       enemy_Weapon.setGear();
     //Weapon.showMainStat();
@@ -2178,7 +2199,7 @@ $('#GearConfirmationBtn').on('click' , function(){
 
     if (selectedGearFor == selectedGear+'Container') {
       Armor.selectedGearData = confirmation_gear_data;
-      Armor.name = confirmation_gear_data.split(',')[1];
+      Armor.name = gear_data_loc[1];
       Armor.eqSlot = selectedGear;
       Armor.eqTier = "7";
       Armor.eqSet = gear_set_value;
@@ -2186,7 +2207,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       Armor.sub1 = [substat1_value,substat1_subvalue];
       Armor.sub2 = [substat2_value,substat2_subvalue];
       Armor.latent = [latent_value,latent_subvalue];
-      Armor.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+      Armor.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
       Armor.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
       Armor.setGear(0);
       //Armor.showMainStat();
@@ -2194,7 +2215,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       //$('#ArmorContainer').attr('isConfirmed','true')
     } else {
       enemy_Armor.selectedGearData = confirmation_gear_data;
-      enemy_Armor.name = confirmation_gear_data.split(',')[1];
+      enemy_Armor.name = gear_data_loc[1];
       enemy_Armor.eqSlot = selectedGear;
       enemy_Armor.eqTier = "7";
       enemy_Armor.eqSet = gear_set_value;
@@ -2202,7 +2223,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       enemy_Armor.sub1 = [substat1_value,substat1_subvalue];
       enemy_Armor.sub2 = [substat2_value,substat2_subvalue];
       enemy_Armor.latent = [latent_value,latent_subvalue];
-      enemy_Armor.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+      enemy_Armor.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
       enemy_Armor.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
       enemy_Armor.setGear();
       //enemy_Armor.showMainStat();
@@ -2215,7 +2236,7 @@ $('#GearConfirmationBtn').on('click' , function(){
 
         if (selectedGearFor == selectedGear+'Container') {
           Accessory1.selectedGearData = confirmation_gear_data;
-          Accessory1.name = confirmation_gear_data.split(',')[1];
+          Accessory1.name = gear_data_loc[1];
           Accessory1.eqSlot = selectedGear;
           Accessory1.eqTier = "7";
           Accessory1.eqSet = gear_set_value;
@@ -2223,7 +2244,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           Accessory1.sub1 = [substat1_value,substat1_subvalue];
           Accessory1.sub2 = [substat2_value,substat2_subvalue];
           Accessory1.latent = [latent_value,latent_subvalue];
-          Accessory1.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+          Accessory1.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
           Accessory1.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           Accessory1.setGear(0);
           //Accessory1.showMainStat();
@@ -2231,7 +2252,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           //$('#Accessory1Container').attr('isConfirmed','true')
         } else {
           enemy_Accessory1.selectedGearData = confirmation_gear_data;
-          enemy_Accessory1.name = confirmation_gear_data.split(',')[1];
+          enemy_Accessory1.name = gear_data_loc[1];
           enemy_Accessory1.eqSlot = selectedGear;
           enemy_Accessory1.eqTier = "7";
           enemy_Accessory1.eqSet = gear_set_value;
@@ -2239,7 +2260,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           enemy_Accessory1.sub1 = [substat1_value,substat1_subvalue];
           enemy_Accessory1.sub2 = [substat2_value,substat2_subvalue];
           enemy_Accessory1.latent = [latent_value,latent_subvalue];
-          enemy_Accessory1.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+          enemy_Accessory1.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
           enemy_Accessory1.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           enemy_Accessory1.setGear();
           //enemy_Accessory1.showMainStat();
@@ -2253,7 +2274,7 @@ $('#GearConfirmationBtn').on('click' , function(){
 
         if (selectedGearFor == selectedGear+'Container') {
           Accessory2.selectedGearData = confirmation_gear_data;
-          Accessory2.name = confirmation_gear_data.split(',')[1];
+          Accessory2.name = gear_data_loc[1];
           Accessory2.eqSlot = selectedGear;
           Accessory2.eqTier = "7";
           Accessory2.eqSet = gear_set_value;
@@ -2261,7 +2282,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           Accessory2.sub1 = [substat1_value,substat1_subvalue];
           Accessory2.sub2 = [substat2_value,substat2_subvalue];
           Accessory2.latent = [latent_value,latent_subvalue];
-          Accessory2.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+          Accessory2.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
           Accessory2.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           Accessory2.setGear(0);
           //Accessory2.showMainStat();
@@ -2269,7 +2290,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           //$('#Accessory2Container').attr('isConfirmed','true')
         } else {
           enemy_Accessory2.selectedGearData = confirmation_gear_data;
-          enemy_Accessory2.name = confirmation_gear_data.split(',')[1];
+          enemy_Accessory2.name = gear_data_loc[1];
           enemy_Accessory2.eqSlot = selectedGear;
           enemy_Accessory2.eqTier = "7";
           enemy_Accessory2.eqSet = gear_set_value;
@@ -2277,7 +2298,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           enemy_Accessory2.sub1 = [substat1_value,substat1_subvalue];
           enemy_Accessory2.sub2 = [substat2_value,substat2_subvalue];
           enemy_Accessory2.latent = [latent_value,latent_subvalue];
-          enemy_Accessory2.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + confirmation_gear_data.split(',')[4] + '.png';
+          enemy_Accessory2.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
           enemy_Accessory2.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
           enemy_Accessory2.setGear();
           //enemy_Accessory2.showMainStat();

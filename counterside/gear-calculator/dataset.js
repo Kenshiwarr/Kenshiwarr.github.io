@@ -950,7 +950,7 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "Six Wings Na Yubin","hyper1","1.25","0.765","6.92","4.77","5.10","-","-","-","-","-","3","true","true","false","false","false","-","48","-","USN_HYPER1","NST_HYPER'",
 "Six Wings Na Yubin","hyper1","1.25","0.765","6.92","5.03","5.37","-","-","-","-","-","3","true","true","false","false","false","-","48","-","USN_HYPER1","NST_HYPER'",
 "Six Wings Na Yubin","hyper1","1.25","0.70125","6.92","5.77","6.10","-","-","-","-","-","3","true","true","false","false","false","-","48","-","USN_HYPER1","NST_HYPER'",
-"Six Wings Na Yubin","hit_feedback1","1.2","2.25","1.84","0.83","1.17","-","-","-","-","-","3","true","true","false","false","false","-","12","-","USN_PASSIVE","NST_ATTACK'",
+"Six Wings Na Yubin","hit_feedback1","1.2","2.25","1.84","0.83","1.17","-","-","-","-","-","3","true","true","false","false","false","-","6","-","USN_PASSIVE","NST_ATTACK'",
 "Six Wings Lee Jisoo","attack1","1.2","0.2125","1.83","0.33","0.50","-","-","-","-","-","2","true","false","false","false","false","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "Six Wings Lee Jisoo","attack1","1.2","0.2125","1.83","0.83","1.00","-","-","-","-","-","2","true","false","false","false","false","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "Six Wings Lee Jisoo","attack1","1.2","0.595","1.83","1.67","1.83","-","-","-","-","-","2","true","false","false","false","false","-","-","-","USN_ATTACK1","NST_ATTACK'",
