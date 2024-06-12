@@ -160,7 +160,7 @@ var unitHasEE = '';
         switch (UNITS_W_EE[checkEE]) {
           case 'Post-War Administration Bureau Millia Rage':
             if (eestat === true) {
-              eeinf += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,,,,,,,,,1;2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,,,,,,,,,,';
+              eeinf += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,,,,,,,,,1;2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
             }
             window[statval] += 0.306
             break;
@@ -170,6 +170,19 @@ var unitHasEE = '';
             }
             window[statval] += 4292
             break;
+          case 'Future-at-War Titan':
+            if (eestat === true) {
+              eeinf += '"Exclusive,TCS Module,Accessory,Mech,Icon_Mech_Accessory_TCS Module_EE,ASPD,,,,,,,,,2,1;2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
+            }
+            window[statval] += 0.306
+            break;
+           case 'Triaina Plan Titan':
+            if (eestat === true) {
+              eeinf += '"Exclusive,TCS Module,Accessory,Mech,Icon_Mech_Accessory_TCS Module_EE,ASPD,,,,,,,,,2,1;2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
+            }
+            window[statval] += 0.306
+            break;
+
           default:
             
       GEAR_MAIN_STATS_VALUES_T7_unit_EE = 0;

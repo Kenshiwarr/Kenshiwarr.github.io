@@ -176,13 +176,16 @@ const VOLCANO_GEAR_LATENT_STATS_VALUES_LIST = [0.109, 0.109, 0.076, 0.15, 0.063,
 const VOLCANO_ACCS_LATENT_STATS_VALUES_LIST = [0.119, 0.119, 0.083, 0.163, 0.068, 0.068, 0.079, 0.142, 0.142, 0.142];
 
 // units EE's
-const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy']
+const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy','Future-at-War Titan','Triaina Plan Titan']
 
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1 = [0.242];
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2 = [0.244,0.122,0.488,0.061,0.183];
 
 const SOL_BADGUY_GEAR_STATS_VALUES_LIST_1 = [0.052];
 const SOL_BADGUY_GEAR_STATS_VALUES_LIST_2 = [0.11,0.44,0.055,0.165];
+
+const TITAN_GEAR_STATS_VALUES_LIST_1 = [0.121];
+const TITAN_GEAR_STATS_VALUES_LIST_2 = [0.244,0.122,0.488,0.061,0.183];
 
 
 /* const SET_HEALING_AMP = "Healing Enhancement";
@@ -1415,6 +1418,16 @@ console.timeEnd('subs_alt')
   }
   selectedGearSetList = GearSetsListBasic;
   break;
+  case "TCS Module":
+    if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
+    selectedGearSub1List = TITAN_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = TITAN_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
+  
+
+  
   default:
     break;
  };
@@ -1879,6 +1892,13 @@ var isRelic = [];
     if (gear_slot_loc == (SLOT_ARMOR)) {
     selectedGearSub1List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
+  case "TCS Module":
+    if (gear_slot_loc == (SLOT_ACCESSORY)) {
+    selectedGearSub1List = TITAN_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = TITAN_GEAR_STATS_VALUES_LIST_2;
   }
   selectedGearSetList = GearSetsListBasic;
   break;
