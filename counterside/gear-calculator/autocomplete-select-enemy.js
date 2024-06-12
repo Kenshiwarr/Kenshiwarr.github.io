@@ -22,7 +22,6 @@
 
       var currentTargetType;
 
-      var Target_dps_stats = 0;
       var target_stat_data = 0;
 
       var target_SureFireBuffUptime = 0;
@@ -898,7 +897,7 @@ function autocompleteTarget(inp, arr) {
                   
   
                   sc2 = uTitle + ',' + uName + sc2 + ',' + ',';
-                  $('#searched-unitID-values').attr('subvalue',sc2);
+                  $('#searched-targetID-values').attr('subvalue',sc2);
   
 
                   var target_data = sc2.split(',');
@@ -917,28 +916,37 @@ function autocompleteTarget(inp, arr) {
                     }
                     ugr += '",'
                   }
+
+
+                  var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
+                  var udpst = '';
+
+                  
   
-                  /* var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
-                  var udpst = ''
-  
-                  for (let i = 0, n = udpsid.length; i < n; i++) {
-                    udpst += "'"
-                    for (let j = 1; j < 23; j++) {
-                      if (unit_dps_stats_csv[udpsid[i]+j] === undefined) {
-                        udpst += ','
-                      } else {
-                        if (j / 24 === 1) {
-                          udpst += unit_dps_stats_csv[udpsid[i]+j] + "'";
-                        } else if (j === 22) {
-                          udpst += unit_dps_stats_csv[udpsid[i]+j];
+                  if ((udpsid.length != 0)) {
+
+                
+                  
+
+                    for (let i = 0, n = udpsid.length; i < n; i++) {
+                      udpst += "'";
+                      for (let j = 1; j < 23; j++) {
+                        if (unit_dps_stats_csv[udpsid[i]+j] === undefined) {
+                          udpst += ',';
                         } else {
-                          udpst += unit_dps_stats_csv[udpsid[i]+j] + ',';
+                          if (j === 22) {
+                            udpst += unit_dps_stats_csv[udpsid[i]+j];
+                          } else {
+                            udpst += unit_dps_stats_csv[udpsid[i]+j] + ',';
+                          }
+                          
                         }
-                        
                       }
+    
                     }
-  
-                  } */
+                  } else {
+                    udpst = '';
+                  }
   
                   //udpst = udpst.slice(0, -1);
                   
@@ -976,7 +984,7 @@ function autocompleteTarget(inp, arr) {
                 target_eva = target_data[7]
                 target_EVA_pc = target_eva/(target_eva+800);
                 
-                //Target_dps_stats = udpst;
+                Target_dps_stats = udpst;
   
                 
                 
@@ -1010,3 +1018,163 @@ function autocompleteTarget(inp, arr) {
                 
                 $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').removeClass('disabled');
               }
+
+
+              function CalcTargetDMG() {
+              if ($('#Include_TargetSkillData').is(':checked')) {
+
+
+                var RestrictedtoType;
+        switch (unit_type) {
+            case COUNTER:
+              RestrictedtoType = 'NUST_COUNTER'
+            break;
+            case SOLDIER:
+              RestrictedtoType = 'NUST_SOLDIER'
+            break;
+            case MECH:
+              RestrictedtoType = 'NUST_MECHANIC'
+            break;
+            case CO:
+              RestrictedtoType = 'NUST_CORRUPTED'
+            break;
+            case REPLACER:
+              RestrictedtoType = 'NUST_REPLACER'
+            break;
+          default:
+            break;
+        }
+                
+                var unit_attack_data = Target_dps_stats;
+                unit_attack_data = unit_attack_data.slice(0, -1).slice(1).split("''");
+
+                var unitCalculatedDmg = [];
+                var unitCalculatedDmgTotal = [];
+                var unitMainAttack = [];
+
+                for (let i = 0; i < unit_attack_data.length; i++) {
+        
+                  unit_attack_data[i] = unit_attack_data[i].replace(/-/g,0);
+                }
+          
+              
+              for (let i = 0, n = unit_attack_data.length; i < n; i++) {
+                let uatkd = unit_attack_data[i].split(',');
+                if (
+          ((uatkd[19] !== '01') && (Number(uatkd[3]) !== 0) &&
+          ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0)))
+           ) {
+
+
+            
+          var srcName = uatkd[20];
+          var srcType = uatkd[21];
+          if (i < unit_attack_data.length) {
+            
+
+            var source_dmg_name = uatkd[0];
+            var sd_anim = uatkd[3];
+            var sd_cd = uatkd[18];
+            var sd_cdtype = uatkd[19];
+            
+
+            
+            unitCalculatedDmg[i] = [source_dmg_name,sd_anim,sd_cd,sd_cdtype, srcName, srcType];
+
+            if (i === 0) {
+              unitCalculatedDmgTotal[i] = [source_dmg_name,sd_anim,sd_cd,sd_cdtype, srcName, srcType];
+            } else if ((unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][0] === unitCalculatedDmg[i][0]) && (unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][5] === unitCalculatedDmg[i][5]) 
+            && ((unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][4] === unitCalculatedDmg[i][4]) || 
+            (unitCalculatedDmg[i][4].toLowerCase().includes('end')))) {
+              unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][1] = sd_anim;
+              unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][2] = sd_cd;
+              unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][3] = sd_cdtype;
+              unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][4] = srcName;
+              unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][5] = srcType;
+            } else {
+              unitCalculatedDmgTotal[i] = [source_dmg_name,sd_anim,sd_cd,sd_cdtype, srcName, srcType];
+            }
+            
+
+            
+          }
+
+        } else {
+          unitCalculatedDmg.push([]);
+          unitCalculatedDmgTotal.push([]);
+        }
+        
+       
+      }
+
+      unitCalculatedDmg = unitCalculatedDmg.filter(function(val){return val.length !== 0});
+
+
+      unitCalculatedDmgTotal = unitCalculatedDmgTotal.filter(function(val){return val.length !== 0});
+
+      for (let i = 0, n = unitCalculatedDmgTotal.length; i < n; i++) {
+        if (((String(unitCalculatedDmgTotal[i][0]).includes('attack') === true) && (String(unitCalculatedDmgTotal[i][5]).includes('NST_ATTACK') === true) && 
+        (unitCalculatedDmgTotal[i][2] <= 1)) || ((String(unitCalculatedDmgTotal[i][5]).includes('NST_SKILL') === true) && (unitCalculatedDmgTotal[i][2] <= 1))) {
+          if ((String(unitCalculatedDmgTotal[i][4]).toLowerCase().includes('air') === true) && (unit_movement_type === 'Air')) {
+            unitMainAttack[0] = unitCalculatedDmgTotal[i][0]
+            unitMainAttack[1] = unitCalculatedDmgTotal[i][1]
+            unitMainAttack[2] = unitCalculatedDmgTotal[i][2]
+            unitMainAttack[3] = unitCalculatedDmgTotal[i][3]
+            unitMainAttack[4] = unitCalculatedDmgTotal[i][4]
+            unitMainAttack[5] = unitCalculatedDmgTotal[i][5]
+          } else if ((String(unitCalculatedDmgTotal[i][4]).toLowerCase().includes('air') === false) && (unit_movement_type === 'Ground')) {
+            unitMainAttack[0] = unitCalculatedDmgTotal[i][0]
+            unitMainAttack[1] = unitCalculatedDmgTotal[i][1]
+            unitMainAttack[2] = unitCalculatedDmgTotal[i][2]
+            unitMainAttack[3] = unitCalculatedDmgTotal[i][3]
+            unitMainAttack[4] = unitCalculatedDmgTotal[i][4]
+            unitMainAttack[5] = unitCalculatedDmgTotal[i][5]
+          } else if (((String(unitCalculatedDmgTotal[i][4]).toLowerCase().includes('air') === false) && (unit_movement_type !== 'Ground')) && unitCalculatedDmgTotal[i][2] <= 1) {
+            unitMainAttack[0] = unitCalculatedDmgTotal[i][0]
+            unitMainAttack[1] = unitCalculatedDmgTotal[i][1]
+            unitMainAttack[2] = unitCalculatedDmgTotal[i][2]
+            unitMainAttack[3] = unitCalculatedDmgTotal[i][3]
+            unitMainAttack[4] = unitCalculatedDmgTotal[i][4]
+            unitMainAttack[5] = unitCalculatedDmgTotal[i][5]
+          }
+        }
+      }
+
+      console.log('target calc')
+      console.log(unitCalculatedDmg);
+
+      console.log(unitCalculatedDmgTotal);
+      console.log(unitMainAttack)
+
+
+      
+      $('#new_sd_target_dtable').append('<table class="table table-dark table-striped"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th>  <th scope="col">Anim</th></tr> </thead><tbody id="dtable_target"> </tbody></table>');
+
+      var unit_final_aspd = target_bonus_stats[13];
+      var unit_final_cdr = target_bonus_stats[15];
+
+      for (let i = 0, n = unitCalculatedDmgTotal.length; i < n; i++) {
+        var cdskill = 0;
+  var sanim = (unitCalculatedDmgTotal[i][1]/(1+unit_final_aspd)).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
+  if ((((unitCalculatedDmgTotal[i][3] === 'NST_ATTACK')  || (unitCalculatedDmgTotal[i][3] === '1')) && (unitCalculatedDmgTotal[i][3] !== '100') && (unitCalculatedDmgTotal[i][3] !== '01')) && unitCalculatedDmgTotal[i][3] !== '22') {
+    cdskill = ((IFERROR((((unitMainAttack[1]/(1+unit_final_aspd))*unitCalculatedDmgTotal[i][2]+unitCalculatedDmgTotal[i][1]/(1+unit_final_aspd))/(Number(unitCalculatedDmgTotal[i][2])+1)),1))/(1/(Number(unitCalculatedDmgTotal[i][2])+1))).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
+  } else if ((unitCalculatedDmgTotal[i][3] === '100') || (unitCalculatedDmgTotal[i][3] === '12')) {
+    cdskill = parseFloat(unitCalculatedDmgTotal[i][2]).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
+  } else if (unitCalculatedDmgTotal[i][3] === '101') {
+    cdskill = parseFloat(unitCalculatedDmgTotal[i][2]).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
+    sanim = '1.00';
+  } else if (unitCalculatedDmgTotal[i][3] === '22') {
+    const cfeedback_uptime = 1+(enemy_crit_percent*(1-EVA_pc));
+    cdskill = ((IFERROR(((unit_mainAttack_mixed[1]/(1+unit_final_aspd)*(unitCalculatedDmgTotal[i][2]/cfeedback_uptime)+unitCalculatedDmgTotal[i][1]/(1+unit_final_aspd))/(Number(unitCalculatedDmgTotal[i][2])+1)),1))/(1/(Number(unitCalculatedDmgTotal[i][2])+1))).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
+
+  } else {
+    cdskill = (unitCalculatedDmgTotal[i][2]/(1+unit_final_cdr)).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1');
+  }
+
+
+  $('#dtable_target').append('<tr> <td> '+ unitCalculatedDmgTotal[i][0] +' </td> <td> '+ cdskill +' </td> <td> '+ sanim +' </td> </tr>')
+      }
+              }
+              
+              }  
+            

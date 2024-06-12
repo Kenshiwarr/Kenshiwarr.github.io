@@ -438,7 +438,7 @@ function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_
         
 }
 
-function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS_currhp_range) {
+function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS_currhp_range,LS_target_dps_stats) {
   if (target_data !== '') {
     $('#searched-targetID-values').attr('value',target_data);
 
@@ -446,6 +446,7 @@ function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS
 
     total_target_data = target_data;
     total_gear_data_target = LS_total_gear_data_target;
+    Target_dps_stats = LS_target_dps_stats;
   
             $("#target-icon").html(target_data[8])
             $("#target-title").html(target_data[0])
@@ -931,4 +932,15 @@ if (cel.length > 0) {
 
   UpdateUnitAndTarget(total_unit_data);
   CalcUnitDMG();
+ });
+
+
+ $('#Include_TargetSkillData').on('change',function() {
+  if (this.checked === true) {
+    $('#new_sd_target_dtable').show();
+    $('#new_sd_target_dtable').html('');
+    CalcTargetDMG();
+  } else {
+    $('#new_sd_target_dtable').hide();
+  }
  });

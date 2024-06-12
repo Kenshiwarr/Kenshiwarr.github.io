@@ -129,6 +129,7 @@ var unitHasEE = '';
       var enemy_mdl = Inf_mdl;
 
       var Unit_dps_stats = 0;
+      var Target_dps_stats = 0;
       var unit_stat_data = 0;
 
       var cat1_dmg = 0;
@@ -2047,6 +2048,8 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
       if (localStorageAvailable) {
         SaveSessionToLocalStorage()
       }
+      $('#new_sd_target_dtable').html('');
+      CalcTargetDMG()
 
       
      // $("#new_sd_dmg [rel='tooltip']").tooltip();
@@ -2705,6 +2708,7 @@ function autocomplete(inp, arr) {
       alert('Unit was not selected!');
     }
     $('#CalculateBtn').prop('hidden',false);
+    $('#btn-showTargetSkills').prop('hidden',false);
   }
 
 
@@ -3632,7 +3636,7 @@ function SaveSessionToLocalStorage() {
   if ($('#searched-targetID-values').attr('value') !== '') {
     
   } */
-  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected];
+  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,Target_dps_stats];
   
   //total_gear_data_target
 
@@ -3742,7 +3746,7 @@ function LoadSessionFromLocalStorage() {
 
             
 
-            UpdateTargetFromLocalStorage(SessionData[8],SessionData[9], SessionData[17]);
+            UpdateTargetFromLocalStorage(SessionData[8],SessionData[9], SessionData[17], SessionData[22]);
 
         
         if (SessionData[11] !== '') {

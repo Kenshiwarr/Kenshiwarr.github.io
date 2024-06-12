@@ -116,6 +116,7 @@ jQuery.event.special.mousewheel = {
 <div id="body-dark_bg_top"></div>
 </div>
 <script src="../../side-menu-hover.js"></script>
+<main>
 <div id="initial_">
 <div id="pffs">
 </div>
@@ -561,6 +562,11 @@ jQuery.event.special.mousewheel = {
   <div id="skill_exclude_select"></div>
   <br/>
 
+  <div class="mb-1" id="btn-showTargetSkills" hidden>
+    <input type="checkbox" class="btn-check" id="Include_TargetSkillData" autocomplete="off">
+    <label class="btn btn-outline-secondary" for="Include_TargetSkillData">Show target skills</label><br>
+    </div>
+    <div id="new_sd_target_dtable"></div>
 
   <div id="new_sd_hps" hidden><div>
     <span class="text-center fw-bold">Include healing</span>  
@@ -623,7 +629,7 @@ jQuery.event.special.mousewheel = {
 </div>
 
 </div>
-
+</main>
 <footer id="mainFooter" class="text-center text-lg-start bg-dark text-muted">
   <!-- Section: Social media -->
   <div class="ms-3 stay-tuned text-start" style="color: white;">
@@ -682,6 +688,12 @@ jQuery.event.special.mousewheel = {
         <table class="table table-dark table-striped table-bordered">
           <tbody>
             <tr>
+              <th scope="row">2024-06-12</th>
+              <td>~</td>
+              <td><span class="text-info">Added <small class="text-success">[test]</small></span><br />Calc: Button to toggle view of target skills via separate table. <br /><small class="text-warning">[usable when its needed to calculate buff uptime using skill cooldown, such as ecclesia special skill invincibility]</small>
+              </td>
+            </tr>
+            <tr>
               <th scope="row">2024-06-06</th>
               <td>~</td>
               <td><span class="text-info">Updated <small class="text-secondary">[test]</small></span><br />Units: <strong>Asmodeus Rosaria</strong> - Now has extra source of damage that is always critically strikes on a single target, her enhanced attack uptime correctly scales with her crit chance.
@@ -701,7 +713,6 @@ jQuery.event.special.mousewheel = {
               <td><span class="text-success">Added <small class="text-secondary">[test]</small></span><br />Exclusive Equipment: <strong>Millia Rage</strong>;
                 <br />
                 System: <strong>Exclusive Equipment</strong> (some units have EE's available to use).<br />
-                <small>Please contanct me via <a href="https://discordapp.com/users/302526521862651916" target="_blank">discord</a> if you know stats and values for EEs, because there's no database available to me with such information!</small>
                 <p></p>
                 <span class="text-info">Updated</span><br /> Units: <strong>Sol Badguy</strong> <strong>HP</strong> 9848 -> 11029, <strong>DEF</strong> 496 -> 694, <strong>EVA</strong>: 362 -> 506</td>
             </tr>
