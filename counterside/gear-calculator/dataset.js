@@ -25,7 +25,7 @@ const units_stats_csv = ["Name","HP","ATK","DEF","CRIT","HIT","EVA","Icon","Empl
 "Stormbringer Jake Walker","17492","993","888","332","643","700","Icon_Jake Walker_Stormbringer","Counter","Defender","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,,,,,,,,,,"0.1",,,,,,,
 "Arhat Joo Shiyoon","13007","1421","520","1435","633","1264","Icon_Joo Shiyoon_Arhat","Counter","Striker","Ground","1",,,,,,,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.02",,,
 "Minerva Karin Wong","7293","1435","393","1530","1465","421","Icon_Karin Wong_Minerva","Counter","Ranger","Ground","1","0.1",,,,,,,,,,,,,,,,"0.5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"Ace of Wings Lee Sooyeon","6322","1324","219","878","957","1159","Icon_Lee Sooyeon_Ace of Wings","Counter","Ranger","Air","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,,,,,,,
+"Ace of Wings Lee Sooyeon","6322","1324","219","878","957","1159","Icon_Lee Sooyeon_Ace of Wings","Counter","Ranger","Air","1",,"0.2",,,,,,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,,,,,,,
 "Kresnik Lyudmila","7321","1010","277","742","1154","775","Icon_Lyudmila_Kresnik","Counter;C.O.","Supporter","Ground","1","0.1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Garguantia Maria Antonov","8152","1267","424","1356","1013","658","Icon_Maria Antonov_Garguantia","Counter","Ranger","Ground","1",,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Six Wings Na Yubin","15940","1210","803","503","543","1808","Icon_Na Yubin_Six Wings","Counter","Defender","Ground","1",,,,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.1",,,,,,,

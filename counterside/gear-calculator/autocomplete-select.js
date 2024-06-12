@@ -1943,13 +1943,13 @@ if (sCounter > 1) {
 }
 }
 $.each($('#skill_exclude_select input'), function () {
-  $(this).prop('checked',active_skills_exclude[String($(this).attr('id')).slice(-1)]);
+  $(this).prop('checked',active_skills_exclude[String($(this).attr('id')).split('_')[1]]);
   
   $(this).on('change',function() {
     if (this.checked === true) {
-      active_skills_exclude[String($(this).attr('id')).slice(-1)] = true
+      active_skills_exclude[String($(this).attr('id')).split('_')[1]] = true
     } else {
-      active_skills_exclude[String($(this).attr('id')).slice(-1)] = false;
+      active_skills_exclude[String($(this).attr('id')).split('_')[1]] = false;
     }
     CalcUnitDMG();
   })

@@ -570,7 +570,11 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
 
       if (target_data[71] != '') {
-        enemy_mdl = target_hp*(bonus_stats[64]);
+        if (Number(bonus_stats[64]) > 0) {
+          enemy_mdl = target_hp*(bonus_stats[64]);
+        } else {
+          enemy_mdl = Inf_mdl
+        }
       } else {
         enemy_mdl = Inf_mdl;
       }
