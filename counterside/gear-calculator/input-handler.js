@@ -944,3 +944,8 @@ if (cel.length > 0) {
     $('#new_sd_target_dtable').hide();
   }
  });
+
+ function calcSkillCdReduction(scAmt, scRdc, cds) {
+  
+  return Number(scRdc)/Number(scAmt)/Number(cds)+1
+ }

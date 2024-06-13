@@ -1591,44 +1591,15 @@ var enhAtk_cdSkill_mlt = 1;
 for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
   if (active_skills_exclude[i+1] !== false) { 
 
-    if ((skillCdImprove.length > 0) && (skillCdImprove[i] != undefined)) {
+    /* if ((skillCdImprove.length > 0) && (skillCdImprove[i] != undefined)) {
       const scdi = skillCdImprove[i]
       let scdi_res = 1;
       for (let k = 0, m = scdi.length; k < m; k++) {
+       
         scdi_res *= scdi[k][0]
       }
-      /* let scd;
-      let usn;
-      let rdc;
-      let final_cd;
-      
-      if (scdi[0] == '0') {
-        scd = Number(unit_mainAttack_mixed[4])/(1+unit_final_aspd);
-      } else {
-        if ((unit_restAttacks[Number(scdi[0])-1][8] === 'NST_ATTACK' && unit_restAttacks[Number(scdi[0])-1][11] > 0) || (unit_restAttacks[Number(scdi[0])-1][6] === '1')) {
-          scd = ((Number(unit_mainAttack_mixed[4])/(1+unit_final_aspd)) * Number(unit_restAttacks[Number(scdi[0])-1][5])) + (Number(unit_restAttacks[Number(scdi[0])-1][4])/(1+unit_final_aspd));
-          
-        } else {
-          scd = ((Number(unit_restAttacks[Number(scdi[0])-1][4])/(1+unit_final_aspd)) + (Number(unit_restAttacks[Number(scdi[0])-1][5])/(1+unit_final_cdr)));
-        }
-      
-      }
-
-      usn = Number(scdi[1]);
-
-      if (scdi[2] == '0') {
-        rdc = Number(unit_restAttacks[i][5]);
-      } else {
-        rdc = Number(scdi[2]);
-      }
-      final_cd = rdc/usn/scd+1;
-      console.log('skill cd rdc = ')
-      console.log(rdc)
-      console.log(usn)
-      console.log(scd)
-      console.log(final_cd) */
       unit_restAttacks[i][5] = String(Number(unit_restAttacks[i][5])/scdi_res);
-    }
+    } */
     
 
     if ((unit_restAttacks[i][13] == 'true')) {
@@ -1771,14 +1742,13 @@ unit_totalAttacks = unit_totalAttacks.concat(unit_restAttacks)
 dTableCompare_values = [];
 
 var cdSkill_list = [];
+var sAnim_list = [];
 
 
      
 if (unit_mainAttack.length > 0) {
-
-
-for (let i = 0; i < unit_totalAttacks.length; i++) {
-  var cdskill = 0;
+  for (let i = 0, n = unit_totalAttacks.length; i < n; i++) {
+    var cdskill = 0;
   var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd));
   if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && (unit_totalAttacks[i][6] !== '01')) && unit_totalAttacks[i][6] !== '22') {
     cdskill = ((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
@@ -1801,9 +1771,31 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   } else {
     cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr));
   }
-  
 
+  
   cdSkill_list.push(cdskill)
+  sAnim_list.push(sanim)
+  }
+
+
+for (let i = 0; i < unit_totalAttacks.length; i++) {
+  
+  if ((skillCdImprove.length > 0) && (skillCdImprove[i-1] != undefined)) { 
+    const scdi = skillCdImprove[i-1]
+    let scdi_res_amp;
+    let scdi_res = 1;
+    for (let k = 0, m = scdi.length; k < m; k++) {
+       if (skillCdImprove[i-1][k][0] !== 1) {
+        scdi_res_amp = calcSkillCdReduction(skillCdImprove[i-1][k][1],skillCdImprove[i-1][k][2],cdSkill_list[skillCdImprove[i-1][k][3]])
+       } else {
+        scdi_res_amp = 1
+       }
+      scdi_res *= scdi_res_amp
+    }
+    cdSkill_list[i] = cdSkill_list[i] / scdi_res
+  }
+
+  
 
   var sDmg_chpd = '';
   var sDmg_mhpd = '';
@@ -1844,6 +1836,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       if ((unitCalculatedDmg[j][0] !== unitCalculatedDmg[j-1][0]) && (unitCalculatedDmg[j][7] !== unitCalculatedDmg[j-1][7]) && (unitCalculatedDmg[j][8] !== unitCalculatedDmg[j-1][8])) {
         
         sCounter = 1;
+
+        
       }
     }
 
@@ -2006,16 +2000,16 @@ if (i === 0) {
   Total_Unit_DPS = 0;
 }
 if (active_skills_exclude[i] !== false) {
-  if (Number(cdskill) !== 0) {
-    Total_Unit_DPS += (dmgApplTotal/(Number(cdskill)))
+  if (Number(cdSkill_list[i]) !== 0) {
+    Total_Unit_DPS += (dmgApplTotal/(Number(cdSkill_list[i])))
   }
 Total_Unit_DPS = Total_Unit_DPS*(1-target_InvincibilityBuffUptime);
 }
 if (sCounter > 1) {
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill.toFixed(2)+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim.toFixed(2)+' </th> <th> '+ (chm_chance[1] > 0 ? Math.round(unit_totalAttacks[i][2]):0)+' </th> <th> '+ (chm_chance[0] > 0 ? Math.round(unit_totalAttacks[i][1]):0)+' </th> <th> '+ (chm_chance[2] > 0 ? Math.round(unit_totalAttacks[i][3]):0)+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdSkill_list[i].toFixed(2)+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sAnim_list[i].toFixed(2)+' </th> <th> '+ (chm_chance[1] > 0 ? Math.round(unit_totalAttacks[i][2]):0)+' </th> <th> '+ (chm_chance[0] > 0 ? Math.round(unit_totalAttacks[i][1]):0)+' </th> <th> '+ (chm_chance[2] > 0 ? Math.round(unit_totalAttacks[i][3]):0)+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill.toFixed(2)+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim.toFixed(2)+' </th> <th> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0)+'  </th> <th> '+ (chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+'  </th> <th> '+ (chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdSkill_list[i].toFixed(2)+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sAnim_list[i].toFixed(2)+' </th> <th> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0)+'  </th> <th> '+ (chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+'  </th> <th> '+ (chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
 
@@ -2031,12 +2025,13 @@ if (sCounter > 1) {
 
 
  if (i > 0) {
+  
   $('#sci_'+i).on('click.sci',function() {
     $('#improveSkillCd_skills').html('')
     $('#improveSkillCdModalLabel').text('Update '+unit_totalAttacks[i][0]+' cooldown');
     let scdA = [];
     for (let j = 0, n = unit_totalAttacks.length; j < n; j++) {
-      scdA.push([1,0,0])
+      scdA.push([1,0,0,0])
       if (active_skills_exclude[j] !== false) {
        
         
@@ -2074,7 +2069,7 @@ if (sCounter > 1) {
       let sciSelected = 0;
       let final_cd_res;
 
-      
+    
 
       while (($('#sci-radio-select_'+sciSelected).is(':checked') === false) && sciSelected < 50) {
         sciSelected++;
@@ -2097,10 +2092,12 @@ if (sCounter > 1) {
       console.log('sanimst')
       console.log(cdSkill_list[sciSelected])
       console.log(scdA)
-      final_cd_res = sciRdc/sciAmt/Number(cdSkill_list[sciSelected])+1
-      scdA[sciSelected][0] = final_cd_res;
+      //final_cd_res = sciRdc/sciAmt/Number(cdSkill_list[sciSelected])+1
+      
+      scdA[sciSelected][0] = calcSkillCdReduction(sciAmt,sciRdc,cdSkill_list[sciSelected]);
       scdA[sciSelected][1] = sciAmt;
       scdA[sciSelected][2] = sciRdc;
+      scdA[sciSelected][3] = sciSelected;
       skillCdImprove[i-1] = scdA;
       
       if (skillCdImprove[i-1] !== undefined) { 
@@ -2127,8 +2124,8 @@ if (sCounter > 1) {
         sciSelected++;
       }
         $('#sci-s_'+sciSelected).html('Required: 0<br />Reduces by: 0');
-       if (compareArrays(skillCdImprove[i-1][sciSelected],[1,0,0]) === false) {
-        skillCdImprove[i-1][sciSelected] = [1,0,0];
+       if (compareArrays(skillCdImprove[i-1][sciSelected],[1,0,0,0]) === false) {
+        skillCdImprove[i-1][sciSelected] = [1,0,0,0];
         $('#sci-radio-label_'+sciSelected).html('')
         CalcUnitDMG()
        }
@@ -2144,7 +2141,7 @@ if (sCounter > 1) {
  if (active_skills_exclude[i] != '') {
   
 
-  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdskill) < 1 ? sanim:cdskill),Math.round(dmgApplTotal),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)',String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)');
+  dTableCompare_values.push(unit_totalAttacks[i][0],(Number(cdSkill_list[i]) < 1 ? sAnim_list[i]:cdSkill_list[i]),Math.round(dmgApplTotal),Math.round(unit_totalAttacks[i][unit_restAttacks_last]),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)',String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)');
 
  }
  
@@ -2171,6 +2168,21 @@ for (let i = 0, n = active_skills_exclude.length; i < n; i++) {
   }
 }
 
+
+
+/* for (let i = 1, n = unit_totalAttacks.length; i < n; i++) {
+  if (skillCdImprove[i] !== undefined) {
+    for (let j = 0, n = skillCdImprove[i].length; j < n; j++) {
+      if (skillCdImprove[i][j][0] !== 1) {
+  skillCdImprove[i][j][0] = calcSkillCdReduction(skillCdImprove[i][j][1],skillCdImprove[i][j][2],cdSkill_list[skillCdImprove[i][j][3]])
+        console.log('scd of ' + cdSkill_list[skillCdImprove[i][j][3]])
+      }
+      
+    }
+    
+  }
+  
+} */
  
 var finalunitdps;
 var targetdurability;

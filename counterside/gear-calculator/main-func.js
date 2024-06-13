@@ -306,3 +306,7 @@ function UpdateBaseStatsTotal() {
   function compareArrays(a,b) {
     return JSON.stringify(a) === JSON.stringify(b);
   };
+
+  function calcSkillCdReduction(scAmt, scRdc) {
+        
+  }
