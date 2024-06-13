@@ -1976,7 +1976,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
     //aTooltip += '<div class="tttext"> ' + sDmg_scale + 'Damage modifier: ' + (unitCalculatedDmg[j][12]).toFixed(2) + ' </div>';
-    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0) +' </td>  <td> '+(chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+' </td>  <td> '+(chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+' </td>  <td> '+chm_dmg+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*cth)+(unit_totalAttacks[i][1]*ctc)+(unit_totalAttacks[i][3]*ecd))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
+    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmg[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0) +' </td>  <td> '+(chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+' </td>  <td> '+(chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+' </td>  <td> '+(chm_dmg).toFixed(2)+' </td> <td> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last]/(Number((unit_totalAttacks[i][2]*cth)+(unit_totalAttacks[i][1]*ctc)+(unit_totalAttacks[i][3]*ecd))/chm_dmg))+' </td> <td> '+(unitCalculatedDmg[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
     totalSkillMod += unitCalculatedDmg[j][11];
     
    }
