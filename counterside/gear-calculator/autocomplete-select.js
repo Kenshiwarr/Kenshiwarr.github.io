@@ -1585,6 +1585,7 @@ var rAtk_extra_mod = 1;
 var rAtk_extra_mod_main = 1;
 
 var mainAtk_cdSkill_mlt = 1;
+var enhAtk_cdSkill_mlt = 1;
 
 
 for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
@@ -1675,6 +1676,7 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
     //mainAtk_cdSkill_mlt *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(unit_mainAttack_mixed[4])/(1+unit_final_aspd)),1)) // old variant
     //unit_restAttacks[i][unit_restAttacks_last] *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1)) // old (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5])/(1+unit_final_aspd)),1)) doesn't include cdr offset from enhanced attack by skills
     mainAtk_cdSkill_mlt *= (1-(1/(Number(unit_restAttacks[i][5])+1))) // *(1-(1/unit_restAttacks[i][5]))/(1/(unit_restAttacks[i][5]/(unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))))
+    
     rAtk_extra_main.push(i);
     //rAtk_extra_mod_main *= (1-(1/(Number(unit_restAttacks[i][5])+1))) // (IFERROR((1-(unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(unit_restAttacks[i][5])/unit_mainAttack_mixed[4]/cfeedback_uptime),1)) // this would make rosa enhanced a dps gain but i think its wrong formula
       
@@ -1686,6 +1688,7 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
       
 
       mainAtk_cdSkill_mlt *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
+      
     } else if (unit_restAttacks[i][6] === '102') {
       unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1))/((Number(unit_restAttacks[i][5])+1))),0);
       rAtk_extra_main.push(i)
@@ -1693,7 +1696,8 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
     } else if (unit_restAttacks[i][6] === '22') {
       console.log('avg_a');
       let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1);
-  
+      enhAtk_cdSkill_mlt *= ndm;
+      enhAtk_cdSkill_mlt *= (1-(1/(Number(unit_restAttacks[i][5]/cfeedback_uptime)+1)))
       /* let prva = Math.max(Number((unit_mainAttack_mixed[2]*cth)+(unit_mainAttack_mixed[1]*ctc)+(unit_mainAttack_mixed[3]*ecd)));
       let prevDps = prva/(unit_mainAttack_mixed[4]/(1+unit_final_aspd))
       let nxt_dps = prva/avg_a;
@@ -1719,6 +1723,7 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
       rAtk_extra_mod *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1));
      
         mainAtk_cdSkill_mlt *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
+        enhAtk_cdSkill_mlt *= (IFERROR((1-unit_restAttacks[i][4]/(unit_restAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
 
         
       } else {
@@ -1767,30 +1772,34 @@ dTableCompare_values = [];
 
 var cdSkill_list = [];
 
+
      
 if (unit_mainAttack.length > 0) {
 
 
 for (let i = 0; i < unit_totalAttacks.length; i++) {
   var cdskill = 0;
-  var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd)).toFixed(2);
+  var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd));
   if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && (unit_totalAttacks[i][6] !== '01')) && unit_totalAttacks[i][6] !== '22') {
-    cdskill = ((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1))).toFixed(2);
-    //  cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5])).toFixed(2);
+    cdskill = ((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
+    //  cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5]));
+    if (i===0) {
+      cdskill = (cdskill / mainAtk_cdSkill_mlt)
+    } else {
+      cdskill = (cdskill / enhAtk_cdSkill_mlt)
+    }
+    
   } else if ((unit_totalAttacks[i][6] === '100') || (unit_totalAttacks[i][6] === '12')) {
-    cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
+    cdskill = parseFloat(unit_totalAttacks[i][5]);
   } else if (unit_totalAttacks[i][6] === '101') {
-    cdskill = parseFloat(unit_totalAttacks[i][5]).toFixed(2);
+    cdskill = parseFloat(unit_totalAttacks[i][5]);
     sanim = '1.00';
   } else if (unit_totalAttacks[i][6] === '22') {
     const cfeedback_uptime = 1+(CRIT_pc*(1-targetDodgeChance));
-    cdskill = ((IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_totalAttacks[i][5]/cfeedback_uptime)+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1))).toFixed(2);
+    cdskill = ((IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_totalAttacks[i][5]/cfeedback_uptime)+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
 
   } else {
-    cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr)).toFixed(2);
-  }
-  if (i === 0) {
-    cdskill = (cdskill / mainAtk_cdSkill_mlt).toFixed(2)
+    cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr));
   }
   
 
@@ -1902,7 +1911,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       
     }
 
-    var chm_dmg = (Math.round(Number((unitCalculatedDmg[j][2]*chm_chance[1])+(unitCalculatedDmg[j][1]*chm_chance[0])+(unitCalculatedDmg[j][3]*chm_chance[2]))));
+    var chm_dmg = ((Number((unitCalculatedDmg[j][2]*chm_chance[1])+(unitCalculatedDmg[j][1]*chm_chance[0])+(unitCalculatedDmg[j][3]*chm_chance[2]))));
     
     var sDmg_hit = ((Number(unitCalculatedDmg[j][2]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
     var sDmg_crit = ((Number(unitCalculatedDmg[j][1]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
@@ -1992,11 +2001,21 @@ $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'t
 $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_0_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
 
 }
+// Temporary recalculating Total unit dps, using table values instead of previous calculation.
+if (i === 0) {
+  Total_Unit_DPS = 0;
+}
+if (active_skills_exclude[i] !== false) {
+  if (Number(cdskill) !== 0) {
+    Total_Unit_DPS += (dmgApplTotal/(Number(cdskill)))
+  }
+Total_Unit_DPS = Total_Unit_DPS*(1-target_InvincibilityBuffUptime);
+}
 if (sCounter > 1) {
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim+' </th> <th> '+ (chm_chance[1] > 0 ? Math.round(unit_totalAttacks[i][2]):0)+' </th> <th> '+ (chm_chance[0] > 0 ? Math.round(unit_totalAttacks[i][1]):0)+' </th> <th> '+ (chm_chance[2] > 0 ? Math.round(unit_totalAttacks[i][3]):0)+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill.toFixed(2)+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim.toFixed(2)+' </th> <th> '+ (chm_chance[1] > 0 ? Math.round(unit_totalAttacks[i][2]):0)+' </th> <th> '+ (chm_chance[0] > 0 ? Math.round(unit_totalAttacks[i][1]):0)+' </th> <th> '+ (chm_chance[2] > 0 ? Math.round(unit_totalAttacks[i][3]):0)+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
 } else {
-  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim+' </th> <th> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0)+'  </th> <th> '+ (chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+'  </th> <th> '+ (chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
+  listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill.toFixed(2)+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim.toFixed(2)+' </th> <th> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0)+'  </th> <th> '+ (chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+'  </th> <th> '+ (chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+'  </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(unit_totalAttacks[i][11]).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead>'
   
 }
 
