@@ -1766,6 +1766,7 @@ unit_totalAttacks = unit_totalAttacks.concat(unit_restAttacks)
 dTableCompare_values = [];
 
 var cdSkill_list = [];
+
      
 if (unit_mainAttack.length > 0) {
 
@@ -1804,6 +1805,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
   var dmgApplTotal = 0;
 
+  var chm_chance;
+
 
 
   var hitsMdl = ['','',''];
@@ -1825,58 +1828,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   if (unitCalculatedDmg.length > 1) {
     
   for (let j = 0; j < unitCalculatedDmg.length; j++) {
-    
-  if ((unitCalculatedDmg[j][13] == 'true')) { // sure fire
-    var sfpe = target_PerfectEvaBuffUptime - 1;
-    var tdc_p;
-    var eepc;
-    if ((HIT_pc > enemy_EVA_percent)) { 
-      eepc = 0;
-    } else {
-      eepc = enemy_EVA_percent;
-    }
-    if (sfpe < 0) {
-      tdc_p = 1-(1-(eepc) * (1-Math.abs(sfpe)))
-    } else {
-      tdc_p = (1-(1-eepc) * (1-sfpe))
-    }
-    ctc = CRIT_pc*(1-tdc_p);
-    if (unitCalculatedDmg[j][14] == 'true') { // force crit
-      cth = 0
-    } else {
-      cth = 1-ctc-tdc_p;
-    }
-    ecd = tdc_p;
-  } else {
-    if (unitCalculatedDmg[j][14] == 'true') { // force crit
-      if ((HIT_pc > enemy_EVA_percent)) {  
-        ctc = 1;
-      } else {
-        ctc = 1*(1-targetDodgeChance);
-      }
-      cth = 0
-    } else {
-      ctc = CRIT_pc*(1-targetDodgeChance);
-      cth = 1-ctc-targetDodgeChance;
-    }
-    ecd = targetDodgeChance;
-  }
-
-  var chm_chance = [ctc,cth,ecd];
-
-
-
-  if (ecd === 0) {
-    isSureFireNat = true;
-  }
-  if (unitCalculatedDmg[j][13] == 'true') {
-    isSureFire = true;
-  }
-  if (unitCalculatedDmg[j][14] == 'true') {
-    isForceCrit = true;
-  }
-  if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
-  }
 
    if (((unitCalculatedDmg[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (unitCalculatedDmg[j][7].includes(unit_totalAttacks[i][7].replace(/_END/i, "")) === true) && (unitCalculatedDmg[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(unitCalculatedDmg[j][2]) > 0))) {
     sCounter++;
@@ -1885,6 +1836,58 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
         
         sCounter = 1;
       }
+    }
+
+    if ((unitCalculatedDmg[j][13] == 'true')) { // sure fire
+      var sfpe = target_PerfectEvaBuffUptime - 1;
+      var tdc_p;
+      var eepc;
+      if ((HIT_pc > enemy_EVA_percent)) { 
+        eepc = 0;
+      } else {
+        eepc = enemy_EVA_percent;
+      }
+      if (sfpe < 0) {
+        tdc_p = 1-(1-(eepc) * (1-Math.abs(sfpe)))
+      } else {
+        tdc_p = (1-(1-eepc) * (1-sfpe))
+      }
+      ctc = CRIT_pc*(1-tdc_p);
+      if (unitCalculatedDmg[j][14] == 'true') { // force crit
+        cth = 0
+      } else {
+        cth = 1-ctc-tdc_p;
+      }
+      ecd = tdc_p;
+    } else {
+      if (unitCalculatedDmg[j][14] == 'true') { // force crit
+        if ((HIT_pc > enemy_EVA_percent)) {  
+          ctc = 1;
+        } else {
+          ctc = 1*(1-targetDodgeChance);
+        }
+        cth = 0
+      } else {
+        ctc = CRIT_pc*(1-targetDodgeChance);
+        cth = 1-ctc-targetDodgeChance;
+      }
+      ecd = targetDodgeChance;
+    }
+  
+    chm_chance = [ctc,cth,ecd];
+  
+  
+  
+    if (ecd === 0) {
+      isSureFireNat = true;
+    }
+    if (unitCalculatedDmg[j][13] == 'true') {
+      isSureFire = true;
+    }
+    if (unitCalculatedDmg[j][14] == 'true') {
+      isForceCrit = true;
+    }
+    if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
     }
 
     sDmg_chpd = (Math.round(Number(unitCalculatedDmg[j][9])))
@@ -1989,7 +1992,6 @@ $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'t
 $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_0_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
 
 }
-
 if (sCounter > 1) {
   listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim+' </th> <th> '+ (chm_chance[1] > 0 ? Math.round(unit_totalAttacks[i][2]):0)+' </th> <th> '+ (chm_chance[0] > 0 ? Math.round(unit_totalAttacks[i][1]):0)+' </th> <th> '+ (chm_chance[2] > 0 ? Math.round(unit_totalAttacks[i][3]):0)+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
