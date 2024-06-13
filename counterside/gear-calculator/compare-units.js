@@ -293,6 +293,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
         targetIsUpdated = sau[23];
         target_dummy_data = sau[24];
         selectedGearSlotList = "Weapon";
+        skillCdImprove = []
         //dTableCompare_values = sau[26];
 
         $('#selectEnemyType').val(target_dummy_data[9])
