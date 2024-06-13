@@ -301,3 +301,8 @@ function UpdateBaseStatsTotal() {
     this[y] = b;
     return this;
   }
+
+
+  function compareArrays(a,b) {
+    return JSON.stringify(a) === JSON.stringify(b);
+  };

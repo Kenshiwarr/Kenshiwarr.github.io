@@ -688,9 +688,15 @@ jQuery.event.special.mousewheel = {
         <table class="table table-dark table-striped table-bordered">
           <tbody>
             <tr>
-              <th scope="row">2024-06-12</th>
+              <th scope="row">2024-06-13</th>
               <td>~</td>
-              <td><span class="text-success">Added <small class="text-secondary">[test]</small></span><br />Calc: Button to toggle view of target skills via separate table. <br /><small class="text-warning">[usable when its needed to calculate buff uptime using skill cooldown, such as ecclesia special skill invincibility]</small>
+              <td><span class="text-success">Added <small class="text-secondary">[test]</small></span><br />Calc: Added buttons to non-main attack skills to configure skills cooldown based on other skills' uptime. <br />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2024-06-12</th>
+              <td>+</td>
+              <td><span class="text-success">Added</span><br />Calc: Button to toggle view of target skills via separate table. <br /><small class="text-warning">[usable when its needed to calculate buff uptime using skill cooldown, such as ecclesia special skill invincibility]</small>
               </td>
             </tr>
             <tr>
@@ -702,15 +708,15 @@ jQuery.event.special.mousewheel = {
             </tr>
             <tr>
               <th scope="row">2024-06-06</th>
-              <td>~</td>
-              <td><span class="text-success">Added <small class="text-secondary">[test]</small></span><br />System: <strong>Main Attacks</strong> - Can select multiple main attacks to calculate average damage. <br /> <small class="text-warning">[usable when units have mix of attacks or to calculate average if those used throughout a battle]</small>
+              <td>+</td>
+              <td><span class="text-success">Added</span><br />System: <strong>Main Attacks</strong> - Can select multiple main attacks to calculate average damage. <br /> <small class="text-warning">[usable when units have mix of attacks or to calculate average if those used throughout a battle]</small>
                 <p></p>
               </td>
             </tr>
             <tr>
               <th scope="row">2024-06-05</th>
-              <td>~</td>
-              <td><span class="text-success">Added <small class="text-secondary">[test]</small></span><br />Exclusive Equipment: <strong>Millia Rage</strong>;
+              <td>+</td>
+              <td><span class="text-success">Added</span><br />Exclusive Equipment: <strong>Millia Rage</strong>;
                 <br />
                 System: <strong>Exclusive Equipment</strong> (some units have EE's available to use).<br />
                 <p></p>
@@ -879,6 +885,29 @@ jQuery.event.special.mousewheel = {
         <button id="delete_btn-configBuffModal" class="btn btn-danger me-auto" hidden>Delete</button>
         <button id="back_btn-configBuffModal" class="btn btn-primary" data-bs-target="#applyBuffModal" data-bs-toggle="modal" data-bs-dismiss="modal">Back</button>
         <button id="confirm_btn-configBuffModal" class="btn btn-success">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Improve skill cd modal -->
+<div class="modal fade" id="improveSkillCdModal" tabindex="-1" aria-labelledby="improveSkillCdModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="improveSkillCdModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="improveSkillCd-body" class="modal-body">
+        <div class="text-center fw-bold">Select skill to reduce by</div>
+        <div id="improveSkillCd_skills"></div>
+        <hr><div class="input-group mt-3"> <span class="input-group-text" >Uses needed</span> <input id="sci_amt-btn" type="number" class="form-control" placeholder="Uses needed" aria-label="Uses needed" aria-describedby="sci-btn_amt"> </div>
+        <div class="input-group mt-3"> <span class="input-group-text" >Reduces by</span> <input id="sci_rdc-btn" type="number" class="form-control" placeholder="CD reduced by" aria-label="CD reduced by" aria-describedby="sci_rdc-btn"> <span class="input-group-text">Input "0" if full reset</span> </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary me-auto" data-bs-dismiss="modal">Close</button>
+        <button id="sci-btn-reset" type="button" class="btn btn-light">Reset Selected</button>
+        <button id="improveSkillCdModal_save-btn" type="button" class="btn btn-primary">Update Selected</button>
       </div>
     </div>
   </div>

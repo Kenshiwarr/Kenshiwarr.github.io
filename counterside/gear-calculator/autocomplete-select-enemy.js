@@ -989,6 +989,7 @@ function autocompleteTarget(inp, arr) {
                 target_EVA_pc = target_eva/(target_eva+800);
                 
                 Target_dps_stats = udpst;
+
   
                 
                 

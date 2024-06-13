@@ -54,7 +54,6 @@ body {
   color: white;
   --bs-bg-opacity: 1;
   background-color: rgba(var(--m-bg-color), var(--bs-bg-opacity)) !important;
-  height: 100vh;
   }
 
   body > * {
@@ -1064,6 +1063,7 @@ color: #bebebe;
 .cd_dropdown_hover:hover {
   /* border-bottom: 1px dotted black; */
   
+  background-color: #717288;
   cursor: pointer;
 }
 
@@ -1087,6 +1087,7 @@ color: #bebebe;
 
 .Unit_Compare_Container {
   display: inline-grid;
+  margin-right: 0.2rem;
 }
 
 .ComparingSelectedUnitsModal-main {
@@ -1337,4 +1338,9 @@ color: #bebebe;
   position: absolute;
     bottom: 0;
     right: 5%;
+}
+
+.sci_skill_upt:hover {
+  color: #dddddd;
+  cursor: pointer;
 }
