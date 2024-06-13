@@ -1798,65 +1798,9 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var isSureFire = false;
   var isForceCrit = false;
 
-
-  if ((unit_totalAttacks[i][13] == 'true')) { // sure fire
-    var sfpe = target_PerfectEvaBuffUptime - 1;
-    var tdc_p;
-    var eepc;
-    if ((HIT_pc > enemy_EVA_percent)) { 
-      eepc = 0;
-    } else {
-      eepc = enemy_EVA_percent;
-    }
-    if (sfpe < 0) {
-      tdc_p = 1-(1-(eepc) * (1-Math.abs(sfpe)))
-    } else {
-      tdc_p = (1-(1-eepc) * (1-sfpe))
-    }
-    ctc = CRIT_pc*(1-tdc_p);
-    if (unit_totalAttacks[i][14] == 'true') { // force crit
-      cth = 0
-    } else {
-      cth = 1-ctc-tdc_p;
-    }
-    ecd = tdc_p;
-  } else {
-    if (unit_totalAttacks[i][14] == 'true') { // force crit
-      if ((HIT_pc > enemy_EVA_percent)) {  
-        ctc = 1;
-      } else {
-        ctc = 1*(1-targetDodgeChance);
-      }
-      cth = 0
-    } else {
-      ctc = CRIT_pc*(1-targetDodgeChance);
-      cth = 1-ctc-targetDodgeChance;
-    }
-    ecd = targetDodgeChance;
-  }
-
-  var chm_chance = [ctc,cth,ecd];
+  var dmgApplTotal = 0;
 
 
-
-  if (ecd === 0) {
-   /*  chm_chance[2] = 0; */
-    isSureFireNat = true;
-  }
-  if (unit_totalAttacks[i][13] == 'true') {
-    /* chm_chance[0] = CRIT_pc*(1-targetDodgeChance*Math.max(SFvPEmod,0));
-    chm_chance[1] = 1-chm_chance[0]-targetDodgeChance*Math.max(SFvPEmod,0);
-    chm_chance[2] = targetDodgeChance*Math.max(SFvPEmod,0); */
-    isSureFire = true;
-  }
-  if (unit_totalAttacks[i][14] == 'true') {
-    /* chm_chance[0] = 1-targetDodgeChance;
-    chm_chance[1] = 0; */
-    isForceCrit = true;
-  }
-  if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
-    /* chm_chance = [1,0,ecd]; */
-  }
 
   var hitsMdl = ['','',''];
   var mdl_redc = ['','',''];
@@ -1878,6 +1822,57 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     
   for (let j = 0; j < unitCalculatedDmg.length; j++) {
     
+  if ((unitCalculatedDmg[j][13] == 'true')) { // sure fire
+    var sfpe = target_PerfectEvaBuffUptime - 1;
+    var tdc_p;
+    var eepc;
+    if ((HIT_pc > enemy_EVA_percent)) { 
+      eepc = 0;
+    } else {
+      eepc = enemy_EVA_percent;
+    }
+    if (sfpe < 0) {
+      tdc_p = 1-(1-(eepc) * (1-Math.abs(sfpe)))
+    } else {
+      tdc_p = (1-(1-eepc) * (1-sfpe))
+    }
+    ctc = CRIT_pc*(1-tdc_p);
+    if (unitCalculatedDmg[j][14] == 'true') { // force crit
+      cth = 0
+    } else {
+      cth = 1-ctc-tdc_p;
+    }
+    ecd = tdc_p;
+  } else {
+    if (unitCalculatedDmg[j][14] == 'true') { // force crit
+      if ((HIT_pc > enemy_EVA_percent)) {  
+        ctc = 1;
+      } else {
+        ctc = 1*(1-targetDodgeChance);
+      }
+      cth = 0
+    } else {
+      ctc = CRIT_pc*(1-targetDodgeChance);
+      cth = 1-ctc-targetDodgeChance;
+    }
+    ecd = targetDodgeChance;
+  }
+
+  var chm_chance = [ctc,cth,ecd];
+
+
+
+  if (ecd === 0) {
+    isSureFireNat = true;
+  }
+  if (unitCalculatedDmg[j][13] == 'true') {
+    isSureFire = true;
+  }
+  if (unitCalculatedDmg[j][14] == 'true') {
+    isForceCrit = true;
+  }
+  if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
+  }
 
    if (((unitCalculatedDmg[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (unitCalculatedDmg[j][7].includes(unit_totalAttacks[i][7].replace(/_END/i, "")) === true) && (unitCalculatedDmg[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(unitCalculatedDmg[j][2]) > 0))) {
     sCounter++;
@@ -1957,15 +1952,12 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       dmgAppl[1] = Math.round(sDmg_crit);
       dmgAppl[2] = Math.round(sDmg_miss);
     }
-    if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
-      dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg data-bs-toggle="collapse" dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
 
-    } else {
-      dmgAppl[3] = '<span>'+Math.round(sDmg_Tdcm)+'</span> <svg data-bs-toggle="collapse" dt_target="#dt_'+i+'tt_'+j+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
-    $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_'+j+'_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
+    dmgApplTotal += chm_dmg
 
-    }
+    
+
+    
     
     if (mdl_redc.some((e) => e !== '') ) {
       $('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'mdl_'+j+'_h" class="dt_tooltip"> '+hitsMdl[0]+'</div>')
@@ -1984,6 +1976,16 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   
   
 }
+if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
+  dmgAppl[3] = '<span>'+Math.round(dmgApplTotal)+'</span> <svg data-bs-toggle="collapse" dt_target="#dt_'+i+'tt_'+0+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
+$('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_0_dcm" class="dt_tooltip">' + ((isSureFire !== false) || (isSureFireNat !== false) ? ('Sure Fire (Can\'t miss)<br />'):'') + (isForceCrit !== false ? ('Force Crit (Always Crits)<br />'):'') + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
+
+} else {
+  dmgAppl[3] = '<span>'+Math.round(dmgApplTotal)+'</span> <svg data-bs-toggle="collapse" dt_target="#dt_'+i+'tt_'+0+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
+$('#sd_dmg_table-tooltip_list .dt_tooltip_container').append('<div id="dt_'+i+'tt_0_dcm" class="dt_tooltip">' + 'Chance to hit: '+(chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to crit: '+(chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+ '%<br/>Chance to miss: '+(chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'% </div>')
+
+}
+
 if (sCounter > 1) {
   listForMultiAtkTable = '<thead class="uthead accordion-header"><tr id="dthead_'+i+'" class="unitTotalResult_hover" data-bs-toggle="collapse" data-bs-target="#dtbody_'+i+'" aria-expanded="false" aria-controls="dtbody_'+i+'"> <th class="text-truncate">'+unit_totalAttacks[i][0]+'</th> <th> '+sCounter+' </th> <th> <div>'+cdskill+' <span data-bs-toggle="collapse" id="sci_'+i+'" class="sci_skill_upt">'+ skill_cd_improve +'</span></div> </th> <th> '+sanim+' </th> <th> '+ (chm_chance[1] > 0 ? Math.round(unit_totalAttacks[i][2]):0)+' </th> <th> '+ (chm_chance[0] > 0 ? Math.round(unit_totalAttacks[i][1]):0)+' </th> <th> '+ (chm_chance[2] > 0 ? Math.round(unit_totalAttacks[i][3]):0)+' </th> <th> '+dmgAppl[3]+' </th> <th> '+Math.round(unit_totalAttacks[i][unit_restAttacks_last])+' </th> <th> '+(totalSkillMod).toFixed(2)+' </th> <th> '+(unit_totalAttacks[i][12]).toFixed(2)+' </th> </tr> </thead> <tbody id="dtbody_'+i+'" class="udtbody collapse" aria-labelledby="dthead_'+i+'" data-bs-parent="#unit_dps_table">' + listForMultiAtkTable + '</tbody>';
   
