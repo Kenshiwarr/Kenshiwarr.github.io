@@ -1923,14 +1923,14 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var listForMultiAtkTable = '';
 
   var sCounter = 0;
-  
+
   let skill_cd_improve = ''
 
   if (unitCalculatedDmg.length > 1) {
     
   for (let j = 0; j < unitCalculatedDmg.length; j++) {
 
-   if (((unitCalculatedDmg[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (unitCalculatedDmg[j][7].includes(unit_totalAttacks[i][7].replace(/_END/i, "")) === true) && (unitCalculatedDmg[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(unitCalculatedDmg[j][2]) > 0))) {
+   if (((unitCalculatedDmg[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (unitCalculatedDmg[j][7].includes(unit_totalAttacks[i][7].replace(/_END?./g, "")) === true) && (unitCalculatedDmg[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(unitCalculatedDmg[j][2]) > 0))) {
     sCounter++;
     if (j>0) {
       if ((unitCalculatedDmg[j][0] !== unitCalculatedDmg[j-1][0]) && (unitCalculatedDmg[j][7] !== unitCalculatedDmg[j-1][7]) && (unitCalculatedDmg[j][8] !== unitCalculatedDmg[j-1][8])) {
