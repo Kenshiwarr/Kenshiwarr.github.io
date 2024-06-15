@@ -741,7 +741,7 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "HRT Berry Miya","hyper1","1.25","3","2.00","0.00","0.17","-","-","-","-","-","3","true","false","false","false","false","-","60","-","USN_HYPER_END2","NST_HYPER'",
 "HRT Berry Miya","hyper1","1.25","5","2.77","0.00","0.17","-","-","-","-","-","4","true","false","false","false","false","-","60","-","USN_HYPER_END3","NST_HYPER'",
 "HRT Berry Miya","hyper1","1.25","-","2.77","0.00","3.00","-","-","-","-","99","2","true","true","false","false","false","-","60","-","USN_HYPER_END3","NST_HYPER'",
-"Best Streamer Miya","attack2","1.25","1","2.19","0.00","1.00","-","-","-","-","1","1","true","false","false","false","false","-","-","-1","USN_ATTACK","NST_ATTACK'",
+"Best Streamer Miya","attack2","1.25","1","2.19","0.00","1.00","-","-","-","-","1","1","true","false","false","false","false","-","-","-","USN_ATTACK","NST_ATTACK'",
 "Best Streamer Miya","skill1","1.3","0.5","2.67","0.60","0.73","-","-","-","-","-","1","true","false","true","false","false","-","24","-","USN_SKILL","NST_SKILL'",
 "Best Streamer Miya","skill1","1.3","1.5","2.67","1.73","2.07","-","-","-","-","-","1","true","false","true","false","false","-","24","-","USN_SKILL","NST_SKILL'",
 "Best Streamer Miya","hyper1","1.3","1","3.80","0.97","1.13","-","-","-","-","-","3","true","false","false","false","false","-","55","-","USN_HYPER_END1","NST_HYPER'",
