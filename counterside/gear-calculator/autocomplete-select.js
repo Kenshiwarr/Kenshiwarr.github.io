@@ -1776,18 +1776,24 @@ if ((skillCdImprove.length > 0) && (skillCdImprove[i-1] != undefined)) {
  */
 
  
+var ifApplySci = [];
+
 
     
 if (unit_mainAttack.length > 0) {
  
   for (let i = 0, n = unit_totalAttacks.length; i < n; i++) {
     if (active_skills_exclude[i] !== false) {  
-    if ((skillCdImprove.length > 0) && (skillCdImprove[i-1] != undefined)) { 
+    if ((skillCdImprove.length > 0) && (skillCdImprove[i-1] != undefined)) {
       const scdi = skillCdImprove[i-1];
       let scdi_res_amp;
       let scdi_res = 1;
+      ifApplySci[i] = []
       for (let k = 0, m = scdi.length; k < m; k++) {
-         if (skillCdImprove[i-1][k][0] !== 1) {
+       ifApplySci[i][k] = false
+         if ((scdi[k][0] !== 1)) {
+          if (active_skills_exclude[scdi[k][3]] !== false) {
+            ifApplySci[i][k] = true
           if (Number(unit_totalAttacks[scdi[k][3]][5]) !== 0) {
             if (rAtk_extra_main.indexOf((scdi[k][3])-1) > -1) {
           scdi_res_amp = calcSkillCdReduction(scdi[k][1],scdi[k][2],((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[scdi[k][3]][5]+unit_totalAttacks[scdi[k][3]][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[scdi[k][3]][5])+1)),1))/(1/(Number(unit_totalAttacks[scdi[k][3]][5])+1)))/rAtk_extra_mod_main)
@@ -1823,6 +1829,9 @@ if (unit_mainAttack.length > 0) {
             }
 
           }
+        } else {
+          ifApplySci[i][k] = false
+        }
          } else {
 
           scdi_res_amp = 1
@@ -2268,10 +2277,7 @@ if (sCounter > 1) {
   })
 }
 
-if (skillCdImprove[i-1] !== undefined) {
-  
-  $('#sci-tgt_'+(i)).addClass('text-info text-decoration-underline');
-}
+
 
 
  if (active_skills_exclude[i] != '') {
@@ -2305,20 +2311,16 @@ for (let i = 0, n = active_skills_exclude.length; i < n; i++) {
 }
 
 
-
-/* for (let i = 1, n = unit_totalAttacks.length; i < n; i++) {
-  if (skillCdImprove[i] !== undefined) {
-    for (let j = 0, n = skillCdImprove[i].length; j < n; j++) {
-      if (skillCdImprove[i][j][0] !== 1) {
-  skillCdImprove[i][j][0] = calcSkillCdReduction(skillCdImprove[i][j][1],skillCdImprove[i][j][2],cdSkill_list[skillCdImprove[i][j][3]])
-        console.log('scd of ' + cdSkill_list[skillCdImprove[i][j][3]])
-      }
-      
-    }
+console.log('ifApplySci')
+console.log(ifApplySci)
+for (let h = 0, n = unit_totalAttacks.length; h < n; h++) {
+  if (active_skills_exclude[h] !== false) { 
+  if ((skillCdImprove[h-1] !== undefined) && (ifApplySci[h].some(((t) => t === true)) )) {
+    $('#sci-tgt_'+(h)).addClass('text-info text-decoration-underline');
     
   }
-  
-} */
+}
+}
  
 var finalunitdps;
 var targetdurability;
