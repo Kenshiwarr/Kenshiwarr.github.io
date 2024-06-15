@@ -1795,13 +1795,18 @@ if (unit_mainAttack.length > 0) {
             }
           } else {
             if (rAtk_extra_main.indexOf((scdi[k][3])-1) > -1) { 
-              scdi_res_amp = calcSkillCdReduction(scdi[k][1],scdi[k][2],unit_totalAttacks[scdi[k][3]][4]*(1+rAtk_extra_mod_main))
+              scdi_res_amp = calcSkillCdReduction(scdi[k][1],scdi[k][2],unit_totalAttacks[scdi[k][3]][4]/rAtk_extra_mod_main)
               rAtk_extra_main.splice(i, 1);
               console.log('f4')
             } else {
-            scdi_res_amp = calcSkillCdReduction(scdi[k][1],scdi[k][2],unit_totalAttacks[scdi[k][3]][4]*(1+mainAtk_cdSkill_mlt))
+            scdi_res_amp = calcSkillCdReduction(scdi[k][1],scdi[k][2],unit_totalAttacks[scdi[k][3]][4]/mainAtk_cdSkill_mlt)
 
+            
             console.log('f5')
+            
+            console.log(unit_totalAttacks[scdi[k][3]][4]/mainAtk_cdSkill_mlt)
+            console.log(mainAtk_cdSkill_mlt)
+            console.log('f5?')
             }
 
           }
