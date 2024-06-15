@@ -1651,7 +1651,7 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
     let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a;
     mainAtk_cdSkill_mlt *= ndm;
     
-    unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1))/(Number(unit_restAttacks[i][5])+1)),0);
+    //unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number(((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1))/(Number(unit_restAttacks[i][5])+1)),0);
     
     mainAtk_cdSkill_mlt *= (1-(1/(Number(unit_restAttacks[i][5])+1))) 
     
@@ -1708,7 +1708,7 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
   }
    
   } else {
-    unit_restAttacks[i][unit_restAttacks_last] = 0
+    //unit_restAttacks[i][unit_restAttacks_last] = 0
   }
 }
 
@@ -1754,27 +1754,6 @@ var matkSlist = []
 
 let sci_m_sAmp = 1;
 let sci_sAmp = 1;
-
-
-
-/* for (let i = 0, n = unit_totalAttacks.length; i < n; i++) {
-  
-
-if ((skillCdImprove.length > 0) && (skillCdImprove[i-1] != undefined)) { 
-  const scdi = skillCdImprove[i-1] 
-  let scdi_res = 1;
-  for (let k = 0, m = scdi.length; k < m; k++) {
-    if (skillCdImprove[i-1][k][0] !== 1) {
-     
-   scdi_res *= scdi[k][0]
- }
- mainAtk_cdSkill_mlt = mainAtk_cdSkill_mlt/scdi_res
- enhAtk_cdSkill_mlt = enhAtk_cdSkill_mlt/scdi_res
-} 
-}
-}
- */
-
  
 var ifApplySci = [];
 
@@ -1811,9 +1790,6 @@ if (unit_mainAttack.length > 0) {
               console.log('f2')
             } else {
               scdi_res_amp = calcSkillCdReduction(scdi[k][1],scdi[k][2],unit_totalAttacks[scdi[k][3]][5])
-
-              console.log('ch123')
-              console.log(scdi[k][1] + scdi[k][2] + unit_totalAttacks[scdi[k][3]][5])
 
               console.log('f3')
             }
@@ -1943,14 +1919,11 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
   var totalSkillMod = 0;
 
-  var sDmg_mod;
 
   var listForMultiAtkTable = '';
 
   var sCounter = 0;
-
-  var sDmg_Tdcm = 0;
-
+  
   let skill_cd_improve = ''
 
   if (unitCalculatedDmg.length > 1) {
@@ -2037,14 +2010,12 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     var sDmg_hit = ((Number(unitCalculatedDmg[j][2]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
     var sDmg_crit = ((Number(unitCalculatedDmg[j][1]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
     var sDmg_miss = ((Number(unitCalculatedDmg[j][3]/* -unitCalculatedDmg[j][9]-unitCalculatedDmg[j][10] */)));
-    sDmg_Tdcm = Math.round(Number((unit_totalAttacks[i][2]*chm_chance[1])+(unit_totalAttacks[i][1]*chm_chance[0])+(unit_totalAttacks[i][3]*chm_chance[2])));
     //sDmg_chpd = (Math.round(Number(unitCalculatedDmg[j][9]))) > 0 ?  ('Target current hp% as dmg: ' + (Math.round(Number(unitCalculatedDmg[j][9])))) + '<br />':'';
     //sDmg_mhpd = (Math.round(Number(unitCalculatedDmg[j][10]))) > 0 ? ('Target max hp% as dmg: ') + (Math.round(Number(unitCalculatedDmg[j][10]))) + '<br />':'';
 
 
 
     //var sDmg_scale = 'Skill modifier: ' + (unitCalculatedDmg[j][11]).toFixed(2) + '<br />';
-    sDmg_mod = '<b>' + unit_totalAttacks[i][0] + '</b>'+ '<br />' + 'Damage modifier: ' + (unitCalculatedDmg[j][12]).toFixed(2) + '<br />';
 
     if (sDmg_hit > enemy_mdl) {
       hitsMdl[0] = ('Blocked by mdl: ' + Math.round(Math.round(((sDmg_hit-enemy_mdl)/0.04)+enemy_mdl)-sDmg_hit)) + '<br />' + ('Before mdl: ' + Math.round(((sDmg_hit-enemy_mdl)/0.04)+enemy_mdl)) + '<br />';
