@@ -2384,7 +2384,7 @@ if (sCounter > 1) {
  if (active_skills_exclude[i] != '') {
   
 
-  dTableCompare_values.push(unit_totalAttacks[i][0],((Number(cdSkill_list[i])).toFixed(2) < 1 ? Number(sAnim_list[i]).toFixed(2):Math.round(Number(cdSkill_list[i]).toFixed(2))),Math.round(dmgApplTotal),IFERROR(Math.round(dmgApplTotal/cdSkill_list[i]),0),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)',String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)');
+  dTableCompare_values.push(unit_totalAttacks[i][0],((Number(cdSkill_list[i])).toFixed(2) < 1 ? Number(sAnim_list[i]).toFixed(2):(Number(cdSkill_list[i]).toFixed(2))),Math.round(dmgApplTotal),IFERROR(Math.round(dmgApplTotal/cdSkill_list[i]),0),(unit_totalAttacks[i][12]).toFixed(2),String(Math.round(unit_totalAttacks[i][2])) + ' (' + (chm_chance[1]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)',String(Math.round(unit_totalAttacks[i][1])) + ' (' + (chm_chance[0]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') + '%)',String(Math.round(unit_totalAttacks[i][3])) + ' (' + (chm_chance[2]*100).toFixed(1).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1')+'%)');
 
  }
  
