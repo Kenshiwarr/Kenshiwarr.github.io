@@ -1603,25 +1603,22 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
           console.log('fmulti')
           console.log(fmulti)
           for (let j = 0, m = fmulti.length; j < m; j++) {
-            if (unit_mainAttack_mix_split[j] === undefined) {
-            unit_mainAttack_mix_split[j] = ['attack1',0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false'];
-              
-            }
+            unit_mainAttack_mix_split.push(['attack1',0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false']);
 
            
 
-            unit_mainAttack_mix_split[j][1] += fmulti[j][1];
-            unit_mainAttack_mix_split[j][2] += fmulti[j][2];
-            unit_mainAttack_mix_split[j][3] += fmulti[j][3];
-            unit_mainAttack_mix_split[j][4] += Number(fmulti[j][4]);
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][1] += fmulti[j][1];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][2] += fmulti[j][2];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][3] += fmulti[j][3];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][4] += Number(fmulti[j][4]);
   
-            unit_mainAttack_mix_split[j][9] += fmulti[j][9];
-            unit_mainAttack_mix_split[j][10] += fmulti[j][10];
-            unit_mainAttack_mix_split[j][11] += fmulti[j][11];
-            unit_mainAttack_mix_split[j][12] += fmulti[j][12];
-            unit_mainAttack_mix_split[j][13] = fmulti[j][13];
-            unit_mainAttack_mix_split[j][14] = fmulti[j][14];
-            unit_mainAttack_mix_split[j][15] = unit_mainAttack_mixed[15];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][9] += fmulti[j][9];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][10] += fmulti[j][10];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][11] += fmulti[j][11];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][12] += fmulti[j][12];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][13] = fmulti[j][13];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][14] = fmulti[j][14];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][15] = unit_mainAttack_mixed[15];
 
             
 
@@ -2151,12 +2148,13 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
 
     var chm_dmg;
-    if (i > 0) {
+    if (unit_totalAttacks[i][15] !== unit_mainAttack_mixed[15]) {
     chm_dmg = ((Number((ts[j][2]*chm_chance[1])+(ts[j][1]*chm_chance[0])+(ts[j][3]*chm_chance[2]))));
       
     } else {
       chm_dmg = ((Number((unit_mainAttack_mix_split[j][2]*chm_chance[1])+(unit_mainAttack_mix_split[j][1]*chm_chance[0])+(unit_mainAttack_mix_split[j][3]*chm_chance[2]))));
-
+      
+     
     }
     
     
@@ -2229,7 +2227,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
     //aTooltip += '<div class="tttext"> ' + sDmg_scale + 'Damage modifier: ' + (unitCalculatedDmg[j][12]).toFixed(2) + ' </div>';
-    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+ts[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0) +' </td>  <td> '+(chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+' </td>  <td> '+(chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+' </td>  <td> '+Math.round(chm_dmg)+' </td> <td> '+IFERROR(Math.round(dmgApplTotal/cdSkill_list[i]),0)+' </td> <td> '+(ts[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
+    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+ts[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0) +' </td>  <td> '+(chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+' </td>  <td> '+(chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+' </td>  <td> '+Math.round(chm_dmg)+' </td> <td> '+IFERROR(Math.round(chm_dmg/cdSkill_list[i]),0)+' </td> <td> '+(ts[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
     totalSkillMod += ts[j][11];
     
    }
