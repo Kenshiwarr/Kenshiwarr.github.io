@@ -1600,21 +1600,30 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
           unit_mainAttackDPS += Math.max(Number((unit_mainAttack[unit_mainAttack_selected[i]][2]*cth)+(unit_mainAttack[unit_mainAttack_selected[i]][1]*ctc)+(unit_mainAttack[unit_mainAttack_selected[i]][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected[i]][4]/(1+unit_final_aspd)),0);
 
           let fmulti = unitCalculatedDmgSplit[unit_mainAttack[unit_mainAttack_selected[i]][15]];
+          console.log('fmulti')
+          console.log(fmulti)
           for (let j = 0, m = fmulti.length; j < m; j++) {
+            if (unit_mainAttack_mix_split[j] === undefined) {
             unit_mainAttack_mix_split[j] = ['attack1',0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false'];
+              
+            }
+
+           
 
             unit_mainAttack_mix_split[j][1] += fmulti[j][1];
-          unit_mainAttack_mix_split[j][2] += fmulti[j][2];
-          unit_mainAttack_mix_split[j][3] += fmulti[j][3];
-          unit_mainAttack_mix_split[j][4] += Number(fmulti[j][4]);
+            unit_mainAttack_mix_split[j][2] += fmulti[j][2];
+            unit_mainAttack_mix_split[j][3] += fmulti[j][3];
+            unit_mainAttack_mix_split[j][4] += Number(fmulti[j][4]);
+  
+            unit_mainAttack_mix_split[j][9] += fmulti[j][9];
+            unit_mainAttack_mix_split[j][10] += fmulti[j][10];
+            unit_mainAttack_mix_split[j][11] += fmulti[j][11];
+            unit_mainAttack_mix_split[j][12] += fmulti[j][12];
+            unit_mainAttack_mix_split[j][13] = fmulti[j][13];
+            unit_mainAttack_mix_split[j][14] = fmulti[j][14];
+            unit_mainAttack_mix_split[j][15] = unit_mainAttack_mixed[15];
 
-          unit_mainAttack_mix_split[j][9] += fmulti[j][9];
-          unit_mainAttack_mix_split[j][10] += fmulti[j][10];
-          unit_mainAttack_mix_split[j][11] += fmulti[j][11];
-          unit_mainAttack_mix_split[j][12] += fmulti[j][12];
-          unit_mainAttack_mix_split[j][13] = fmulti[j][13];
-          unit_mainAttack_mix_split[j][14] = fmulti[j][14];
-          unit_mainAttack_mix_split[j][15] = unit_mainAttack_mixed[15];
+            
 
           }
 
@@ -1628,7 +1637,8 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
       unit_mainAttack_mix_split[i][1] = unit_mainAttack_mix_split[i][1]/ma_len;
       unit_mainAttack_mix_split[i][2] = unit_mainAttack_mix_split[i][2]/ma_len;
       unit_mainAttack_mix_split[i][3] = unit_mainAttack_mix_split[i][3]/ma_len;
-      unit_mainAttack_mix_split[i][4] = unit_mainAttack_mix_split[i][4]/ma_len;
+      //unit_mainAttack_mix_split[i][4] = unit_mainAttack_mix_split[i][4];
+      unit_mainAttack_mix_split[i][4] = unit_mainAttack_mixed[4]/ma_len;
       unit_mainAttack_mix_split[i][4] = String(unit_mainAttack_mix_split[i][4])
 
       unit_mainAttack_mix_split[i][9] = unit_mainAttack_mix_split[i][9]/ma_len;
@@ -1648,6 +1658,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
       unit_mainAttack_mixed[11] = unit_mainAttack_mixed[11]/ma_len;
       unit_mainAttack_mixed[12] = unit_mainAttack_mixed[12]/ma_len;
       unit_mainAttackDPS = unit_mainAttackDPS/ma_len;
+
 
       
 
@@ -2016,32 +2027,46 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     var sDmg_critTotal;
     var sDmg_missTotal;
 
-    let ts = unit_totalAttacks[i][15]
 
+
+    let ts;
+    let tsl;
+    if (unit_totalAttacks[i][15] !== unit_mainAttack_mixed[15]) {
+      ts = unitCalculatedDmgSplit[unit_totalAttacks[i][15]]
+      tsl = unitCalculatedDmgSplit[unit_totalAttacks[i][15]].length
+    } else {
+      ts = unit_mainAttack_mix_split
+      tsl = unit_mainAttack_mix_split.length
+    }
+
+    
     
 
   if (unitCalculatedDmgSplit.length > 1) {
     
-  for (let j = 0; j < unitCalculatedDmgSplit[ts].length; j++) {
+  for (let j = 0; j < tsl; j++) {
 
-   if (((unitCalculatedDmgSplit[ts][j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (unitCalculatedDmgSplit[ts][j][7].includes(unit_totalAttacks[i][7].replace(/_END?./g, "")) === true) && (unitCalculatedDmgSplit[ts][j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(unitCalculatedDmgSplit[ts][j][2]) > 0))) {
+   if ((((ts[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (ts[j][7].includes(unit_totalAttacks[i][7].replace(/_END?./g, "")) === true) && (ts[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(ts[j][2]) > 0))) || (unit_totalAttacks[i][15] === unit_mainAttack_mixed[15])) {
     sCounter++;
     if (j>0) {
-      if ((unitCalculatedDmgSplit[ts][j][0] !== unitCalculatedDmgSplit[ts][j-1][0]) && (unitCalculatedDmgSplit[ts][j][7] !== unitCalculatedDmgSplit[ts][j-1][7]) && (unitCalculatedDmgSplit[ts][j][8] !== unitCalculatedDmgSplit[ts][j-1][8])) {
+      if ((ts[j][0] !== ts[j-1][0]) && (ts[j][7] !== ts[j-1][7]) && (ts[j][8] !== ts[j-1][8])) {
         
         sCounter = 1;
       }
     }
 
-    if (ts !== unit_mainAttack_mixed[15]) {
-      sDmg_hit = ((Number(unitCalculatedDmgSplit[ts][j][2])));
-      sDmg_crit = ((Number(unitCalculatedDmgSplit[ts][j][1])));
-      sDmg_miss = ((Number(unitCalculatedDmgSplit[ts][j][3])));
+    if (unit_totalAttacks[i][15] !== unit_mainAttack_mixed[15]) {
+      sDmg_hit = ((Number(ts[j][2])));
+      sDmg_crit = ((Number(ts[j][1])));
+      sDmg_miss = ((Number(ts[j][3])));
     } else {
       sDmg_hit = ((Number(unit_mainAttack_mix_split[j][2])));
       sDmg_crit = ((Number(unit_mainAttack_mix_split[j][1])));
       sDmg_miss = ((Number(unit_mainAttack_mix_split[j][3])));
+
     }
+
+    
 
     sDmg_hitTotal = sDmg_hit;
     sDmg_critTotal = sDmg_crit;
@@ -2050,7 +2075,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     
 
-    if ((unitCalculatedDmgSplit[ts][j][13] == 'true')) { // sure fire
+    if ((ts[j][13] == 'true')) { // sure fire
       var sfpe = target_PerfectEvaBuffUptime - 1;
       var tdc_p;
       var eepc;
@@ -2068,7 +2093,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
       sDmg_missTotal = sDmg_hitTotal;
 
-      if (unitCalculatedDmgSplit[ts][j][14] == 'true') { // force crit
+      if (ts[j][14] == 'true') { // force crit
         cth = 0
 
         
@@ -2079,7 +2104,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       ecd = tdc_p;
 
     } else {
-      if (unitCalculatedDmgSplit[ts][j][14] == 'true') { // force crit
+      if (ts[j][14] == 'true') { // force crit
         ctc = 1*(1-targetDodgeChance);
         cth = 0
 
@@ -2099,10 +2124,10 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     if (ecd === 0) {
       isSureFireNat = true;
     }
-    if (unitCalculatedDmgSplit[ts][j][13] == 'true') {
+    if (ts[j][13] == 'true') {
       isSureFire = true;
     }
-    if (unitCalculatedDmgSplit[ts][j][14] == 'true') {
+    if (ts[j][14] == 'true') {
       isForceCrit = true;
     }
     if ((isSureFire === true || isSureFireNat === true) && (isForceCrit === true)) {
@@ -2112,8 +2137,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   var sDmg_chpd = 0;
   var sDmg_mhpd = 0;
 
-    sDmg_chpd = (Math.round(Number(unitCalculatedDmgSplit[ts][j][9])))
-    sDmg_mhpd = (Math.round(Number(unitCalculatedDmgSplit[ts][j][10])))
+    sDmg_chpd = (Math.round(Number(ts[j][9])))
+    sDmg_mhpd = (Math.round(Number(ts[j][10])))
 
     if ((i > 0) && (Number(cdSkill_list[i]) !== 0) && (Number(unit_totalAttacks[i][6].split(';')[0]) < 100)) {
       skill_cd_improve = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16"> <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0"/> </svg>'
@@ -2127,7 +2152,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     var chm_dmg;
     if (i > 0) {
-    chm_dmg = ((Number((unitCalculatedDmgSplit[ts][j][2]*chm_chance[1])+(unitCalculatedDmgSplit[ts][j][1]*chm_chance[0])+(unitCalculatedDmgSplit[ts][j][3]*chm_chance[2]))));
+    chm_dmg = ((Number((ts[j][2]*chm_chance[1])+(ts[j][1]*chm_chance[0])+(ts[j][3]*chm_chance[2]))));
       
     } else {
       chm_dmg = ((Number((unit_mainAttack_mix_split[j][2]*chm_chance[1])+(unit_mainAttack_mix_split[j][1]*chm_chance[0])+(unit_mainAttack_mix_split[j][3]*chm_chance[2]))));
@@ -2204,8 +2229,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
     //aTooltip += '<div class="tttext"> ' + sDmg_scale + 'Damage modifier: ' + (unitCalculatedDmg[j][12]).toFixed(2) + ' </div>';
-    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+unitCalculatedDmgSplit[ts][j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0) +' </td>  <td> '+(chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+' </td>  <td> '+(chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+' </td>  <td> '+Math.round(chm_dmg)+' </td> <td> '+IFERROR(Math.round(dmgApplTotal/cdSkill_list[i]),0)+' </td> <td> '+(unitCalculatedDmgSplit[ts][j][11]).toFixed(2)+' </td> <td> </td> </tr>';
-    totalSkillMod += unitCalculatedDmgSplit[ts][j][11];
+    listForMultiAtkTable += '<tr class="table_extra-dark"> <td class="text-truncate"> '+ts[j][0]+' </td> <td> '+sCounter+' </td> <td> - </td> <td> - </td>  <td> '+ (chm_chance[1] > 0 ? dmgAppl[0] + mdl_redc[0]:0) +' </td>  <td> '+(chm_chance[0] > 0 ? dmgAppl[1] + mdl_redc[1]:0)+' </td>  <td> '+(chm_chance[2] > 0 ? dmgAppl[2] + mdl_redc[2]:0)+' </td>  <td> '+Math.round(chm_dmg)+' </td> <td> '+IFERROR(Math.round(dmgApplTotal/cdSkill_list[i]),0)+' </td> <td> '+(ts[j][11]).toFixed(2)+' </td> <td> </td> </tr>';
+    totalSkillMod += ts[j][11];
     
    }
 
