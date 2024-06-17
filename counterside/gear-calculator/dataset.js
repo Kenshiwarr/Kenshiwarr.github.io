@@ -405,8 +405,7 @@ const unit_gear_stats_csv = ["Equip Type","Gear Name","Slot","Employee Type","Ic
 "Normal","Loyal","Weapon","Mech","Icon_Mech_Weapon_Loyal","ATK","2","2","2","2",,,,,"2","2",,"2","2",,,"1","1","1",,,"2","2","2","2",,,,"2",,,,,,,,,"2","2","2","2",,,,"2",,,,,,,,,,
 "Normal","Devoted","Armor","Mech","Icon_Mech_Armor_Devoted","HP","2","2","2","2",,,,,"2","2",,"2","2",,,,,,,,"2","2","2","2",,,,"2",,,,"1","1","1",,,"2","2","2","2",,,,"2",,,,,,,,,,
 "Normal","Courageous","Accessory","Mech","Icon_Mech_Accessory_Courageous_1","HIT","2","2","2","2",,,,,"2","2",,"2","2",,,"1","1","1",,,"2","2","2","2",,,,"2",,,,,,,,,"2","2","2","2",,,,"2",,,,,,,,,,
-"Normal","Sincere","Accessory","Mech","Icon_Mech_Accessory_Sincere_2","EVA","2","2","2","2",,,,,"2","2",,"2","2",,,,,,,,"2","2","2","2",,,,"2",,,,,,,,,"2","2","2","2",,,,"2",,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"1","1","1",,,,,,,,,,,,,,,,,,,,
+"Normal","Sincere","Accessory","Mech","Icon_Mech_Accessory_Sincere_2","EVA","2","2","2","2",,,,,"2","2",,"2","2",,,,,,,,"2","2","2","2",,,,"2",,,,"1","1","1",,,"2","2","2","2",,,,"2",,,,,,,,,,
 ]
 
 const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Modifier","Damage Modifier","Animation Time","Attack Time Min","Attack Time Max","Damage %Current Hp","Damage %Current Hp PvP","Damage %Max Hp","Damage Modifier PvP","Maximum Hit","Valid Hit","Hits Land","Hits Air","Sure Fire","Force Crit","Force hit","Restricted to Type","Skill Cooldown","Cooldown Type","Source State Name","Source State Type'",
