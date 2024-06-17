@@ -720,12 +720,14 @@ var GearSetsListTrinity = {
           this.#eqIcon = 'cs_gears-icons/Special Gear/'+GearForType+'/' + gdis[4] +  '.png';
           if (gdis[0] !== 'Exclusive') {
           this.#mainStat[1] = GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(gdis[5])]
-            
+          $('#' + `${this.#eqSlot}` + ContainerType).attr('isExclusive','false');
           } else {
             if (ContainerType === 'Container') {
               this.#mainStat[1] = GEAR_MAIN_STATS_VALUES_T7_unit_EE;
+              $('#' + `${this.#eqSlot}` + ContainerType).attr('isExclusive','true');
           } else {
               this.#mainStat[1] = GEAR_MAIN_STATS_VALUES_T7_target_EE;
+              $('#' + `${this.#eqSlot}` + ContainerType).attr('isExclusive','true');
             }
 
           }
