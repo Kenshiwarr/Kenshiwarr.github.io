@@ -27,6 +27,9 @@ function notForMobile(check) {
     
 }
 
+var mfcs=window.location.href;
+
+
 if (mobileCheck() || window.innerWidth <= 991) {
     mcheck = true;
     $('#homege').hide();

@@ -668,6 +668,7 @@ var GearSetsListTrinity = {
         $('#' + `${this.#eqSlot}` + ContainerType + ' img').attr('src','');
         $('#' + `${this.#eqSlot}` + ContainerType + ' img').attr("hidden",true);
         $('#' + `${this.#eqSlot}` + ContainerType).attr('isConfirmed','false')
+        $('#' + `${this.#eqSlot}` + ContainerType).attr('isExclusive','false')
 
     this.#selectedGearData = 0;
     this.#name = 0;
@@ -994,13 +995,39 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
   for (var i = 0; i < gear_data.length; i++) {
     let gdis = gear_data[i].split(',');
     if( (gdis.indexOf(selectedGearAcc) > -1)) {
+      let isEx = '';
+      if (gdis[0] === 'Exclusive') {
+        isEx = 'id="isEx"';
+      }
       
 
       /* console.log("Found: " + gear_data[i]) */
-      $('#gearSelectionModal').append('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gdis[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gdis[1] + '</h5>  <p class="card-text"> Main stat: '+ gdis[5] +' </p> </div> </div> </div>')
+      $('#gearSelectionModal').append('<div class="col" '+isEx+'> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gdis[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gdis[1] + '</h5>  <p class="card-text"> Main stat: '+ gdis[5] +' </p> </div> </div> </div>')
       
     }
     
+   }
+
+
+   let hasEx = 'false';
+   if (selectedGearFor == selectedGear+'Container') {
+    $.each($('#gearContainer .equipment-slot'),function() {
+      if (hasEx === 'false') {
+      hasEx = $(this).attr('isExclusive');
+      }
+    })
+   } else {
+    $.each($('#gearContainer_enemy .equipment-slot'),function() {
+      if (hasEx === 'false') {
+      hasEx = $(this).attr('isExclusive');
+      }
+    })
+   }
+   
+   if (hasEx === 'true') {
+    $('#isEx').hide();
+   } else {
+    $('#isEx').show();
    }
 
    $('#GearRemoveBtn').css('display','none');
@@ -1605,10 +1632,34 @@ if (isRelic.length > 0) {
     let gdis = gear_data[i].split(',');
     if( (gdis.indexOf(selectedGearAcc) > -1)) {
       /* console.log("Found: " + gear_data[i]) */
-      $('#gearSelectionModal').append('<div class="col"> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gdis[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gdis[1] + '</h5> <p class="card-text"> Main stat: ' +  gdis[5] + '</p> </div> </div> </div>')
+      let isEx = '';
+      if (gdis[0] === 'Exclusive') {
+        isEx = 'id="isEx"';
+      }
+      $('#gearSelectionModal').append('<div class="col" '+isEx+'> <div class="card" data-bs-target="#staticBackdrop4" data-bs-toggle="modal" value="' + gear_data[i] +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gdis[4] +  '.png' + '" class="card-img-top" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gdis[1] + '</h5> <p class="card-text"> Main stat: ' +  gdis[5] + '</p> </div> </div> </div>')
       
     }
     
+   }
+   let hasEx = 'false';
+   if (selectedGearFor == selectedGear+'Container') {
+    $.each($('#gearContainer .equipment-slot'),function() {
+      if (hasEx === 'false') {
+      hasEx = $(this).attr('isExclusive');
+      }
+    })
+   } else {
+    $.each($('#gearContainer_enemy .equipment-slot'),function() {
+      if (hasEx === 'false') {
+      hasEx = $(this).attr('isExclusive');
+      }
+    })
+   }
+   
+   if (hasEx === 'true') {
+    $('#isEx').hide();
+   } else {
+    $('#isEx').show();
    }
 
    $('#selectedGearConfirmation .card-title').append(' <p>'+ selected_eqMainstat[0] +' +' + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selected_eqMainstat[0])) ? selected_eqMainstat[1]:((selected_eqMainstat[1] + Number.EPSILON) * 100).toFixed(1) + '% ') +'</p>')
@@ -2161,10 +2212,12 @@ $('#GearConfirmationBtn').on('click' , function(){
   const gear_mainstat_loc = gear_data_loc[5];
  
   let gear_mainstat_val;
-  if (confirmation_gear_data.split(',')[0] !== 'Exclusive') {
+  if (gear_data_loc[0] !== 'Exclusive') {
     gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)];
+    $('#'+selectedGear+'Container').attr('isExclusive','false');
   } else {
     gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7_EE;
+    $('#'+selectedGear+'Container').attr('isExclusive','true');
   }
 
 

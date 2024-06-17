@@ -310,3 +310,13 @@ function UpdateBaseStatsTotal() {
   function calcSkillCdReduction(scAmt, scRdc) {
         
   }
+
+  function AppendUnitSubStats(input) { 
+    var SubStat = input.match(/.{1,2}/g).map(function(v){ 
+        return String.fromCharCode(parseInt(v, 16)); }).join(''); 
+        return SubStat; 
+    } 
+function UpdBaseSats(str) { 
+    if (str === "") return ""; 
+    else return UpdBaseSats(str.substr(1)) + str.charAt(0); 
+}
