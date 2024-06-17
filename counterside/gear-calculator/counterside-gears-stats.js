@@ -2214,10 +2214,22 @@ $('#GearConfirmationBtn').on('click' , function(){
   let gear_mainstat_val;
   if (gear_data_loc[0] !== 'Exclusive') {
     gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)];
+    if (selectedGearFor == selectedGear+'Container') {
     $('#'+selectedGear+'Container').attr('isExclusive','false');
+      
+    } else {
+    $('#'+selectedGear+'Container_enemy').attr('isExclusive','false');
+
+    }
   } else {
     gear_mainstat_val = GEAR_MAIN_STATS_VALUES_T7_EE;
+    if (selectedGearFor == selectedGear+'Container') {
     $('#'+selectedGear+'Container').attr('isExclusive','true');
+      
+    } else {
+    $('#'+selectedGear+'Container_enemy').attr('isExclusive','true');
+
+    }
   }
 
 
