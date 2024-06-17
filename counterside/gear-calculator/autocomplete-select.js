@@ -184,6 +184,12 @@ var skillCdImprove = [];
             }
             window[statval] += 0.306
             break;
+            case 'Delta Seven Kyle Wong':
+              if (eestat === true) {
+                eeinf += '"Exclusive,Tactical Comms Gear,Accessory,Counter,Icon_Counter_Accessory_Tactical Comms Gear_EE,ASPD,,,,,,,,,2,1;2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
+              }
+              window[statval] += 0.306
+              break;
 
           default:
             
@@ -1000,17 +1006,18 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
         
         if (
           ((uatkd[19] !== '01') && (Number(uatkd[3]) !== 0) &&
-          ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0))) /* || ((unit_attack_data[i].split(',')[20].toLowerCase().includes('start') === true) && (unit_attack_data[i].split(',')[3] != 0)) */
+          ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0))) /* || ((uatkd[20].toLowerCase().includes('start') === true) && (uatkd[3] != 0)) */
            && 
-          ((unit_attack_data[i].split(',')[12].toLowerCase() === 'true' && enemy_movement_type === 'Ground') || 
-           ((unit_attack_data[i].split(',')[13].toLowerCase() === 'true' && enemy_movement_type === 'Air')) || (unit_attack_data[i].split(',')[0].includes('air') === true && enemy_movement_type === 'Air') ||
-            (unit_attack_data[i].split(',')[20].toLowerCase().includes('air') === true && enemy_movement_type === 'Air'))
+          ((uatkd[12].toLowerCase() === 'true' && enemy_movement_type === 'Ground') || 
+           ((uatkd[13].toLowerCase() === 'true' && enemy_movement_type === 'Air')) || (uatkd[0].includes('air') === true && enemy_movement_type === 'Air') ||
+            (uatkd[20].toLowerCase().includes('air') === true && enemy_movement_type === 'Air') || ((uatkd[13].toLowerCase() === 'false') && (uatkd[12].toLowerCase() === 'false')
+          && Number(uatkd[1]) == 0))
            ) {
           
 
               
-         /*  var hitsLand = unit_attack_data[i].split(',')[12].toLowerCase();
-          var hitsAir = unit_attack_data[i].split(',')[13].toLowerCase(); */
+         /*  var hitsLand = uatkd[12].toLowerCase();
+          var hitsAir = uatkd[13].toLowerCase(); */
           var ifSureFire = uatkd[14].toLowerCase();
           var ifForceCrit = uatkd[15].toLowerCase();
           var validHitAmt = uatkd[11];
@@ -1195,10 +1202,10 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
             
             
             /* if (sdcurrhpd >= enemy_mdl) {
-              sdcurrhpd = enemy_mdl+((enemy_HP*(unit_attack_data[i].split(',')[7]*attack1_mod))*0.04);
+              sdcurrhpd = enemy_mdl+((enemy_HP*(uatkd[7]*attack1_mod))*0.04);
             } 
             if (sdcurrhpd >= enemy_mdl) {
-              sdmaxhpd = enemy_mdl+((enemy_HP*(unit_attack_data[i].split(',')[8]*attack1_mod))*0.04);
+              sdmaxhpd = enemy_mdl+((enemy_HP*(uatkd[8]*attack1_mod))*0.04);
             } 
              */
             
@@ -1603,10 +1610,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
           console.log('fmulti')
           console.log(fmulti)
           for (let j = 0, m = fmulti.length; j < m; j++) {
-            unit_mainAttack_mix_split.push(['attack1',0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false']);
+            unit_mainAttack_mix_split.push([fmulti[j][0],0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false']);
 
            
-
             unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][1] += fmulti[j][1];
             unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][2] += fmulti[j][2];
             unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][3] += fmulti[j][3];
