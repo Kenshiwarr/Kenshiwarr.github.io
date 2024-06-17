@@ -451,7 +451,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         enemy_cat3_res += bonus_stats[71];
       }
 
-      enemy_cat1_res = Math.max(enemy_cat1_res - unit_bonus_stats[63],0);
+      //enemy_cat1_res = Math.max(enemy_cat1_res - unit_bonus_stats[63],0);
 
 
 
