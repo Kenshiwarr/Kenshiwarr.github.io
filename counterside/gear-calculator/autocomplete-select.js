@@ -2358,7 +2358,7 @@ if (sCounter > 1) {
       if (IFERROR(Number(sciAmt),1) <= 1) {
         sciAmt = 1;
       }
-      if (IFERROR(Number(sciRdc),0) <= 0) {
+      if (IFERROR(Number(sciRdc),0) === 0) {
         sciRdc = Number(cdSkill_list[i]);
       }
 
