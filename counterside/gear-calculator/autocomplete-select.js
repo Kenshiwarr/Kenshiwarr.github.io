@@ -1835,7 +1835,7 @@ let sci_sAmp = 1;
  
 var ifApplySci = [];
 
-$(document).find("*").off('.sci')
+//$(document).find("*").off('.sci')
     
 if (unit_mainAttack.length > 0) {
  
