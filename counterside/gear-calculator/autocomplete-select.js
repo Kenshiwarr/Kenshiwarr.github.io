@@ -1005,7 +1005,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
         let uatkd = unit_attack_data[i].split(',');
         
         if (
-          ((uatkd[19] !== '01') && (Number(uatkd[3]) !== 0) &&
+          ((uatkd[19] !== '01' || uatkd[19] !== '-1') && (Number(uatkd[3]) !== 0) &&
           ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0))) /* || ((uatkd[20].toLowerCase().includes('start') === true) && (uatkd[3] != 0)) */
            && 
           ((uatkd[12].toLowerCase() === 'true' && enemy_movement_type === 'Ground') || 
@@ -1295,7 +1295,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
 
       
 
-      console.log(enemy_DEF_percent + ', ' +unit_def_pen+ ', '+cat1_dmg+ ', '+(enemy_cat1_res/100)+ ', '+cat2_dmg+ ', '+(enemy_cat2_res/100) +', '+cat3_dmg+ ', '+enemy_cat3_res+ ', ')
+      //console.log(enemy_DEF_percent + ', ' +unit_def_pen+ ', '+cat1_dmg+ ', '+(enemy_cat1_res/100)+ ', '+cat2_dmg+ ', '+(enemy_cat2_res/100) +', '+cat3_dmg+ ', '+enemy_cat3_res+ ', ')
 
       /* switch (unit_data[0] + ' ' + unit_data[1]) {
         case value:
@@ -1399,7 +1399,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
           if ((String(unitCalculatedDmgTotal[i][0]).includes('phasechange') === false) && unitCalculatedDmgTotal[i][11] > 0) {
           
           if (i>0) {
-            if ((unitCalculatedDmgTotal[i][1] !== unitCalculatedDmgTotal[i-1][1]) && (unitCalculatedDmgTotal[i][2] !== unitCalculatedDmgTotal[i-1][2]) && (unitCalculatedDmgTotal[i][3] !== unitCalculatedDmgTotal[i-1][3])) {
+            if ((Math.floor(unitCalculatedDmgTotal[i][1]) !== Math.floor(unitCalculatedDmgTotal[i-1][1])) && (Math.floor(unitCalculatedDmgTotal[i][2]) !== Math.floor(unitCalculatedDmgTotal[i-1][2])) && (Math.floor(unitCalculatedDmgTotal[i][3]) !== Math.floor(unitCalculatedDmgTotal[i-1][3]))) {
+              unit_mainAttack_ground.push(unitCalculatedDmgTotal[i])
+            } else if ((unitCalculatedDmgTotal[i][4] !== unitCalculatedDmgTotal[i-1][4]) || ((unitCalculatedDmgTotal[i][13] !== unitCalculatedDmgTotal[i-1][13]) || (unitCalculatedDmgTotal[i][14] !== unitCalculatedDmgTotal[i-1][14]))) {
               unit_mainAttack_ground.push(unitCalculatedDmgTotal[i])
             }
             
@@ -1407,6 +1409,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
             unit_mainAttack_ground.push(unitCalculatedDmgTotal[i])
           }
           }
+          
         }
         
 
@@ -1530,7 +1533,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
         let ecd;
         let ma_len = unit_mainAttack_selected.length;
         var unit_mainAttack_mix_split = [];
-        var unit_mainAttack_mixed = ['attack1',0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false','0'];
+        var unit_mainAttack_mixed = ['attack1',0,0,0,0,'0','0','USN_ATTACK','NST_ATTACK',0,0,0,0,'false','false',unit_mainAttack_selected[unit_mainAttack_selected.length-1]];
         var unit_mainAttackDPS = 0;
 
 
@@ -1661,8 +1664,6 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
       console.log(unit_mainAttack_mixed);
       console.log(unit_mainAttack_mix_split)
       //console.log(unit_mainAttackDPS);
-
-      console.log(compareArrays(unit_mainAttack_mixed,unit_mainAttack_mix_split[0]))
 
 
 var Total_Unit_DPS = 0;
@@ -2111,6 +2112,14 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       ecd = targetDodgeChance;
 
     }
+    
+    if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'Valentinus Monastery Agnes Abigail') && (ts[j][0] === 'attack_mark')) {
+      console.log((unit_mainAttack_mix_split.some((e, id, arr) => arr[id][0] == 'attack_mark')))
+      console.log('unit_mainAttack_selected')
+      sDmg_crit += (enemy_HP*0.03);
+      sDmg_hit += (enemy_HP*0.03);
+      sDmg_miss += (enemy_HP*0.03);
+    }
 
     if (sDmg_crit >= enemy_mdl) {
       sDmg_crit = enemy_mdl+(((sDmg_crit-enemy_mdl))*0.04);
@@ -2126,6 +2135,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   
 
     chm_chance = [ctc,cth,ecd];
+
+    
 
     
     sDmg_hitTotal = sDmg_hit;
