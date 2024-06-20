@@ -66,6 +66,43 @@ var skillCdImprove = [];
 }); */
 
 
+/* var tch = unit_dps_stats_csv;
+let tkd = 0;
+
+let kfin = '';
+let kfd = [];
+
+for (let i = 28, n = tch.length; i < n; i++) {
+ 
+  if ((tkd % 23) === 0) {
+    tch[i] = 'false';
+    tch[i+1] = 'false';
+  }
+  tkd++
+}
+
+for (let i = 0, n = tch.length; i < n; i++) {
+  
+  if (i % 23 === 0) {
+    kfd.push(kfin)
+    kfin = '"'+ tch[i] + '",';
+  } else {
+    kfin += '"'+ tch[i] + '",';
+  }
+}
+
+
+
+
+let csvContent = "data:text/csv;charset=utf-8," + kfd.join("\n");
+
+var encodedUri = encodeURI(csvContent);
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+link.setAttribute("download", "my_data.csv");
+document.body.appendChild(link); // Required for FF
+
+link.click(); // This will download the data file named "my_data.csv". */
 
 
 
@@ -913,7 +950,14 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         var skill1_aoe_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
         var hyper1_aoe_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
         
+        var attack1_mod_true = (Math.max((Math.min(1-(enemy_DEF*0),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),1))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var skill1_mod_true = (Math.max((Math.min(1-(enemy_DEF*0),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),1))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var hyper1_mod_true = (Math.max((Math.min(1-(enemy_DEF*0),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),1))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
 
+        var attack1_aoe_mod_true = (Math.max((Math.min(1-(enemy_DEF*0),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),1))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var skill1_aoe_mod_true = (Math.max((Math.min(1-(enemy_DEF*0),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),1))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        var hyper1_aoe_mod_true = (Math.max((Math.min(1-(enemy_DEF*0),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),1))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        
         
         
         var RestrictedtoType;
@@ -994,27 +1038,27 @@ if (Object.prototype.toString.call(unit_mainAttack_selected) !== '[object Array]
 
 
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && (unit_mainAttack_selected.indexOf(1) > -1)) {
-  unit_attack_data.push("freeze_loop,1,0.5,1,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
+  unit_attack_data.push("freeze_loop,1,0.5,1,false,false,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
 }
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Friede')) {
-  unit_attack_data.splice(1,0,"attack2,1.2,0.92,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,0,102,USN_ATTACK2,0");
-  unit_attack_data.splice(2,0,"attack_air2,1.2,0.92,2.00,0.03333333333,1,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,0,102,USN_ATTACK2_AIR,0");
+  unit_attack_data.splice(1,0,"attack2,1.2,0.92,2.00,false,false,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,0,102,USN_ATTACK2,0");
+  unit_attack_data.splice(2,0,"attack_air2,1.2,0.92,2.00,false,false,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,0,102,USN_ATTACK2_AIR,0");
 }
       
       for (let i = 0; i < unit_attack_data.length; i++) {
         let uatkd = unit_attack_data[i].split(',');
         
-        if (
-          ((uatkd[19] !== '01' || uatkd[19] !== '-1') && (Number(uatkd[3]) !== 0) &&
-          ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0))) /* || ((uatkd[20].toLowerCase().includes('start') === true) && (uatkd[3] != 0)) */
-           && 
-          ((uatkd[12].toLowerCase() === 'true' && enemy_movement_type === 'Ground') || 
+        if (((uatkd[19] !== '01' && uatkd[19] !== '-1') && (Number(uatkd[3]) !== 0)) && ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0)) && 
+          (((uatkd[12].toLowerCase() === 'true' && enemy_movement_type === 'Ground') || 
            ((uatkd[13].toLowerCase() === 'true' && enemy_movement_type === 'Air')) || (uatkd[0].includes('air') === true && enemy_movement_type === 'Air') ||
             (uatkd[20].toLowerCase().includes('air') === true && enemy_movement_type === 'Air') || ((uatkd[13].toLowerCase() === 'false') && (uatkd[12].toLowerCase() === 'false')
-          && Number(uatkd[1]) == 0))
+          && Number(uatkd[1]) == 0)))
            ) {
           
 
+            console.log('uat_19')
+            console.log(uatkd[19])
+            console.log(uatkd[19] !== '01')
               
          /*  var hitsLand = uatkd[12].toLowerCase();
           var hitsAir = uatkd[13].toLowerCase(); */
@@ -1031,34 +1075,69 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
           var srcName = uatkd[20];
           var srcType = uatkd[21];
           var dmgMod = 1;
+
+          var isTrueDmg = uatkd[4];
+          var asc = uatkd[5]; // used for nothing currently
+
+          
           if (i < unit_attack_data.length) {
             var source_dmg = 0;
-            if (srcType === 'NST_ATTACK') {
-              if (Number(validHitAmt) > 1) {
-                dmgMod = attack1_aoe_mod;
+            if (isTrueDmg === 'false') {
+              if (srcType === 'NST_ATTACK') {
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = attack1_aoe_mod;
+                } else {
+                  dmgMod = attack1_mod;
+                }
+                
+              } else if (srcType === 'NST_SKILL') {
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = skill1_aoe_mod;
+                } else {
+                  dmgMod = skill1_mod;
+                }
+              } else if (srcType === 'NST_HYPER') {
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = hyper1_aoe_mod;
+                } else {
+                  dmgMod = hyper1_mod;
+                }
               } else {
-                dmgMod = attack1_mod;
-              }
-              
-            } else if (srcType === 'NST_SKILL') {
-              if (Number(validHitAmt) > 1) {
-                dmgMod = skill1_aoe_mod;
-              } else {
-                dmgMod = skill1_mod;
-              }
-            } else if (srcType === 'NST_HYPER') {
-              if (Number(validHitAmt) > 1) {
-                dmgMod = hyper1_aoe_mod;
-              } else {
-                dmgMod = hyper1_mod;
-              }
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = attack1_aoe_mod;
+                } else {
+                  dmgMod = attack1_mod;
+                }
+              };
             } else {
-              if (Number(validHitAmt) > 1) {
-                dmgMod = attack1_aoe_mod;
+              if (srcType === 'NST_ATTACK') {
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = attack1_aoe_mod_true;
+                } else {
+                  dmgMod = attack1_mod_true;
+                }
+                
+              } else if (srcType === 'NST_SKILL') {
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = skill1_aoe_mod_true;
+                } else {
+                  dmgMod = skill1_mod_true;
+                }
+              } else if (srcType === 'NST_HYPER') {
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = hyper1_aoe_mod_true;
+                } else {
+                  dmgMod = hyper1_mod_true;
+                }
               } else {
-                dmgMod = attack1_mod;
-              }
-            };
+                if (Number(validHitAmt) > 1) {
+                  dmgMod = attack1_aoe_mod_true;
+                } else {
+                  dmgMod = attack1_mod_true;
+                }
+              };
+            }
+            
             var scaleMod;
             if (uatkd[9] == 0) {
               scaleMod = (uatkd[2])*(uatkd[1]);
@@ -1092,6 +1171,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
             var sd_anim = uatkd[3];
             var sd_cd = uatkd[18];
             var sd_cdtype = uatkd[19];
+
+
+            
             /* if (((ifForceCrit == 'false') && (ifSureFire == 'false')) && (sd_cdtype != '23') ) {
               if (source_dmg*crit_multiplier >= enemy_mdl) {
                 sdcrit = enemy_mdl+(((source_dmg*crit_multiplier-enemy_mdl))*0.04);
@@ -1198,15 +1280,15 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
              */
             
            
-            unitCalculatedDmg[i] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim, sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
+            unitCalculatedDmg[i] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit, isTrueDmg];
             unitCalculatedDmgSplit[i] = [];
             
             if (i === 0) {
               ucd_counter = 0;
-             unitCalculatedDmgSplit[i][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
+             unitCalculatedDmgSplit[i][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit, isTrueDmg];
 
               //unitCalculatedDmgSplit[i][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
-              unitCalculatedDmgTotal[i] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
+              unitCalculatedDmgTotal[i] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit, isTrueDmg];
             } else if ((unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][0] === unitCalculatedDmg[i][0]) && (unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][8] === unitCalculatedDmg[i][8]) 
             && ((unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][7] === unitCalculatedDmg[i][7]) || 
             (unitCalculatedDmg[i][7].toLowerCase().includes('end')))) {
@@ -1224,6 +1306,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
               unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][12] = dmgMod;
               unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][13] = ifSureFire;
               unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][14] = ifForceCrit;
+              unitCalculatedDmgTotal[unitCalculatedDmgTotal.length-1][15] = isTrueDmg;
               
               
               
@@ -1232,15 +1315,15 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
               
               
               //unitCalculatedDmgSplit[i][ucd_counter] = ucd_counter;
-             unitCalculatedDmgSplit[i-ucd_counter][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
+             unitCalculatedDmgSplit[i-ucd_counter][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit, isTrueDmg];
 
 
             } else {
               ucd_counter = 0;
-             // unitCalculatedDmgSplit[i][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
-             unitCalculatedDmgSplit[i][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
+             
+              unitCalculatedDmgSplit[i][ucd_counter] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit, isTrueDmg];
 
-              unitCalculatedDmgTotal[i] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit];
+              unitCalculatedDmgTotal[i] = [source_dmg_name,sdcrit,sdhit,sdmiss,sd_anim,sd_cd,sd_cdtype, srcName, srcType, sdcurrhpd, sdmaxhpd, scaleMod, dmgMod, ifSureFire, ifForceCrit, isTrueDmg];
               
 
             }
@@ -1264,14 +1347,19 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
       unitCalculatedDmgSplit = unitCalculatedDmgSplit.filter(function(val){return val.length !== 0});
 
 
+
+
       for (let i = 0, n = unitCalculatedDmgTotal.length; i < n; i++) {
         unitCalculatedDmgTotal[i].push(i)
       }
+      const ucDT_len = (unitCalculatedDmgTotal[0].length-1);
 
       console.log(unitCalculatedDmg);
 
       console.log(unitCalculatedDmgTotal);
       console.log(unitCalculatedDmgSplit);
+
+      console.log(ucDT_len)
 
       /* for (let i = 0, n = unitCalculatedDmgTotal.length; i < n; i++) {
             if ((skillCdImprove.length > 0) && (skillCdImprove[i-1] != undefined)) { 
@@ -1582,7 +1670,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
           unit_mainAttack_mixed[0] = unit_mainAttack[unit_mainAttack_selected[i]][0];
           unit_mainAttack_mixed[7] = unit_mainAttack[unit_mainAttack_selected[i]][7];
           unit_mainAttack_mixed[8] = unit_mainAttack[unit_mainAttack_selected[i]][8];
-          unit_mainAttack_mixed[15] = unit_mainAttack[unit_mainAttack_selected[i]][15];
+          unit_mainAttack_mixed[ucDT_len] = unit_mainAttack[unit_mainAttack_selected[i]][ucDT_len];
         }
         
           unit_mainAttack_mixed[1] += unit_mainAttack[unit_mainAttack_selected[i]][1];
@@ -1597,7 +1685,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
 
           //unit_mainAttackDPS += Math.max(Number((unit_mainAttack[unit_mainAttack_selected[i]][2]*cth)+(unit_mainAttack[unit_mainAttack_selected[i]][1]*ctc)+(unit_mainAttack[unit_mainAttack_selected[i]][3]*ecd))/(unit_mainAttack[unit_mainAttack_selected[i]][4]/(1+unit_final_aspd)),0);
 
-          let fmulti = unitCalculatedDmgSplit[unit_mainAttack[unit_mainAttack_selected[i]][15]];
+          let fmulti = unitCalculatedDmgSplit[unit_mainAttack[unit_mainAttack_selected[i]][ucDT_len]];
           console.log('fmulti')
           console.log(fmulti)
           for (let j = 0, m = fmulti.length; j < m; j++) {
@@ -1615,7 +1703,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
             unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][12] += fmulti[j][12];
             unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][13] = fmulti[j][13];
             unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][14] = fmulti[j][14];
-            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][15] = unit_mainAttack_mixed[15];
+            unit_mainAttack_mix_split[unit_mainAttack_mix_split.length-1][ucDT_len] = unit_mainAttack_mixed[ucDT_len];
 
             
 
@@ -1914,7 +2002,7 @@ if (unit_mainAttack.length > 0) {
     sSmodifiers[i] = 1;
     var cdskill = 0;
   var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd));
-  if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && (unit_totalAttacks[i][6] !== '01')) && unit_totalAttacks[i][6] !== '22') {
+  if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && ((unit_totalAttacks[i][6] !== '01') || (unit_totalAttacks[i][6] !== '-1'))) && unit_totalAttacks[i][6] !== '22') {
     cdskill = ((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
     //  cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5]));
     if (i===0) {
@@ -2030,9 +2118,9 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     let ts;
     let tsl;
-    if (unit_totalAttacks[i][15] !== unit_mainAttack_mixed[15]) {
-      ts = unitCalculatedDmgSplit[unit_totalAttacks[i][15]]
-      tsl = unitCalculatedDmgSplit[unit_totalAttacks[i][15]].length
+    if (unit_totalAttacks[i][ucDT_len] !== unit_mainAttack_mixed[ucDT_len]) {
+      ts = unitCalculatedDmgSplit[unit_totalAttacks[i][ucDT_len]]
+      tsl = unitCalculatedDmgSplit[unit_totalAttacks[i][ucDT_len]].length
     } else {
       ts = unit_mainAttack_mix_split
       tsl = unit_mainAttack_mix_split.length
@@ -2045,7 +2133,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     
   for (let j = 0; j < tsl; j++) {
 
-   if ((((ts[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (ts[j][7].includes(unit_totalAttacks[i][7].replace(/_END?./g, "")) === true) && (ts[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(ts[j][2]) > 0))) || (unit_totalAttacks[i][15] === unit_mainAttack_mixed[15])) {
+   if ((((ts[j][0].indexOf(unit_totalAttacks[i][0]) > -1) && (ts[j][7].includes(unit_totalAttacks[i][7].replace(/_END?./g, "")) === true) && (ts[j][8].indexOf(unit_totalAttacks[i][8]) > -1) && (Number(ts[j][2]) > 0))) || (unit_totalAttacks[i][ucDT_len] === unit_mainAttack_mixed[ucDT_len])) {
     sCounter++;
     if (j>0) {
       if ((ts[j][0] !== ts[j-1][0]) && (ts[j][7] !== ts[j-1][7]) && (ts[j][8] !== ts[j-1][8])) {
@@ -2054,7 +2142,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       }
     }
 
-    if (unit_totalAttacks[i][15] !== unit_mainAttack_mixed[15]) {
+    if (unit_totalAttacks[i][ucDT_len] !== unit_mainAttack_mixed[ucDT_len]) {
       sDmg_hit = ((Number(ts[j][2])));
       sDmg_crit = ((Number(ts[j][1])));
       sDmg_miss = ((Number(ts[j][3])));
@@ -3068,6 +3156,8 @@ function autocomplete(inp, arr) {
                 var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
                 var udpst = '';
 
+
+              
 
                 if (udpsid.length != 0) {
 
