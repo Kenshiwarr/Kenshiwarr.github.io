@@ -999,7 +999,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       }
 
 
-      var chance_to_crit = CRIT_pc*(1-targetDodgeChance);
+     /*  var chance_to_crit = CRIT_pc*(1-targetDodgeChance);
       var chance_to_hit = 1-chance_to_crit-targetDodgeChance;
       var enemy_chance_to_dodge = targetDodgeChance;
 
@@ -1007,7 +1007,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         chance_to_crit = CRIT_pc;
         chance_to_hit = 1-chance_to_crit;
         enemy_chance_to_dodge = 0;
-      }
+      } */
 
       
       
@@ -1511,8 +1511,8 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
 
 
             var attacksToProc = (4*Number(unit_mainAttack_ground[0][4])/3)/(1+unit_final_aspd);
-           // var JSY_Attack2CD = 4+attacksToProc/(1+(Math.sqrt(chance_to_crit)))*2;
-           var JSY_Attack2CD = IFERROR(4+attacksToProc/((Math.sqrt(chance_to_crit))),0);
+           // var JSY_Attack2CD = 4+attacksToProc/(1+(Math.sqrt(CRIT_pc*(1-targetDodgeChance))))*2;
+           var JSY_Attack2CD = IFERROR(4+attacksToProc/((Math.sqrt(CRIT_pc*(1-targetDodgeChance)))),0);
 
             
               
@@ -2201,7 +2201,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
     
-    if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'Valentinus Monastery Agnes Abigail') && (ts[j][0] === 'attack_mark')) {
+    if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'Valentinus Monastery Agnes Abigail') && (ts[j][0] === 'attack_mark')) { // agnes partial/non-partial check if marked
       console.log((unit_mainAttack_mix_split.some((e, id, arr) => arr[id][0] == 'attack_mark')))
       console.log('unit_mainAttack_selected')
       sDmg_crit += (enemy_HP*0.03);
@@ -4251,7 +4251,7 @@ for (let i = 0, n = target_extra_bonus_stats.length; i < n; i++) {
 
 }
 
-UpdateBaseStatsTotal()
+//UpdateBaseStatsTotal()
 
 function SaveSessionToLocalStorage() {
 
