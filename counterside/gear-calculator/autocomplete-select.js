@@ -227,6 +227,12 @@ link.click(); // This will download the data file named "my_data.csv". */
               }
               window[statval] += 0.306
               break;
+            case 'Fallen Hawk Rosaria le Friede':
+              if (eestat === true) {
+                eeinf += '"Exclusive,Throne of Ashes,Accessory,Counter,Icon_Counter_Accessory_Throne of Ashes_EE,HIT,,,,,,,,,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,1;2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
+              }
+              window[statval] += 291
+              break;
 
           default:
             
