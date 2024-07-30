@@ -137,7 +137,7 @@ const units_stats_csv = ["Name","HP","ATK","DEF","CRIT","HIT","EVA","Icon","Empl
 "Yeoksam Residents' Association Kim Chulsoo","9277","543","668","139","279","247","Icon_Kim Chulsoo_Yeoksam Residents' Association","Counter","Defender","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.08",,,,,,,,,,,,,,,,,,
 "ALT Squad Kim Sobin","5409","1167","181","924","505","154","Icon_Kim Sobin_ALT Squad","Counter","Ranger","Ground","1",,,,,,,,,,,,,,,,,"0.4","0.4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Kostroma Mavka","8165","1457","292","1337","635","321","Icon_Mavka_Kostroma","Counter","Ranger","Air","1",,,,"0.2",,,,,,,,,,,,,,,,,,"1.6",,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,"0.3",,,,,,,,,,,
-"Kubera Alice Braidwood","9561","953","255","424","581","1180","Icon_Alice Braidwood_Kubera","Counter","Ranger","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,
+"Kubera Alice Braidwood","5495","1230","71","1530","861","210","Icon_Alice Braidwood_Kubera","Counter","Ranger","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,
 "Delta Seven Kyle Wong","5229","974","95","1094","819","280","Icon_Kyle Wong_Delta Seven","Counter","Ranger","Ground","1",,"0.12",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Canary Squad Laika","6592","889","210","867","819","355","Icon_Laika_Canary Squad","Soldier","Ranger","Ground","1","0.1",,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.15",,,,,,,,
 "ESPR Lamda Spatari","7339","1431","205","1064","1114","578","Icon_Lamda Spatari_ESPR","Counter","Ranger","Ground","1",,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
