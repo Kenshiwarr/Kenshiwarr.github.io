@@ -385,7 +385,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
     let usg = TargetStatGrowth;
 
     
-    if (unit_level < 100) {
+    if (unit_level <= 100) {
       limit_fusion = 0;
       limit_fusion_2 = 0;
      } else if (unit_level <= 102) {
@@ -422,6 +422,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       limit_fusion = 0;
       limit_fusion_2 = 0;
      }
+     
 
 
     let lvlMod = 1.3*(1+limit_fusion*0.02)*(1+limit_fusion_2*0.02)*1.02;

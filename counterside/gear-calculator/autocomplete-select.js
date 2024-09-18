@@ -624,7 +624,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       usg = UnitStatGrowth_PvE;
      }
 
-     if (unit_level < 100) {
+     if (unit_level <= 100) {
       limit_fusion = 0;
       limit_fusion_2 = 0;
      } else if (unit_level <= 102) {
