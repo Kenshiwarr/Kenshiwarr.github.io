@@ -624,52 +624,44 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       usg = UnitStatGrowth_PvE;
      }
 
-     switch (unit_level) {
-      case 102:
-        limit_fusion = 1;
-        limit_fusion_2 = 0;
-        break;
-      case 104:
-        limit_fusion = 2;
-        limit_fusion_2 = 0;
-        break;
-      case 106:
-        limit_fusion = 3;
-        limit_fusion_2 = 0;
-        break;
-      case 108:
-        limit_fusion = 4;
-        limit_fusion_2 = 0;
-        break;
-      case 110:
-        limit_fusion = 5;
-        limit_fusion_2 = 0;
-        break;
-      case 112:
-        limit_fusion = 5;
-        limit_fusion_2 = 1;
-        break;
-      case 114:
-        limit_fusion = 5;
-        limit_fusion_2 = 2;
-        break;
-      case 116:
-        limit_fusion = 5;
-        limit_fusion_2 = 3;
-        break;
-      case 118:
-        limit_fusion = 5;
-        limit_fusion_2 = 4;
-        break;
-      case 120:
-        limit_fusion = 5;
-        limit_fusion_2 = 5;
-        break;
-      default:
-        limit_fusion = 0;
-        limit_fusion_2 = 0;
-        break;
+     if (unit_level < 100) {
+      limit_fusion = 0;
+      limit_fusion_2 = 0;
+     } else if (unit_level <= 102) {
+      limit_fusion = 1;
+      limit_fusion_2 = 0;
+     } else if (unit_level <= 104) { 
+      limit_fusion = 2;
+      limit_fusion_2 = 0;
+     } else if (unit_level <= 106) { 
+      limit_fusion = 3;
+      limit_fusion_2 = 0;
+     } else if (unit_level <= 108) { 
+      limit_fusion = 4;
+      limit_fusion_2 = 0;
+     } else if (unit_level <= 110) { 
+      limit_fusion = 5;
+      limit_fusion_2 = 0;
+     } else if (unit_level <= 112) { 
+      limit_fusion = 5;
+      limit_fusion_2 = 1;
+     } else if (unit_level <= 114) { 
+      limit_fusion = 5;
+      limit_fusion_2 = 2;
+     } else if (unit_level <= 116) { 
+      limit_fusion = 5;
+      limit_fusion_2 = 3;
+     } else if (unit_level <= 118) { 
+      limit_fusion = 5;
+      limit_fusion_2 = 4;
+     } else if (unit_level <= 120) { 
+      limit_fusion = 5;
+      limit_fusion_2 = 5;
+     } else {
+      limit_fusion = 0;
+      limit_fusion_2 = 0;
      }
+
      let lvlMod = 1.3*(1+limit_fusion*0.02)*(1+limit_fusion_2*0.02)*1.02;
 
      unit_base_hp = ((Number(unit_data[2])+usg[0]*(unit_level-1))*lvlMod);
