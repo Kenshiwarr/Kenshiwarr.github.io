@@ -378,18 +378,86 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
     console.log('bonus_stats = ' + bonus_stats)
 
     
+    let unit_level = TargetLevel;
+    let limit_fusion = 0;
+    let limit_fusion_2 = 0;
 
+    let usg = TargetStatGrowth;
 
     
-      target_hp = Number(target_data[2])*(1+bonus_stats_gear_set[6] + bonus_stats[6]) + (bonus_stats[0]*0.1);
-      target_atk = Number(target_data[3])*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1);
-      target_def = Number(target_data[4])*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
+    switch (unit_level) {
+     case 102:
+       limit_fusion = 1;
+       limit_fusion_2 = 0;
+       break;
+     case 104:
+       limit_fusion = 2;
+       limit_fusion_2 = 0;
+       break;
+     case 106:
+       limit_fusion = 3;
+       limit_fusion_2 = 0;
+       break;
+     case 108:
+       limit_fusion = 4;
+       limit_fusion_2 = 0;
+       break;
+     case 110:
+       limit_fusion = 5;
+       limit_fusion_2 = 0;
+       break;
+     case 112:
+       limit_fusion = 5;
+       limit_fusion_2 = 1;
+       break;
+     case 114:
+       limit_fusion = 5;
+       limit_fusion_2 = 2;
+       break;
+     case 116:
+       limit_fusion = 5;
+       limit_fusion_2 = 3;
+       break;
+     case 118:
+       limit_fusion = 5;
+       limit_fusion_2 = 4;
+       break;
+     case 120:
+       limit_fusion = 5;
+       limit_fusion_2 = 5;
+       break;
+     default:
+       limit_fusion = 0;
+       limit_fusion_2 = 0;
+       break;
+    }
+    let lvlMod = 1.3*(1+limit_fusion*0.02)*(1+limit_fusion_2*0.02)*1.02;
+
+    if (ifSelectTargetDummy === true) {
+      usg = [0,0,0,0,0,0];
+      lvlMod = 1;
+     }
+    
+
+    unit_base_hp = ((Number(target_data[2])+usg[0]*(unit_level-1))*lvlMod);
+    unit_base_atk = ((Number(target_data[3])+usg[1]*(unit_level-1))*lvlMod);
+    unit_base_def = ((Number(target_data[4])+usg[2]*(unit_level-1))*lvlMod);
+    unit_base_crit = ((Number(target_data[5])+usg[3]*(unit_level-1))*lvlMod);
+    unit_base_hit = ((Number(target_data[6])+usg[4]*(unit_level-1))*lvlMod);
+    unit_base_eva = ((Number(target_data[7])+usg[5]*(unit_level-1))*lvlMod);
+
+    unit_baseStats = [unit_base_hp,unit_base_atk,unit_base_def,unit_base_crit,unit_base_hit,unit_base_eva];
+
+    
+      target_hp = ((Number(target_data[2])+usg[0]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[6] + bonus_stats[6]) + (bonus_stats[0]*0.1);
+      target_atk = ((Number(target_data[3])+usg[1]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1);
+      target_def = ((Number(target_data[4])+usg[2]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
       target_DEF_pc = target_def/(target_def+1000);
-      target_crit = Number(target_data[5])*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
+      target_crit = ((Number(target_data[5])+usg[3]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
       target_CRIT_pc = Math.min(0.0005*target_crit,0.85);
-      target_hit = Number(target_data[6])*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
+      target_hit = ((Number(target_data[6])+usg[4]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
       target_HIT_pc = target_hit/(target_hit+1500);
-      target_eva = Number(target_data[7])*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
+      target_eva = ((Number(target_data[7])+usg[5]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
       target_EVA_pc = target_eva/(target_eva+800);
       target_cdmg_res = Number(bonus_stats[17]);
       /* cat1_res = Number($( ".unit-cat1_res" ).attr('value'));
@@ -537,14 +605,22 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       $('#target-movement').html('<img src="cs_icons/movement_'+ mTypeIcon +'.png" height="20px" width="20px">' +target_data[11] + ' Movement');
 
 
-      $('#target-hp').html('<h>HP: </h><span class="current_stats">' + Math.round(target_hp) + ((target_hp-target_data[2]) > 0 ? (' <span class="added_stats">(+' + Math.round(target_hp-target_data[2]) + ')'):'') + '</span></span>');
+      $('#target-hp').html('<h>HP: </h><span class="current_stats">' + Math.round(target_hp) + ((target_hp-unit_base_hp) > 0 ? (' <span class="added_stats">(+' + Math.round(target_hp-unit_base_hp) + ')'):'') + '</span></span>');
       $('#target-hp').attr('subvalue',target_hp)
+      $('#target-lvl').text('Lv. ' + (ifSelectTargetDummy ? '?':TargetLevel));
+      if (TargetLevel > 100) {
+        $('#target-lvl').addClass('limitFusion_color');
+        $('#target-lvl').removeClass('no_limitFusion_color');
+      } else {
+        $('#target-lvl').addClass('no_limitFusion_color');
+        $('#target-lvl').removeClass('limitFusion_color');
+      }
       $('#target-current_hp').html('<h>Current HP: ' + Math.round(target_hp*enemy_remaining_hp_percent) + ' (' + Number($('#target-current_hp_range').val()) +'%)' + '</h>');
-      $('#target-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(target_atk) + ((target_atk-target_data[3]) > 0 ? (' <span class="added_stats">(+' + Math.round(target_atk-target_data[3]) + ')'):'') + '</span></span>');
-      $('#target-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(target_def) + '</h> <span class="added_stats"> ' + ((target_def-target_data[4]) > 0 ? ('(+' + Math.round(target_def-target_data[4]) + ')'):'') + '('+ (target_DEF_pc*100).toFixed(2) +'%)</span></span>');
-      $('#target-crit').html('<h>CRIT: </h><span class="current_stats">' + Math.round(target_crit) + '</h> <span class="added_stats"> ' + ((target_crit-target_data[5]) > 0 ? ('(+' + Math.round(target_crit-target_data[5]) + ')'):'') + '('+ (target_CRIT_pc*100).toFixed(2) +'%)</span></span>');
-      $('#target-hit').html('<h>HIT: </h><span class="current_stats">' + Math.round(target_hit) + '</h> <span class="added_stats"> ' + ((target_hit-target_data[6]) > 0 ? ('(+' + Math.round(target_hit-target_data[6]) + ')'):'') + '('+ (target_HIT_pc*100).toFixed(2) +'%)</span></span>');
-      $('#target-eva').html('<h>EVA: </h><span class="current_stats">' + Math.round(target_eva) + '</h> <span class="added_stats"> ' + ((target_eva-target_data[7]) > 0 ? ('(+' + Math.round(target_eva-target_data[7]) + ')'):'') + '('+ (target_EVA_pc*100).toFixed(2) +'%)</span></span>');
+      $('#target-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(target_atk) + ((target_atk-unit_base_atk) > 0 ? (' <span class="added_stats">(+' + Math.round(target_atk-unit_base_atk) + ')'):'') + '</span></span>');
+      $('#target-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(target_def) + '</h> <span class="added_stats"> ' + ((target_def-unit_base_def) > 0 ? ('(+' + Math.round(target_def-unit_base_def) + ')'):'') + '('+ (target_DEF_pc*100).toFixed(2) +'%)</span></span>');
+      $('#target-crit').html('<h>CRIT: </h><span class="current_stats">' + Math.round(target_crit) + '</h> <span class="added_stats"> ' + ((target_crit-unit_base_crit) > 0 ? ('(+' + Math.round(target_crit-unit_base_crit) + ')'):'') + '('+ (target_CRIT_pc*100).toFixed(2) +'%)</span></span>');
+      $('#target-hit').html('<h>HIT: </h><span class="current_stats">' + Math.round(target_hit) + '</h> <span class="added_stats"> ' + ((target_hit-unit_base_hit) > 0 ? ('(+' + Math.round(target_hit-unit_base_hit) + ')'):'') + '('+ (target_HIT_pc*100).toFixed(2) +'%)</span></span>');
+      $('#target-eva').html('<h>EVA: </h><span class="current_stats">' + Math.round(target_eva) + '</h> <span class="added_stats"> ' + ((target_eva-unit_base_eva) > 0 ? ('(+' + Math.round(target_eva-unit_base_eva) + ')'):'') + '('+ (target_EVA_pc*100).toFixed(2) +'%)</span></span>');
 
       $('#target-cat1_res').html('<h>Cat1 RES: </h><span class="current_stats cs_extra_info">' + (enemy_cat1_res*100).toFixed(2) + "%</span>");
       $('#target-cat2_res').html('<h>Cat2 RES: </h><span class="current_stats cs_extra_info">' + (enemy_cat2_res*100).toFixed(2) + "%</span>");
@@ -604,24 +680,24 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       for (let i = 0, n = BONUS_STATS_LIST.length; i < n; i++) {
         
         if ((i == 0)) {
-          stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[6]+bonus_stats[6])+(bonus_stats[i]*0.1));
+          stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[6]+bonus_stats[6])+(bonus_stats[i]*0.1));
   
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n+i] = Number(stat_bonus);
           $('#dropdown_target_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
         } else if ((i == 1)) {
-          stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[7]+bonus_stats[7])+(bonus_stats[i]*0.1));
+          stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[7]+bonus_stats[7])+(bonus_stats[i]*0.1));
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n+i] = Number(stat_bonus);
           $('#dropdown_target_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
         } else if ((i == 2)) {
-          stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[8]+bonus_stats[8])+(bonus_stats[i]*0.1));
+          stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[8]+bonus_stats[8])+(bonus_stats[i]*0.1));
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n+i] = Number(stat_bonus);
           $('#dropdown_target_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + ' ('+ (target_DEF_pc*100).toFixed(2) +'%)' + '</span></li>');
         }
         if (((i > 2) && (i < 6))) {
-          stat_bonus = Math.round(target_data[i+2]*(1+bonus_stats_gear_set[i+6] + bonus_stats[i+6])+(bonus_stats[i]));
+          stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[i+6] + bonus_stats[i+6])+(bonus_stats[i]));
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n+i] = Number(stat_bonus);
           $('#dropdown_target_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + ' ('+ (eStat_pc[i-3]*100).toFixed(2) +'%)' + '</span></li>');
@@ -882,18 +958,26 @@ function autocompleteTarget(inp, arr) {
 
   function searchvcsv2(uTitle, uName, check) {
 
-    var unit_name = uTitle+ ' ' + uName;
+    var unit_name = uTitle + ' ' + uName;
   
-                  var sc1 = units_stats_csv.indexOf(unit_name);
+                  var sc1 = units_stats_csv_2.indexOf(unit_name);
+                  let sc_growth = unit_stats_growth.indexOf(unit_name);
+                for (let i = 1; i < 7; i++) {
+                  TargetStatGrowth[i-1] = unit_stats_growth[sc_growth+i];
+                }
+
+                console.log('TargetStatGrowth');
+                console.log(TargetStatGrowth);
+
                   var sc2 = '';
-                  var scI = '<img src="cs_icons/' + units_stats_csv[sc1+7] + '.png" alt="">'
+                  var scI = '<img src="cs_icons/' + units_stats_csv_2[sc1+7] + '.png" alt="">'
                   for (let i = sc1, n = sc1+72; i < n; i++) {
                     if ((i === (sc1+6))) {
                       sc2 += ',' + scI;
-                    } else if (units_stats_csv[i+1] === undefined) {
+                    } else if (units_stats_csv_2[i+1] === undefined) {
                       sc2 +=  ','
                     } else {
-                      sc2 +=  ',' + units_stats_csv[i+1] 
+                      sc2 +=  ',' + units_stats_csv_2[i+1] 
                     }
                    
                     
@@ -903,6 +987,7 @@ function autocompleteTarget(inp, arr) {
                   sc2 = uTitle + ',' + uName + sc2 + ',' + ',';
                   $('#searched-targetID-values').attr('subvalue',sc2);
   
+
 
                   var target_data = sc2.split(',');
   

@@ -83,7 +83,7 @@ jQuery.event.special.mousewheel = {
         
         <span class="">Menu</span>
       </a>
-      <div class="navbar-brand"><span id="temp_not-for-mobile" prev-val="Gear Calculator <small>1.1</small>"></span> </div>
+      <div class="navbar-brand"><span id="temp_not-for-mobile" prev-val="Gear Calculator <small>1.2</small>"></span> </div>
         
       
       
@@ -197,6 +197,22 @@ jQuery.event.special.mousewheel = {
 <div id="unit-icon"></div>
 <div id="unit-title"></div>
 <div id="unit-name"></div>
+
+<div class="dropdown">
+  <div class="dropdown-toggle" data-bs-auto-close="outside" type="button" id="dropdownMenuUnitLevel" data-bs-toggle="dropdown" aria-expanded="false">
+    <strong class="no_limitFusion_color h5 fw-bold" id="unit-lvl">Lv. 1</strong>
+  </div>
+  <ul class="dropdown-menu lvl_menu" aria-labelledby="dropdownMenuUnitLevel">
+    <!-- <input type="text" class="form-control" id="Ulvl_input"> -->
+    <div class="slidecontainer" data-role="rangeslider">
+      <input type="range" min="1" max="120" value="100" class="form-range lvlSlider" data-slider-range="true" id="unit-lvl_range">
+   
+    </div>
+   <div class="lvl_input_border">
+    <input min="1" max="120" value="100" type="number" id="unit-lvl_input" class="form-control" />
+  </div>
+  </ul>
+</div>
 
 
 <div id="unit-type"></div>
@@ -314,6 +330,21 @@ jQuery.event.special.mousewheel = {
 <div id="target-icon"></div>
 <div id="target-title"></div>
 <div id="target-name"></div>
+
+<div class="dropdown">
+  <div class="dropdown-toggle" data-bs-auto-close="outside" type="button" id="dropdownMenuTargetLevel" data-bs-toggle="dropdown" aria-expanded="false">
+    <strong class="no_limitFusion_color h5 fw-bold" id="target-lvl">Lv. 1</strong>
+  </div>
+  <ul class="dropdown-menu lvl_menu" aria-labelledby="dropdownMenuTargetLevel">
+    <!-- <input type="text" class="form-control" id="Ulvl_input"> -->
+    <div class="slidecontainer" data-role="rangeslider">
+      <input type="range" min="1" max="120" value="100" class="form-range lvlSlider" data-slider-range="true" id="target-lvl_range">
+    </div>
+    <div class="lvl_input_border">
+      <input min="1" max="120" value="100" type="number" id="target-lvl_input" class="form-control" />
+    </div>
+  </ul>
+</div>
 
 <div id="target-type"></div>
 <div id="target-class"></div>
@@ -685,8 +716,15 @@ jQuery.event.special.mousewheel = {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <table class="table table-dark table-striped table-bordered">
+        <table class="table table-dark table-striped table-bordered" id="patchNoteTable">
           <tbody>
+            <tr>
+              <th scope="row">2024-09-18</th>
+              <td>+</td>
+              <td><span class="text-success">Added <small class="text-secondary"></small></span><br />Bunch of units (no attack data), units' levels, units' pve stats <br />
+                <span class="text-info">Updated</span><br />Apply buff menu search bar, gear selection modal scale.
+              </td>
+            </tr>
             <tr>
               <th scope="row">2024-06-25</th>
               <td>+</td>
@@ -851,13 +889,18 @@ jQuery.event.special.mousewheel = {
 
 <!-- applyBuffModal (modal) -->
 <div class="modal fade" id="applyBuffModal" tabindex="-1" aria-labelledby="applyBuffModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Apply buffs to <span id="applyBuffModalLabel"></span><br /><small class="text-danger">Feature is under development</small></h5>
+        <h5 class="modal-title">Apply buffs to <span id="applyBuffModalLabel"></span><br /></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <div>
+          <div class="input-group mb-3">
+          <input type="text"  id="applyBuffModal-search" placeholder="Type to search..." class="form-control" aria-label="Sizing example input">
+        </div>
+      </div>
         <div id="applyBuffModal-body"></div>
       </div>
       <div class="modal-footer">
@@ -884,9 +927,9 @@ jQuery.event.special.mousewheel = {
         <div class="d-flex" id="configBuffModal_cfg">
           <div class="input-group mb-2">
             <span class="input-group-text">CD</span>
-            <input id="configBuffModal_CD-input" type="number" aria-label="First name" class="form-control">
+            <input id="configBuffModal_CD-input" placeholder="Cooldown (sec.)" type="number" aria-label="First name" class="form-control">
             <span class="input-group-text">Duration</span>
-            <input id="configBuffModal_Duration-input" type="number" aria-label="First name" class="form-control">
+            <input id="configBuffModal_Duration-input" placeholder="Duration (sec.)" type="number" aria-label="First name" class="form-control">
           </div>
         </div>
         <div class="input-group">
@@ -948,14 +991,14 @@ jQuery.event.special.mousewheel = {
 
 
 <div class="modal fade" id="staticBackdrop3" aria-hidden="true" aria-labelledby="staticBackdropLabel3" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalToggleLabel3"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <div class="row row-cols-1 row-cols-md-3 g-4" id="gearSelectionModal">
+      <div class="row row-cols-1 row-cols-md-5 g-3" id="gearSelectionModal">
 </div>
           
           <div class="custom-equipment-slot"></div>

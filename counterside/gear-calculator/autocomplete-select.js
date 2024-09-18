@@ -11,6 +11,13 @@ var target_stats_to_save = [];
 var unit_saved_stats_final = [];
 var target_saved_stats_final = [];
 
+var UnitLevel = 100;
+var TargetLevel = 100;
+
+var UnitStatGrowth = [];
+var UnitStatGrowth_PvE = [];
+var TargetStatGrowth = [];
+
 var nToastIntervalID;
 var nToastTimeoutID;
 
@@ -133,7 +140,7 @@ link.click(); // This will download the data file named "my_data.csv". */
       var total_unit_data = '';
 
 
-      var target_dummy_data = ['-','Target Dummy','10000','0','0','0','0','0','<img src="cs_icons/Machine_gap.png" width="256p" alt="">','Counter','Striker','Ground',1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]
+      var target_dummy_data = ['-','Target Dummy [PvE]','10000','0','0','0','0','0','<img src="cs_icons/Machine_gap.png" width="256p" alt="">','Counter','Striker','Ground',1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]
 
 
 
@@ -607,17 +614,83 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
      /* var BONUS_STATS_LIST = [HP,ATK,DEF,CRIT,HIT,EVA,CDMG_RES]; */
 
     
+     let unit_level = UnitLevel;
+     let limit_fusion = 0;
+     let limit_fusion_2 = 0;
+  
+     let usg = UnitStatGrowth;
+
+     if (ifSelectTargetDummy) {
+      usg = UnitStatGrowth_PvE;
+     }
+
+     switch (unit_level) {
+      case 102:
+        limit_fusion = 1;
+        limit_fusion_2 = 0;
+        break;
+      case 104:
+        limit_fusion = 2;
+        limit_fusion_2 = 0;
+        break;
+      case 106:
+        limit_fusion = 3;
+        limit_fusion_2 = 0;
+        break;
+      case 108:
+        limit_fusion = 4;
+        limit_fusion_2 = 0;
+        break;
+      case 110:
+        limit_fusion = 5;
+        limit_fusion_2 = 0;
+        break;
+      case 112:
+        limit_fusion = 5;
+        limit_fusion_2 = 1;
+        break;
+      case 114:
+        limit_fusion = 5;
+        limit_fusion_2 = 2;
+        break;
+      case 116:
+        limit_fusion = 5;
+        limit_fusion_2 = 3;
+        break;
+      case 118:
+        limit_fusion = 5;
+        limit_fusion_2 = 4;
+        break;
+      case 120:
+        limit_fusion = 5;
+        limit_fusion_2 = 5;
+        break;
+      default:
+        limit_fusion = 0;
+        limit_fusion_2 = 0;
+        break;
+     }
+     let lvlMod = 1.3*(1+limit_fusion*0.02)*(1+limit_fusion_2*0.02)*1.02;
+
+     unit_base_hp = ((Number(unit_data[2])+usg[0]*(unit_level-1))*lvlMod);
+     unit_base_atk = ((Number(unit_data[3])+usg[1]*(unit_level-1))*lvlMod);
+     unit_base_def = ((Number(unit_data[4])+usg[2]*(unit_level-1))*lvlMod);
+     unit_base_crit = ((Number(unit_data[5])+usg[3]*(unit_level-1))*lvlMod);
+     unit_base_hit = ((Number(unit_data[6])+usg[4]*(unit_level-1))*lvlMod);
+     unit_base_eva = ((Number(unit_data[7])+usg[5]*(unit_level-1))*lvlMod);
+
+     unit_baseStats = [unit_base_hp,unit_base_atk,unit_base_def,unit_base_crit,unit_base_hit,unit_base_eva];
 
 
-      unit_hp = Number(unit_data[2])*(1+bonus_stats_gear_set[6] + bonus_stats[6]) + (bonus_stats[0]*0.1);
-      unit_atk = Number(unit_data[3])*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1);
-      unit_def = Number(unit_data[4])*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
+      unit_hp = ((Number(unit_data[2])+usg[0]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[6] + bonus_stats[6]) + (bonus_stats[0]*0.1);
+      unit_atk = ((Number(unit_data[3])+usg[1]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1);
+      unit_def = ((Number(unit_data[4])+usg[2]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
       DEF_pc = unit_def/(unit_def+1000);
-      unit_crit = Number(unit_data[5])*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
+      unit_crit = ((Number(unit_data[5])+usg[3]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
       CRIT_pc = Math.min(0.0005*unit_crit,0.85);
-      unit_hit = Number(unit_data[6])*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
+      unit_hit = ((Number(unit_data[6])+usg[4]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
       HIT_pc = unit_hit/(unit_hit+1500);
-      unit_eva = Number(unit_data[7])*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
+      unit_eva = ((Number(unit_data[7])+usg[5]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
       EVA_pc = unit_eva/(unit_eva+800);
       unit_cdmg_res = Number(bonus_stats[17]);
       /* cat1_res = Number($( ".unit-cat1_res" ).attr('value'));
@@ -774,14 +847,22 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       $('#unit-class').html('<img src="cs_icons/role_'+ classIcon +'.png" height="20px" width="20px">' + unit_data[10]);
       $('#unit-movement').html('<img src="cs_icons/movement_'+ mTypeIcon +'.png" height="20px" width="20px">' +unit_data[11] + ' Movement');
       
-      $('#unit-hp').html('<h>HP: </h><span class="current_stats">' + Math.round(unit_hp) + ((unit_hp-unit_data[2]) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_hp-unit_data[2]) + ')'):'') + '</span></span>');
-      $('#unit-hp').attr('subvalue',unit_hp)
+      $('#unit-hp').html('<h>HP: </h><span class="current_stats">' + Math.round(unit_hp) + ((unit_hp-unit_base_hp) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_hp-unit_base_hp) + ')'):'') + '</span></span>');
+      $('#unit-hp').attr('subvalue',unit_hp);
+      $('#unit-lvl').text('Lv. ' + UnitLevel);
+      if (UnitLevel > 100) {
+        $('#unit-lvl').addClass('limitFusion_color');
+        $('#unit-lvl').removeClass('no_limitFusion_color');
+      } else {
+        $('#unit-lvl').addClass('no_limitFusion_color');
+        $('#unit-lvl').removeClass('limitFusion_color');
+      }
       $('#unit-current_hp').html('<h>Current HP: ' + Math.round(unit_hp*enemy_remaining_hp_percent) + ' (' + Number($('#unit-current_hp_range').val()) +'%)' + '</h>');
-      $('#unit-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(unit_atk) + ''+ ((unit_atk-unit_data[3]) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_atk-unit_data[3]) + ')'):'') + '</span></span>');
-      $('#unit-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(unit_def) + '</h> <span class="added_stats"> ' + ((unit_def-unit_data[4]) > 0 ? ('(+' + Math.round(unit_def-unit_data[4]) + ')'):'') + '('+ (DEF_pc*100).toFixed(2) +'%)</span></span>');
-      $('#unit-crit').html('<h>CRIT: </h><span class="current_stats">' + Math.round(unit_crit) + '</h> <span class="added_stats"> ' + ((unit_crit-unit_data[5]) > 0 ? ('(+' + Math.round(unit_crit-unit_data[5]) + ')'):'') + '('+ (CRIT_pc*100).toFixed(2) +'%)</span></span>');
-      $('#unit-hit').html('<h>HIT: </h><span class="current_stats">' + (unit_hit>(enemy_EVA*1.875) ? '<span id="uHtt">' + Math.round(unit_hit) + ' <span class="text-success">&#10004;</span></span>': Math.floor(unit_hit) +'  <span id="uHtt" class="text-warning"><small>(' + Math.floor(enemy_EVA*1.875) + ')</small></span>') + ' </h> <span class="added_stats"> ' + ((unit_hit-unit_data[6]) > 0 ? ('(+' + Math.round(unit_hit-unit_data[6]) + ')'):'') + '('+ (HIT_pc*100).toFixed(2) +'%)</span></span>');
-      $('#unit-eva').html('<h>EVA: </h><span class="current_stats">' + (unit_eva>(enemy_hit/1.875) ? '<span id="uEtt">' + Math.round(unit_eva) + ' <span class="text-success">&#10004;</span></span>': Math.floor(unit_eva) +'  <span id="uEtt" class="text-warning"><small>(' + Math.floor(enemy_hit/1.875) + ')</small></span>') + '</h> <span class="added_stats"> ' + ((unit_eva-unit_data[7]) > 0 ? ('(+' + Math.round(unit_eva-unit_data[7]) + ')'):'') + '('+ (EVA_pc*100).toFixed(2) +'%)</span></span>');
+      $('#unit-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(unit_atk) + ''+ ((unit_atk-unit_base_atk) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_atk-unit_base_atk) + ')'):'') + '</span></span>');
+      $('#unit-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(unit_def) + '</h> <span class="added_stats"> ' + ((unit_def-unit_base_def) > 0 ? ('(+' + Math.round(unit_def-unit_base_def) + ')'):'') + '('+ (DEF_pc*100).toFixed(2) +'%)</span></span>');
+      $('#unit-crit').html('<h>CRIT: </h><span class="current_stats">' + Math.round(unit_crit) + '</h> <span class="added_stats"> ' + ((unit_crit-unit_base_crit) > 0 ? ('(+' + Math.round(unit_crit-unit_base_crit) + ')'):'') + '('+ (CRIT_pc*100).toFixed(2) +'%)</span></span>');
+      $('#unit-hit').html('<h>HIT: </h><span class="current_stats">' + (unit_hit>(enemy_EVA*1.875) ? '<span id="uHtt">' + Math.round(unit_hit) + ' <span class="text-success">&#10004;</span></span>': Math.round(unit_hit) +'  <span id="uHtt" class="text-warning"><small>(' + Math.round(enemy_EVA*1.875) + ')</small></span>') + ' </h> <span class="added_stats"> ' + ((unit_hit-unit_base_hit) > 0 ? ('(+' + Math.round(unit_hit-unit_base_hit) + ')'):'') + '('+ (HIT_pc*100).toFixed(2) +'%)</span></span>');
+      $('#unit-eva').html('<h>EVA: </h><span class="current_stats">' + (unit_eva>(enemy_hit/1.875) ? '<span id="uEtt">' + Math.round(unit_eva) + ' <span class="text-success">&#10004;</span></span>': Math.round(unit_eva) +'  <span id="uEtt" class="text-warning"><small>(' + Math.round(enemy_hit/1.875) + ')</small></span>') + '</h> <span class="added_stats"> ' + ((unit_eva-unit_base_eva) > 0 ? ('(+' + Math.round(unit_eva-unit_base_eva) + ')'):'') + '('+ (EVA_pc*100).toFixed(2) +'%)</span></span>');
       
 
       $('#unit-cat1_dmg').html('<h>Cat1 DMG: </h><span class="current_stats cs_extra_info">' + (cat1_dmg*100).toFixed(2) + "%</span>");
@@ -845,7 +926,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
     for (let i = 0, n = BSLL; i < n; i++) {
         
       if ( (i == 0)) {
-        stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[6]+bonus_stats[6])+(bonus_stats[i]*0.1));
+        stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[6]+bonus_stats[6])+(bonus_stats[i]*0.1));
         
 
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
@@ -853,19 +934,19 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'"> <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
       } else if ( (i == 1)) {
         
-        stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[7]+bonus_stats[7])+(bonus_stats[i]*0.1));
+        stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[7]+bonus_stats[7])+(bonus_stats[i]*0.1));
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
         unit_stats_to_save[n+i] = Number(stat_bonus);
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'">  <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + '</span></li>');
       } else if ((i == 2)) {
-        stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[8]+bonus_stats[8])+(bonus_stats[i]*0.1));
+        stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[8]+bonus_stats[8])+(bonus_stats[i]*0.1));
         
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
         unit_stats_to_save[n+i] = Number(stat_bonus);
         $('#dropdown_unit_stats .unitStats_of').append('<li value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+ stat_bonus +'">  <span>'+ BONUS_STATS_LIST[i] +': </span> <span class="details_li_fr"> ' + stat_bonus + ' ('+ (DEF_pc*100).toFixed(2) +'%)' + '</span></li>');
       }
       if (((i > 2) && (i < 6))) {
-        stat_bonus = Math.round(unit_data[i+2]*(1+bonus_stats_gear_set[i+6] + bonus_stats[i+6])+(bonus_stats[i]));
+        stat_bonus = Math.round(unit_baseStats[i]*(1+bonus_stats_gear_set[i+6] + bonus_stats[i+6])+(bonus_stats[i]));
         
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
         unit_stats_to_save[n+i] = Number(stat_bonus);
@@ -3121,18 +3202,27 @@ function autocomplete(inp, arr) {
     console.time('!_searchvcsv_timer')
     timer('!_searchvcsv_timer')
 
-  var unit_name = uTitle+ ' ' + uName;
+  var unit_name = uTitle + ' ' + uName;
 
-                var sc1 = units_stats_csv.indexOf(unit_name);
+                var sc1 = units_stats_csv_2.indexOf(unit_name);
+                let sc_growth = unit_stats_growth.indexOf(unit_name);
+                for (let i = 1; i < 7; i++) {
+                  UnitStatGrowth[i-1] = unit_stats_growth[sc_growth+i];
+                  UnitStatGrowth_PvE[i-1] = unit_stats_growth_pve[sc_growth+i];
+                }
+  
+                console.log('UnitStatGrowth');
+                console.log(UnitStatGrowth);
+
                 var sc2 = '';
-                var scI = '<img src="cs_icons/' + units_stats_csv[sc1+7] + '.png" alt="">'
+                var scI = '<img src="cs_icons/' + units_stats_csv_2[sc1+7] + '.png" alt="">'
                 for (let i = sc1, n = sc1+72; i < n; i++) {
                   if ((i === (sc1+6))) {
                     sc2 += ',' + scI;
-                  } else if (units_stats_csv[i+1] === undefined) {
+                  } else if (units_stats_csv_2[i+1] === undefined) {
                     sc2 +=  ','
                   } else {
-                    sc2 +=  ',' + units_stats_csv[i+1] 
+                    sc2 +=  ',' + units_stats_csv_2[i+1] 
                   }
                  
                   
@@ -3260,6 +3350,7 @@ function autocomplete(inp, arr) {
               UpdateUnitAndTarget(total_unit_data,0);
               CalcUnitDMG();
               
+              
               }
               
               $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').removeClass('disabled');
@@ -3284,13 +3375,13 @@ function autocomplete(inp, arr) {
       
       $('#searchID').val(unit_stats[1])
       if (ifSelectTargetDummy) {
-        
+    $('#dropdownMenuTargetLevel').addClass('disabled');
     $('#target_extra_stats_dropdown').hide();
     $('#dummy_extra_stats_dropdown').show();
     $('#target_BuffList_display').hide();
     $('#dummy_BuffList_display').show();
       } else {
-        
+    $('#dropdownMenuTargetLevel').removeClass('disabled');
     $('#target_extra_stats_dropdown').show();
     $('#dummy_extra_stats_dropdown').hide();
     $('#target_BuffList_display').show();
@@ -3340,10 +3431,15 @@ function autocomplete(inp, arr) {
     }
     $('#CalculateBtn').prop('hidden',false);
     $('#btn-showTargetSkills').prop('hidden',false);
+
+
+   
+
+ 
   }
 
 
-  function CreateTooltipForAnything(obj, text, headerText, footerText, anchor) {
+  function CreateTooltipForAnything(obj, text, headerText, footerText, anchor, maxWidth) {
 
       /* var stale_id = '';
     $($(obj).parentsUntil($(obj).parent().parent().parent().parent())).each(function() {
@@ -3428,6 +3524,10 @@ function autocomplete(inp, arr) {
       }
 
       })
+
+      if (maxWidth != undefined) {
+        tTooltip.css('width',maxWidth);
+      }
 
       /* if ((scrollAnchor !== undefined) || (scrollAnchor !== '')) {
         scrollAnchor.on('scroll.'+ttID, function() {
@@ -4267,7 +4367,7 @@ function SaveSessionToLocalStorage() {
   if ($('#searched-targetID-values').attr('value') !== '') {
     
   } */
-  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,Target_dps_stats];
+  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,Target_dps_stats,UnitLevel,TargetLevel];
   
   //total_gear_data_target
 
@@ -4318,8 +4418,27 @@ function LoadSessionFromLocalStorage() {
     $('#range-melee-distance_partial-value').text(Math.round((distance_to_target_frequency_melee+ Number.EPSILON)*100) + '% / ' + Math.round((distance_to_target_frequency_ranged + Number.EPSILON)*100) + '%');
 
   
-        $('#searchID').val(SessionData[0][1])
+        $('#searchID').val(SessionData[0][1]);
         
+
+        if (SessionData[23] == undefined) {
+          UnitLevel = 100;
+        } else {
+          UnitLevel = SessionData[23];
+
+        }
+        if (SessionData[23] == undefined) {
+          TargetLevel = 100;
+        } else {
+          TargetLevel = SessionData[24];
+
+        }
+
+        $('#unit-lvl_range').val(UnitLevel)
+        $('#target-lvl_range').val(TargetLevel)
+        $('#unit-lvl_input').val(UnitLevel)
+        $('#target-lvl_input').val(TargetLevel)
+
         unit_extra_bonus_stats = SessionData[3];
         target_extra_bonus_stats = SessionData[10];
         dummy_extra_bonus_stats = SessionData[18]
@@ -4404,6 +4523,12 @@ function LoadSessionFromLocalStorage() {
             enemy_Accessory2.setGear();
             enemy_accessory2IsConfirmed = true;
         }
+      /*   if (UnitStatGrowth == [] || TargetStatGrowth == []) {
+          
+        } */
+        
+    
+         
         AppendCustomStatsForUnits()
         UpdateUnitStats(SessionData[0]);
         UpdateUnitAndTarget(SessionData[0]);
