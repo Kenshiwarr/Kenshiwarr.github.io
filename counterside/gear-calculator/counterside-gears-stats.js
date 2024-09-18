@@ -978,6 +978,7 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
       break;
   }
 
+  $('#exampleModalToggleLabel3').text('Select ' + selectedGearAcc);
 
 
 
