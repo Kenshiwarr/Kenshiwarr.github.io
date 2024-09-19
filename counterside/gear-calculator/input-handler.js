@@ -89,7 +89,7 @@ if (Uname != null) {
       weaponIsConfirmed = false;
   }
   if (unit_gdata[1] !== '') {
-      Armor.setValuesByUrl(unit_gdata[1],GEAR_MAIN_STATS_VALUES_T7_unit,unit_gdata[2][0] + ",Armor," + unit_type,tgdu,"Armor");
+      Armor.setValuesByUrl(unit_gdata[1],GEAR_MAIN_STATS_VALUES_T7_unit,unit_gdata[1][0] + ",Armor," + unit_type,tgdu,"Armor");
       Armor.setGear(0);
       armorIsConfirmed = true;
   } else {
@@ -97,7 +97,7 @@ if (Uname != null) {
       armorIsConfirmed = false;
   }
   if (unit_gdata[2] !== '') {
-      Accessory1.setValuesByUrl(unit_gdata[2],GEAR_MAIN_STATS_VALUES_T7_unit,unit_gdata[3][0] + ",Accessory," + unit_type,tgdu,"Accessory1");
+      Accessory1.setValuesByUrl(unit_gdata[2],GEAR_MAIN_STATS_VALUES_T7_unit,unit_gdata[2][0] + ",Accessory," + unit_type,tgdu,"Accessory1");
       Accessory1.setGear(0);
       accessory1IsConfirmed = true;
   } else {
@@ -105,7 +105,7 @@ if (Uname != null) {
       accessory1IsConfirmed = false;
   }
   if (unit_gdata[3] !== '') {
-      Accessory2.setValuesByUrl(unit_gdata[3],GEAR_MAIN_STATS_VALUES_T7_unit,unit_gdata[4][0] + ",Accessory," + unit_type,tgdu,"Accessory2");
+      Accessory2.setValuesByUrl(unit_gdata[3],GEAR_MAIN_STATS_VALUES_T7_unit,unit_gdata[3][0] + ",Accessory," + unit_type,tgdu,"Accessory2");
       Accessory2.setGear(0);
       accessory2IsConfirmed = true;
   } else {
