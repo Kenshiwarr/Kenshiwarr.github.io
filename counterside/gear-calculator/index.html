@@ -127,7 +127,11 @@ jQuery.event.special.mousewheel = {
 <button type="button" id="openLoadoutsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">
   Open saved loadouts menu
 </button>
+<button type="button" id="saveToUrlBtn" class="btn btn-success position-fixed" data-bs-toggle="modal" data-bs-target="#saveUrlModal" style="right: 2rem; top: 8rem;">
+  Share this loadout
+</button>
 
+<!-- Modal -->
 <div class="modal fade" id="confirmActionModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="confirmActionModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content">
@@ -141,6 +145,27 @@ jQuery.event.special.mousewheel = {
       <div class="modal-footer">
       <button type="button" class="btn btn-primary me-auto" data-bs-dismiss="modal" id="confirmActionModal_btn_ok">Confirm</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="confirmActionModal_btn_cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="saveUrlModal" tabindex="-1" aria-labelledby="saveUrlModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="saveUrlModalLabel">Url</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Url" id="saveUrl_input">
+        <button type="button" class="btn btn-info" id="copyUrlBtn">Copy text</button>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -199,7 +224,7 @@ jQuery.event.special.mousewheel = {
 <div id="unit-name"></div>
 
 <div class="dropdown">
-  <span class="dropdown-toggle" data-bs-auto-close="outside" type="button" id="dropdownMenuUnitLevel" data-bs-toggle="dropdown" aria-expanded="false">
+  <span class="dropdown-toggle dropdown-lvl_highlight" data-bs-auto-close="outside" type="button" id="dropdownMenuUnitLevel" data-bs-toggle="dropdown" aria-expanded="false">
     <strong class="no_limitFusion_color h5 fw-bold" id="unit-lvl">Lv. 1</strong>
   </span>
   <ul class="dropdown-menu lvl_menu" aria-labelledby="dropdownMenuUnitLevel">
@@ -332,7 +357,7 @@ jQuery.event.special.mousewheel = {
 <div id="target-name"></div>
 
 <div class="dropdown">
-  <span class="dropdown-toggle" data-bs-auto-close="outside" type="button" id="dropdownMenuTargetLevel" data-bs-toggle="dropdown" aria-expanded="false">
+  <span class="dropdown-toggle dropdown-lvl_highlight" data-bs-auto-close="outside" type="button" id="dropdownMenuTargetLevel" data-bs-toggle="dropdown" aria-expanded="false">
     <strong class="no_limitFusion_color h5 fw-bold" id="target-lvl">Lv. 1</strong>
   </span>
   <ul class="dropdown-menu lvl_menu" aria-labelledby="dropdownMenuTargetLevel">

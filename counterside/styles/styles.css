@@ -378,7 +378,7 @@ background-color: rgb(109, 114, 134);
   color: #2eb04a;
 }
 
-#openLoadoutsBtn {
+#openLoadoutsBtn, #saveToUrlBtn {
 z-index: 999;
 }
 
@@ -1381,3 +1381,7 @@ color: #bebebe;
 #patchNoteTable th {
   width: 7rem;
 }
+
+/* .dropdown-lvl_highlight:hover:not(.disabled) {
+  background-color: #7d57c9;
+} */

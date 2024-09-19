@@ -1,3 +1,5 @@
+var test_var;
+
 
 function IFERROR(value, error) {
     if (
@@ -319,4 +321,15 @@ function UpdateBaseStatsTotal() {
 function UpdBaseSats(str) { 
     if (str === "") return ""; 
     else return UpdBaseSats(str.substr(1)) + str.charAt(0); 
+}
+
+
+function refineURL()
+{
+    var currURL= window.location.href;
+    
+    var afterDomain= currURL.substring(currURL.lastIndexOf('/') + 1);
+    var beforeQueryString= afterDomain.split("?")[0];  
+ 
+    return beforeQueryString;     
 }

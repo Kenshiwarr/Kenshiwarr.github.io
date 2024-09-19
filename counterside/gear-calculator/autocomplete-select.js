@@ -3551,11 +3551,11 @@ function autocomplete(inp, arr) {
     
     if (obj.length > 1) {
       if (text === '' || text === undefined) {
-        $.each(obj,function() {
+        $.each($(obj.attr('ct_target')),function() {
           $($(this).attr('ct_target')).remove();
         })
       } else {
-        $.each(obj,function() {
+        $.each($(obj.attr('ct_target')),function() {
           $(this).html(text);
         })
       }
@@ -3564,9 +3564,13 @@ function autocomplete(inp, arr) {
       if (text === '' || text === undefined) {
         $(obj.attr('ct_target')).remove();
       } else {
-        obj.html(text);
+        $(obj.attr('ct_target')).html(text);
       }
     }
+    dt_tooltip_active = obj.attr('ct_target');
+        const spanCoord = obj.offset();
+        const tTooltip = $(dt_tooltip_active)
+        $(obj.attr('ct_target')).css({top: spanCoord.top-tTooltip.outerHeight(), left: spanCoord.left+(obj.outerWidth()/2)-(tTooltip.outerWidth()/2)});
     
   }
 

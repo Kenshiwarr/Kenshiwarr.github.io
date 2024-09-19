@@ -787,6 +787,107 @@ var GearSetsListTrinity = {
 
     }
 
+    getUrlValues() {
+      if (this.#name != 0) {
+      
+
+      /* var setOptions;
+
+      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(this.#name) > -1) {
+        setOptions = GearSetsListBasic;
+      } else if (this.#name === 'Spectral') {
+        setOptions = GearSetsListSpectral;
+      } else if (this.#name === 'Phantom') {
+        setOptions = GearSetsListPhantom;
+      } else if (this.#name === 'Jungle') {
+        setOptions = GearSetsListTrinity;
+      } else if (this.#name === 'Volcano') {
+        setOptions = GearSetsListTrinity;
+      } else {
+        setOptions = GearSetsListBasic;
+      } */
+      
+
+      let latentVal = this.#latent;
+      let url_Gear_Latent;
+      if (this.#latent != ",") {
+        url_Gear_Latent = BONUS_STATS_LIST.indexOf(latentVal[0]) + "," + latentVal[1];
+      } else {
+        url_Gear_Latent = "";
+      }
+
+      let url_Gear_Name = this.#name;
+      let url_Gear_Sub1 = BONUS_STATS_LIST.indexOf(this.#sub1[0]) + "," + this.#sub1[1];
+      let url_Gear_Sub2 = BONUS_STATS_LIST.indexOf(this.#sub2[0]) + "," + this.#sub2[1];
+      
+      let url_Gear_Set = Object.keys(this.#eqSet_Options).indexOf(this.#eqSet);
+   
+
+      return [url_Gear_Name,url_Gear_Sub1,url_Gear_Sub2,url_Gear_Latent,url_Gear_Set,this.#mainStat[0]];
+    } else {
+      return "";
+    }
+    }
+
+    setValuesByUrl(urlGearVal,GearMainStatValues,searchTerm,searchGearData,eq_Slot) {
+
+
+      let n;
+      let m = searchGearData.length;
+      for (let i = 0; i < m; i++) {
+        if ((searchGearData[i].includes(searchTerm) == true) && (searchGearData[i].indexOf(urlGearVal[5]) > -1)) {
+          n = i;
+        }
+
+      }
+      if (n == undefined) {
+        return false;
+      }
+
+      let sgd = searchGearData[n];
+
+      let sub1_val = urlGearVal[1].split(',');
+      let sub2_val = urlGearVal[2].split(',');
+      let latent_val = urlGearVal[3].split(',');
+
+      let sgearData = sgd.split(",");
+      console.log(sgearData[5])
+
+      var setOptions;
+
+      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(urlGearVal[0]) > -1) {
+        setOptions = GearSetsListBasic;
+      } else if (urlGearVal[0] === 'Spectral') {
+        setOptions = GearSetsListSpectral;
+      } else if (urlGearVal[0] === 'Phantom') {
+        setOptions = GearSetsListPhantom;
+      } else if (urlGearVal[0] === 'Jungle') {
+        setOptions = GearSetsListTrinity;
+      } else if (urlGearVal[0] === 'Volcano') {
+        setOptions = GearSetsListTrinity;
+      } else {
+        setOptions = GearSetsListBasic;
+      }
+
+      this.#selectedGearData = sgd;
+      this.#name = urlGearVal[0];
+      this.#eqSlot = eq_Slot;
+      this.#eqTier = 7;
+      this.#eqSet = setOptions[Object.keys(setOptions)[urlGearVal[4]]]['name'];
+      this.#sub1 = [BONUS_STATS_LIST[sub1_val[0]],sub1_val[1]];
+      this.#sub2 = [BONUS_STATS_LIST[sub2_val[0]],sub2_val[1]];
+      this.#latent = [BONUS_STATS_LIST[latent_val[0]],latent_val[1]];
+      this.#eqIcon =  'cs_gears-icons/Special Gear/'+searchTerm.split(",")[2]+'/' + sgearData[4] +  '.png';
+      this.#mainStat = [sgearData[5],GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(sgearData[5])]];
+      
+      this.#eqSet_Options = setOptions;
+
+      
+
+
+      return true;
+    }
+
     #selectedGearData = 0;
     #name = 0;
     #eqSlot = 0;

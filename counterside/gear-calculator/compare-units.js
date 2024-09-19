@@ -371,6 +371,8 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             accessory2IsConfirmed = false;
         }
 
+        test_var = [gearDataSavedValues[4]];
+
 
         if (ifSelectTargetDummy === false) {
         $('#searchIDtarget').prop('disabled', false);
