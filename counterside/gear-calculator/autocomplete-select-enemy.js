@@ -1101,6 +1101,7 @@ function autocompleteTarget(inp, arr) {
                 }
                 
                 $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').removeClass('disabled');
+                $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').addClass('text-warning');
               }
 
 

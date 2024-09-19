@@ -116,7 +116,7 @@ jQuery.event.special.mousewheel = {
 <div id="body-dark_bg_top"></div>
 </div>
 <script src="../../side-menu-hover.js"></script>
-<main>
+<main style="height: 100vh">
 <div id="initial_">
 <div id="pffs">
 </div>
@@ -124,15 +124,12 @@ jQuery.event.special.mousewheel = {
 
 <div class="mb-5 mt-5">
 </div>
-<button type="button" id="openLoadoutsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">
-  Open saved loadouts menu
-</button>
-<button type="button" id="saveToUrlBtn" class="btn btn-success position-fixed" data-bs-toggle="modal" data-bs-target="#saveUrlModal" style="right: 2rem; top: 8rem;">
-  Share this loadout
-</button>
+
+
+<!-- 123 -->
 
 <!-- Modal -->
-<div class="modal fade" id="confirmActionModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="confirmActionModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmActionModal" tabindex="-1" data-bs-keyboard="false"  aria-labelledby="confirmActionModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -143,30 +140,14 @@ jQuery.event.special.mousewheel = {
         ...
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-primary me-auto" data-bs-dismiss="modal" id="confirmActionModal_btn_ok">Confirm</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="confirmActionModal_btn_cancel">Cancel</button>
+        <button type="button" class="btn btn-secondary me-auto" data-bs-dismiss="modal" id="confirmActionModal_btn_cancel">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirmActionModal_btn_ok">Confirm</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="saveUrlModal" tabindex="-1" aria-labelledby="saveUrlModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="saveUrlModalLabel">Url</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Url" id="saveUrl_input">
-        <button type="button" class="btn btn-info" id="copyUrlBtn">Copy text</button>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <div id="tooltip_container_ct"></div>
 <div id="dropdown_container_cd"></div>
@@ -600,7 +581,7 @@ jQuery.event.special.mousewheel = {
 
  
   <p></p>
-
+  
 <div class="container">
 <div id="Unit_Extra"></div>
 
@@ -669,7 +650,12 @@ jQuery.event.special.mousewheel = {
 <div class="container">
 <!-- Button trigger modal -->
 
- 
+<button id="setCurrentToCompare" type="button" class="btn btn-success d-none">Save this loadout</button>
+<button type="button" id="saveToUrlBtn" class="btn btn-secondary d-none" data-bs-toggle="modal" data-bs-target="#saveUrlModal">Share</button>
+
+<button type="button" id="openLoadoutsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">Check saved loadouts</button>
+
+
 
 <div class="m-5" >
   <div id="CalculateBtn" hidden>
@@ -723,7 +709,6 @@ jQuery.event.special.mousewheel = {
         
       <button id="deleteAllDataForCompare" type="button" class="btn btn-dark me-auto" hidden>Delete all data</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="setCurrentToCompare" type="button" class="btn btn-success" disabled>Save changes</button>
       </div>
     </div>
   </div>
@@ -1059,6 +1044,24 @@ jQuery.event.special.mousewheel = {
   </div>
 </div>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="saveUrlModal" tabindex="-1" aria-labelledby="saveUrlModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="saveUrlModalLabel">Url</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Url" id="saveUrl_input">
+        <button type="button" class="btn btn-info" id="copyUrlBtn">Copy text</button>
+      </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div>

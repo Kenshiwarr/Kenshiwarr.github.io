@@ -111,8 +111,9 @@ function removeElement(arrayName,arrayElement) {
       } 
   }
 
-  function ConfirmDialog(message, functionVal) {
+  function ConfirmDialog(message, functionVal, title) {
     $('#confirmActionModal').modal('show');
+    $('#confirmActionModalLabel').text(title);
     $('#confirmActionModal_Msg').html(message);
   
     var confirmBtns = [$('#confirmActionModal_btn_ok'),$('#confirmActionModal_btn_cancel'),$('#confirmActionModal_btn_close')];

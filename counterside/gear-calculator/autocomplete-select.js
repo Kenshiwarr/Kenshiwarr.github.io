@@ -980,10 +980,14 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       $('#seachedUnit_body').removeAttr('hidden');
       $('#seachedTarget_body').removeAttr('hidden');
+      $('#setCurrentToCompare').removeAttr('hidden');
+     
 
 
       if (localStorageAvailable) {
-      $('#setCurrentToCompare').prop('disabled', false);
+     // $('#setCurrentToCompare').prop('disabled', false);
+      $('#setCurrentToCompare').removeClass('d-none');
+      $('#saveToUrlBtn').removeClass('d-none')
       }
       
       
@@ -3346,6 +3350,7 @@ function autocomplete(inp, arr) {
               }
               
               $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').removeClass('disabled');
+              $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').addClass('text-warning');
 
 
               

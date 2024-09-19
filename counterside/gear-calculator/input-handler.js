@@ -363,6 +363,8 @@ $('#deleteAllDataForCompare').on('click',function() {
 
 
   $('#setCurrentToCompare').on('click',function() {
+    ConfirmDialog('<b>' + total_unit_data[0] + " " + total_unit_data[1] + " - Lv. " + UnitLevel  +  " </b><br /><b>" + (ifSelectTargetDummy ? "":(total_target_data[0] ?? '')) + " " + (ifSelectTargetDummy ? "Target Dummy":(total_target_data[1] ?? '')) + " - Lv. " + (ifSelectTargetDummy ? "?":TargetLevel) +  "</b>",function() {
+      $('#compareUnitsModal').modal('show');
     if (localStorageAvailable) {
       var fcId = $('#compareUnitsModal .modal-body .unit_container .list-group-item').length;
       var emptyId = 0;
@@ -394,7 +396,7 @@ $('#deleteAllDataForCompare').on('click',function() {
         tt_title = total_target_data[0]; 
         tt_name = total_target_data[1]; 
       }
-      var sau = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),'',tt_title,tt_name,$('#seachedTarget_body img').attr('src'),'','','',unit_stats_to_save,target_stats_to_save,unit_extra_bonus_stats,target_extra_bonus_stats,total_unit_data,Unit_dps_stats,total_gear_data_unit,total_target_data,$('#gearData_enemy').html(),ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,dTableCompare_values,UnitLevel,TargetLevel];
+      var sau = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),'',tt_title,tt_name,$('#seachedTarget_body img').attr('src'),'','','',unit_stats_to_save,target_stats_to_save,unit_extra_bonus_stats,target_extra_bonus_stats,total_unit_data,Unit_dps_stats,total_gear_data_unit,total_target_data,$('#gearData_enemy').html(),ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,dTableCompare_values,UnitLevel,TargetLevel,saveToUrl()];
       var sGear = [Weapon.eqIcon,Weapon.eqSet,Armor.eqIcon,Armor.eqSet,Accessory1.eqIcon,Accessory1.eqSet,Accessory2.eqIcon,Accessory2.eqSet,enemy_Weapon.eqIcon,enemy_Weapon.eqSet,enemy_Armor.eqIcon,enemy_Armor.eqSet,enemy_Accessory1.eqIcon,enemy_Accessory1.eqSet,enemy_Accessory2.eqIcon,enemy_Accessory2.eqSet];
       for (let i = 0, n = (unit_stats_to_save.length)/2; i < n; i++) {
         if (i<6) {
@@ -478,7 +480,7 @@ $('#deleteAllDataForCompare').on('click',function() {
       console.log('can\'t save more, limit');
     }
   }
-   
+},"Save this loadout?");
   });
 
   //CreateTooltipForAnything($('#test1'),'123-123');
@@ -1176,14 +1178,17 @@ function saveToUrl() {
   let gear_Data_target = btoa(JSON.stringify(gear_Data_t));
 
 
-  let cUrl = window.location.href.replace("#", "");
+  let cUrl = window.location.href.split("?")[0].replace("#", "");
 
 
-
+  if (cUrl) {
+    
+  }
   return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+ifSelectTargetDummy+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target;
 }
 
 $('#saveToUrlBtn').on('click',function() {
+  $('#saveUrlModalLabel').text('Share active loadout')
   $('#saveUrl_input').val(saveToUrl());
   DeleteTooltipFromAnything($("#copyUrlBtn"));
 CreateTooltipForAnything($("#copyUrlBtn"),"Copy to clipboard")
