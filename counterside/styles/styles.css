@@ -266,6 +266,7 @@ background-color: rgb(109, 114, 134);
   }
 
   .gear-containers {
+    text-align: start;
     left: 25%;
     top: 25%;
     /* position: relative; */
@@ -1389,3 +1390,19 @@ color: #bebebe;
 /* .dropdown-lvl_highlight:hover:not(.disabled) {
   background-color: #7d57c9;
 } */
+
+
+.saveLoadoutConfirmImg {
+  margin-left: auto;
+  margin-right: auto;
+  height: 10rem;
+  width: 10rem;
+}
+
+.saveLoadoutConfirmImg img {
+  max-width: 100%;
+    max-height: 100%;
+}
+#confirmActionModal_Msg {
+  text-align: center;
+}
