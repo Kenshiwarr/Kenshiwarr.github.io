@@ -8,6 +8,7 @@ var Tname = url_query_params.target; // "some_value"
 var ifDummy = url_query_params.Isdmmy; // "some_value"
 var gearUnit_DataUrl = url_query_params.gearU;
 var gearTarget_DataUrl = url_query_params.gearT;
+var urlExtra = url_query_params.extra;
 
 var Loadouts_LoadOrder = [];
 
@@ -73,6 +74,16 @@ if (Uname != null) {
   /* searchvcsv(Utitle.replace(/_/g, ' '),Uname.replace(/_/g, ' '),true) */
 
   //GEAR_MAIN_STATS_VALUES_T7_target
+
+  let urlExtraInfo = JSON.parse(atob(urlExtra));
+
+  $('#range-melee-distance_partial').val(urlExtraInfo[0]);
+  var rangeVal = $('#range-melee-distance_partial').val();
+    distance_to_target_frequency_ranged = Number(rangeVal)/100;
+    distance_to_target_frequency_melee = 1 + Number(rangeVal*(-1))/100;
+    $('#range-melee-distance_partial-value').text(Math.round((distance_to_target_frequency_melee+ Number.EPSILON)*100) + '% / ' + Math.round((distance_to_target_frequency_ranged + Number.EPSILON)*100) + '%');
+
+
   let toSearchU = decodeURI(Uname).split(",");
 
     UnitLevel = Number(toSearchU[2]);
@@ -1167,25 +1178,7 @@ $('#target-lvl_range').val(TargetLevel)
 $('#unit-lvl_input').val(UnitLevel)
 $('#target-lvl_input').val(TargetLevel)
 
-function saveToUrl() {
 
-  let unitN = encodeURI(total_unit_data[0] + "," + total_unit_data[1] + "," + UnitLevel);
-  let targetN = encodeURI(total_target_data[0] + "," + total_target_data[1] + "," + TargetLevel);
-  let gear_Data_u = [Weapon.getUrlValues(),Armor.getUrlValues(),Accessory1.getUrlValues(),Accessory2.getUrlValues()]
-    let gear_Data_t = [enemy_Weapon.getUrlValues(),enemy_Armor.getUrlValues(),enemy_Accessory1.getUrlValues(),enemy_Accessory2.getUrlValues()]
-
-  let gear_Data_unit = btoa(JSON.stringify(gear_Data_u));
-  let gear_Data_target = btoa(JSON.stringify(gear_Data_t));
-
-
-  let cUrl = window.location.href.split("?")[0].replace("#", "");
-
-
-  if (cUrl) {
-    
-  }
-  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+ifSelectTargetDummy+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target;
-}
 
 $('#saveToUrlBtn').on('click',function() {
   $('#saveUrlModalLabel').text('Share active loadout')
@@ -1212,3 +1205,24 @@ $('#copyUrlBtn').on('click',function() {
   navigator.clipboard.writeText(textInput.val());
   UpdateTooltipForAnything($("#copyUrlBtn"),"Text copied!")
 });
+
+
+
+function saveToUrl() {
+
+  let unitN = encodeURI(total_unit_data[0] + "," + total_unit_data[1] + "," + UnitLevel);
+  let targetN = encodeURI(total_target_data[0] + "," + total_target_data[1] + "," + TargetLevel);
+  let gear_Data_u = [Weapon.getUrlValues(),Armor.getUrlValues(),Accessory1.getUrlValues(),Accessory2.getUrlValues()]
+  let gear_Data_t = [enemy_Weapon.getUrlValues(),enemy_Armor.getUrlValues(),enemy_Accessory1.getUrlValues(),enemy_Accessory2.getUrlValues()]
+
+  let gear_Data_unit = btoa(JSON.stringify(gear_Data_u));
+  let gear_Data_target = btoa(JSON.stringify(gear_Data_t));
+  let extraInfo = btoa(JSON.stringify([$('#range-melee-distance_partial').val()]));
+
+
+  let cUrl = window.location.href.split("?")[0].replace("#", "");
+
+
+
+  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+ifSelectTargetDummy+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target+"&extra="+extraInfo;
+}

@@ -334,3 +334,4 @@ function refineURL()
  
     return beforeQueryString;     
 }
+
