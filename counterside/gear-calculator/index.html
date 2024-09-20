@@ -116,7 +116,7 @@ jQuery.event.special.mousewheel = {
 <div id="body-dark_bg_top"></div>
 </div>
 <script src="../../side-menu-hover.js"></script>
-<main style="height: 100vh">
+<main style="min-height: 100vh">
 <div id="initial_">
 <div id="pffs">
 </div>
@@ -591,10 +591,20 @@ jQuery.event.special.mousewheel = {
   
 
   <div id="sd_dmg_table"></div>
+
+  <div id="CalculateBtn" style="max-width: 10rem;" class="float-end text-end" hidden>
+    <button id="UpdateStatsBtn">Calculate</button><br />
+  <small>Use this button if something went wrong and stats didn't update after your input</small>
+</div>
+
   <div id="sd_dmg_table-tooltip_list"></div>
   <div id="skill_exclude_selectLabel" class="fw-bold"></div>
   <div id="skill_exclude_select"></div>
   <br/>
+   <div id="CalculateBtn" style="max-width: 12vw;" class="float-end text-end" hidden>
+    <button id="UpdateStatsBtn">Calculate</button><br />
+  <small>Use this button if something went wrong and stats didn't update after your input</small>
+</div>
 
   <div class="mb-1" id="btn-showTargetSkills" hidden>
     <input type="checkbox" class="btn-check" id="Include_TargetSkillData" autocomplete="off">
@@ -644,24 +654,22 @@ jQuery.event.special.mousewheel = {
   
 
 </div>
-
-<button type="button" class="btn btn-link float-end m-4" id="ResetSessionPageBtn">Clear current session and restart page</button>
-
+<div>
+<button type="button" class="btn btn-link float-end" id="ResetSessionPageBtn">Clear current session and restart page</button>
+</div>
 <div class="container">
 <!-- Button trigger modal -->
 
 <button id="setCurrentToCompare" type="button" class="btn btn-success d-none">Save loadout</button>
 <button type="button" id="saveToUrlBtn" class="btn btn-secondary d-none" data-bs-toggle="modal" data-bs-target="#saveUrlModal">Share</button>
 
-<button type="button" id="openLoadoutsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">Check saved loadouts</button>
 
 
+<div class="mt-4" >
+  <button type="button" id="openLoadoutsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">Check saved loadouts</button>
 
-<div class="m-5" >
-  <div id="CalculateBtn" hidden>
-<button id="UpdateStatsBtn">Calculate</button>
-<small>Use this button if something went wrong and stats didn't update after your input</small>
-</div>
+ 
+
 </div>
 </div>
 

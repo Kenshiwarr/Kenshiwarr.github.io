@@ -65,7 +65,7 @@ body {
     clear: both;
     position: relative;
     height: 8rem;
-    margin-top: -8rem;
+    /* margin-top: -8rem; */
   }
 
   #initial_ {
