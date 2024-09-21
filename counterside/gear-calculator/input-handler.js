@@ -1184,7 +1184,7 @@ $('#target-lvl_input').val(TargetLevel)
 
 
 $('#saveToUrlBtn').on('click',function() {
-  $('#saveUrlModalLabel').text('Share active loadout')
+  $('#saveUrlModalLabel').text('Sharing active loadout')
   $('#saveUrl_input').val(saveToUrl());
   DeleteTooltipFromAnything($("#copyUrlBtn"));
 CreateTooltipForAnything($("#copyUrlBtn"),"Copy to clipboard")

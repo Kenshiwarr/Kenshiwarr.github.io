@@ -116,10 +116,14 @@ function removeElement(arrayName,arrayElement) {
     $('#confirmActionModalLabel').text(title);
     $('#confirmActionModal_Msg').html(message);
   
+    
     var confirmBtns = [$('#confirmActionModal_btn_ok'),$('#confirmActionModal_btn_cancel'),$('#confirmActionModal_btn_close')];
-  
+    for (let i = 0, n = confirmBtns.length; i < n; i++) {
+      confirmBtns[i].off('click.fval');
+    }
+
     confirmBtns[0].on('click.fval',function() {
-      functionVal(this)
+      functionVal(this);
       for (let i = 0, n = confirmBtns.length; i < n; i++) {
         confirmBtns[i].off('click.fval');
       }
