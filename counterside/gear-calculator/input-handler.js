@@ -75,7 +75,23 @@ if (Uname != null) {
 
   //GEAR_MAIN_STATS_VALUES_T7_target
 
-  let urlExtraInfo = JSON.parse(atob(urlExtra));
+  urlExtra = urlExtra.split(';');
+  let urlExtra_ubstats;
+  let urlExtra_tbstats;
+  if (typeof urlExtra[1] !== 'undefined') {
+    urlExtra_ubstats = urlExtra[1].split(',');
+    for (var i = 0, n = urlExtra_ubstats.length; i < n; i+=2) {
+      unit_extra_bonus_stats[Number(urlExtra_ubstats[i])] = Number(urlExtra_ubstats[i+1]);
+    }
+  }
+  if (typeof urlExtra[2] !== 'undefined') {
+    urlExtra_tbstats = urlExtra[2].split(',');
+    for (var i = 0, n = urlExtra_tbstats.length; i < n; i+=2) {
+      target_extra_bonus_stats[Number(urlExtra_tbstats[i])] = Number(urlExtra_tbstats[i+1]);
+    }
+  }
+
+  let urlExtraInfo = JSON.parse(atob(urlExtra[0]));
 
   $('#range-melee-distance_partial').val(urlExtraInfo[0]);
   var rangeVal = $('#range-melee-distance_partial').val();
@@ -136,7 +152,7 @@ if (Uname != null) {
   }
  
   
-if (ifDummy == 'false') {
+if (ifDummy == '0') {
 $('#searchIDtarget').prop('disabled', false);
 $('#searchIDtarget').attr('placeholder','');
 ifSelectTargetDummy = false;
@@ -1220,12 +1236,48 @@ function saveToUrl() {
 
   let gear_Data_unit = btoa(JSON.stringify(gear_Data_u));
   let gear_Data_target = btoa(JSON.stringify(gear_Data_t));
-  let extraInfo = btoa(JSON.stringify([$('#range-melee-distance_partial').val()]));
 
 
   let cUrl = window.location.href.split("?")[0].replace("#", "");
 
+  let extraStatsData_unit = "";
+  let extraStatsData_unit_arr = [];
+  
+  /* if (condition) {
+    
+  } */
 
 
-  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+ifSelectTargetDummy+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target+"&extra="+extraInfo;
+  for (var i = 0, n = unit_extra_bonus_stats.length; i < n; i++) {
+    if (unit_extra_bonus_stats[i] != 0) {
+      extraStatsData_unit += i + "," + unit_extra_bonus_stats[i] + ",";
+    }
+  }
+
+  extraStatsData_unit = extraStatsData_unit.slice(0, -1);
+  let extraStatsData_target = "";
+
+  for (var i = 0, n = target_extra_bonus_stats.length; i < n; i++) {
+    if (target_extra_bonus_stats[i] != 0) {
+    extraStatsData_target += i + "," + target_extra_bonus_stats[i] + ",";
+  }
+  }
+  let extraInfo = btoa(JSON.stringify([$('#range-melee-distance_partial').val()]));
+
+  extraStatsData_target = extraStatsData_target.slice(0, -1);
+  if (extraStatsData_unit != "") {
+    extraInfo += ';';
+    if (extraStatsData_target != "") {
+    extraStatsData_unit += ";";
+    }
+  }
+
+
+  let dummyIf = (ifSelectTargetDummy ? 1:0)
+
+  console.log(extraStatsData_unit);
+  console.log(btoa(extraStatsData_target));
+
+
+  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target+"&extra="+extraInfo+extraStatsData_unit+extraStatsData_target;
 }
