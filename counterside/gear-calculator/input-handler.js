@@ -76,15 +76,16 @@ if (Uname != null) {
   //GEAR_MAIN_STATS_VALUES_T7_target
 
   urlExtra = urlExtra.split(';');
+  
   let urlExtra_ubstats;
   let urlExtra_tbstats;
-  if (typeof urlExtra[1] !== 'undefined') {
+  if (urlExtra[1] !== '') {
     urlExtra_ubstats = urlExtra[1].split(',');
     for (var i = 0, n = urlExtra_ubstats.length; i < n; i+=2) {
       unit_extra_bonus_stats[Number(urlExtra_ubstats[i])] = Number(urlExtra_ubstats[i+1]);
     }
   }
-  if (typeof urlExtra[2] !== 'undefined') {
+  if (urlExtra[2] !== '') {
     urlExtra_tbstats = urlExtra[2].split(',');
     for (var i = 0, n = urlExtra_tbstats.length; i < n; i+=2) {
       target_extra_bonus_stats[Number(urlExtra_tbstats[i])] = Number(urlExtra_tbstats[i+1]);
