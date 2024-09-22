@@ -811,19 +811,19 @@ var GearSetsListTrinity = {
       let latentVal = this.#latent;
       let url_Gear_Latent;
       if (this.#latent != ",") {
-        url_Gear_Latent = BONUS_STATS_LIST.indexOf(latentVal[0]) + "," + latentVal[1];
+        url_Gear_Latent = BONUS_STATS_LIST.indexOf(latentVal[0]) + "_" + latentVal[1];
       } else {
         url_Gear_Latent = "";
       }
 
       let url_Gear_Name = this.#name;
-      let url_Gear_Sub1 = BONUS_STATS_LIST.indexOf(this.#sub1[0]) + "," + this.#sub1[1];
-      let url_Gear_Sub2 = BONUS_STATS_LIST.indexOf(this.#sub2[0]) + "," + this.#sub2[1];
+      let url_Gear_Sub1 = BONUS_STATS_LIST.indexOf(this.#sub1[0]) + "_" + this.#sub1[1];
+      let url_Gear_Sub2 = BONUS_STATS_LIST.indexOf(this.#sub2[0]) + "_" + this.#sub2[1];
       
       let url_Gear_Set = Object.keys(this.#eqSet_Options).indexOf(this.#eqSet);
    
 
-      return [url_Gear_Name,url_Gear_Sub1,url_Gear_Sub2,url_Gear_Latent,url_Gear_Set,this.#mainStat[0]];
+      return [url_Gear_Name,url_Gear_Sub1,url_Gear_Sub2,url_Gear_Latent,url_Gear_Set,this.#mainStat[0]].toString();
     } else {
       return "";
     }
@@ -832,6 +832,7 @@ var GearSetsListTrinity = {
     setValuesByUrl(urlGearVal,GearMainStatValues,searchTerm,searchGearData,eq_Slot) {
 
 
+      urlGearVal = urlGearVal.split(",");
       let n;
       let m = searchGearData.length;
       for (let i = 0; i < m; i++) {
@@ -846,9 +847,9 @@ var GearSetsListTrinity = {
 
       let sgd = searchGearData[n];
 
-      let sub1_val = urlGearVal[1].split(',');
-      let sub2_val = urlGearVal[2].split(',');
-      let latent_val = urlGearVal[3].split(',');
+      let sub1_val = urlGearVal[1].split('_');
+      let sub2_val = urlGearVal[2].split('_');
+      let latent_val = urlGearVal[3].split('_');
 
       let sgearData = sgd.split(",");
       console.log(sgearData[5])
@@ -873,7 +874,7 @@ var GearSetsListTrinity = {
       this.#name = urlGearVal[0];
       this.#eqSlot = eq_Slot;
       this.#eqTier = 7;
-      this.#eqSet = setOptions[Object.keys(setOptions)[urlGearVal[4]]]['name'];
+      this.#eqSet = setOptions[Object.keys(setOptions)[Number(urlGearVal[4])]]['name'];
       this.#sub1 = [BONUS_STATS_LIST[sub1_val[0]],sub1_val[1]];
       this.#sub2 = [BONUS_STATS_LIST[sub2_val[0]],sub2_val[1]];
       this.#latent = [BONUS_STATS_LIST[latent_val[0]],latent_val[1]];
