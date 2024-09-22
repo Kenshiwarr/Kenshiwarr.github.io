@@ -340,37 +340,37 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
         if (gearDataSavedValues[0] !== '') {
             selectedGearStats = gearDataSavedValues[0][0];
             Weapon.setAllValues(gearDataSavedValues[0]);
-            Weapon.setGear(0);
+            Weapon.setGear();
             weaponIsConfirmed = true;
         } else {
-            Weapon.removeGear('Container');
+            Weapon.removeGear();
             weaponIsConfirmed = false;
         }
         if (gearDataSavedValues[1] !== '') {
             selectedGearStats = gearDataSavedValues[1][0];
             Armor.setAllValues(gearDataSavedValues[1]);
-            Armor.setGear(0);
+            Armor.setGear();
             armorIsConfirmed = true;
         } else {
-            Armor.removeGear('Container');
+            Armor.removeGear();
             armorIsConfirmed = false;
         }
         if (gearDataSavedValues[2] !== '') {
             selectedGearStats = gearDataSavedValues[2][0];
             Accessory1.setAllValues(gearDataSavedValues[2]);
-            Accessory1.setGear(0);
+            Accessory1.setGear();
             accessory1IsConfirmed = true;
         } else {
-            Accessory1.removeGear('Container');
+            Accessory1.removeGear();
             accessory1IsConfirmed = false;
         }
         if (gearDataSavedValues[3] !== '') {
             selectedGearStats = gearDataSavedValues[3][0];
             Accessory2.setAllValues(gearDataSavedValues[3]);
-            Accessory2.setGear(0);
+            Accessory2.setGear();
             accessory2IsConfirmed = true;
         } else {
-            Accessory2.removeGear('Container');
+            Accessory2.removeGear();
             accessory2IsConfirmed = false;
         }
 
@@ -407,7 +407,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             enemy_Weapon.setGear();
             enemy_weaponIsConfirmed = true;
         } else {
-            enemy_Weapon.removeGear('Container_enemy');
+            enemy_Weapon.removeGear();
             enemy_weaponIsConfirmed = false;
         }
         if (gearDataSavedValues[5] !== '') {
@@ -416,7 +416,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             enemy_Armor.setGear();
             enemy_armorIsConfirmed = true;
         } else {
-            enemy_Armor.removeGear('Container_enemy');
+            enemy_Armor.removeGear();
             enemy_armorIsConfirmed = false;
         }
         if (gearDataSavedValues[6] !== '') {
@@ -425,7 +425,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             enemy_Accessory1.setGear();
             enemy_accessory1IsConfirmed = true;
         } else {
-            enemy_Accessory1.removeGear('Container_enemy');
+            enemy_Accessory1.removeGear();
             enemy_accessory1IsConfirmed = false;
         }
         if (gearDataSavedValues[7] !== '') {
@@ -434,7 +434,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             enemy_Accessory2.setGear();
             enemy_accessory2IsConfirmed = true;
         } else {
-            enemy_Accessory2.removeGear('Container_enemy');
+            enemy_Accessory2.removeGear();
             enemy_accessory2IsConfirmed = false;
         }
         

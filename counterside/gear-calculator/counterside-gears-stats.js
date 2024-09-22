@@ -611,7 +611,7 @@ var GearSetsListTrinity = {
 
 
   class Gear {
-    constructor(){
+    constructor(u){
       this.name = 0;
       this.eqSlot = 0;
       this.eqTier = 0;
@@ -622,6 +622,7 @@ var GearSetsListTrinity = {
       this.selectedGearData = 0;
       this.latent = 0;
       this.#eqSet_Options = 0;
+      this.forUnit = u;
   }
     showMainStat() {
       console.log(`[1]name = ${this.name}`);
@@ -632,15 +633,17 @@ var GearSetsListTrinity = {
     
     }
 
-    setGear(selectedFor) {
+    setGear() {
 
 
-      if ((selectedFor === 0)) {
+      if ((this.forUnit == 0)) {
+        console.log("setting for UNIT");
         $('#' + `${this.#eqSlot}` + 'Container').css('background-image',"url('"+`${this.#eqIcon}`+"')");
         $('#' + `${this.#eqSlot}` + 'Container img').attr('src','cs_gears-icons/Set Icons/Icon_Set_'+`${this.#eqSet}`+'.png');
         $('#' + `${this.#eqSlot}` + 'Container img').removeAttr('hidden');
         $('#' + `${this.#eqSlot}` + 'Container').attr('isConfirmed','true')
       } else{
+        console.log("setting for TARGET");
         $('#' + `${this.#eqSlot}` + 'Container_enemy').css('background-image',"url('"+`${this.#eqIcon}`+"')");
         $('#' + `${this.#eqSlot}` + 'Container_enemy img').attr('src','cs_gears-icons/Set Icons/Icon_Set_'+`${this.#eqSet}`+'.png');
         $('#' + `${this.#eqSlot}` + 'Container_enemy img').removeAttr('hidden');
@@ -651,20 +654,15 @@ var GearSetsListTrinity = {
     }
 
 
-    removeGear(ContainerType) {
+    removeGear() {
 
-      /* if (selectedGearFor == selectedGear+'Container') {
-
-        $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"none");
-        $('#' + `${this.#eqSlot}` + ContainerType + ' img').attr('src','');
-        $('#' + `${this.#eqSlot}` + ContainerType + ' img').attr("hidden",true);
-
-
+      let ContainerType;
+      if (this.forUnit == 0) {
+        ContainerType = "Container";
       } else {
-        $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"none");
-        $('#' + `${this.#eqSlot}` + ContainerType + ' img').attr('src','');
-        $('#' + `${this.#eqSlot}` + ContainerType + ' img').attr("hidden",true);
-      } */
+        ContainerType = "Container_enemy";
+      }
+
 
         $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"none");
         $('#' + `${this.#eqSlot}` + ContainerType + ' img').attr('src','');
@@ -736,7 +734,7 @@ var GearSetsListTrinity = {
           $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"url('"+`${this.#eqIcon}`+"')");
       
     } else {
-      this.removeGear(ContainerType);
+      this.removeGear();
     }
     }
 
@@ -791,23 +789,6 @@ var GearSetsListTrinity = {
       if (this.#name != 0) {
       
 
-      /* var setOptions;
-
-      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(this.#name) > -1) {
-        setOptions = GearSetsListBasic;
-      } else if (this.#name === 'Spectral') {
-        setOptions = GearSetsListSpectral;
-      } else if (this.#name === 'Phantom') {
-        setOptions = GearSetsListPhantom;
-      } else if (this.#name === 'Jungle') {
-        setOptions = GearSetsListTrinity;
-      } else if (this.#name === 'Volcano') {
-        setOptions = GearSetsListTrinity;
-      } else {
-        setOptions = GearSetsListBasic;
-      } */
-      
-
       let latentVal = this.#latent;
       let url_Gear_Latent;
       if (this.#latent != ",") {
@@ -816,70 +797,110 @@ var GearSetsListTrinity = {
         url_Gear_Latent = "";
       }
 
-      let url_Gear_Name = this.#name;
-      let url_Gear_Sub1 = BONUS_STATS_LIST.indexOf(this.#sub1[0]) + "_" + this.#sub1[1];
-      let url_Gear_Sub2 = BONUS_STATS_LIST.indexOf(this.#sub2[0]) + "_" + this.#sub2[1];
+      let url_Gear_Stats_id;
+      if (this.forUnit == 0) {
+        url_Gear_Stats_id = total_gear_data_unit.slice(1).split('","').indexOf(this.#selectedGearData);
+      } else {
+        url_Gear_Stats_id = total_gear_data_target.slice(1).split('","').indexOf(this.#selectedGearData);
+      }
+      let url_Gear_Sub1 = BONUS_STATS_LIST.indexOf(this.#sub1[0]);
+      let url_Gear_Sub2 = BONUS_STATS_LIST.indexOf(this.#sub2[0]);
       
       let url_Gear_Set = Object.keys(this.#eqSet_Options).indexOf(this.#eqSet);
    
 
-      return [url_Gear_Name,url_Gear_Sub1,url_Gear_Sub2,url_Gear_Latent,url_Gear_Set,this.#mainStat[0]].toString();
+      return [url_Gear_Stats_id,url_Gear_Sub1,url_Gear_Sub2,url_Gear_Latent,url_Gear_Set].toString();
     } else {
       return "";
     }
     }
 
-    setValuesByUrl(urlGearVal,GearMainStatValues,searchTerm,searchGearData,eq_Slot) {
+    setValuesByUrl(urlGearData,searchGearData,eq_Slot) {
 
 
-      urlGearVal = urlGearVal.split(",");
-      let n;
-      let m = searchGearData.length;
-      for (let i = 0; i < m; i++) {
-        if ((searchGearData[i].includes(searchTerm) == true) && (searchGearData[i].indexOf(urlGearVal[5]) > -1)) {
-          n = i;
-        }
+      let ugdt = urlGearData.split(",");
 
-      }
-      if (n == undefined) {
-        return false;
-      }
+      let urlGearVal = searchGearData.split(",");
 
-      let sgd = searchGearData[n];
+      let sub1_val = ugdt[1];
+      let sub2_val = ugdt[2];
+      let latent_val = ugdt[3].split('_');
 
-      let sub1_val = urlGearVal[1].split('_');
-      let sub2_val = urlGearVal[2].split('_');
-      let latent_val = urlGearVal[3].split('_');
-
-      let sgearData = sgd.split(",");
-      console.log(sgearData[5])
 
       var setOptions;
 
-      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(urlGearVal[0]) > -1) {
+      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(urlGearVal[1]) > -1) {
         setOptions = GearSetsListBasic;
-      } else if (urlGearVal[0] === 'Spectral') {
+      } else if (urlGearVal[1] === 'Spectral') {
         setOptions = GearSetsListSpectral;
-      } else if (urlGearVal[0] === 'Phantom') {
+      } else if (urlGearVal[1] === 'Phantom') {
         setOptions = GearSetsListPhantom;
-      } else if (urlGearVal[0] === 'Jungle') {
+      } else if (urlGearVal[1] === 'Jungle') {
         setOptions = GearSetsListTrinity;
-      } else if (urlGearVal[0] === 'Volcano') {
+      } else if (urlGearVal[1] === 'Volcano') {
         setOptions = GearSetsListTrinity;
       } else {
         setOptions = GearSetsListBasic;
       }
 
-      this.#selectedGearData = sgd;
-      this.#name = urlGearVal[0];
+      let getSubstats = this.getAvailableSubstats(urlGearVal[1],eq_Slot);
+      console.log('getSubstats');
+      console.log(getSubstats);
+
+      let sc = urlGearVal.slice(6)
+      let sub1Final = [];
+      let sub2Final = [];
+
+      for (let i = 0, n = STATS_OPTION_LIST.length; i < n; i++) {
+        if (sc[i] !== '') {
+          if (sc[i].includes('1') === true) {
+            if (STATS_OPTION_LIST[i] == HP && urlGearVal[1] == "Jungle") {
+              sub1Final.push(HP_PERCENT)
+            } else {
+              sub1Final.push(STATS_OPTION_LIST[i])
+            }
+          } 
+          if (sc[i].includes('2') === true) {
+            sub2Final.push(STATS_OPTION_LIST[i])
+          }
+        }
+      }
+
+        let s1f;
+        let s2f;
+        let sC1 = [];
+        let sC2 = [];
+      for (var i = 0, n = sub1Final.length; i < n; i++) {
+        sC1[i] = getSubstats[0].concat(Array(Number(sub1Final.length)).fill(getSubstats[0][getSubstats[0].length-1]))[i]
+       
+      }
+    
+
+      for (var i = 0, n = sub2Final.length; i < n; i++) { 
+        sC2[i] = getSubstats[1].concat(Array(Number(sub2Final.length)).fill(getSubstats[1][getSubstats[1].length-1]))[i]
+
+      }
+      s1f = sC1[sub1Final.indexOf(BONUS_STATS_LIST[sub1_val])];
+      s2f = sC2[sub2Final.indexOf(BONUS_STATS_LIST[sub2_val])];
+
+      let GearMainStatValues;
+      if (this.forUnit == 0) {
+        GearMainStatValues = GEAR_MAIN_STATS_VALUES_T7_unit;
+      } else {
+        GearMainStatValues = GEAR_MAIN_STATS_VALUES_T7_target;
+      }
+
+      this.#selectedGearData = searchGearData;
+      this.#name = urlGearVal[1];
       this.#eqSlot = eq_Slot;
       this.#eqTier = 7;
-      this.#eqSet = setOptions[Object.keys(setOptions)[Number(urlGearVal[4])]]['name'];
-      this.#sub1 = [BONUS_STATS_LIST[sub1_val[0]],sub1_val[1]];
-      this.#sub2 = [BONUS_STATS_LIST[sub2_val[0]],sub2_val[1]];
+
+      this.#eqSet = setOptions[Object.keys(setOptions)[Number(ugdt[4])]]['name'];
+      this.#sub1 = [BONUS_STATS_LIST[sub1_val],s1f];
+      this.#sub2 = [BONUS_STATS_LIST[sub2_val],s2f];
       this.#latent = [BONUS_STATS_LIST[latent_val[0]],latent_val[1]];
-      this.#eqIcon =  'cs_gears-icons/Special Gear/'+searchTerm.split(",")[2]+'/' + sgearData[4] +  '.png';
-      this.#mainStat = [sgearData[5],GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(sgearData[5])]];
+      this.#eqIcon =  'cs_gears-icons/Special Gear/'+urlGearVal[3]+'/' + urlGearVal[4] +  '.png';
+      this.#mainStat = [urlGearVal[5],GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(urlGearVal[5])]];
       
       this.#eqSet_Options = setOptions;
 
@@ -887,6 +908,195 @@ var GearSetsListTrinity = {
 
 
       return true;
+    }
+
+    getAvailableSubstats(GearType, GearSlot) {
+      let aLatent = '';
+      let aSub1;
+      let aSub2;
+
+      switch (GearType) {
+        case "Maze":
+          if((GearSlot == SLOT_WEAPON)|| (GearSlot == SLOT_ARMOR)){
+          aSub1 = MAZE_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = MAZE_GEAR_SUBSTATS_VALUES_LIST_2;
+        } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
+          aSub2 = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
+        }
+        break;
+        case "Loyal":
+        aSub1 = MAZE_GEAR_SUBSTATS_VALUES_LIST_1;
+        aSub2 = MAZE_GEAR_SUBSTATS_VALUES_LIST_2;
+        break;
+        case "Devoted":
+        aSub1 = MAZE_GEAR_SUBSTATS_VALUES_LIST_1;
+        aSub2 = MAZE_GEAR_SUBSTATS_VALUES_LIST_2;
+        break;
+        case "Courageous":
+        aSub1 = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
+        aSub2 = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
+        break;
+        case "Sincere":
+        aSub1 = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
+        aSub2 = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
+        break;
+        case "Challenger":
+          if((GearSlot == SLOT_WEAPON)|| (GearSlot == SLOT_ARMOR)){
+            aSub1 = CHALLENGER_GEAR_SUBSTATS_VALUES_LIST_1;
+            aSub2 = CHALLENGER_GEAR_SUBSTATS_VALUES_LIST_2;
+          } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+            aSub1 = CHALLENGER_ACCS_SUBSTATS_VALUES_LIST_1;
+            aSub2 = CHALLENGER_ACCS_SUBSTATS_VALUES_LIST_2;
+          }
+        break;
+        case "Hummingbird":
+        aSub1 = HUMMINGBIRD_SUBSTATS_VALUES_LIST_1;
+        aSub2 = HUMMINGBIRD_SUBSTATS_VALUES_LIST_2;
+        break;
+        case "Gordias":
+          aSub1 = GORDIAS_SUBSTATS_VALUES_LIST_1;
+          aSub2 = GORDIAS_SUBSTATS_VALUES_LIST_2;
+        break;
+        case "Spectral":
+          if(GearSlot == (SLOT_WEAPON)){
+          aSub1 = SPECTRAL_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = SPECTRAL_WEAPON_SUBSTATS_VALUES_LIST_2;
+        } else if (GearSlot == (SLOT_ARMOR)) {
+          aSub1 = SPECTRAL_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = SPECTRAL_ARMOR_SUBSTATS_VALUES_LIST_2;
+        } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = SPECTRAL_ACCS_SUBSTATS_VALUES_LIST_1;
+          aSub2 = SPECTRAL_ACCS_SUBSTATS_VALUES_LIST_2;
+        }
+        break;
+        case "Phantom":
+          if(GearSlot == (SLOT_WEAPON)){
+          aSub1 = PHANTOM_GEAR_SUBSTATS_VALUES_LIST_1; 
+          aSub2 = PHANTOM_WEAPON_SUBSTATS_VALUES_LIST_2;
+        } else if (GearSlot == (SLOT_ARMOR)) {
+          aSub1 = PHANTOM_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = PHANTOM_ARMOR_SUBSTATS_VALUES_LIST_2;
+        } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = PHANTOM_ACCS_SUBSTATS_VALUES_LIST_1;
+          aSub2 = PHANTOM_ACCS_SUBSTATS_VALUES_LIST_2;
+        }
+        break;
+        case "Polymer":
+          if(GearSlot == (SLOT_WEAPON)){
+          aSub1 = POLYMER_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = POLYMER_WEAPON_SUBSTATS_VALUES_LIST_2;
+        } else if (GearSlot == (SLOT_ARMOR)) {
+          aSub1 = POLYMER_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = POLYMER_ARMOR_SUBSTATS_VALUES_LIST_2;
+        } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = POLYMER_ACCS_SUBSTATS_VALUES_LIST_1;
+          aSub2 = POLYMER_ACCS_SUBSTATS_VALUES_LIST_2;
+        }
+        break;
+        case "Sc. Dante":
+          if(GearSlot == (SLOT_WEAPON)){
+          aSub1 = SC_DANTE_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = SC_DANTE_WEAPON_SUBSTATS_VALUES_LIST_2;
+        } else if (GearSlot == (SLOT_ARMOR)) {
+          aSub1 = SC_DANTE_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = SC_DANTE_ARMOR_SUBSTATS_VALUES_LIST_2;
+        } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = SC_DANTE_ACCS_SUBSTATS_VALUES_LIST_1;
+          aSub2 = SC_DANTE_ACCS_SUBSTATS_VALUES_LIST_2;
+        }
+        break;
+        case "Inhibitor":
+          if((GearSlot == SLOT_WEAPON) || (GearSlot == SLOT_ARMOR)){
+          aSub1 = INHIBITOR_GEAR_SUBSTATS_VALUES_LIST_1;
+          aSub2 = INHIBITOR_GEAR_SUBSTATS_VALUES_LIST_2;
+          aLatent = INHIBITOR_GEAR_LATENT_STATS_VALUES_LIST;
+        } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = INHIBITOR_ACCS_SUBSTATS_VALUES_LIST_1;
+          aSub2 = INHIBITOR_ACCS_SUBSTATS_VALUES_LIST_2;
+          aLatent = INHIBITOR_ACCS_LATENT_STATS_VALUES_LIST;
+        }
+        break;
+         case "Britra":
+          if((GearSlot == SLOT_WEAPON) || (GearSlot == SLOT_ARMOR)){
+            aSub1 = BRITRA_GEAR_SUBSTATS_VALUES_LIST_1;
+            aSub2 = BRITRA_GEAR_SUBSTATS_VALUES_LIST_2;
+            aLatent = BRITRA_GEAR_LATENT_STATS_VALUES_LIST;
+          } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+            aSub1 = BRITRA_ACCS_SUBSTATS_VALUES_LIST_1;
+            aSub2 = BRITRA_ACCS_SUBSTATS_VALUES_LIST_2;
+            aLatent = BRITRA_ACCS_LATENT_STATS_VALUES_LIST;
+          }
+          break;
+         case "Swift":
+          if((GearSlot == SLOT_WEAPON) || (GearSlot == SLOT_ARMOR)){
+            aSub1 = SWIFT_GEAR_SUBSTATS_VALUES_LIST_1;
+            aSub2 = SWIFT_GEAR_SUBSTATS_VALUES_LIST_2;
+            aLatent = SWIFT_GEAR_LATENT_STATS_VALUES_LIST;
+          } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+            aSub1 = SWIFT_ACCS_SUBSTATS_VALUES_LIST_1;
+            aSub2 = SWIFT_ACCS_SUBSTATS_VALUES_LIST_2;
+            aLatent = SWIFT_ACCS_LATENT_STATS_VALUES_LIST;
+          }
+          break;
+         case "Jungle":
+          if((GearSlot == SLOT_WEAPON) || (GearSlot == SLOT_ARMOR)){
+            aSub1 = JUNGLE_GEAR_SUBSTATS_VALUES_LIST_1;
+            aSub2 = JUNGLE_GEAR_SUBSTATS_VALUES_LIST_2;
+            aLatent = JUNGLE_GEAR_LATENT_STATS_VALUES_LIST;
+          } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+            aSub1 = JUNGLE_ACCS_SUBSTATS_VALUES_LIST_1;
+            aSub2 = JUNGLE_ACCS_SUBSTATS_VALUES_LIST_2;
+            aLatent = JUNGLE_ACCS_LATENT_STATS_VALUES_LIST;
+          }
+          break;
+         case "Volcano":
+          if((GearSlot == SLOT_WEAPON) || (GearSlot == SLOT_ARMOR)){
+            aSub1 = VOLCANO_GEAR_SUBSTATS_VALUES_LIST_1;
+            aSub2 = VOLCANO_GEAR_SUBSTATS_VALUES_LIST_2;
+            aLatent = VOLCANO_GEAR_LATENT_STATS_VALUES_LIST;
+          } else if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+            aSub1 = VOLCANO_ACCS_SUBSTATS_VALUES_LIST_1;
+            aSub2 = VOLCANO_ACCS_SUBSTATS_VALUES_LIST_2;
+            aLatent = VOLCANO_ACCS_LATENT_STATS_VALUES_LIST;
+          }
+          break;
+          case "Cat Brooch":
+          if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
+          aSub2 = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
+        }
+        break;
+        case "Gear Cell Suppressor":
+          if ((GearSlot == SLOT_ARMOR)) {
+          aSub1 = SOL_BADGUY_GEAR_STATS_VALUES_LIST_1;
+          aSub2 = SOL_BADGUY_GEAR_STATS_VALUES_LIST_2;
+        }
+        break;
+        case "TCS Module":
+          if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = TITAN_KYLE_GEAR_STATS_VALUES_LIST_1;
+          aSub2 = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
+        }
+        break;
+        case "Tactical Comms Gear":
+          if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = TITAN_KYLE_GEAR_STATS_VALUES_LIST_1;
+          aSub2 = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
+        }
+        break;
+        case "Throne of Ashes":
+          if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = ROSARIA_GEAR_STATS_VALUES_LIST_1;
+          aSub2 = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
+        }
+        break;
+        
+        default:
+          break;
+       };
+
+       return [aSub1,aSub2,aLatent];
     }
 
     #selectedGearData = 0;
@@ -974,15 +1184,15 @@ get eqSet_Options(){
     
   }
 
-  Weapon = new Gear()
-  Armor = new Gear()
-  Accessory1 = new Gear()
-  Accessory2 = new Gear()
+  var Weapon = new Gear(0)
+  var Armor = new Gear(0)
+  var Accessory1 = new Gear(0)
+  var Accessory2 = new Gear(0)
 
-  enemy_Weapon = new Gear()
-  enemy_Armor = new Gear()
-  enemy_Accessory1 = new Gear()
-  enemy_Accessory2 = new Gear()
+  var enemy_Weapon = new Gear(1)
+  var enemy_Armor = new Gear(1)
+  var enemy_Accessory1 = new Gear(1)
+  var enemy_Accessory2 = new Gear(1)
 
 
  
@@ -1804,49 +2014,6 @@ $('#gearSelectionModal').on('click' ,'.card', function(){
   
  const gear_type_loc = smgdArr[1];
  const gear_slot_loc = smgdArr[2];
-  /* console.time('subs_prim')
-  var gearSubs = selection_modal_gear_data.split(',').slice(6).concat(STATS_OPTION_LIST);
-
-  var gearSub1 = [];
-  var gearSub2 = [];
- 
- for (var i = 0; i < STATS_OPTION_LIST.length; i++) {
-   if (gearSubs[i] != "") {
-     gearSub1[i] = gearSubs[i];
-     gearSub2[i] = gearSubs[i+(gearSubs.length/2)];
-   }
- }
-
-
-
- gearSub1 = gearSub1.filter(elm => elm);
- gearSub2 = gearSub2.filter(elm => elm);
-
-
-
- var sub1Final = [];
- var sub2Final = [];
-
- var numS = 0;
-
-
-
-while (numS < gearSub1.length) {
-  if (gearSub1[numS] == 1) {
-    sub1Final[numS] = gearSub2[numS];
-    if (gearSub2[numS] == HP && gear_type_loc == "Jungle") {sub1Final[numS] = HP_PERCENT}
-  } else if (gearSub1[numS] == 2) {
-    sub2Final[numS] = gearSub2[numS];
-  }
-  numS++;
-}
-
-sub1Final = sub1Final.filter(elm => elm);
-sub2Final = sub2Final.filter(elm => elm);
-
-console.log('sub1Final = ' + sub1Final);
-console.log('sub2Final = ' + sub2Final);
-console.timeEnd('subs_prim') */ // old variant (garbage performance)
 
 console.time('subs_alt')
 var sc = smgdArr.slice(6)
@@ -2250,11 +2417,11 @@ $('#GearRemoveBtn').on('click' , function(){
     case SLOT_WEAPON:
       if (selectedGearFor == selectedGear+'Container') {
 
-        Weapon.removeGear('Container');
+        Weapon.removeGear();
         weaponIsConfirmed = false;
         $('#WeaponContainer').attr('isConfirmed','false')
       } else {
-        enemy_Weapon.removeGear('Container_enemy');
+        enemy_Weapon.removeGear();
         weaponIsConfirmed = false;
         $('#WeaponContainer_enemy').attr('isConfirmed','false')
       }
@@ -2262,12 +2429,12 @@ $('#GearRemoveBtn').on('click' , function(){
       case SLOT_ARMOR:
         if (selectedGearFor == selectedGear+'Container') {
 
-          Armor.removeGear('Container');
+          Armor.removeGear();
           armorIsConfirmed = false;
           $('#ArmorContainer').attr('isConfirmed','false')
         } else {
 
-          enemy_Armor.removeGear('Container_enemy');
+          enemy_Armor.removeGear();
           enemy_armorIsConfirmed = false;
           $('#ArmorContainer_enemy').attr('isConfirmed','false')
         }
@@ -2275,12 +2442,12 @@ $('#GearRemoveBtn').on('click' , function(){
           case SLOT_ACCESSORY_1:
             if (selectedGearFor == selectedGear+'Container') {
 
-              Accessory1.removeGear('Container');
+              Accessory1.removeGear();
               accessory1IsConfirmed = false;
               $('#Accessory1Container').attr('isConfirmed','false')
             } else {
 
-              enemy_Accessory1.removeGear('Container_enemy');
+              enemy_Accessory1.removeGear();
               enemy_accessory1IsConfirmed = false;
               $('#enemy_Accessory1Container').attr('isConfirmed','false')
             }
@@ -2288,12 +2455,12 @@ $('#GearRemoveBtn').on('click' , function(){
           case SLOT_ACCESSORY_2:
             if (selectedGearFor == selectedGear+'Container') {
 
-              Accessory2.removeGear('Container');
+              Accessory2.removeGear();
               accessory2IsConfirmed = false;
               $('#Accessory2Container').attr('isConfirmed','false')
             } else {
 
-              enemy_Accessory2.removeGear('Container_enemy');
+              enemy_Accessory2.removeGear();
               enemy_accessory2IsConfirmed = false;
               $('#enemy_Accessory2Container').attr('isConfirmed','false')
             }
@@ -2372,7 +2539,7 @@ $('#GearConfirmationBtn').on('click' , function(){
     Weapon.latent = [latent_value,latent_subvalue];
     Weapon.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
     Weapon.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
-    Weapon.setGear(0);
+    Weapon.setGear();
     //Weapon.showMainStat();
     weaponIsConfirmed = true;
     //$('#WeaponContainer').attr('isConfirmed','true');
@@ -2409,7 +2576,7 @@ $('#GearConfirmationBtn').on('click' , function(){
       Armor.latent = [latent_value,latent_subvalue];
       Armor.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
       Armor.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
-      Armor.setGear(0);
+      Armor.setGear();
       //Armor.showMainStat();
       armorIsConfirmed = true;
       //$('#ArmorContainer').attr('isConfirmed','true')
@@ -2446,7 +2613,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           Accessory1.latent = [latent_value,latent_subvalue];
           Accessory1.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
           Accessory1.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
-          Accessory1.setGear(0);
+          Accessory1.setGear();
           //Accessory1.showMainStat();
           accessory1IsConfirmed = true;
           //$('#Accessory1Container').attr('isConfirmed','true')
@@ -2484,7 +2651,7 @@ $('#GearConfirmationBtn').on('click' , function(){
           Accessory2.latent = [latent_value,latent_subvalue];
           Accessory2.eqIcon = 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + gear_data_loc[4] + '.png';
           Accessory2.mainStat = [gear_mainstat_loc,gear_mainstat_val]; 
-          Accessory2.setGear(0);
+          Accessory2.setGear();
           //Accessory2.showMainStat();
           accessory2IsConfirmed = true;
           //$('#Accessory2Container').attr('isConfirmed','true')
@@ -2530,7 +2697,7 @@ $('#UpdateStatsBtn').on('click' , function(){
   var unit_stats = $('#searched-unitID-values').attr('value').split(",");
 
   
-console.clear();
+/* console.clear(); */
 
 console.time('UpdateStatsBtn')
 UpdateUnitAndTarget(unit_stats);

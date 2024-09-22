@@ -4460,25 +4460,25 @@ function LoadSessionFromLocalStorage() {
         if (SessionData[4] !== '') {
             selectedGearStats = SessionData[4][0];
             Weapon.setAllValues(SessionData[4]);
-            Weapon.setGear(0);
+            Weapon.setGear();
             weaponIsConfirmed = true;
         }
         if (SessionData[5] !== '') {
             selectedGearStats = SessionData[5][0];
             Armor.setAllValues(SessionData[5]);
-            Armor.setGear(0);
+            Armor.setGear();
             armorIsConfirmed = true;
         }
         if (SessionData[6] !== '') {
             selectedGearStats = SessionData[6][0];
             Accessory1.setAllValues(SessionData[6]);
-            Accessory1.setGear(0);
+            Accessory1.setGear();
             accessory1IsConfirmed = true;
         }
         if (SessionData[7] !== '') {
             selectedGearStats = SessionData[7][0];
             Accessory2.setAllValues(SessionData[7]);
-            Accessory2.setGear(0);
+            Accessory2.setGear();
             accessory2IsConfirmed = true;
         }
 
