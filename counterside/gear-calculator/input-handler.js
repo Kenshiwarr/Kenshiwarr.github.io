@@ -77,18 +77,25 @@ if (Uname != null) {
 
   urlExtra = urlExtra.split(';');
   
-  let urlExtra_ubstats;
-  let urlExtra_tbstats;
+  let urlExtra_unitbstats;
+  let urlExtra_targetbstats;
+  let urlExtra_dummybstats;
   if (urlExtra[1] !== '') {
-    urlExtra_ubstats = urlExtra[1].split(',');
-    for (var i = 0, n = urlExtra_ubstats.length; i < n; i+=2) {
-      unit_extra_bonus_stats[Number(urlExtra_ubstats[i])] = Number(urlExtra_ubstats[i+1]);
+    urlExtra_unitbstats = urlExtra[1].split(',');
+    for (var i = 0, n = urlExtra_unitbstats.length; i < n; i+=2) {
+      unit_extra_bonus_stats[Number(urlExtra_unitbstats[i])] = Number(urlExtra_unitbstats[i+1]);
     }
   }
   if (urlExtra[2] !== '') {
-    urlExtra_tbstats = urlExtra[2].split(',');
-    for (var i = 0, n = urlExtra_tbstats.length; i < n; i+=2) {
-      target_extra_bonus_stats[Number(urlExtra_tbstats[i])] = Number(urlExtra_tbstats[i+1]);
+    urlExtra_targetbstats = urlExtra[2].split(',');
+    for (var i = 0, n = urlExtra_targetbstats.length; i < n; i+=2) {
+      target_extra_bonus_stats[Number(urlExtra_targetbstats[i])] = Number(urlExtra_targetbstats[i+1]);
+    }
+  }
+  if (urlExtra[3] !== '') {
+    urlExtra_dummybstats = urlExtra[3].split(',');
+    for (var i = 0, n = urlExtra_dummybstats.length; i < n; i+=2) {
+      dummy_extra_bonus_stats[Number(urlExtra_dummybstats[i])] = Number(urlExtra_dummybstats[i+1]);
     }
   }
 
@@ -1230,6 +1237,8 @@ $('#copyUrlBtn').on('click',function() {
 
 function saveToUrl() {
 
+  let cUrl = window.location.href.split("?")[0].replace("#", "");
+
   let unitN = encodeURI(total_unit_data[0] + "," + total_unit_data[1] + "," + UnitLevel);
   let targetN = encodeURI(total_target_data[0] + "," + total_target_data[1] + "," + TargetLevel);
   let gear_Data_u = [Weapon.getUrlValues(),Armor.getUrlValues(),Accessory1.getUrlValues(),Accessory2.getUrlValues()]
@@ -1239,40 +1248,33 @@ function saveToUrl() {
   let gear_Data_target = btoa(JSON.stringify(gear_Data_t));
 
 
-  let cUrl = window.location.href.split("?")[0].replace("#", "");
+  let extraInfo = btoa(JSON.stringify([$('#range-melee-distance_partial').val()]));
 
   let extraStatsData_unit = "";
-  let extraStatsData_unit_arr = [];
+  let extraStatsData_target = "";
+  let extraStatsData_dummy = "";
   
-  /* if (condition) {
-    
-  } */
-
 
   for (var i = 0, n = unit_extra_bonus_stats.length; i < n; i++) {
     if (unit_extra_bonus_stats[i] != 0) {
       extraStatsData_unit += i + "," + unit_extra_bonus_stats[i] + ",";
     }
+    if (target_extra_bonus_stats[i] != 0) {
+      extraStatsData_target += i + "," + target_extra_bonus_stats[i] + ",";
+    }
+    if (dummy_extra_bonus_stats[i] != 0) {
+      extraStatsData_dummy += i + "," + dummy_extra_bonus_stats[i] + ",";
+    }
   }
+
 
   extraStatsData_unit = extraStatsData_unit.slice(0, -1);
-  let extraStatsData_target = "";
-
-  for (var i = 0, n = target_extra_bonus_stats.length; i < n; i++) {
-    if (target_extra_bonus_stats[i] != 0) {
-    extraStatsData_target += i + "," + target_extra_bonus_stats[i] + ",";
-  }
-  }
-  let extraInfo = btoa(JSON.stringify([$('#range-melee-distance_partial').val()]));
-
   extraStatsData_target = extraStatsData_target.slice(0, -1);
+  extraStatsData_dummy = extraStatsData_dummy.slice(0, -1);
 
 
-  let dummyIf = (ifSelectTargetDummy ? 1:0)
-
-  console.log(extraStatsData_unit);
-  console.log(btoa(extraStatsData_target));
+  let dummyIf = (ifSelectTargetDummy ? 1:0);
 
 
-  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target+"&extra="+extraInfo+";"+extraStatsData_unit+";"+extraStatsData_target;
+  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target+"&extra="+extraInfo+";"+extraStatsData_unit+";"+extraStatsData_target+";"+extraStatsData_dummy;
 }
