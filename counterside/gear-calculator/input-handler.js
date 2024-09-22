@@ -1265,12 +1265,6 @@ function saveToUrl() {
   let extraInfo = btoa(JSON.stringify([$('#range-melee-distance_partial').val()]));
 
   extraStatsData_target = extraStatsData_target.slice(0, -1);
-  if (extraStatsData_unit != "") {
-    extraInfo += ';';
-    if (extraStatsData_target != "") {
-    extraStatsData_unit += ";";
-    }
-  }
 
 
   let dummyIf = (ifSelectTargetDummy ? 1:0)
@@ -1279,5 +1273,5 @@ function saveToUrl() {
   console.log(btoa(extraStatsData_target));
 
 
-  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target+"&extra="+extraInfo+extraStatsData_unit+extraStatsData_target;
+  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_unit+"&gearT="+gear_Data_target+"&extra="+extraInfo+";"+extraStatsData_unit+";"+extraStatsData_target;
 }
