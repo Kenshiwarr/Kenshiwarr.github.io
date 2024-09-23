@@ -2623,8 +2623,13 @@ if (sCounter > 1) {
  
 }
 }
-$.each($('#skill_exclude_select input'), function () {
-  $(this).prop('checked',active_skills_exclude[String($(this).attr('id')).split('_')[1]]);
+$.each($('#skill_exclude_select input'), function (i) {
+  if (active_skills_exclude[String($(this).attr('id')).split('_')[1]] == false) {
+    
+  $(this).prop('checked',false);
+} else {
+  $(this).prop('checked',true);
+}
   
   $(this).on('change',function() {
     if (this.checked === true) {
