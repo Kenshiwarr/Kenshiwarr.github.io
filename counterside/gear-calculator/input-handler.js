@@ -79,24 +79,26 @@ if (Uname != null) {
   let urlExtra_unitbstats;
   let urlExtra_targetbstats;
   let urlExtra_dummybstats;
-  if ((typeof urlExtra[1] !== 'undefined') && urlExtra[1] != '') {
-    urlExtra_unitbstats = urlExtra[1].split(',');
+  let urlExtra_excludeSkills;
+  if ((typeof urlExtra[2] !== 'undefined') && urlExtra[2] != '') {
+    urlExtra_unitbstats = urlExtra[2].split(',');
     for (var i = 0, n = urlExtra_unitbstats.length; i < n; i+=2) {
       unit_extra_bonus_stats[Number(urlExtra_unitbstats[i])] = Number(urlExtra_unitbstats[i+1]);
     }
   }
-  if ((typeof urlExtra[2] !== 'undefined') && urlExtra[2] != '') {
-    urlExtra_targetbstats = urlExtra[2].split(',');
+  if ((typeof urlExtra[3] !== 'undefined') && urlExtra[3] != '') {
+    urlExtra_targetbstats = urlExtra[3].split(',');
     for (var i = 0, n = urlExtra_targetbstats.length; i < n; i+=2) {
       target_extra_bonus_stats[Number(urlExtra_targetbstats[i])] = Number(urlExtra_targetbstats[i+1]);
     }
   }
-  if ((typeof urlExtra[3] !== 'undefined') && urlExtra[3] != '') {
-    urlExtra_dummybstats = urlExtra[3].split(',');
+  if ((typeof urlExtra[4] !== 'undefined') && urlExtra[4] != '') {
+    urlExtra_dummybstats = urlExtra[4].split(',');
     for (var i = 0, n = urlExtra_dummybstats.length; i < n; i+=2) {
       dummy_extra_bonus_stats[Number(urlExtra_dummybstats[i])] = Number(urlExtra_dummybstats[i+1]);
     }
   }
+  
 
   /* let urlExtraInfo = JSON.parse(atob(urlExtra[0])); */
   let urlExtraInfo = Number(urlExtra[0]);
@@ -220,6 +222,18 @@ $('#target_BuffList_display').show();
       enemy_accessory2IsConfirmed = false;
   }
     
+  }
+  if ((typeof urlExtra[1] !== 'undefined') && urlExtra[1] != '') {
+    urlExtra_excludeSkills = urlExtra[1].split(',');
+    for (var i = 0, n = urlExtra_excludeSkills.length; i < n; i++) {
+      if (urlExtra_excludeSkills[i] == "0") {
+        active_skills_exclude[i] = true;
+        
+      } else {
+        active_skills_exclude[i] = false;
+      }
+      console.log("tr = " + active_skills_exclude[i])
+    }
   }
 
   if (localStorageAvailable) {
@@ -1300,6 +1314,22 @@ function saveToUrl() {
   
   let dummyIf = (ifSelectTargetDummy ? 1:0);
 
+  let excludeSkillsData = [];
+  if (active_skills_exclude.length > 0) {
+    
+ 
+  for (var i = 0, n = $("#skill_exclude_select input").length; i < n; i++) {
+    excludeSkillsData[i] = 0;
+      if (active_skills_exclude[i] == false) {
+        
+      excludeSkillsData[i] = 1;
+    } else {
+      excludeSkillsData[i] = 0;
+    }
+  }
+}
+  excludeSkillsData = excludeSkillsData.toString();
 
-  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_u+"&gearT="+gear_Data_t+"&extra="+extraInfo+extraStatsData_unit+extraStatsData_target+extraStatsData_dummy;
+
+  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_u+"&gearT="+gear_Data_t+"&extra="+extraInfo+";"+excludeSkillsData+extraStatsData_unit+extraStatsData_target+extraStatsData_dummy;
 }

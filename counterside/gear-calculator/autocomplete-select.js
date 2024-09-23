@@ -4368,7 +4368,7 @@ function SaveSessionToLocalStorage() {
   if ($('#searched-targetID-values').attr('value') !== '') {
     
   } */
-  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,Target_dps_stats,UnitLevel,TargetLevel];
+  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,Target_dps_stats,UnitLevel,TargetLevel,active_skills_exclude];
   
   //total_gear_data_target
 
@@ -4428,13 +4428,12 @@ function LoadSessionFromLocalStorage() {
           UnitLevel = SessionData[23];
 
         }
-        if (SessionData[23] == undefined) {
+        if (SessionData[24] == undefined) {
           TargetLevel = 100;
         } else {
           TargetLevel = SessionData[24];
 
         }
-
         $('#unit-lvl_range').val(UnitLevel)
         $('#target-lvl_range').val(TargetLevel)
         $('#unit-lvl_input').val(UnitLevel)
@@ -4527,6 +4526,14 @@ function LoadSessionFromLocalStorage() {
       /*   if (UnitStatGrowth == [] || TargetStatGrowth == []) {
           
         } */
+        
+      if (SessionData[25] == undefined) {
+        active_skills_exclude = [];
+      } else {
+        active_skills_exclude = SessionData[25];
+      }
+    console.log('_!@#');
+    console.log(SessionData[25]);
         
     
          
