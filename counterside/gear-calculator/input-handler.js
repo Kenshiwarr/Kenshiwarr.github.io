@@ -1251,6 +1251,42 @@ $('#copyUrlBtn').on('click',function() {
   UpdateTooltipForAnything($("#copyUrlBtn"),"Text copied!")
 });
 
+var expandBtn_1_state = false;
+$('#compareModalExpandBtn_1').on('click',function() {
+  console.log('cl')
+  if (!expandBtn_1_state) {
+    $('#compareModalExpandBtn_1').text("Compact");
+    $('#csum-m1').css('height',$('#csum-m1')[0].scrollHeight);
+    $('#csum-m2').addClass("d-none");
+    $("#modalCompareHR").addClass("d-none");
+  } else {
+    $('#compareModalExpandBtn_1').text("Expand");
+    $('#csum-m1').css('height',"20rem");
+    $('#csum-m2').removeClass("d-none");
+    $("#modalCompareHR").removeClass("d-none");
+}
+expandBtn_1_state = !expandBtn_1_state;
+
+})
+
+var expandBtn_2_state = false;
+$('#compareModalExpandBtn_2').on('click',function() {
+  console.log('cl')
+  if (!expandBtn_2_state) {
+    $('#compareModalExpandBtn_2').text("Compact");
+    $('#csum-m2').css('height',$('#csum-m2')[0].scrollHeight);
+    $('#csum-m1').addClass("d-none");
+    $("#modalCompareHR").addClass("d-none");
+  } else {
+    $('#compareModalExpandBtn_2').text("Expand");
+    $('#csum-m2').css('height',"20rem");
+    $('#csum-m1').removeClass("d-none");
+    $("#modalCompareHR").removeClass("d-none");
+}
+expandBtn_2_state = !expandBtn_2_state;
+
+})
+
 
 
 function saveToUrl() {
