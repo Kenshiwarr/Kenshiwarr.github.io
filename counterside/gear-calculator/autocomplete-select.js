@@ -384,11 +384,6 @@ link.click(); // This will download the data file named "my_data.csv". */
        }
       }
 
-      console.log('Check buffs')
-      console.log(SureFireBuffUptime)
-      console.log(PerfectEvaBuffUptime)
-      console.log(InvincibilityBuffUptime)
-
       unit_SureFireBuffUptime = SureFireBuffUptime;
       unit_PerfectEvaBuffUptime = PerfectEvaBuffUptime;
       unit_InvincibilityBuffUptime = InvincibilityBuffUptime;
@@ -1138,10 +1133,6 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
           && Number(uatkd[1]) == 0)))
            ) {
           
-
-            console.log('uat_19')
-            console.log(uatkd[19])
-            console.log(uatkd[19] !== '01')
               
          /*  var hitsLand = uatkd[12].toLowerCase();
           var hitsAir = uatkd[13].toLowerCase(); */
