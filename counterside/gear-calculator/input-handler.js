@@ -1376,5 +1376,5 @@ function saveToUrl() {
   excludeSkillsData = excludeSkillsData.toString();
 
 
-  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_u+"&gearT="+gear_Data_t+"&extra="+extraInfo+";"+excludeSkillsData+";"+unit_mainAttack_selected.toString()+";"+extraStatsData_unit+extraStatsData_target+extraStatsData_dummy;
+  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_u+"&gearT="+gear_Data_t+"&extra="+extraInfo+";"+excludeSkillsData+";"+unit_mainAttack_selected.toString()+extraStatsData_unit+extraStatsData_target+extraStatsData_dummy;
 }
