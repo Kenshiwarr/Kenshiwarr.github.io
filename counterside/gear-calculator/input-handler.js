@@ -80,20 +80,21 @@ if (Uname != null) {
   let urlExtra_targetbstats;
   let urlExtra_dummybstats;
   let urlExtra_excludeSkills;
-  if ((typeof urlExtra[2] !== 'undefined') && urlExtra[2] != '') {
-    urlExtra_unitbstats = urlExtra[2].split(',');
+  let urlExtra_mainAtk;
+  if ((typeof urlExtra[3] !== 'undefined') && urlExtra[3] != '') {
+    urlExtra_unitbstats = urlExtra[3].split(',');
     for (var i = 0, n = urlExtra_unitbstats.length; i < n; i+=2) {
       unit_extra_bonus_stats[Number(urlExtra_unitbstats[i])] = Number(urlExtra_unitbstats[i+1]);
     }
   }
-  if ((typeof urlExtra[3] !== 'undefined') && urlExtra[3] != '') {
-    urlExtra_targetbstats = urlExtra[3].split(',');
+  if ((typeof urlExtra[4] !== 'undefined') && urlExtra[4] != '') {
+    urlExtra_targetbstats = urlExtra[4].split(',');
     for (var i = 0, n = urlExtra_targetbstats.length; i < n; i+=2) {
       target_extra_bonus_stats[Number(urlExtra_targetbstats[i])] = Number(urlExtra_targetbstats[i+1]);
     }
   }
-  if ((typeof urlExtra[4] !== 'undefined') && urlExtra[4] != '') {
-    urlExtra_dummybstats = urlExtra[4].split(',');
+  if ((typeof urlExtra[5] !== 'undefined') && urlExtra[5] != '') {
+    urlExtra_dummybstats = urlExtra[5].split(',');
     for (var i = 0, n = urlExtra_dummybstats.length; i < n; i+=2) {
       dummy_extra_bonus_stats[Number(urlExtra_dummybstats[i])] = Number(urlExtra_dummybstats[i+1]);
     }
@@ -232,8 +233,16 @@ $('#target_BuffList_display').show();
       } else {
         active_skills_exclude[i] = false;
       }
-      console.log("tr = " + active_skills_exclude[i])
     }
+  }
+
+  if ((typeof urlExtra[2] !== 'undefined') && urlExtra[2] != '') {
+    urlExtra_mainAtk = urlExtra[2].split(',');
+    for (var i = 0, n = urlExtra_mainAtk.length; i < n; i++) {
+     unit_mainAttack_selected[i] = Number(urlExtra_mainAtk[i]);
+    }
+  } else {
+    unit_mainAttack_selected = [0];
   }
 
   if (localStorageAvailable) {
@@ -1367,5 +1376,5 @@ function saveToUrl() {
   excludeSkillsData = excludeSkillsData.toString();
 
 
-  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_u+"&gearT="+gear_Data_t+"&extra="+extraInfo+";"+excludeSkillsData+extraStatsData_unit+extraStatsData_target+extraStatsData_dummy;
+  return cUrl + "?unit="+unitN+"&target="+targetN+"&Isdmmy="+dummyIf+"&gearU="+gear_Data_u+"&gearT="+gear_Data_t+"&extra="+extraInfo+";"+excludeSkillsData+";"+unit_mainAttack_selected.toString()+";"+extraStatsData_unit+extraStatsData_target+extraStatsData_dummy;
 }

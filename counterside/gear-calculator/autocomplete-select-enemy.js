@@ -639,7 +639,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       /* enemy_cat3_res = 0; */
 
 
-      if (target_data[71] != '') {
+     /*  if (target_data[71] != '') {
         if (Number(bonus_stats[64]) > 0) {
           enemy_mdl = target_hp*(bonus_stats[64]);
         } else {
@@ -651,7 +651,15 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
       if (ifSelectTargetDummy) {
         enemy_mdl = Inf_mdl
+      } */
+
+
+      if (Number(bonus_stats[64]) > 0) {
+        enemy_mdl = target_hp*(bonus_stats[64]);
+      } else {
+        enemy_mdl = Inf_mdl
       }
+
       /* enemy_mdl = Inf_mdl; */
 
       // enemy_mdl = target_hp*1;

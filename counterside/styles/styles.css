@@ -308,6 +308,7 @@ background-color: rgb(109, 114, 134);
 
 .unit_statWindow {
   width: calc(12rem + 6vw);
+  /* width: calc(10.4vw + 14.4rem); */
   font-weight: 500;
 }
 .unit_statWindow h {
