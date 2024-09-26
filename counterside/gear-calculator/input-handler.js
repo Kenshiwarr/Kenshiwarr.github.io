@@ -253,19 +253,7 @@ window.location.href = window.location.href.split("?")[0];
 
 } 
 
-if ((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Canary Squad Laika') {
-  $('#unitSpecialExtraLabel').html("Extra")
-  $('#unitSpecialExtra').html('<div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="spextra_0"> <label class="form-check-label" for="spextra_0"> Include Felicette buff </label> </div>')
-  $('#unitSpecialExtra').append("<br />");
-
-  $("#spextra_0").on('change',function() {
-    UpdateUnitAndTarget(total_unit_data);
-    CalcUnitDMG();
-  });
-  } else {
-    $('#unitSpecialExtraLabel').html('')
-    $('#unitSpecialExtra').html('')
-  }
+setUnitExtra(total_unit_data);
 
 
 

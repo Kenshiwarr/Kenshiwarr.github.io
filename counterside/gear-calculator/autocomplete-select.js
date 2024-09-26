@@ -3344,6 +3344,8 @@ function autocomplete(inp, arr) {
       
               active_skills_exclude = [];
 
+              setUnitExtra(total_unit_data);
+
               AppendCustomStatsForUnits();
       
               if (check === true) {

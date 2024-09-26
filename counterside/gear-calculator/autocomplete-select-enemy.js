@@ -1098,6 +1098,8 @@ function autocompleteTarget(inp, arr) {
               $('#gearData_enemy').html(ugr);
         
                 targetIsUpdated = true;
+
+
                 AppendCustomStatsForUnits();
         
                 if (check === true) {
