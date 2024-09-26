@@ -4271,7 +4271,6 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "Subculture Research Club Jin Bora","attack1","-","-","0.50","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "Canary Squad Laika","attack3","1.2","1.3608","1.39","false","false","-","-","-","-","-","1","TRUE","FALSE","FALSE","FALSE","FALSE","-","5","1","USN_ATTACK1","NST_ATTACK'",
 "Canary Squad Laika","attack3","1.2","1.3608","1.39","false","false","-","-","-","-","-","1","TRUE","FALSE","FALSE","FALSE","FALSE","-","5","1","USN_ATTACK1","NST_ATTACK'",
-"Canary Squad Laika","attack3","1.2","1.3608","1.39","false","false","-","-","-","-","-","1","TRUE","FALSE","FALSE","FALSE","FALSE","-","5","1","USN_ATTACK1","NST_ATTACK'",
 "Minerva Karin Wong","attack1","-","-","1.43","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_PASSIVE_START_COOLTIME","NST_ATTACK'",
 "Minerva Karin Wong","attack1","-","-","1.03","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_PASSIVE_END","NST_ATTACK'",
 "Minerva Karin Wong","attack2","-","-","0.00","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_ATTACK1_SHORT","-'",

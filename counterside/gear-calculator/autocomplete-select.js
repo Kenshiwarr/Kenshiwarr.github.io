@@ -1114,9 +1114,15 @@ if (Object.prototype.toString.call(unit_mainAttack_selected) !== '[object Array]
   unit_mainAttack_selected = [0]
 }
 
+console.log("cf-test")
+console.log(($("#spextra_0").is(":checked")))
+
 
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && (unit_mainAttack_selected.indexOf(1) > -1)) {
   unit_attack_data.push("freeze_loop,1,0.5,1,false,false,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,1,101,USN_LOOP,0");
+}
+if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Canary Squad Laika') && ($("#spextra_0").is(":checked"))) {
+  unit_attack_data.push("attack3,1.2,1.3608,1.39,false,false,0,0,0,0,0,1,TRUE,FALSE,FALSE,FALSE,FALSE,0,5,1,USN_ATTACK1,NST_ATTACK");
 }
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Friede')) {
   unit_attack_data.splice(1,0,"attack2,1.2,0.92,2.00,false,false,0,0,0,0,999,2,TRUE,TRUE,FALSE,FALSE,FALSE,0,0,102,USN_ATTACK2,0");
@@ -3292,10 +3298,13 @@ function autocomplete(inp, arr) {
                
         
               unit_mainAttack_selected = [0];
+
+
         
         
               total_unit_data = unit_data;
         
+              
         
         
                unit_hp = unit_data[2];
