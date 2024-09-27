@@ -837,11 +837,17 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       $('#unit-hp').html('<h>HP: </h><span class="current_stats">' + Math.round(unit_hp) + ((unit_hp-unit_base_hp) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_hp-unit_base_hp) + ')'):'') + '</span></span>');
       $('#unit-hp').attr('subvalue',unit_hp);
       $('#unit-lvl').text('Lv. ' + UnitLevel);
-      if (UnitLevel > 100) {
+      if (UnitLevel > 110) {
+        $('#unit-lvl').addClass('limitFusion_2_color');
+        $('#unit-lvl').removeClass('no_limitFusion_color');
+        $('#unit-lvl').removeClass('limitFusion_color');
+      } else if(UnitLevel > 100) {
         $('#unit-lvl').addClass('limitFusion_color');
+        $('#unit-lvl').removeClass('limitFusion_2_color');
         $('#unit-lvl').removeClass('no_limitFusion_color');
       } else {
         $('#unit-lvl').addClass('no_limitFusion_color');
+        $('#unit-lvl').removeClass('limitFusion_2_color');
         $('#unit-lvl').removeClass('limitFusion_color');
       }
       $('#unit-current_hp').html('<h>Current HP: ' + Math.round(unit_hp*enemy_remaining_hp_percent) + ' (' + Number($('#unit-current_hp_range').val()) +'%)' + '</h>');
@@ -1627,10 +1633,6 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
 
 
 
-      /* console.log('unit_mainAttack_ground = ')
-      console.log(unit_mainAttack_ground)
-      console.log('unit_mainAttack_air = ')
-      console.log(unit_mainAttack_air) */
 
       console.log('unit_mainAttack_ground = ')
       console.log(unit_mainAttack_ground)

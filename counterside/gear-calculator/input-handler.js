@@ -1144,13 +1144,19 @@ if (cel.length > 0) {
   UnitLevel = Number($('#unit-lvl_range').val());
   $('#unit-lvl_input').val(UnitLevel);
   $('#unit-lvl').text('Lv. ' + UnitLevel);
-      if (UnitLevel > 100) {
-        $('#unit-lvl').addClass('limitFusion_color');
-        $('#unit-lvl').removeClass('no_limitFusion_color');
-      } else {
-        $('#unit-lvl').addClass('no_limitFusion_color');
-        $('#unit-lvl').removeClass('limitFusion_color');
-      }
+  if (UnitLevel > 110) {
+    $('#unit-lvl').addClass('limitFusion_2_color');
+    $('#unit-lvl').removeClass('no_limitFusion_color');
+    $('#unit-lvl').removeClass('limitFusion_color');
+  } else if(UnitLevel > 100) {
+    $('#unit-lvl').addClass('limitFusion_color');
+    $('#unit-lvl').removeClass('limitFusion_2_color');
+    $('#unit-lvl').removeClass('no_limitFusion_color');
+  } else {
+    $('#unit-lvl').addClass('no_limitFusion_color');
+    $('#unit-lvl').removeClass('limitFusion_2_color');
+    $('#unit-lvl').removeClass('limitFusion_color');
+  }
 });
 
  $('#unit-lvl_range').on('change', function() {
@@ -1164,13 +1170,19 @@ $('#target-lvl_range').on('change input', function() {
  TargetLevel = Number($('#target-lvl_range').val());
  $('#target-lvl_input').val(TargetLevel);
   $('#target-lvl').text('Lv. ' + TargetLevel);
-      if (TargetLevel > 100) {
-        $('#target-lvl').addClass('limitFusion_color');
-        $('#target-lvl').removeClass('no_limitFusion_color');
-      } else {
-        $('#target-lvl').addClass('no_limitFusion_color');
-        $('#target-lvl').removeClass('limitFusion_color');
-      }
+  if (TargetLevel > 110) {
+    $('#unit-lvl').addClass('limitFusion_2_color');
+    $('#unit-lvl').removeClass('no_limitFusion_color');
+    $('#unit-lvl').removeClass('limitFusion_color');
+  } else if(TargetLevel > 100) {
+    $('#unit-lvl').addClass('limitFusion_color');
+    $('#unit-lvl').removeClass('limitFusion_2_color');
+    $('#unit-lvl').removeClass('no_limitFusion_color');
+  } else {
+    $('#unit-lvl').addClass('no_limitFusion_color');
+    $('#unit-lvl').removeClass('limitFusion_2_color');
+    $('#unit-lvl').removeClass('limitFusion_color');
+  }
 });
 
  $('#target-lvl_range').on('change', function() {
