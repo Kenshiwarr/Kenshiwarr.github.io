@@ -1171,17 +1171,17 @@ $('#target-lvl_range').on('change input', function() {
  $('#target-lvl_input').val(TargetLevel);
   $('#target-lvl').text('Lv. ' + TargetLevel);
   if (TargetLevel > 110) {
-    $('#unit-lvl').addClass('limitFusion_2_color');
-    $('#unit-lvl').removeClass('no_limitFusion_color');
-    $('#unit-lvl').removeClass('limitFusion_color');
+    $('#target-lvl').addClass('limitFusion_2_color');
+    $('#target-lvl').removeClass('no_limitFusion_color');
+    $('#target-lvl').removeClass('limitFusion_color');
   } else if(TargetLevel > 100) {
-    $('#unit-lvl').addClass('limitFusion_color');
-    $('#unit-lvl').removeClass('limitFusion_2_color');
-    $('#unit-lvl').removeClass('no_limitFusion_color');
+    $('#target-lvl').addClass('limitFusion_color');
+    $('#target-lvl').removeClass('limitFusion_2_color');
+    $('#target-lvl').removeClass('no_limitFusion_color');
   } else {
-    $('#unit-lvl').addClass('no_limitFusion_color');
-    $('#unit-lvl').removeClass('limitFusion_2_color');
-    $('#unit-lvl').removeClass('limitFusion_color');
+    $('#target-lvl').addClass('no_limitFusion_color');
+    $('#target-lvl').removeClass('limitFusion_2_color');
+    $('#target-lvl').removeClass('limitFusion_color');
   }
 });
 
