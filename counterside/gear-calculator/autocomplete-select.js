@@ -2123,6 +2123,8 @@ if (unit_mainAttack.length > 0) {
     let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_totalAttacks[i][5]/cfeedback_uptime)+unit_totalAttacks[i][4]/(1+unit_final_aspd))/((Number(unit_totalAttacks[i][5])/cfeedback_uptime)+1)),1);
     let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a
 
+    
+
 
     sci_m_sAmp *= ndm;
     sci_sAmp *= ndm;
@@ -2139,8 +2141,6 @@ if (unit_mainAttack.length > 0) {
     cdskill = (unit_totalAttacks[i][5]/(1+unit_final_cdr));
   }
   }
-
-  
   cdSkill_list.push(Number(cdskill))
   sAnim_list.push(Number(sanim))
 
@@ -2161,6 +2161,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   cdSkill_list[i] /= sSmodifiers[i]
 
 
+
+ 
 
   var isSureFireNat = false;
   var isSureFire = false;
@@ -2209,9 +2211,9 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     }
 
     
-    
 
-  if (unitCalculatedDmgSplit.length > 1) {
+  if (unitCalculatedDmgSplit.length > 0) {
+    
     
   for (let j = 0; j < tsl; j++) {
 
@@ -2235,7 +2237,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     }
 
-    
+   
 
     
 
@@ -2306,7 +2308,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
 
     chm_chance = [ctc,cth,ecd];
 
-    
+    console.log('t_ chm_chance');
+    console.log(chm_chance);
 
     
     sDmg_hitTotal = sDmg_hit;
@@ -2445,6 +2448,8 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   }
   
   
+  console.log('t_ dmgAppl');
+  console.log(chm_chance);
 }
 if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
   dmgAppl[3] = '<span>'+Math.round(dmgApplTotal)+'</span> <svg data-bs-toggle="collapse" dt_target="#dt_'+i+'tt_'+0+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';
