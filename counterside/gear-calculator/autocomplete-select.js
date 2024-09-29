@@ -1803,7 +1803,7 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
       unit_mainAttack_mix_split[i][3] = unit_mainAttack_mix_split[i][3]/ma_len;
       //unit_mainAttack_mix_split[i][4] = unit_mainAttack_mix_split[i][4];
       unit_mainAttack_mix_split[i][4] = unit_mainAttack_mixed[4]/ma_len;
-      unit_mainAttack_mix_split[i][4] = String(unit_mainAttack_mix_split[i][4])
+      unit_mainAttack_mix_split[i][4] = String(unit_mainAttack_mix_split[i][4]);
 
       unit_mainAttack_mix_split[i][9] = unit_mainAttack_mix_split[i][9]/ma_len;
       unit_mainAttack_mix_split[i][10] = unit_mainAttack_mix_split[i][10]/ma_len;
@@ -1924,7 +1924,7 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
       /* enhAtk_cdSkill_mlt *= ndm;
       enhAtk_cdSkill_mlt *= (1-(1/(Number(unit_restAttacks[i][5]/cfeedback_uptime)+1))) */
 
-      let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a
+      let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a;
       mainAtk_cdSkill_mlt *= ndm;
       rAtk_extra_mod_main *= ndm;
 
@@ -2073,7 +2073,7 @@ if (unit_mainAttack.length > 0) {
       console.log('sci_res = ')
       console.log(scdi_res)
       
-      unit_totalAttacks[i][5] = Number(unit_totalAttacks[i][5]) / scdi_res
+      unit_totalAttacks[i][5] = Number(unit_totalAttacks[i][5]) / scdi_res;
     }
   }
   }
@@ -2087,9 +2087,10 @@ if (unit_mainAttack.length > 0) {
   if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && ((unit_totalAttacks[i][6] !== '01') || (unit_totalAttacks[i][6] !== '-1'))) && unit_totalAttacks[i][6] !== '22') {
     cdskill = ((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
     //  cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5]));
-    if (i===0) {
-      
+  
 
+   
+    if (i===0) {
       //sSmodifiers[i] = mainAtk_cdSkill_mlt;
       matkSlist.push(i);
       //cdskill = (cdskill / mainAtk_cdSkill_mlt)
@@ -2098,13 +2099,14 @@ if (unit_mainAttack.length > 0) {
       let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1);
       let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a
       sci_m_sAmp *= ndm;
+      // !_NOTE: ^ test above
       
-      sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5])+1)))
+      // sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5])+1)))
+      // !_NOTE: ^ test above
 
       matkSlist.push(i);
-      //sSmodifiers[i] = enhAtk_cdSkill_mlt;
-      //cdskill = (cdskill / enhAtk_cdSkill_mlt)
     }
+    
     
   } else if ((unit_totalAttacks[i][6] === '100') || (unit_totalAttacks[i][6] === '12')) {
     sci_m_sAmp *= (IFERROR((1-unit_totalAttacks[i][4]/(unit_totalAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
@@ -2129,8 +2131,8 @@ if (unit_mainAttack.length > 0) {
     sci_m_sAmp *= ndm;
     sci_sAmp *= ndm;
 
-      sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5]/cfeedback_uptime)+1)))
-     // sci_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5]/cfeedback_uptime)+1)))
+      // sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5]/cfeedback_uptime)+1)))
+       // !_NOTE: ^ test above
 
     matkSlist.push(i);
 
@@ -2158,6 +2160,9 @@ if (unit_mainAttack.length > 0) {
 
 for (let i = 0; i < unit_totalAttacks.length; i++) {
   
+  if (i > 0) {
+    
+  }
   cdSkill_list[i] /= sSmodifiers[i]
 
 
