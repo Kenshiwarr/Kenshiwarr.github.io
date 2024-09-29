@@ -2101,7 +2101,7 @@ if (unit_mainAttack.length > 0) {
       sci_m_sAmp *= ndm;
       // !_NOTE: ^ test above
       
-      // sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5])+1)))
+      sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5])+1)))
       // !_NOTE: ^ test above
 
       matkSlist.push(i);
