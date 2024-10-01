@@ -156,6 +156,7 @@ link.click(); // This will download the data file named "my_data.csv". */
       var enemy_distance = "Melee";
       var enemy_type = "Counter";
       var enemy_subtype = 'Counter';
+      var enemy_subclass = 'Striker';
 
       var unit_class;
       var unit_movement_type;
@@ -261,8 +262,8 @@ link.click(); // This will download the data file named "my_data.csv". */
         if (unit_data != '') {
 
           //var enemyDistanceCtr = enemy_distance.split(';');
-          var cat1_res_list = [Cat1List[enemy_class][2],Cat1List[enemy_movement_type][2],Cat1List[enemy_type][2],Cat1List[enemy_subtype][2],Cat1List['Melee'][2],Cat1List['Ranged'][2]];
-          var cat1_dmg_list = [Cat1List[enemy_class][1],Cat1List[enemy_movement_type][1],Cat1List[enemy_type][1],Cat1List[enemy_subtype][1],Cat1List['Melee'][1],Cat1List['Ranged'][1]];
+          var cat1_res_list = [Cat1List[enemy_class][2],Cat1List[enemy_subclass][2],Cat1List[enemy_movement_type][2],Cat1List[enemy_type][2],Cat1List[enemy_subtype][2],Cat1List['Melee'][2],Cat1List['Ranged'][2]];
+          var cat1_dmg_list = [Cat1List[enemy_class][1],Cat1List[enemy_subclass][1],Cat1List[enemy_movement_type][1],Cat1List[enemy_type][1],Cat1List[enemy_subtype][1],Cat1List['Melee'][1],Cat1List['Ranged'][1]];
         
           var cat1_dmg_All_role = ['Anti-Counter DMG','Anti-Soldier DMG','Anti-Mech DMG','Anti-C.O. DMG','Anti-Replacer DMG'];
           var cat1_dmg_All_class = ['Anti-Striker DMG','Anti-Defender DMG','Anti-Ranger DMG','Anti-Sniper DMG','Anti-Supporter DMG','Anti-Siege DMG','Anti-Tower DMG'];
@@ -286,24 +287,48 @@ link.click(); // This will download the data file named "my_data.csv". */
       console.log('unit_subtype')
       console.log(unit_subtype)
 
-      if (((enemy_class === unit_class) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_class))) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === unit_class))) || (
-      (unit_class === DEFENDER && enemy_class === STRIKER) ||
-      (unit_class === STRIKER && enemy_class === DEFENDER) ||
-      (unit_class === RANGER && enemy_class === SNIPER) ||
-      (unit_class === SNIPER && enemy_class === RANGER)))) {
-        unit_advantage = 0;
-        
-      } else if (
-        ((unit_class === DEFENDER && enemy_class === SNIPER) ||
-        (unit_class === STRIKER && enemy_class === RANGER) ||
-        (unit_class === RANGER && enemy_class === DEFENDER) ||
-        (unit_class === SNIPER && enemy_class === STRIKER)) && !(([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_class)))
-      ) {
-        unit_advantage = 1;
-      } else if (enemy_class === 'None') {
-        unit_advantage = 0;
+      
+
+      if (enemy_class != enemy_subclass) {
+        if (((enemy_subclass === unit_class) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_subclass))) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === unit_class))) || (
+          (unit_class === DEFENDER && enemy_subclass === STRIKER) ||
+          (unit_class === STRIKER && enemy_subclass === DEFENDER) ||
+          (unit_class === RANGER && enemy_subclass === SNIPER) ||
+          (unit_class === SNIPER && enemy_subclass === RANGER)))) {
+            unit_advantage = 0;
+            
+          } else if (
+            ((unit_class === DEFENDER && enemy_subclass === SNIPER) ||
+            (unit_class === STRIKER && enemy_subclass === RANGER) ||
+            (unit_class === RANGER && enemy_subclass === DEFENDER) ||
+            (unit_class === SNIPER && enemy_subclass === STRIKER)) && !(([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_subclass)))
+          ) {
+            unit_advantage = 1;
+          } else if (enemy_subclass === 'None') {
+            unit_advantage = 0;
+          } else {
+            unit_advantage = -1;
+          }
       } else {
-        unit_advantage = -1;
+        if (((enemy_class === unit_class) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_class))) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === unit_class))) || (
+          (unit_class === DEFENDER && enemy_class === STRIKER) ||
+          (unit_class === STRIKER && enemy_class === DEFENDER) ||
+          (unit_class === RANGER && enemy_class === SNIPER) ||
+          (unit_class === SNIPER && enemy_class === RANGER)))) {
+            unit_advantage = 0;
+            
+          } else if (
+            ((unit_class === DEFENDER && enemy_class === SNIPER) ||
+            (unit_class === STRIKER && enemy_class === RANGER) ||
+            (unit_class === RANGER && enemy_class === DEFENDER) ||
+            (unit_class === SNIPER && enemy_class === STRIKER)) && !(([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_class)))
+          ) {
+            unit_advantage = 1;
+          } else if (enemy_class === 'None') {
+            unit_advantage = 0;
+          } else {
+            unit_advantage = -1;
+          }
       }
 
 

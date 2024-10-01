@@ -49,6 +49,7 @@
             enemy_movement_type = target_dummy_data[11];
             enemy_type = target_dummy_data[9];
             enemy_subtype = enemy_type;
+            enemy_subclass = enemy_class;
           } else {
           enemy_class = target_data[10];
           enemy_movement_type = target_data[11];
@@ -59,6 +60,34 @@
             } else {
               enemy_subtype = enemy_type;
             }
+          }
+          enemy_subclass = enemy_class; // !_NOTE: by default same as class unless multiclass (like janus)
+
+          if ((total_target_data[0] + ' ' + total_target_data[1]) == "Alphatrix Innovation Raphaela Juri the Evil Chaser") { // !_NOTE: subclass for raphaela ()
+            enemy_subclass = "Striker";
+
+          }
+
+          if (enemy_class != enemy_subclass) {
+            if (((enemy_subclass === unit_class) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_subclass))) || (([SUPPORTER,SIEGE,TOWER].some((t) => t === unit_class))) || (
+              (unit_class === DEFENDER && enemy_subclass === STRIKER) ||
+              (unit_class === STRIKER && enemy_subclass === DEFENDER) ||
+              (unit_class === RANGER && enemy_subclass === SNIPER) ||
+              (unit_class === SNIPER && enemy_subclass === RANGER)))) {
+                unit_advantage = 0;
+                
+              } else if (
+                ((unit_class === DEFENDER && enemy_subclass === SNIPER) ||
+                (unit_class === STRIKER && enemy_subclass === RANGER) ||
+                (unit_class === RANGER && enemy_subclass === DEFENDER) ||
+                (unit_class === SNIPER && enemy_subclass === STRIKER)) && !(([SUPPORTER,SIEGE,TOWER].some((t) => t === enemy_subclass)))
+              ) {
+                unit_advantage = 1;
+              } else if (enemy_subclass === 'None') {
+                unit_advantage = 0;
+              } else {
+                unit_advantage = -1;
+              }
           }
 
       //var enemyDistanceCtr = enemy_distance.split(';');
