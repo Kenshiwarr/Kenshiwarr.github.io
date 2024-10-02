@@ -1,5 +1,9 @@
 var test_var;
 
+const LoadoutLimit = 20;
+
+$("#LoadoutLimit").text(LoadoutLimit);
+
 
 function IFERROR(value, error) {
     if (
@@ -354,4 +358,8 @@ function setUnitExtra(tud) {
       $('#unitSpecialExtraLabel').html('')
       $('#unitSpecialExtra').html('')
     }
+}
+
+function sortNumber(a,b) {
+  return a - b;
 }

@@ -17,7 +17,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
     $('#deleteAllDataForCompare').prop('hidden', false);
 
     
-    if ((cScount.index() < 9) || (overwrite === true)) {
+    if ((cScount.index() < LoadoutLimit-1) || (overwrite === true)) {
 
     //var yourDate = new Date()
     var saveDate = new Date(Number(sau[9]));
@@ -179,9 +179,12 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
 
             console.log('diff');
             if ((currIndexLi.index()) != 0) {
-                let prevId = $('#storage_loadout-'+(storageID)).prev().attr('id').slice(-1);
+                let prevId = $('#storage_loadout-'+(storageID)).prev().attr('id').split("-")[1];
                 
                 console.log(prevId)
+                console.log(storageID)
+                console.log(currIndexLi)
+                console.log($('#storage_loadout-'+(storageID)).prev().attr('id').split("-"))
                 $('#move_loadoutDown_'+prevId).removeClass('dp_hide')
             }
 
@@ -195,11 +198,11 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
                 if (target.index() === 0) {
                     $('#move_loadoutUp_'+(storageID)).addClass('dp_hide')
                     $('#move_loadoutDown_'+(storageID)).removeClass('dp_hide')
-                    $('#move_loadoutUp_'+(target.attr('id').slice(-1))).removeClass('dp_hide')
-                    $('#move_loadoutDown_'+(target.attr('id').slice(-1))).addClass('dp_hide')
+                    $('#move_loadoutUp_'+(target.attr('id').split("_")[1])).removeClass('dp_hide')
+                    $('#move_loadoutDown_'+(target.attr('id').split("_")[1])).addClass('dp_hide')
                 } else if (curr.index() === (($('#compareUnitsModal .modal-body .unit_container .list-group-item').length)-1)) {
                     $('#move_loadoutDown_'+(storageID)).removeClass('dp_hide');
-                    $('#move_loadoutDown_'+(target.attr('id').slice(-1))).addClass('dp_hide')
+                    $('#move_loadoutDown_'+(target.attr('id').split("_")[1])).addClass('dp_hide')
                 }
                 Loadouts_LoadOrder.ArraySwapEl(target.index(),curr.index())
                 let updOrderLS = '';
@@ -221,11 +224,11 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
                     if (target.index() === (($('#compareUnitsModal .modal-body .unit_container .list-group-item').length)-1)) {
                         $('#move_loadoutUp_'+(storageID)).removeClass('dp_hide')
                         $('#move_loadoutDown_'+(storageID)).addClass('dp_hide')
-                        $('#move_loadoutDown_'+(target.attr('id').slice(-1))).removeClass('dp_hide')
-                        $('#move_loadoutUp_'+(target.attr('id').slice(-1))).addClass('dp_hide')
+                        $('#move_loadoutDown_'+(target.attr('id').split("_")[1])).removeClass('dp_hide')
+                        $('#move_loadoutUp_'+(target.attr('id').split("_")[1])).addClass('dp_hide')
                     } else if (curr.index() === 0) {
                         $('#move_loadoutUp_'+(storageID)).removeClass('dp_hide');
-                        $('#move_loadoutUp_'+(target.attr('id').slice(-1))).addClass('dp_hide')
+                        $('#move_loadoutUp_'+(target.attr('id').split("_")[1])).addClass('dp_hide')
                     }
                     
                     Loadouts_LoadOrder.ArraySwapEl(target.index(),curr.index())
@@ -374,7 +377,6 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             accessory2IsConfirmed = false;
         }
 
-        test_var = [gearDataSavedValues[4]];
 
 
         if (ifSelectTargetDummy === false) {
@@ -502,7 +504,7 @@ console.timeEnd('LoadingSaved_timer')
             $('#deleteAllDataForCompare').prop('hidden', true);
         } 
         if (currIndexLi.index() == (lgi_l-1) && (currIndexLi.index() != 0)) {
-            const lgi_id = currIndexLi.prev().attr('id').slice(-1);
+            const lgi_id = currIndexLi.prev().attr('id').split("-")[1];
             $('#move_loadoutDown_'+(lgi_id)).addClass('dp_hide')
         }
         Loadouts_LoadOrder.splice(String(storageID), 1);
@@ -653,7 +655,7 @@ console.timeEnd('LoadingSaved_timer')
         
         //$('#activeEditText').removeAttr('id');
 
-        var activeTextEdit = $('#activeEditText').next().find('input');
+        // var activeTextEdit = $('#activeEditText').next().find('input');
         if ($('#activeEditText').length === 0) {
             currIndexLi_header_edittext_btn.attr('id','activeEditText');
             currIndexLi_header_edit.attr('id','activeEditTextEdt');

@@ -89,6 +89,7 @@
                 unit_advantage = -1;
               }
           }
+          
 
       //var enemyDistanceCtr = enemy_distance.split(';');
 
