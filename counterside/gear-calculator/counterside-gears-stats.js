@@ -799,9 +799,9 @@ var GearSetsListTrinity = {
 
       let url_Gear_Stats_id;
       if (this.forUnit == 0) {
-        url_Gear_Stats_id = total_gear_data_unit.slice(1).split('","').indexOf(this.#selectedGearData);
+        url_Gear_Stats_id = total_gear_data_unit.slice(1).split('","').indexOf(this.selectedGearData);
       } else {
-        url_Gear_Stats_id = total_gear_data_target.slice(1).split('","').indexOf(this.#selectedGearData);
+        url_Gear_Stats_id = total_gear_data_target.slice(1).split('","').indexOf(this.selectedGearData);
       }
       let url_Gear_Sub1 = BONUS_STATS_LIST.indexOf(this.#sub1[0]);
       let url_Gear_Sub2 = BONUS_STATS_LIST.indexOf(this.#sub2[0]);

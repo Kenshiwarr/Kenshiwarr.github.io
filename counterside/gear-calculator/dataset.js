@@ -296,7 +296,7 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Stormbringer Jake Walker","5110","325","532","86","167","182","Icon_Jake Walker_Stormbringer","Counter","Defender","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,,,,,,,,,,"0.1",,,,,,,,
 "Arhat Joo Shiyoon","3843","475","314","392","172","345","Icon_Joo Shiyoon_Arhat","Counter","Striker","Ground","1",,,,,,,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.02",,,,
 "Minerva Karin Wong","2131","470","235","400","382","110","Icon_Karin Wong_Minerva","Counter","Ranger","Ground","1","0.12",,,,,,,,,,,,,,,,"0.5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"Ace of Wings Lee Sooyeon","1865","438","132","240","261","316","Icon_Lee Sooyeon_Ace of Wings","Counter","Ranger","Air","1",,"0.2",,,,,,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,,,,,,,,
+"Ace of Wings Lee Sooyeon","1865","438","132","240","261","316","Icon_Lee Sooyeon_Ace of Wings","Counter","Ranger","Air","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,,,,,,,,
 "Kresnik Lyudmila","2161","334","167","202","315","211","Icon_Lyudmila_Kresnik","Counter;C.O.","Supporter","Ground","1","0.12",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Garguantia Maria Antonov","2405","420","256","370","276","180","Icon_Maria Antonov_Garguantia","Counter","Ranger","Ground","1",,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Six Wings Na Yubin","4796","407","496","151","163","545","Icon_Na Yubin_Six Wings","Counter","Defender","Ground","1",,,,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.1",,,,,,,,

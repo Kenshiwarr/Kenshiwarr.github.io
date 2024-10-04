@@ -89,7 +89,6 @@
                 unit_advantage = -1;
               }
           }
-          
 
       //var enemyDistanceCtr = enemy_distance.split(';');
 
@@ -1041,7 +1040,9 @@ function autocompleteTarget(inp, arr) {
                         ugr += unit_gear_stats_csv[ugid[i]+j-3] + ',';
                       }
                     }
-                    ugr += '",'
+                    if (i < n-1) {
+                      ugr += '",';
+                    }
                   }
 
 

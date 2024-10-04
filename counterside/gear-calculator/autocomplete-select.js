@@ -3281,7 +3281,9 @@ function autocomplete(inp, arr) {
                       ugr += unit_gear_stats_csv[ugid[i]+j-3] + ',';
                     }
                   }
-                  ugr += '",';
+                  if (i < n-1) {
+                    ugr += '",';
+                  }
                 }
 
                 var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
