@@ -3377,7 +3377,7 @@ function autocomplete(inp, arr) {
               }
               
               
-              ugr += UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_unit_EE', true, (total_unit_data[0] + ' ' + total_unit_data[1]))
+              ugr += "\"," + UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_unit_EE', true, (total_unit_data[0] + ' ' + total_unit_data[1]))
               total_gear_data_unit = ugr;
               $('#gearData').html(ugr);
       

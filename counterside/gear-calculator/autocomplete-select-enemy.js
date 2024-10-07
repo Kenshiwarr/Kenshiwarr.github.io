@@ -1130,7 +1130,7 @@ function autocompleteTarget(inp, arr) {
                   default:
                     break;
                 }
-                ugr += UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_target_EE', true, (total_target_data[0] + ' ' + total_target_data[1]))
+                ugr += "\"," + UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_target_EE', true, (total_target_data[0] + ' ' + total_target_data[1]))
               total_gear_data_target = ugr;
               $('#gearData_enemy').html(ugr);
         
