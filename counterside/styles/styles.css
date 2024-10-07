@@ -412,7 +412,8 @@ z-index: 999;
   background-repeat: no-repeat;
 }
 .equipment-slot_tooltip img {
-  width: 38%;
+  width: 38% !important;
+  height: 38% !important;
   top: auto;
   left: 64%;
   position: relative;
@@ -1116,7 +1117,7 @@ color: #bebebe;
 
 .unit-container_icon img {
   height: 100%;
-    width: 100%;
+  width: 100%;
 }
 
 /* #compare_selectedUnitsModal .modal-body {

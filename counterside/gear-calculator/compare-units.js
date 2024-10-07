@@ -779,6 +779,10 @@ console.timeEnd('LoadingSaved_timer')
        
          var cUnit_dtable = cUnitID.attr('dtable').split(',');
 
+         var cUnit_gearPreview = $(cUnitID.next().attr('cd_target')).find('.cd_dropdown_footer').html();
+         var cTarget_gearPreview = $(cTargetID.next().attr('cd_target')).find('.cd_dropdown_footer').html();
+
+
 
         var cCompares_Length = [cUnit_val.length,sau[10].length,cTarget_val.length,sau[11].length];
         //$('#unit-container_line_0'); // can use document.getElementByClassName('unit-container_line')[0]; or $('.unit-container_line').eq(0) or $('.unit-container_line:nth-child(0)') however last is much slower.
@@ -1116,7 +1120,38 @@ console.timeEnd('LoadingSaved_timer')
         }
         
         } */
+
+        let unit_gearPreview = '<div class="gear-containers"> <div class="equipment-slot_tooltip" '+sGear[0]+'>'+sGear[1]+'</div> <div class="equipment-slot_tooltip" '+sGear[2]+'>'+sGear[3]+'</div> <div class="equipment-slot_tooltip" '+sGear[4]+'>'+sGear[5]+'</div> <div class="equipment-slot_tooltip" '+sGear[6]+'>'+sGear[7]+'</div> </div>'
         
+        let target_gearPreview;
+        if(!sau[19]) {
+            target_gearPreview = '<div class="gear-containers"> <div class="equipment-slot_tooltip" '+sGear[8]+'>'+sGear[9]+'</div> <div class="equipment-slot_tooltip" '+sGear[10]+'>'+sGear[11]+'</div> <div class="equipment-slot_tooltip" '+sGear[12]+'>'+sGear[13]+'</div> <div class="equipment-slot_tooltip" '+sGear[14]+'>'+sGear[15]+'</div> </div>';
+        } else {
+            target_gearPreview = '';
+        }
+
+        uctI_o[4].append('<hr>');
+        uctI_o[1].append('<hr>');
+        uctI_o[4].append('<div class="fw-b h5">Gear data </div>');
+        uctI_o[1].append('<div class="fw-b h5">&nbsp; </div>');
+        uctI_o[1].append(unit_gearPreview);
+        uctI_o[4].append(cUnit_gearPreview);
+
+        uctI_o[6].append('<hr>');
+        uctI_o[3].append('<hr>');
+        uctI_o[6].append('<div class="fw-b h5">Gear data </div>');
+        uctI_o[3].append('<div class="fw-b h5">&nbsp; </div>');
+        uctI_o[3].append(target_gearPreview);
+        
+        uctI_o[6].append(cTarget_gearPreview);
+
+        uctI_o[4].append('<br>');
+        uctI_o[1].append('<br>');
+        uctI_o[4].append('<div class="fw-b h5">Damage data </div>');
+        uctI_o[1].append('<div class="fw-b h5">&nbsp; </div>');
+
+
+
         if ((cUnit_dtable.length !== 0) && (sau[26].length !== 0)) {
             uctI_o[4].append('<table class="table table-dark table-striped"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable"> </tbody></table>');
         uctI_o[1].append('<table class="table table-dark table-striped"> <thead> <tr> <th scope="col">#</th> <th scope="col">CD</th> <th scope="col">D(avg)</th> <th scope="col">DPS</th> <th scope="col">Mod</th> </tr> </thead><tbody id="ctable_unitDtable_2"> </tbody></table>');
