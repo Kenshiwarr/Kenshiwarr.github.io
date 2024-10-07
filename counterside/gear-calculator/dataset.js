@@ -2043,7 +2043,6 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "The Militia Lee Yuri","hyper1","1.25","3.5","3.75","false","false","-","-","-","-","-","3","true","true","false","false","false","-","38","-","USN_HYPER1","NST_HYPER'",
 "The Militia Choi Jihoon","attack1","1.2","1","2.59","false","false","-","-","-","-","1","1","true","false","false","false","false","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "The Militia Choi Jihoon","accumulated1","1.2","1","2.24","false","false","-","-","-","-","99","1","true","true","false","true","false","-","5","1","USN_PASSIVE3","NST_ATTACK'",
-"Fallen Hawk Rosaria le Friede","attack1","1.2","-","1.28","false","false","-","-","-","-","99","1","true","false","false","false","false","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "Fallen Hawk Rosaria le Friede","attack1","1.2","1.15","1.28","false","false","-","-","-","-","99","1","true","false","false","false","false","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "Fallen Hawk Rosaria le Friede","attack_air1","1.2","0.85","1.67","false","false","-","-","-","-","-","2","false","true","false","false","false","-","-","-","USN_ATTACK2","NST_ATTACK'",
 "Fallen Hawk Rosaria le Friede","attack_air2","1.2","-","1.28","false","false","-","-","-","-","99","1","false","true","false","false","false","-","-","-","USN_ATTACK1_AIR","NST_ATTACK'",
