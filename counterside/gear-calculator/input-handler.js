@@ -912,16 +912,22 @@ if (cel.length > 0) {
     var emptyId = 0;
     var usedIds = [];
     for (let i = 0; i < fcId; i++) {
-      usedIds[i] = Number($('#' + buffApplyTo + 'dropdown-buffList li').eq(i).attr('id').split("_")[1]);
+      const idNum = $('#' + buffApplyTo + 'dropdown-buffList li').eq(i).attr('id').split("_");
+      usedIds[i] = Number(idNum[idNum.length-1]);
     }
 
-    usedIds = usedIds.sort();
+    usedIds = usedIds.sort(sortNumber);
 
     for (let i = 0, n = usedIds.length; i < n; i++) {
-      if (usedIds[i] === emptyId) {
+      if (usedIds.includes(emptyId)) {
       emptyId++
+      usedIds.pop(i);
       }
     }
+    console.log('empty id  = ')
+    console.log(buffApplyTo);
+    console.log(emptyId);
+    console.log(usedIds);
 
   if (cbm_name == '') {
     cbm_name = 'Buff_'+emptyId;
