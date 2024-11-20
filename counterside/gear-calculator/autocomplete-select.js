@@ -186,6 +186,7 @@ link.click(); // This will download the data file named "my_data.csv". */
       var unit_advantage = 0;
 
       var enemy_remaining_hp_percent = 1;
+      var unit_remaining_hp_percent = 1;
 
       var distance_to_target_frequency_melee = 0.5;
       var distance_to_target_frequency_ranged = 0.5;
@@ -695,14 +696,14 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
 
       unit_hp = ((Number(unit_data[2])+usg[0]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[6] + bonus_stats[6]) + (bonus_stats[0]*0.1);
-      unit_atk = ((Number(unit_data[3])+usg[1]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1);
-      unit_def = ((Number(unit_data[4])+usg[2]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
+      unit_atk = (((Number(unit_data[3])+usg[1]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1)) * (1+((1-unit_remaining_hp_percent) * bonus_stats[66]));
+      unit_def = (((Number(unit_data[4])+usg[2]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1)) * (1+((1-unit_remaining_hp_percent) * bonus_stats[65]));
       DEF_pc = unit_def/(unit_def+1000);
       unit_crit = ((Number(unit_data[5])+usg[3]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
       CRIT_pc = Math.min(0.0005*unit_crit,0.85);
       unit_hit = ((Number(unit_data[6])+usg[4]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
       HIT_pc = unit_hit/(unit_hit+1500);
-      unit_eva = ((Number(unit_data[7])+usg[5]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
+      unit_eva = (((Number(unit_data[7])+usg[5]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5]) * (1+((1-unit_remaining_hp_percent) * bonus_stats[67]));
       EVA_pc = unit_eva/(unit_eva+800);
       unit_cdmg_res = Number(bonus_stats[17]);
       /* cat1_res = Number($( ".unit-cat1_res" ).attr('value'));
@@ -875,7 +876,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         $('#unit-lvl').removeClass('limitFusion_2_color');
         $('#unit-lvl').removeClass('limitFusion_color');
       }
-      $('#unit-current_hp').html('<h>Current HP: ' + Math.round(unit_hp*enemy_remaining_hp_percent) + ' (' + Number($('#unit-current_hp_range').val()) +'%)' + '</h>');
+      $('#unit-current_hp').html('<h>Current HP: ' + Math.round(unit_hp*unit_remaining_hp_percent) + ' (' + Number($('#unit-current_hp_range').val()) +'%)' + '</h>');
       $('#unit-atk').html('<h>ATK: </h><span class="current_stats">' + Math.round(unit_atk) + ''+ ((unit_atk-unit_base_atk) > 0 ? (' <span class="added_stats">(+' + Math.round(unit_atk-unit_base_atk) + ')'):'') + '</span></span>');
       $('#unit-def').html('<h>DEF: </h><span class="current_stats">' + Math.round(unit_def) + '</h> <span class="added_stats"> ' + ((unit_def-unit_base_def) > 0 ? ('(+' + Math.round(unit_def-unit_base_def) + ')'):'') + '('+ (DEF_pc*100).toFixed(2) +'%)</span></span>');
       $('#unit-crit').html('<h>CRIT: </h><span class="current_stats">' + Math.round(unit_crit) + '</h> <span class="added_stats"> ' + ((unit_crit-unit_base_crit) > 0 ? ('(+' + Math.round(unit_crit-unit_base_crit) + ')'):'') + '('+ (CRIT_pc*100).toFixed(2) +'%)</span></span>');
@@ -1139,6 +1140,7 @@ var unitCalculatedDmgSplit = [];
 var ucd_counter = 0;
 
 var needCurrHPind = false;
+$('#u-ch_needed').hide();
 $('#t-ch_needed').hide();
 
 if (Object.prototype.toString.call(unit_mainAttack_selected) !== '[object Array]') {
@@ -1266,13 +1268,13 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
             var sdmiss = 0;
 
 
-            if ((sdcurrhpd > 0) && (needCurrHPind === false)) {
+            if ((sdcurrhpd > 0 || ([target_bonus_stats[65],target_bonus_stats[66],target_bonus_stats[67]].some(e=>e!== 0))) && (needCurrHPind === false)) {
               $('#t-ch_needed').show();
               needCurrHPind = true;
-            }/*  else {
-              $('#t-ch_needed').hide();
-              needCurrHPind = false;
-            } */
+            }
+            if (([unit_bonus_stats[65],unit_bonus_stats[66],unit_bonus_stats[67]].some(e=>e!== 0))) {
+              $('#u-ch_needed').show();
+            }
             
             
             source_dmg += sdcurrhpd;
@@ -3836,17 +3838,10 @@ function AppendCustomStatsForUnits() {
         $('#target_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]+'">'+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]+''+'</button></li>');
         $('#dummy_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]+'">'+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]+''+'</button></li>');
       } else {
-        if (i >= 65 && i < 68) {
-          $('#stat_data_list_values ol').append('<li><div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16"> <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/> </svg><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+unit_extra_bonus_stats[i]*100+'" disabled>   '+ BONUS_STATS_LIST[i] + ' = '+unit_extra_bonus_stats[i]*100+'%'+'</button></div></li>');
-          $('#target_stat_data_list_values ol').append('<li><div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16"> <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/> </svg><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]*100+'" disabled> '+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]*100+'%'+'</button></div></li>');
-          $('#dummy_stat_data_list_values ol').append('<li><div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16"> <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/> </svg><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]*100+'" disabled> '+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]*100+'%'+'</button></div></li>');
-      
-        } else {
-          $('#stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+unit_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+unit_extra_bonus_stats[i]*100+'%'+'</button></li>');
-          $('#target_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]*100+'%'+'</button></li>');
-          $('#dummy_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]*100+'%'+'</button></li>');
-      
-        }
+        $('#stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+unit_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+unit_extra_bonus_stats[i]*100+'%'+'</button></li>');
+        $('#target_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+target_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+target_extra_bonus_stats[i]*100+'%'+'</button></li>');
+        $('#dummy_stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ BONUS_STATS_LIST[i] +'" subvalue="'+dummy_extra_bonus_stats[i]*100+'">'+ BONUS_STATS_LIST[i] + ' = '+dummy_extra_bonus_stats[i]*100+'%'+'</button></li>');
+    
        
       }
     }

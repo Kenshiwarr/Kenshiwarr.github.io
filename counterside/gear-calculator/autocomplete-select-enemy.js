@@ -473,14 +473,14 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
     
       target_hp = ((Number(target_data[2])+usg[0]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[6] + bonus_stats[6]) + (bonus_stats[0]*0.1);
-      target_atk = ((Number(target_data[3])+usg[1]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1);
-      target_def = ((Number(target_data[4])+usg[2]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1);
+      target_atk = (((Number(target_data[3])+usg[1]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[7] + bonus_stats[7]) + (bonus_stats[1]*0.1)) * (1+((1-enemy_remaining_hp_percent) * bonus_stats[66]));
+      target_def = (((Number(target_data[4])+usg[2]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[8] + bonus_stats[8]) + (bonus_stats[2]*0.1))   * (1+((1-enemy_remaining_hp_percent) * bonus_stats[65]));
       target_DEF_pc = target_def/(target_def+1000);
       target_crit = ((Number(target_data[5])+usg[3]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[9] + bonus_stats[9]) + (bonus_stats[3]);
       target_CRIT_pc = Math.min(0.0005*target_crit,0.85);
       target_hit = ((Number(target_data[6])+usg[4]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[10] + bonus_stats[10]) + (bonus_stats[4]);
       target_HIT_pc = target_hit/(target_hit+1500);
-      target_eva = ((Number(target_data[7])+usg[5]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5];
+      target_eva = (((Number(target_data[7])+usg[5]*(unit_level-1))*lvlMod)*(1+bonus_stats_gear_set[11] + bonus_stats[11]) + bonus_stats[5]) * (1+((1-enemy_remaining_hp_percent) * bonus_stats[67]));
       target_EVA_pc = target_eva/(target_eva+800);
       target_cdmg_res = Number(bonus_stats[17]);
       /* cat1_res = Number($( ".unit-cat1_res" ).attr('value'));

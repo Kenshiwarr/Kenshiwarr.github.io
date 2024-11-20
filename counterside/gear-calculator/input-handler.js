@@ -394,6 +394,17 @@ $('#target-current_hp_range').on('change',function(){
         UpdateUnitAndTarget(unit_stats);
         CalcUnitDMG()
 });
+
+$('#unit-current_hp_range').on('change input', function() {
+  unit_remaining_hp_percent = Number($('#unit-current_hp_range').val())/100
+  $('#unit-current_hp').text('Current HP: ' + Math.floor(unit_hp*unit_remaining_hp_percent) + ' ('+Math.floor(unit_remaining_hp_percent*100)+'%)');
+});
+
+$('#unit-current_hp_range').on('change',function(){
+  var unit_stats = $('#searched-unitID-values').attr('value').split(",");
+      UpdateUnitAndTarget(unit_stats);
+      CalcUnitDMG()
+});
 $('#range-melee-distance_partial').on('change input', function() {
 
   var rangeVal = $('#range-melee-distance_partial').val();
