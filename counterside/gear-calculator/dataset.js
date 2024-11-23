@@ -470,7 +470,7 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Successor Orca","3401","363","142","270","108","121","Icon_Orca_Successor","Counter","Striker","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Orochinagi Nanahara Chifuyu","3390","444","386","292","257","153","Icon_Nanahara Chifuyu_Orochinagi","Counter","Striker","Ground","1","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Outlander Rivet","1492","280","148","160","194","190","Icon_Rivet_Outlander","Soldier","Ranger","Ground","1",,"0.16",,,,,,"0.1",,,,,"0.5",,,"0.8",,,"0.8",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"Scavengers Overflow","3107","242","421","140","161","62","Icon_Overflow_Scavengers","Mech;Soldier","Defender","Ground","1","0.2",,,,,,,,,,,"0.75",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.1",,,,,,,,,,,"0.1",,,,,,,,
+"Scavengers Overflow","3107","242","421","140","161","62","Icon_Overflow_Scavengers","Soldier;Mech","Defender","Ground","1","0.2",,,,,,,,,,,"0.75",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.1",,,,,,,,,,,"0.1",,,,,,,,
 "Charade Ozymandias","2127","261","211","162","265","333","Icon_Ozymandias_Charade","Counter","Striker","Ground","1","0.4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Fennec Fox PZH Mobile Gun","1402","200","18","82","96","4","Icon_PZH Mobile Gun_Fennec Fox","Mech","Siege","Ground","1",,,,,"0.5",,,"0.15",,,,,,,,,"0.45","0.45",,,,,,,,"0.4","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Daymine Mining Team 4 Park Hyunsoo","1950","240","163","183","110","183","Icon_Park Hyunsoo_Daymine Mining Team 4","Counter","Striker","Ground","1",,"0.12",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
