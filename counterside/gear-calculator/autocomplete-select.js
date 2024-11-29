@@ -242,6 +242,12 @@ link.click(); // This will download the data file named "my_data.csv". */
               }
               window[statval] += 291
               break;
+            case 'Canary Squad Laika':
+              if (eestat === true) {
+                eeinf += '"Exclusive,Antithesis,Accessory,Soldier,Icon_Soldier_Accessory_Antithesis_EE,HIT,,,,,,,,1,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
+              }
+              window[statval] += 231
+              break;
 
           default:
             
