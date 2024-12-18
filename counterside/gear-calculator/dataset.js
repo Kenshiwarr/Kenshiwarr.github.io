@@ -543,7 +543,8 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Fenrir Squad Yoo Mina","1780","386","130","300","258","41","Icon_Yoo Mina_Fenrir Squad","Counter","Ranger","Ground","1",,,,,,,,,"0.5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Strega Yuna Springfield","1068","240","51","270","135","66","Icon_Yuna Springfield_Strega","Counter","Ranger","Ground","1",,"0.18",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Fennec Fox ZSU Shilka","1313","276","117","124","145","65","Icon_ZSU Shilka_Fennec Fox","Mech","Ranger","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.7",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"Official Support Zena Bird","1577","246","156","235","116","291","Icon_Zena Bird_Official Support","Counter","Striker","Ground","1",,"0.15",,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,];
+"New Age Naielle Bluesteel","3329","322","536","56","167","313","Icon_Naielle Bluesteel_New Age","Counter","Defender","Ground","1","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,,,,,
+"Official Support Zena Bird","1577","246","156","235","116","291","Icon_Zena Bird_Official Support","Counter","Striker","Ground","1",,"0.15",,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,];
 
 
 const unit_stats_growth = ["States of One ACH-4 Clan",26.29,1.63,0.17,1.14,0.9,0.51,
@@ -821,6 +822,7 @@ const unit_stats_growth = ["States of One ACH-4 Clan",26.29,1.63,0.17,1.14,0.9,0
 "Fenrir Squad Yoo Mina",22.79,4.02,0.2,4.63,3.99,0.65,
 "Strega Yuna Springfield",13.69,2.5,0.08,4.18,2.1,1.03,
 "Fennec Fox ZSU Shilka",16.2,2.76,0.15,1.64,1.93,0.88,
+"New Age Naielle Bluesteel",41.89,3.38,0.76,0.82,2.41,4.47,
 "Official Support Zena Bird",19.5,2.47,0.2,3.12,1.54,3.86]
 
 const unit_stats_growth_pve = [
@@ -1099,6 +1101,7 @@ const unit_stats_growth_pve = [
 "Fenrir Squad Yoo Mina",227.99,40.24,2.02,4.63,3.99,0.65,
 "Strega Yuna Springfield",137,25.06,0.8,4.18,2.1,1.03,
 "Fennec Fox ZSU Shilka",161.99,27.72,1.56,1.64,1.93,0.88,
+"New Age Naielle Bluesteel",418.99,33.88,7.66,0.82,2.41,4.47,
 "Official Support Zena Bird",194.99,24.72,2.07,3.12,1.54,3.86];
 
 const unit_gear_stats_csv = ["Equip Type","Gear Name","Slot","Employee Type","Icon","Main Stat","HP","ATK","DEF","CRIT","HIT","EVA","SPD","ASPD","CRIT DMG","Skill Haste","HP Recovery per Sec","CRIT DMG RES","Status Effect RES","Incoming Healing +","Outgoing Healing +","Anti-Counter DMG","Anti-Soldier DMG","Anti-Mech DMG","Anti-C.O. DMG","Anti-Replacer DMG","Anti-Striker DMG","Anti-Defender DMG","Anti-Ranger DMG","Anti-Sniper DMG","Anti-Supporter DMG","Anti-Siege DMG","Anti-Tower DMG","Anti-Air DMG","Anti-Ground DMG","Melee DMG","Ranged DMG","Anti-Counter DMG RES","Anti-Soldier DMG RES","Anti-Mech DMG RES","Anti-C.O. DMG RES","Anti-Replacer DMG RES","Anti-Striker DMG RES","Anti-Defender DMG RES","Anti-Ranger DMG RES","Anti-Sniper DMG RES","Anti-Supporter DMG RES","Anti-Siege DMG RES","Anti-Tower DMG RES","Anti-Air DMG RES","Anti-Ground DMG RES","Melee DMG RES","Ranged DMG RES","DMG Taken RDC","Special Skill DMG AMP","Ultimate Skill DMG AMP","DEF Penetration","Special Skill DMG RDC","Ultimate Skill DMG RDC","Barrier Enhancement",
