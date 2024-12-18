@@ -543,7 +543,7 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Fenrir Squad Yoo Mina","1780","386","130","300","258","41","Icon_Yoo Mina_Fenrir Squad","Counter","Ranger","Ground","1",,,,,,,,,"0.5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Strega Yuna Springfield","1068","240","51","270","135","66","Icon_Yuna Springfield_Strega","Counter","Ranger","Ground","1",,"0.18",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Fennec Fox ZSU Shilka","1313","276","117","124","145","65","Icon_ZSU Shilka_Fennec Fox","Mech","Ranger","Ground","1",,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.7",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"New Age Naielle Bluesteel","3329","322","536","56","167","313","Icon_Naielle Bluesteel_New Age","Counter","Defender","Ground","1","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,,,,,
+"New Age Naielle Bluesteel","3329","322","536","56","167","313","Icon_Naielle Bluesteel_New Age","Counter","Defender","Ground","1","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,"0.15",,,,,,,,
 "Official Support Zena Bird","1577","246","156","235","116","291","Icon_Zena Bird_Official Support","Counter","Striker","Ground","1",,"0.15",,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,];
 
 
