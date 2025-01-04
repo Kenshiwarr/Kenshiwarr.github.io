@@ -2322,6 +2322,7 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       ecd = targetDodgeChance;
 
     }
+
     
     if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'Valentinus Monastery Agnes Abigail') && (ts[j][0] === 'attack_mark')) { // agnes partial/non-partial check if marked
       console.log((unit_mainAttack_mix_split.some((e, id, arr) => arr[id][0] == 'attack_mark')))
@@ -2329,7 +2330,13 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       sDmg_crit += (enemy_HP*0.03);
       sDmg_hit += (enemy_HP*0.03);
       sDmg_miss += (enemy_HP*0.03);
+    } else if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'The Militia Choi Jihoon') && total_target_data[10] == 'Sniper' && (ts[j][0] === 'accumulated1')) { // jihoon 2x damage against snipers
+      console.log('jihoon vs sniper 2x damage')
+      sDmg_crit *=2;
+      sDmg_hit *=2;
+      sDmg_miss *=2;
     }
+    
 
     if (sDmg_crit >= enemy_mdl) {
       sDmg_crit = enemy_mdl+(((sDmg_crit-enemy_mdl))*0.04);
