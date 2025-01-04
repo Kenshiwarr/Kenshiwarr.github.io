@@ -1058,6 +1058,13 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
         var unit_def_pen = unit_bonus_stats[58];
 
+        let jihoonCritMod = 0;
+        if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'The Militia Choi Jihoon') && total_target_data[10] == 'Sniper') { // jihoon 2x damage against snipers
+          console.log('jihoon vs sniper 2x damage')
+          jihoonCritMod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(2+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+
+        }
+
         var attack1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
         var skill1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
         var hyper1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
@@ -1207,6 +1214,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
                   dmgMod = attack1_aoe_mod;
                 } else {
                   dmgMod = attack1_mod;
+                  if (uatkd[0] == 'accumulated1') {
+                    dmgMod = jihoonCritMod;
+                  }
                 }
                 
               } else if (srcType === 'NST_SKILL') {
@@ -2330,11 +2340,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
       sDmg_crit += (enemy_HP*0.03);
       sDmg_hit += (enemy_HP*0.03);
       sDmg_miss += (enemy_HP*0.03);
-    } else if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'The Militia Choi Jihoon') && total_target_data[10] == 'Sniper' && (ts[j][0] === 'accumulated1')) { // jihoon 2x damage against snipers
-      console.log('jihoon vs sniper 2x damage')
-      sDmg_crit *=2;
-      sDmg_hit *=2;
-      sDmg_miss *=2;
     }
     
 
