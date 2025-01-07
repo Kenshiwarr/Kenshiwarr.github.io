@@ -176,7 +176,7 @@ const VOLCANO_GEAR_LATENT_STATS_VALUES_LIST = [0.109, 0.109, 0.076, 0.15, 0.063,
 const VOLCANO_ACCS_LATENT_STATS_VALUES_LIST = [0.119, 0.119, 0.083, 0.163, 0.068, 0.068, 0.079, 0.142, 0.142, 0.142];
 
 // units EE's
-const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy','Future-at-War Titan','Triaina Plan Titan','Delta Seven Kyle Wong','Fallen Hawk Rosaria le Friede','Canary Squad Laika']
+const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy','Future-at-War Titan','Triaina Plan Titan','Delta Seven Kyle Wong','Fallen Hawk Rosaria le Friede','Canary Squad Laika','Kestrel Xiao Lin']
 
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1 = [0.242];
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2 = [0.244,0.122,0.488,0.061,0.183];
@@ -186,6 +186,9 @@ const SOL_BADGUY_GEAR_STATS_VALUES_LIST_2 = [0.11,0.44,0.055,0.165];
 
 const TITAN_KYLE_GEAR_STATS_VALUES_LIST_1 = [0.121];
 const TITAN_KYLE_GEAR_STATS_VALUES_LIST_2 = [0.242,0.121,0.462,0.066,0.183];
+
+const XIAO_GEAR_STATS_VALUES_LIST_1 = [0.116];
+const XIAO_GEAR_STATS_VALUES_LIST_2 = [0.242,0.121,0.462,0.066,0.183];
 
 const ROSARIA_GEAR_STATS_VALUES_LIST_1 = [0.183];
 
@@ -1100,6 +1103,12 @@ var GearSetsListTrinity = {
           aSub2 = LAIKA_GEAR_STATS_VALUES_LIST_2;
         }
         break;
+        case "Reliable Messenger":
+          if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = XIAO_GEAR_STATS_VALUES_LIST_1;
+          aSub2 = XIAO_GEAR_STATS_VALUES_LIST_2;
+        }
+        break;
         
         default:
           break;
@@ -1795,6 +1804,13 @@ console.timeEnd('subs_alt')
           selectedGearSub2List = LAIKA_GEAR_STATS_VALUES_LIST_2;
         }
         break;
+  case "Reliable Messenger":
+    if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
+    selectedGearSub1List = XIAO_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = XIAO_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
   
 
   
@@ -2285,6 +2301,13 @@ var isRelic = [];
         }
         selectedGearSetList = GearSetsListBasic;
         break;
+        case "Reliable Messenger":
+    if (gear_slot_loc == (SLOT_ACCESSORY)) {
+    selectedGearSub1List = XIAO_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = XIAO_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
   default:
     break;
  };

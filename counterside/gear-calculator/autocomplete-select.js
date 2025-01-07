@@ -248,6 +248,12 @@ link.click(); // This will download the data file named "my_data.csv". */
               }
               window[statval] += 231
               break;
+            case 'Kestrel Xiao Lin':
+              if (eestat === true) {
+                eeinf += '"Exclusive,Reliable Messenger,Accessory,Counter,Icon_Counter_Accessory_Reliable Messenger_EE,ASPD,,,,,,,,1,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
+              }
+              window[statval] += 0.306
+              break;
 
           default:
             
