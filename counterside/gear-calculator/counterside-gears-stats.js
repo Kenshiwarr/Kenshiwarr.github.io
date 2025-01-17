@@ -176,7 +176,7 @@ const VOLCANO_GEAR_LATENT_STATS_VALUES_LIST = [0.109, 0.109, 0.076, 0.15, 0.063,
 const VOLCANO_ACCS_LATENT_STATS_VALUES_LIST = [0.119, 0.119, 0.083, 0.163, 0.068, 0.068, 0.079, 0.142, 0.142, 0.142];
 
 // units EE's
-const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy','Future-at-War Titan','Triaina Plan Titan','Delta Seven Kyle Wong','Fallen Hawk Rosaria le Friede','Canary Squad Laika','Kestrel Xiao Lin']
+const UNITS_W_EE = ['Post-War Administration Bureau Millia Rage','Flame of Corruption Sol Badguy','Future-at-War Titan','Triaina Plan Titan','Delta Seven Kyle Wong','Fallen Hawk Rosaria le Friede','Canary Squad Laika','Kestrel Xiao Lin','ALT Squad Kim Sobin']
 
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1 = [0.242];
 const MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2 = [0.244,0.122,0.488,0.061,0.183];
@@ -644,13 +644,13 @@ var GearSetsListTrinity = {
 
       if ((this.forUnit == 0)) {
         console.log("setting for UNIT");
-        $('#' + `${this.#eqSlot}` + 'Container').css('background-image',"url('"+`${this.#eqIcon}`+"')");
+        $('#' + `${this.#eqSlot}` + 'Container').css('background-image',"url('"+CSS.escape(`${this.#eqIcon}`)+"')");
         $('#' + `${this.#eqSlot}` + 'Container img').attr('src','cs_gears-icons/Set Icons/Icon_Set_'+`${this.#eqSet}`+'.png');
         $('#' + `${this.#eqSlot}` + 'Container img').removeAttr('hidden');
         $('#' + `${this.#eqSlot}` + 'Container').attr('isConfirmed','true')
       } else{
         console.log("setting for TARGET");
-        $('#' + `${this.#eqSlot}` + 'Container_enemy').css('background-image',"url('"+`${this.#eqIcon}`+"')");
+        $('#' + `${this.#eqSlot}` + 'Container_enemy').css('background-image',"url('"+CSS.escape(`${this.#eqIcon}`)+"')");
         $('#' + `${this.#eqSlot}` + 'Container_enemy img').attr('src','cs_gears-icons/Set Icons/Icon_Set_'+`${this.#eqSet}`+'.png');
         $('#' + `${this.#eqSlot}` + 'Container_enemy img').removeAttr('hidden');
         $('#' + `${this.#eqSlot}` + 'Container_enemy').attr('isConfirmed','true')
@@ -1068,6 +1068,12 @@ var GearSetsListTrinity = {
           }
           break;
           case "Cat Brooch":
+          if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
+          aSub1 = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
+          aSub2 = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
+        }
+        break;
+          case "Fairy\'s Infinite Ammo":
           if ((GearSlot == SLOT_ACCESSORY_1) || (GearSlot == SLOT_ACCESSORY_2)) {
           aSub1 = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
           aSub2 = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
@@ -1770,6 +1776,13 @@ console.timeEnd('subs_alt')
   }
   selectedGearSetList = GearSetsListBasic;
   break;
+    case "Fairy\'s Infinite Ammo":
+    if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
+    selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
   case "Gear Cell Suppressor":
     if ((selectedGear == SLOT_ARMOR)) {
     selectedGearSub1List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_1;
@@ -2260,6 +2273,13 @@ var isRelic = [];
     selectedGearSetList = GearSetsListTrinity;
     break;
     case "Cat Brooch":
+    if (gear_slot_loc == (SLOT_ACCESSORY)) {
+    selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
+    selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
+  }
+  selectedGearSetList = GearSetsListBasic;
+  break;
+    case "Fairy\'s Infinite Ammo":
     if (gear_slot_loc == (SLOT_ACCESSORY)) {
     selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;

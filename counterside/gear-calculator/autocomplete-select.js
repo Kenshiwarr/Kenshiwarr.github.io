@@ -254,6 +254,12 @@ link.click(); // This will download the data file named "my_data.csv". */
               }
               window[statval] += 0.306
               break;
+            case 'ALT Squad Kim Sobin':
+              if (eestat === true) {
+                eeinf += '"Exclusive,Fairy\'s Infinite Ammo,Accessory,Counter,Icon_Counter_Accessory_Fairy\'s Infinite Ammo_EE,ASPD,,,,,,,,,1;2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
+              }
+              window[statval] += 0.306
+              break;
 
           default:
             
