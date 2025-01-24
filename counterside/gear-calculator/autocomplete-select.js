@@ -3274,14 +3274,14 @@ function autocomplete(inp, arr) {
   var unit_name = uTitle + ' ' + uName;
 
                 var sc1 = units_stats_csv_2.indexOf(unit_name);
-                let sc_growth = unit_stats_growth.indexOf(unit_name);
+                let sc_growth = unit_stats_growth_pve.indexOf(unit_name);
                 for (let i = 1; i < 7; i++) {
-                  UnitStatGrowth[i-1] = unit_stats_growth[sc_growth+i];
+                let rd = i > 3 ? 1:0.1;
+                  // UnitStatGrowth[i-1] = unit_stats_growth[sc_growth+i];
                   UnitStatGrowth_PvE[i-1] = unit_stats_growth_pve[sc_growth+i];
+                  UnitStatGrowth[i-1] = unit_stats_growth_pve[sc_growth+i]*rd;
                 }
   
-                console.log('UnitStatGrowth');
-                console.log(UnitStatGrowth);
 
                 var sc2 = '';
                 var scI = '<img src="cs_icons/' + units_stats_csv_2[sc1+7] + '.png" alt="">'

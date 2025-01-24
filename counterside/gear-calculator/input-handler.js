@@ -154,13 +154,14 @@ if (Uname != null) {
       accessory2IsConfirmed = false;
   }
   if (UnitStatGrowth == [] || TargetStatGrowth == []) {
-    let sc_growthU = unit_stats_growth.indexOf(total_unit_data[0] + ' ' + total_unit_data[1]);
-    let sc_growthT = unit_stats_growth.indexOf(total_target_data[0] + ' ' + total_target_data[1]);
+    let sc_growthU = unit_stats_growth_pve.indexOf(total_unit_data[0] + ' ' + total_unit_data[1]);
+    let sc_growthT = unit_stats_growth_pve.indexOf(total_target_data[0] + ' ' + total_target_data[1]);
 
     for (let i = 1; i < 7; i++) {
-      UnitStatGrowth[i-1] = unit_stats_growth[sc_growthU+i];
-      UnitStatGrowth_PvE[i-1] = unit_stats_growth[sc_growthU+i];
-      TargetStatGrowth[i-1] = unit_stats_growth_pve[sc_growthT+i];
+      let rd = i > 3 ? 1:0.1;
+      UnitStatGrowth[i-1] = unit_stats_growth_pve[sc_growthU+i]*rd;
+      UnitStatGrowth_PvE[i-1] = unit_stats_growth_pve[sc_growthU+i];
+      TargetStatGrowth[i-1] = unit_stats_growth_pve[sc_growthT+i]*rd;
 
     }
   }
@@ -587,10 +588,12 @@ function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_
   $("#unit-hit").html(unit_data[6])
   $("#unit-eva").html(unit_data[7])
 
-  let sc_growthU = unit_stats_growth.indexOf(total_unit_data[0] + ' ' + total_unit_data[1]);
+  let sc_growthU = unit_stats_growth_pve.indexOf(total_unit_data[0] + ' ' + total_unit_data[1]);
 
   for (let i = 1; i < 7; i++) {
-    UnitStatGrowth[i-1] = unit_stats_growth[sc_growthU+i];
+    let rd = i > 3 ? 1:0.1;
+     
+    UnitStatGrowth[i-1] = unit_stats_growth_pve[sc_growthU+i]*rd;
     UnitStatGrowth_PvE[i-1] = unit_stats_growth_pve[sc_growthU+i];
 
   }
@@ -650,9 +653,10 @@ function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS
     
     
     
-          let sc_growthT = unit_stats_growth.indexOf(total_target_data[0] + ' ' + total_target_data[1]);
+          let sc_growthT = unit_stats_growth_pve.indexOf(total_target_data[0] + ' ' + total_target_data[1]);
           for (let i = 1; i < 7; i++) {
-            TargetStatGrowth[i-1] = unit_stats_growth[sc_growthT+i];
+            let rd = i > 3 ? 1:0.1;
+            TargetStatGrowth[i-1] = unit_stats_growth_pve[sc_growthT+i]*rd;
         
           }
     

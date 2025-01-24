@@ -998,9 +998,10 @@ function autocompleteTarget(inp, arr) {
     var unit_name = uTitle + ' ' + uName;
   
                   var sc1 = units_stats_csv_2.indexOf(unit_name);
-                  let sc_growth = unit_stats_growth.indexOf(unit_name);
+                  let sc_growth = unit_stats_growth_pve.indexOf(unit_name);
                 for (let i = 1; i < 7; i++) {
-                  TargetStatGrowth[i-1] = unit_stats_growth[sc_growth+i];
+                let rd = i > 3 ? 1:0.1;
+                TargetStatGrowth[i-1] = unit_stats_growth_pve[sc_growth+i]*rd;
                 }
 
                 console.log('TargetStatGrowth');
