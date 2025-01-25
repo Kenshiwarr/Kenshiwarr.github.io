@@ -354,7 +354,29 @@ function setUnitExtra(tud) {
       UpdateUnitAndTarget(tud);
       CalcUnitDMG();
     });
-    } else {
+    } else if((tud[0] + ' ' + tud[1]) === 'Rabbit\'s Foot Bell Cranel') {
+      $('#unitSpecialExtra').html('<input type="range" class="form-range" id="spextra_0" min="0" max="50" step="1" value="0">');
+
+      let rv = $('#spextra_0').val();
+
+      $('#unitSpecialExtraLabel').html("Bell's Admiration Stacks: <span id=\"sppextra_tooltip\">" + rv + "</span>")
+      
+
+      $('#unitSpecialExtra').append("<br />");
+
+      $('#spextra_0').on('change', function() {
+
+      UpdateUnitAndTarget(tud);
+      CalcUnitDMG();
+        
+      });
+      $('#spextra_0').on('change input', function() {
+        let rvv = $('#spextra_0').val();
+        $('#sppextra_tooltip').text(rvv);
+        
+      });
+    }
+     else {
       $('#unitSpecialExtraLabel').html('')
       $('#unitSpecialExtra').html('')
     }

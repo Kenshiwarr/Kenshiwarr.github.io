@@ -378,6 +378,14 @@ link.click(); // This will download the data file named "my_data.csv". */
 
       //bonus_stats[21] += 0.8;
 
+      if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Rabbit\'s Foot Bell Cranel')) {
+        let admirationStacks = $('#spextra_0').val();
+        if(isNaN(admirationStacks)) {
+          admirationStacks = 0;
+        }
+        bonus_stats[7] += (0.01 * admirationStacks);
+        bonus_stats[11] += (0.01 * admirationStacks);
+      }
 
 
       for (let i = 0, n = bonus_stats.length; i < n; i++) {
@@ -928,12 +936,15 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
       }
       
       
+      
 
       for (let i = 0; i < BSLL; i++) {
         unit_bonus_stats[i] = bonus_stats[i] + bonus_stats_gear_set[i];
         
       }
 
+      
+      
       
       
 /* 
@@ -1071,11 +1082,29 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         var unit_def_pen = unit_bonus_stats[58];
 
         let jihoonCritMod = 0;
+        let bellSpecMod = 0;
         let isJihoon = false;
+        let isBellCranel = false;
         if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'The Militia Choi Jihoon') && total_target_data[10] == 'Sniper') { // jihoon 2x damage against snipers
           isJihoon = true;
           console.log('jihoon vs sniper 2x damage')
           jihoonCritMod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(2+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+
+        } else if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Rabbit\'s Foot Bell Cranel')) {
+          isBellCranel = true;
+          let admirationStacks = $('#spextra_0').val();
+          if(isNaN(admirationStacks)) {
+            admirationStacks = 0;
+          }
+          console.log('bell 20 stacks')
+
+          if (admirationStacks >= 20) {
+          bellSpecMod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen-0.5))/(enemy_DEF*(1-unit_def_pen-0.5)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+            
+          } else {
+          bellSpecMod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res-target_bonus_stats[69]),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+
+          }
 
         }
 
@@ -1175,7 +1204,9 @@ if (Object.prototype.toString.call(unit_mainAttack_selected) !== '[object Array]
 }
 
 console.log("cf-test")
-console.log(($("#spextra_0").is(":checked")))
+console.log(($("#spextra_0").is(":checked")));
+
+
 
 
 if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Tenured President Regina MacCready') && (unit_mainAttack_selected.indexOf(1) > -1)) {
@@ -1191,6 +1222,11 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
       
       for (let i = 0; i < unit_attack_data.length; i++) {
         let uatkd = unit_attack_data[i].split(',');
+
+        if (uatkd[0] == 'skill1' && isBellCranel && $('#spextra_0').val() >= 20 && !isNaN($('#spextra_0').val())) {
+          // unit_attack_data[i] = "skill1,1.3,1,1.6,false,false,0,0,0,0,99,3,TRUE,FALSE,FALSE,FALSE,FALSE,0,4444,0,USN_SKILL1,NST_SKILL";
+          uatkd[14] = "true";
+        }
         
         if (((uatkd[19] !== '01' && uatkd[19] !== '-1') && (Number(uatkd[3]) !== 0)) && ((unit_attack_data[i].indexOf(RestrictedtoType) != -1) || (uatkd[17] == 0)) && 
           (((uatkd[12].toLowerCase() === 'true' && enemy_movement_type === 'Ground') || 
@@ -1236,6 +1272,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
               } else if (srcType === 'NST_SKILL') {
                 if (Number(validHitAmt) > 1) {
                   dmgMod = skill1_aoe_mod;
+                  if (uatkd[0] == 'skill1' && isBellCranel) {
+                    dmgMod = bellSpecMod;
+                  }
                 } else {
                   dmgMod = skill1_mod;
                 }
