@@ -1224,7 +1224,6 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
         let uatkd = unit_attack_data[i].split(',');
 
         if (uatkd[0] == 'skill1' && isBellCranel && $('#spextra_0').val() >= 20 && !isNaN($('#spextra_0').val())) {
-          // unit_attack_data[i] = "skill1,1.3,1,1.6,false,false,0,0,0,0,99,3,TRUE,FALSE,FALSE,FALSE,FALSE,0,4444,0,USN_SKILL1,NST_SKILL";
           uatkd[14] = "true";
         }
         

@@ -876,7 +876,7 @@ for (var name in this)
  */ // adds background image behind another background image
 
 
- CreateTooltipForAnything($('#Page_new_stuff'),'<br />Bell Cranel <img src="cs_icons/Icon_Bell Cranel_Rabbit&apos;s Foot.png" height="34px" width="34px" alt=""><br /><hr>Ryu Lion <img src="cs_icons/Icon_Ryu Lion_Gale Wind.png" height="34px" width="34px" alt=""><br /><hr>Ais Wallenstein <img src="cs_icons/Icon_Ais Wallenstein_Sword Princess.png" height="34px" width="34px" alt=""><hr><div class="fw-bold">Units\' levels</div><small>You can change level of a unit (1-120)</small><br /><hr><div class="fw-bold">PvE Toggle</div><small>Toggle target dummy changes stats for the attacking unit to it\'s PvE scaling variant</small>','<div class="text-center fw-bold">Added units</div>','','bot','12rem')
+ CreateTooltipForAnything($('#Page_new_stuff'),'<hr>Bell Cranel <img src="cs_icons/Icon_Bell Cranel_Rabbit&apos;s Foot.png" height="34px" width="34px" alt=""><br /><hr>Ryu Lion <img src="cs_icons/Icon_Ryu Lion_Gale Wind.png" height="34px" width="34px" alt=""><br /><hr>Ais Wallenstein <img src="cs_icons/Icon_Ais Wallenstein_Sword Princess.png" height="34px" width="34px" alt=""><hr><div class="fw-bold">Units\' levels</div><small>You can change level of a unit (1-120)</small><br /><hr><div class="fw-bold">PvE Toggle</div><small>Toggle target dummy changes stats for the attacking unit to it\'s PvE scaling variant</small>','<div class="text-center fw-bold">Added units</div>','','bot','12rem')
  
  for (let i = 0, n = BUFF_STATS_LIST.length; i < n; i++) {
   if (i >= 65 && i < 68) {
