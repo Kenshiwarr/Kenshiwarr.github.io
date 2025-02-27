@@ -547,6 +547,7 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Rabbit's Foot Bell Cranel","2475","313","213","213","203","340","Icon_Bell Cranel_Rabbit's Foot","Counter","Striker","Ground","1","0.2","0.18",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Gale Wind Ryu Lion","2012","267","97","135","160","196","Icon_Ryu Lion_Gale Wind","Counter","Supporter","Ground","1","0.27","0.2",,,,,,"0.05",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Sword Princess Ais Wallenstein","3863","349","336","210","253","570","Icon_Ais Wallenstein_Sword Princess","Counter","Striker","Ground","1","0.2","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Sprouting Star Solovey","2720","497","206","445","197","219","Icon_Solovey_Sprouting Star","Counter","Ranger","Ground","1",,,,,,,,,"0.3","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Official Support Zena Bird","1577","246","156","235","116","291","Icon_Zena Bird_Official Support","Counter","Striker","Ground","1",,"0.15",,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,];
 
 
@@ -830,6 +831,7 @@ const unit_stats_growth_pve = [
 "Rabbit's Foot Bell Cranel",310.99,31.95,3.06,3.06,2.92,4.87,
 "Gale Wind Ryu Lion",252.99,27.35,1.41,1.93,2.29,2.8,
 "Sword Princess Ais Wallenstein",485.99,35.61,4.81,3,3.64,8.15,
+"Sprouting Star Solovey",341.99,50.83,2.96,6.36,2.84,3.13,
 "Official Support Zena Bird",194.99,24.72,2.07,3.12,1.54,3.86];
 
 const unit_gear_stats_csv = ["Equip Type","Gear Name","Slot","Employee Type","Icon","Main Stat","HP","ATK","DEF","CRIT","HIT","EVA","SPD","ASPD","CRIT DMG","Skill Haste","HP Recovery per Sec","CRIT DMG RES","Status Effect RES","Incoming Healing +","Outgoing Healing +","Anti-Counter DMG","Anti-Soldier DMG","Anti-Mech DMG","Anti-C.O. DMG","Anti-Replacer DMG","Anti-Striker DMG","Anti-Defender DMG","Anti-Ranger DMG","Anti-Sniper DMG","Anti-Supporter DMG","Anti-Siege DMG","Anti-Tower DMG","Anti-Air DMG","Anti-Ground DMG","Melee DMG","Ranged DMG","Anti-Counter DMG RES","Anti-Soldier DMG RES","Anti-Mech DMG RES","Anti-C.O. DMG RES","Anti-Replacer DMG RES","Anti-Striker DMG RES","Anti-Defender DMG RES","Anti-Ranger DMG RES","Anti-Sniper DMG RES","Anti-Supporter DMG RES","Anti-Siege DMG RES","Anti-Tower DMG RES","Anti-Air DMG RES","Anti-Ground DMG RES","Melee DMG RES","Ranged DMG RES","DMG Taken RDC","Special Skill DMG AMP","Ultimate Skill DMG AMP","DEF Penetration","Special Skill DMG RDC","Ultimate Skill DMG RDC","Barrier Enhancement",
@@ -3700,6 +3702,22 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "Sword Princess Ais Wallenstein","hyper1","1.25","0.4","6","false","false","-","-","-","-","-","3","true","false","false","false","false","-","48","hyper1","USN_HYPER1","NST_HYPER'",
 "Sword Princess Ais Wallenstein","hyper1","1.25","3","6","false","false","-","-","-","-","-","3","true","false","false","false","false","-","48","hyper1","USN_HYPER1","NST_HYPER'",
 "- Sparrow (Summoned)","attack1","1","1","1.03","false","false","-","-","-","-","-","1","TRUE","TRUE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
+"Sprouting Star Solovey","attack1","1.2","-","1.67","false","false","-","-","-","-","99","1","true","true","false","false","false","-","-","","USN_ATTACK1","NST_ATTACK'",
+"Sprouting Star Solovey","attack1","1.2","0.6","1.67","false","false","-","-","-","-","99","2","true","false","false","false","false","-","-","","USN_ATTACK1","NST_ATTACK'",
+"Sprouting Star Solovey","attack1","1.2","0.6","1.67","false","false","-","-","-","-","99","2","true","false","false","false","false","-","-","","USN_ATTACK1","NST_ATTACK'",
+"Sprouting Star Solovey","attack2","1.2","2","2","false","false","-","-","-","-","99","2","true","true","false","false","false","-","4","104","USN_PASSIVE1","NST_ATTACK'",
+"Sprouting Star Solovey","attack_air1","1.2","-","1.67","false","false","-","-","-","-","99","1","true","true","false","false","false","-","-","","USN_ATTACK1_AIR","NST_ATTACK'",
+"Sprouting Star Solovey","attack_air1","1.2","0.6","1.67","false","false","-","-","-","-","99","2","false","true","false","false","false","-","-","","USN_ATTACK1_AIR","NST_ATTACK'",
+"Sprouting Star Solovey","attack_air1","1.2","0.6","1.67","false","false","-","-","-","-","99","2","false","true","false","false","false","-","-","","USN_ATTACK1_AIR","NST_ATTACK'",
+"Sprouting Star Solovey","skill1","1.25","1.333","2.67","false","false","-","-","-","-","999","3","true","true","false","false","false","-","25","","USN_SKILL1","NST_SKILL'",
+"Sprouting Star Solovey","skill1","1.25","1.333","2.67","false","false","-","-","-","-","999","3","true","true","false","false","false","-","25","","USN_SKILL1","NST_SKILL'",
+"Sprouting Star Solovey","skill1","1.25","1.333","2.67","false","false","-","-","-","-","999","3","true","true","false","false","false","-","25","","USN_SKILL1","NST_SKILL'",
+"Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
+"Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
+"Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
+"Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
+"Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
+"Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
 "- Woodpecker (Summoned)","attack1","1","1","1.03","false","false","-","-","-","-","99","4","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "- Hound (Summoned)","attack1","1","1","2.00","false","false","-","-","-","-","99","2","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "- Hound (Summoned)","skill1","1","1.5","1.97","false","false","-","-","-","-","-","2","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_SKILL1","-'",

@@ -640,7 +640,7 @@ var GearSetsListTrinity = {
     }
 
     setGear() {
-
+      timer('setGearTimer');
 
       if ((this.forUnit == 0)) {
         console.log("setting for UNIT");
@@ -656,7 +656,7 @@ var GearSetsListTrinity = {
         $('#' + `${this.#eqSlot}` + 'Container_enemy').attr('isConfirmed','true')
       }
 
-      
+      timerEnd('setGearTimer');
     }
 
 
@@ -690,6 +690,8 @@ var GearSetsListTrinity = {
     }
 
     replaceGearByUnitType(GearForType, ContainerType, GearData, GearMainStatValues) {
+      console.time('gearUpdateTimer');
+      timer('gearUpdateTimer');
 
       
       var gdata = this.#selectedGearData.split(',');
@@ -742,6 +744,8 @@ var GearSetsListTrinity = {
     } else {
       this.removeGear();
     }
+    timerEnd('gearUpdateTimer');
+    console.timeEnd('gearUpdateTimer');
     }
 
     getAllValues() {
@@ -1252,6 +1256,7 @@ var selectedGearUnitType;
 
 
 $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContainer" ).on( "click", ".equipment-slot", function() {
+
 
   selectedGear = $( this ).attr('value');
 
@@ -2039,7 +2044,6 @@ if (isRelic.length > 0) {
    $('#GearRemoveBtn').css('display','block');
     
   }
-  
   
 });
 

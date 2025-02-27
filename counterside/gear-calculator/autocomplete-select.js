@@ -2031,6 +2031,22 @@ for (let i = 0, n = unit_restAttacks.length; i < n; i++) {
       
       rAtk_extra.push(i)
       rAtk_extra_mod_main *= (1-(1/(Number(unit_restAttacks[i][5]/cfeedback_uptime)+1)))        
+    } else if (unit_restAttacks[i][6] === '104') {
+      console.log('avg_a');
+      const mfeedback_uptime = 1
+      let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_restAttacks[i][5]+unit_restAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_restAttacks[i][5])+1)),1);
+
+      let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a;
+      mainAtk_cdSkill_mlt *= ndm;
+      rAtk_extra_mod_main *= ndm;
+
+   
+      
+      mainAtk_cdSkill_mlt *= (1-(1/(Number(unit_restAttacks[i][5]/mfeedback_uptime)+1)))
+
+      
+      rAtk_extra.push(i)
+      rAtk_extra_mod_main *= (1-(1/(Number(unit_restAttacks[i][5]/mfeedback_uptime)+1)))        
     } else if ((unit_restAttacks[i][6] !== '101')) {
       //unit_restAttacks[i][unit_restAttacks_last] = IFERROR(Number((unit_restAttacks[i][2]*cth)+(unit_restAttacks[i][1]*ctc)+(unit_restAttacks[i][3]*ecd))/(unit_restAttacks[i][5]/(1+unit_final_cdr)),0);
      
@@ -2179,7 +2195,7 @@ if (unit_mainAttack.length > 0) {
     sSmodifiers[i] = 1;
     var cdskill = 0;
   var sanim = (unit_totalAttacks[i][4]/(1+unit_final_aspd));
-  if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && ((unit_totalAttacks[i][6] !== '01') || (unit_totalAttacks[i][6] !== '-1'))) && unit_totalAttacks[i][6] !== '22') {
+  if ((((unit_totalAttacks[i][8] === 'NST_ATTACK')  || (unit_totalAttacks[i][6] === '1')) && (unit_totalAttacks[i][6] !== '100') && ((unit_totalAttacks[i][6] !== '01') || (unit_totalAttacks[i][6] !== '-1'))) && unit_totalAttacks[i][6] !== '22' && unit_totalAttacks[i][6] !== '104') {
     cdskill = ((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
     //  cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5]));
   
@@ -2218,7 +2234,7 @@ if (unit_mainAttack.length > 0) {
     cdskill = ((IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_totalAttacks[i][5]/cfeedback_uptime)+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
     
     let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_totalAttacks[i][5]/cfeedback_uptime)+unit_totalAttacks[i][4]/(1+unit_final_aspd))/((Number(unit_totalAttacks[i][5])/cfeedback_uptime)+1)),1);
-    let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a
+    let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a;
 
     
 
@@ -2230,6 +2246,24 @@ if (unit_mainAttack.length > 0) {
        // !_NOTE: ^ test above
 
     matkSlist.push(i);
+
+  } else if (unit_totalAttacks[i][6] === '104') {
+    const cfeedback_uptime = 1-(Math.pow(1-targetDodgeChance,n-1));
+    cdskill = ((IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_totalAttacks[i][5]/cfeedback_uptime)+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
+    if (cfeedback_uptime != 0) {
+      let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*(unit_totalAttacks[i][5]/cfeedback_uptime)+unit_totalAttacks[i][4]/(1+unit_final_aspd))/((Number(unit_totalAttacks[i][5])/cfeedback_uptime)+1)),1);
+    let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a;
+
+    sci_m_sAmp *= ndm;
+    sci_sAmp *= ndm;
+
+    matkSlist.push(i);
+    } else {
+      cdskill = Infinity;
+
+    }
+    
+    
 
   } else {
     sci_m_sAmp *= (IFERROR((1-unit_totalAttacks[i][4]/(unit_totalAttacks[i][5]/(1+unit_final_cdr))/(1+unit_final_aspd)),1))
