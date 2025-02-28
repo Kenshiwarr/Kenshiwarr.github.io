@@ -548,6 +548,7 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Gale Wind Ryu Lion","2012","267","97","135","160","196","Icon_Ryu Lion_Gale Wind","Counter","Supporter","Ground","1","0.27","0.2",,,,,,"0.05",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Sword Princess Ais Wallenstein","3863","349","336","210","253","570","Icon_Ais Wallenstein_Sword Princess","Counter","Striker","Ground","1","0.2","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Sprouting Star Solovey","2720","497","206","445","197","219","Icon_Solovey_Sprouting Star","Counter","Ranger","Ground","1",,,,,,,,,"0.3","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Irregular C.O. Nibble","1906","280","90","170","303","203","Icon_Nibble_Irregular C.O.","Counter","Ranger","Ground","1",,,,,,,,,,,,,,,,"0.6",,,,,,"0.6",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Official Support Zena Bird","1577","246","156","235","116","291","Icon_Zena Bird_Official Support","Counter","Striker","Ground","1",,"0.15",,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,];
 
 
@@ -832,6 +833,7 @@ const unit_stats_growth_pve = [
 "Gale Wind Ryu Lion",252.99,27.35,1.41,1.93,2.29,2.8,
 "Sword Princess Ais Wallenstein",485.99,35.61,4.81,3,3.64,8.15,
 "Sprouting Star Solovey",341.99,50.83,2.96,6.36,2.84,3.13,
+"Irregular C.O. Nibble",240,28.57,1.31,2.45,4.35,2.95,
 "Official Support Zena Bird",194.99,24.72,2.07,3.12,1.54,3.86];
 
 const unit_gear_stats_csv = ["Equip Type","Gear Name","Slot","Employee Type","Icon","Main Stat","HP","ATK","DEF","CRIT","HIT","EVA","SPD","ASPD","CRIT DMG","Skill Haste","HP Recovery per Sec","CRIT DMG RES","Status Effect RES","Incoming Healing +","Outgoing Healing +","Anti-Counter DMG","Anti-Soldier DMG","Anti-Mech DMG","Anti-C.O. DMG","Anti-Replacer DMG","Anti-Striker DMG","Anti-Defender DMG","Anti-Ranger DMG","Anti-Sniper DMG","Anti-Supporter DMG","Anti-Siege DMG","Anti-Tower DMG","Anti-Air DMG","Anti-Ground DMG","Melee DMG","Ranged DMG","Anti-Counter DMG RES","Anti-Soldier DMG RES","Anti-Mech DMG RES","Anti-C.O. DMG RES","Anti-Replacer DMG RES","Anti-Striker DMG RES","Anti-Defender DMG RES","Anti-Ranger DMG RES","Anti-Sniper DMG RES","Anti-Supporter DMG RES","Anti-Siege DMG RES","Anti-Tower DMG RES","Anti-Air DMG RES","Anti-Ground DMG RES","Melee DMG RES","Ranged DMG RES","DMG Taken RDC","Special Skill DMG AMP","Ultimate Skill DMG AMP","DEF Penetration","Special Skill DMG RDC","Ultimate Skill DMG RDC","Barrier Enhancement",
@@ -3718,6 +3720,20 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
 "Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
 "Sprouting Star Solovey","hyper1","1.25","0.833","6","false","false","-","-","-","-","99","4","true","true","false","false","false","-","67","","USN_HYPER1","NST_HYPER'",
+"Irregular C.O. Nibble","attack1","1.2","0.5","0.9","false","false","-","-","-","-","99","1","true","false","false","false","false","-","-","-","USN_ATTACK1_LOOP","NST_ATTACK'",
+"Irregular C.O. Nibble","attack1","1.2","0.5","0.9","false","false","-","-","-","-","99","1","true","false","false","false","false","-","-","-","USN_ATTACK1_LOOP","NST_ATTACK'",
+"Irregular C.O. Nibble","skill1","1.25","0.417","2.33","false","false","-","-","-","-","99","3","true","true","false","false","false","-","16","1","USN_SKILL1","NST_SKILL'",
+"Irregular C.O. Nibble","skill1","1.25","0.417","2.33","false","false","-","-","-","-","99","3","true","true","false","false","false","-","16","1","USN_SKILL1","NST_SKILL'",
+"Irregular C.O. Nibble","skill1","1.25","0.417","2.33","false","false","-","-","-","-","99","3","true","true","false","false","false","-","16","1","USN_SKILL1","NST_SKILL'",
+"Irregular C.O. Nibble","skill1","1.25","0.417","2.33","false","false","-","-","-","-","99","3","true","true","false","false","false","-","16","1","USN_SKILL1","NST_SKILL'",
+"Irregular C.O. Nibble","skill1","1.25","0.417","2.33","false","false","-","-","-","-","99","3","true","true","false","false","false","-","16","1","USN_SKILL1","NST_SKILL'",
+"Irregular C.O. Nibble","skill1","1.25","0.417","2.33","false","false","-","-","-","-","99","3","true","true","false","false","false","-","16","1","USN_SKILL1","NST_SKILL'",
+"Irregular C.O. Nibble","hyper1","1.25","0.667","4.67","false","false","-","-","-","-","99","4","true","true","false","false","false","-","36","1","USN_HYPER1","NST_HYPER'",
+"Irregular C.O. Nibble","hyper1","1.25","0.667","4.67","false","false","-","-","-","-","99","4","true","true","false","false","false","-","36","1","USN_HYPER1","NST_HYPER'",
+"Irregular C.O. Nibble","hyper1","1.25","0.667","4.67","false","false","-","-","-","-","99","4","true","true","false","false","false","-","36","1","USN_HYPER1","NST_HYPER'",
+"Irregular C.O. Nibble","hyper1","1.25","0.667","4.67","false","false","-","-","-","-","99","4","true","true","false","false","false","-","36","1","USN_HYPER1","NST_HYPER'",
+"Irregular C.O. Nibble","hyper1","1.25","0.667","4.67","false","false","-","-","-","-","99","4","true","true","false","false","false","-","36","1","USN_HYPER1","NST_HYPER'",
+"Irregular C.O. Nibble","hyper1","1.25","0.667","4.67","false","false","-","-","-","-","99","4","true","true","false","false","false","-","36","1","USN_HYPER1","NST_HYPER'",
 "- Woodpecker (Summoned)","attack1","1","1","1.03","false","false","-","-","-","-","99","4","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "- Hound (Summoned)","attack1","1","1","2.00","false","false","-","-","-","-","99","2","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_ATTACK1","NST_ATTACK'",
 "- Hound (Summoned)","skill1","1","1.5","1.97","false","false","-","-","-","-","-","2","TRUE","FALSE","FALSE","FALSE","FALSE","-","-","-","USN_SKILL1","-'",
