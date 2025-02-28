@@ -548,7 +548,7 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Gale Wind Ryu Lion","2012","267","97","135","160","196","Icon_Ryu Lion_Gale Wind","Counter","Supporter","Ground","1","0.27","0.2",,,,,,"0.05",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Sword Princess Ais Wallenstein","3863","349","336","210","253","570","Icon_Ais Wallenstein_Sword Princess","Counter","Striker","Ground","1","0.2","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Sprouting Star Solovey","2720","497","206","445","197","219","Icon_Solovey_Sprouting Star","Counter","Ranger","Ground","1",,,,,,,,,"0.3","0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-"Irregular C.O. Nibble","1906","280","90","170","303","203","Icon_Nibble_Irregular C.O.","Counter","Ranger","Ground","1",,,,,,,,,,,,,,,,"0.6",,,,,,"0.6",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Irregular C.O. Nibble","1906","280","90","170","303","203","Icon_Nibble_Irregular C.O.","Counter;C.O.","Ranger","Ground","1",,,,,,,,,,,,,,,,"0.5",,,,,,"0.5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Official Support Zena Bird","1577","246","156","235","116","291","Icon_Zena Bird_Official Support","Counter","Striker","Ground","1",,"0.15",,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,];
 
 
