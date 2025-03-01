@@ -2199,24 +2199,22 @@ if (unit_mainAttack.length > 0) {
     cdskill = ((IFERROR((((unit_mainAttack_mixed[4]/(1+unit_final_aspd))*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1))/(1/(Number(unit_totalAttacks[i][5])+1)));
     //  cdskill = ((unit_mainAttack_mixed[4]/(1+unit_final_aspd))/(1/unit_totalAttacks[i][5]));
   
-
-   
+    
     if (i===0) {
       //sSmodifiers[i] = mainAtk_cdSkill_mlt;
-      matkSlist.push(i);
       //cdskill = (cdskill / mainAtk_cdSkill_mlt)
     } else {
-      
       let avg_a = IFERROR(((unit_mainAttack_mixed[4]/(1+unit_final_aspd)*unit_totalAttacks[i][5]+unit_totalAttacks[i][4]/(1+unit_final_aspd))/(Number(unit_totalAttacks[i][5])+1)),1);
-      let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a
+      let ndm = (unit_mainAttack_mixed[4]/(1+unit_final_aspd))/avg_a;
       sci_m_sAmp *= ndm;
+
       // !_NOTE: ^ test above
       
-      sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5])+1)))
+      // sci_m_sAmp *= (1-(1/(Number(unit_totalAttacks[i][5])+1)));
       // !_NOTE: ^ test above
 
-      matkSlist.push(i);
     }
+    matkSlist.push(i);
     
     
   } else if ((unit_totalAttacks[i][6] === '100') || (unit_totalAttacks[i][6] === '12')) {
@@ -2280,7 +2278,7 @@ if (unit_mainAttack.length > 0) {
   }
 
   for (let i = 0, n = matkSlist.length; i < n; i++) {
-    if ((i === 0) || (unit_totalAttacks[i][6] === '102') || (unit_totalAttacks[i][6] === '12')) {
+    if ((i === 0) || (unit_totalAttacks[i][6] === '102') || (unit_totalAttacks[i][6] === '12') || (unit_totalAttacks[i][6] === '1') || (unit_totalAttacks[i][6] === '104')) {
       sSmodifiers[i] = sci_m_sAmp;
     } else {
       sSmodifiers[matkSlist[i]] = sci_sAmp
