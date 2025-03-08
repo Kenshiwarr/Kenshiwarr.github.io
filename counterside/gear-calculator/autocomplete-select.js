@@ -1003,7 +1003,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         $('#dropdown_unit_stats .unitStats_of').append('<hr>')
       }
       }
-      if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 6)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%, or i>=11 otherwise
+      if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 11)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%, or i>=11 otherwise
         stat_bonus = parseFloat(((bonus_stats[i]+bonus_stats_gear_set[i])*100).toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1'));
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
         unit_stats_to_save[n+i] = Number(stat_bonus)/100;
@@ -2860,7 +2860,8 @@ if ($('#HPS_Barrier-Checkbox').is(':checked')) {
 
 unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1+target_bonus_stats[62]));
 
-
+var tUdps = Number(Total_Unit_DPS);
+var tDfinal = target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier);
 finalunitdps = Math.round(Number(Total_Unit_DPS)).toFixed(2);
 targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2)
         $('#new_sd_dps').append('<p></p><p>Total unit DPS = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS)) + '</span> '+ (unitHpsHealing > 0 ? '<small class="txt-healing">(-'+ Math.round(unitHpsHealing) +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small class="txt-barrier">(-'+ Math.round(unitHpsBarrier) +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
@@ -2869,15 +2870,36 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
             $('#new_sd_dps').append('<p>Total unit DPS ('+ (i+1) +' units) = <span id="cUdps">' + Math.round(Number(Total_Unit_DPS))*(i+1) + '</span> '+ (unitHpsHealing > 0 ? '<small class="txt-healing">(-'+ unitHpsHealing +')</small>':'') +' '+ (unitHpsBarrier > 0 ? '<small class="txt-barrier">(-'+ unitHpsBarrier +')</small>':'') +' Target is alive for <span id="cTdurability">'+ (target_hp/(Number(Total_Unit_DPS*(i+1))-unitHpsHealing-unitHpsBarrier)).toFixed(2) +' sec.</span></p>');
             finalunitdps = (Math.round(Number(Total_Unit_DPS))*(i+1)).toFixed(2)
             targetdurability = (target_hp/(Number(Total_Unit_DPS*(i+1))-unitHpsHealing-unitHpsBarrier)).toFixed(2)
+            tDfinal = target_hp/(Number(Total_Unit_DPS*(i+1))-unitHpsHealing-unitHpsBarrier);
+            tUdps = Number(Total_Unit_DPS)*(i+1);
+
           }
         }
-      }
 
+
+      }
       
-      unit_stats_to_save.push(Math.floor(finalunitdps));
+let tDh = tDfinal - (target_hp/(tUdps-unitHpsHealing));
+let tDb = tDfinal - (target_hp/(tUdps-unitHpsBarrier));
+      unit_stats_to_save.push(Math.floor(tUdps-unitHpsHealing-unitHpsBarrier).toFixed(2));
       unit_stats_to_save.splice((unit_stats_to_save.length)/2, 0, 'DPS');
-      target_stats_to_save.push(targetdurability);
+     
+      target_stats_to_save.push((tDfinal).toFixed(2));
       target_stats_to_save.splice((target_stats_to_save.length)/2, 0, 'Durability');
+      if (unitHpsHealing>0) {
+        unit_stats_to_save.push(Math.floor(unitHpsHealing));
+        unit_stats_to_save.splice((unit_stats_to_save.length)/2, 0, 'HPS');
+        target_stats_to_save.push((tDh).toFixed(2));
+        target_stats_to_save.splice((target_stats_to_save.length)/2, 0, 'Healing');
+      }
+      if (unitHpsBarrier>0) {
+        unit_stats_to_save.push(Math.floor(unitHpsBarrier));
+        unit_stats_to_save.splice((unit_stats_to_save.length)/2, 0, 'BPS');
+        target_stats_to_save.push((tDb).toFixed(2));
+        target_stats_to_save.splice((target_stats_to_save.length)/2, 0, 'Barrier');
+      }
+     
+      
 
 
       for (let i = 0, n = $('.txt-healing').length; i < n; i++) {

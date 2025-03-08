@@ -1137,8 +1137,9 @@ color: #bebebe;
   width: 24rem;
 } */
 
-#unit-container_line_5 {
+#unit-container_line_5, #unit-container_line_7 {
   pointer-events: none;
+  padding-left: 7%;
 }
 
 #unit-container_line_0 {

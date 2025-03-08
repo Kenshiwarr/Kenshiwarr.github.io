@@ -587,7 +587,7 @@ console.timeEnd('LoadingSaved_timer')
       if (i<6) {
         sau_o[7] += target_stats_to_save[i] +': '+ target_stats_to_save[n+i] +'<br />';
       } else {
-        if (['EHP','Final EHP','Durability'].some((t) => t === target_stats_to_save[i])) {
+        if (['EHP','Final EHP','Durability','Healing','Barrier'].some((t) => t === target_stats_to_save[i])) {
             sau_o[7] += target_stats_to_save[i] +': '+ target_stats_to_save[n+i] +'<br />';
         } else {
             sau_o[7] += target_stats_to_save[i]+': '+ (target_stats_to_save[n+i]*100).toFixed(2).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1') +'% <br />';
@@ -888,7 +888,7 @@ console.timeEnd('LoadingSaved_timer')
         for (let i = 0, n = BONUS_STATS_LIST.length; i < n; i++) {
             fadb[i] = BONUS_STATS_LIST[i];
         }
-        fadb.push('EHP','Final EHP','DPS','Durability')
+        fadb.push('EHP','Final EHP','DPS','Durability','Healing','Barrier')
 
         var indxOfval = 0;
         var indxOfval2 = 0;
@@ -928,15 +928,56 @@ console.timeEnd('LoadingSaved_timer')
             
             
             if (i < 6) {
+                let u1v = IFERROR(Number(sau[10][(cCompares_Length[1]/2+i)]),0);
+                let u2v = IFERROR(Number(cUnit_val[(cCompares_Length[0]/2+i)]),0);
+                let t1v = IFERROR(Number(sau[11][(cCompares_Length[3]/2+i)]),0);
+                let t2v = IFERROR(Number(cTarget_val[(cCompares_Length[2]/2+i)]),0);
+                let utv = ['','','',''];
                 var u_1stat = IFERROR(Number(sau[10][(cCompares_Length[1]/2+i)]),0);
                 var u_2stat = IFERROR(Number(cUnit_val[(cCompares_Length[0]/2+i)]),0);
                 uctI_d[4].append(cUnit_Left_sorted[i] + ': ' + '<br />');
             uctI_d[6].append(cTarget_Left_sorted[i] + ': ' + '<br />');
+
+            switch (i) {
+                case 2:
+                    utv[0] = (" <span class='small'>(" + (u1v/(u1v+1000)*100).toFixed(2) + "%)</span>");
+                    utv[1] = (" <span class='small'>(" + (u2v/(u2v+1000)*100).toFixed(2) + "%)</span>");
+                    utv[2] = (" <span class='small'>(" + (t1v/(t1v+1000)*100).toFixed(2) + "%)</span>");
+                    utv[3] = (" <span class='small'>(" + (t2v/(t2v+1000)*100).toFixed(2) + "%)</span>");
+                    break;
+                case 3:
+                    utv[0] = (" <span class='small'>(" + (Math.min(0.0005*u1v,0.85)*100).toFixed(2) + "%)</span>");
+                    utv[1] = (" <span class='small'>(" + (Math.min(0.0005*u2v,0.85)*100).toFixed(2) + "%)</span>");
+                    utv[2] = (" <span class='small'>(" + (Math.min(0.0005*t1v,0.85)*100).toFixed(2) + "%)</span>");
+                    utv[3] = (" <span class='small'>(" + (Math.min(0.0005*t2v,0.85)*100).toFixed(2) + "%)</span>");
+                    break;
+                case 4:
+                    utv[0] = (" <span class='small'>(" + (u1v/(u1v+1500)*100).toFixed(2) + "%)</span>");
+                    utv[1] = (" <span class='small'>(" + (u2v/(u2v+1500)*100).toFixed(2) + "%)</span>");
+                    utv[2] = (" <span class='small'>(" + (t1v/(t1v+1500)*100).toFixed(2) + "%)</span>");
+                    utv[3] = (" <span class='small'>(" + (t2v/(t2v+1500)*100).toFixed(2) + "%)</span>");
+                    break;
+                case 5:
+                    utv[0] = (" <span class='small'>(" + (u1v/(u1v+800)*100).toFixed(2) + "%)</span>");
+                    utv[1] = (" <span class='small'>(" + (u2v/(u2v+800)*100).toFixed(2) + "%)</span>");
+                    utv[2] = (" <span class='small'>(" + (t1v/(t1v+800)*100).toFixed(2) + "%)</span>");
+                    utv[3] = (" <span class='small'>(" + (t2v/(t2v+800)*100).toFixed(2) + "%)</span>");
+                    break;
+                default:
+                    break;
+            }
             
-                uctI_d[0].append(cUnit_val[(cCompares_Length[0]/2+i)] +  '<br />');
-                uctI_d[1].append(sau[10][(cCompares_Length[1]/2+i)] +  '<br />');
-                uctI_d[2].append(cTarget_val[(cCompares_Length[2]/2+i)] + '<br />');
-                uctI_d[3].append(sau[11][(cCompares_Length[3]/2+i)] +  '<br />');
+            
+                uctI_d[0].append(cUnit_val[(cCompares_Length[0]/2+i)] + utv[0] +  '<br />');
+                uctI_d[1].append(sau[10][(cCompares_Length[1]/2+i)] + utv[1] +  '<br />');
+                uctI_d[2].append(cTarget_val[(cCompares_Length[2]/2+i)] + utv[2] + '<br />');
+                uctI_d[3].append(sau[11][(cCompares_Length[3]/2+i)] + utv[3] +  '<br />');
+
+                
+
+                
+
+                
                 if ((u_1stat - u_2stat) == 0) {
                     uctI_d[5].append('<span class="text-secondary">'+ 0 + '</span>' +  '<br />');
                     
@@ -950,10 +991,12 @@ console.timeEnd('LoadingSaved_timer')
                 } else {
                     uctI_d[7].append(((u_1stat >= u_2stat)  ?  '<span class="text-success">+' + (u_1stat - u_2stat):'<span class="text-danger">' + (u_1stat - u_2stat)) + '</span><br />');    
                 }
+
                 
             } else if (i >= 6) {
                 indxOfval = cUnit_val.indexOf(cUnit_Left_sorted[i]);
                 indxOfval2 = sau[10].indexOf(cUnit_Left_sorted[i]);
+
 
                 if ((indxOfval != -1) || (indxOfval2 != -1)) {
                     var u_1stat = IFERROR(Number(sau[10][indxOfval2+(cCompares_Length[1]/2)]),0);
@@ -981,8 +1024,8 @@ console.timeEnd('LoadingSaved_timer')
 
                                 }
                                 } else if (cUnit_Left_sorted[i] === 'DPS') {
-                                uctI_o[0].append((u_2stat) + '<br />');
-                                uctI_o[1].append((u_1stat) + '<br />');
+                                uctI_o[0].append((u_2stat) + '<span id="DPS_extraInfoHPS"></span>' + '<span id="DPS_extraInfoBPS"></span>' + '<br />');
+                                uctI_o[1].append((u_1stat) + '<span id="DPS_extraInfoHPS_t"></span>' + '<span id="DPS_extraInfoBPS_t"></span>' + '<br />');
 
                                 if (u_1stat-u_2stat == 0) {
                                     uctI_o[5].append('<span class="text-secondary">'+ 0 + '</span>' +  '<br />');
@@ -990,7 +1033,10 @@ console.timeEnd('LoadingSaved_timer')
                                     uctI_o[5].append( (u_1stat >= u_2stat ? '<span class="text-success">+'+ (u_1stat-u_2stat) + '</span>':'<span class="text-danger">'+ (u_1stat-u_2stat) + '</span>') +  '<br />');
 
                                 }
-
+                                $('#DPS_extraInfoHPS').append('<small class="txt-healing">(-' + IFERROR(Number(cUnit_val[cUnit_val.indexOf("HPS")+(cCompares_Length[0]/2)]),0) + ')</small>');
+                                $('#DPS_extraInfoHPS_t').append('<small class="txt-healing">(-' + IFERROR(Number(sau[10][sau[10].indexOf("HPS")+(cCompares_Length[1]/2)]),0) + ')</small>');
+                                $('#DPS_extraInfoBPS').append('<small class="txt-barrier">(-' + IFERROR(Number(cUnit_val[cUnit_val.indexOf("BPS")+(cCompares_Length[0]/2)]),0) + ')</small>');
+                                $('#DPS_extraInfoBPS_t').append('<small class="txt-barrier">(-' + IFERROR(Number(sau[10][sau[10].indexOf("BPS")+(cCompares_Length[1]/2)]),0) + ')</small>');
                             } else {
                                 
                                 if (u_1stat-u_2stat == 0) {
@@ -1012,6 +1058,10 @@ console.timeEnd('LoadingSaved_timer')
                         } else {
                             uctI_o[1].append('- <br />');
                         }
+
+                       
+                       
+                        
                             }
 
                         
@@ -1030,6 +1080,7 @@ console.timeEnd('LoadingSaved_timer')
                     var u_1stat = IFERROR(Number(sau[11][indxOfval4+(cCompares_Length[3]/2)]),0); 
                     var u_2stat = IFERROR(Number(cTarget_val[indxOfval3+(cCompares_Length[2]/2)]),0);
 
+                    
 
                     if (cTarget_Left_sorted[i] === 'EHP') {
                         
@@ -1069,7 +1120,23 @@ console.timeEnd('LoadingSaved_timer')
 
 
                             
-                        } else {
+                        } else if (cTarget_Left_sorted[i] === 'Healing') {
+                                
+                            uctI_o[6].append('Healing' + ': ' + '<br />');
+                                    uctI_o[2].append('+' + (u_2stat) + ' sec.<br />');
+                                    uctI_o[3].append('+' + (u_1stat) + ' sec.<br />');
+        
+        
+                                    
+                                } else if (cTarget_Left_sorted[i] === 'Barrier') {
+                                
+                                    uctI_o[6].append('Barriers' + ': ' + '<br />');
+                                            uctI_o[2].append('+' + (u_2stat) + ' sec.<br />');
+                                            uctI_o[3].append('+' + (u_1stat) + ' sec.<br />');
+                
+                
+                                            
+                                        } else {
                                 
                     uctI_o[6].append(cTarget_Left_sorted[i] + ': ' + '<br />');
                     if (u_1stat-u_2stat === 0) {
@@ -1091,6 +1158,8 @@ console.timeEnd('LoadingSaved_timer')
                         } else {
                             uctI_o[3].append('- <br />');
                         }
+
+                       
                             }
 
                         
@@ -1099,6 +1168,8 @@ console.timeEnd('LoadingSaved_timer')
                         
                     }
             } 
+            
+            
 
             
         }

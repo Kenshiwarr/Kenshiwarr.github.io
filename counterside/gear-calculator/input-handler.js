@@ -483,7 +483,7 @@ $('#deleteAllDataForCompare').on('click',function() {
         if (i<6) {
           sau[3] += unit_stats_to_save[i]+': '+ unit_stats_to_save[n+i] +'<br />';
         } else {
-          if (['EHP','Final EHP','DPS'].some((t) => t === unit_stats_to_save[i])) {
+          if (['EHP','Final EHP','DPS','HPS','BPS'].some((t) => t === unit_stats_to_save[i])) {
             sau[3] += unit_stats_to_save[i]+': '+ unit_stats_to_save[n+i] +'<br />';
           } else {
             sau[3] += unit_stats_to_save[i]+': '+ (unit_stats_to_save[n+i]*100).toFixed(1) +'% <br />';
@@ -497,7 +497,7 @@ $('#deleteAllDataForCompare').on('click',function() {
         if (i<6) {
           sau[7] += target_stats_to_save[i] +': '+ target_stats_to_save[n+i] +'<br />';
         } else {
-          if (['EHP','Final EHP','Durability'].some((t) => t === target_stats_to_save[i])) {
+          if (['EHP','Final EHP','Durability','Healing','Barrier'].some((t) => t === target_stats_to_save[i])) {
             sau[7] += target_stats_to_save[i]+': '+ target_stats_to_save[n+i] +'<br />';
           } else {
             sau[7] += target_stats_to_save[i]+': '+ (target_stats_to_save[n+i]*100).toFixed(1) +'% <br />';

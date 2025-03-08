@@ -742,7 +742,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
             $('#dropdown_target_stats .unitStats_of').append('<hr>')
           }
         }
-        if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 6)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%,
+        if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 11)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%,
           stat_bonus = parseFloat(((bonus_stats[i]+bonus_stats_gear_set[i])*100).toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1'));
           target_stats_to_save[i] = BONUS_STATS_LIST[i];
           target_stats_to_save[n+i] = Number(stat_bonus)/100;
