@@ -2879,8 +2879,8 @@ targetdurability = (target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarr
 
       }
       
-let tDh = tDfinal - (target_hp/(tUdps-unitHpsHealing));
-let tDb = tDfinal - (target_hp/(tUdps-unitHpsBarrier));
+let tDh = (target_hp/(tUdps-unitHpsHealing)) - (target_hp/tUdps);
+let tDb = (target_hp/(tUdps-unitHpsBarrier)) - (target_hp/tUdps) ;
       unit_stats_to_save.push(Math.floor(tUdps-unitHpsHealing-unitHpsBarrier).toFixed(2));
       unit_stats_to_save.splice((unit_stats_to_save.length)/2, 0, 'DPS');
      
