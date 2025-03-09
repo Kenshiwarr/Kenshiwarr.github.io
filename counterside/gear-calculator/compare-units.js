@@ -928,10 +928,10 @@ console.timeEnd('LoadingSaved_timer')
             
             
             if (i < 6) {
-                let u1v = IFERROR(Number(sau[10][(cCompares_Length[1]/2+i)]),0);
-                let u2v = IFERROR(Number(cUnit_val[(cCompares_Length[0]/2+i)]),0);
-                let t1v = IFERROR(Number(sau[11][(cCompares_Length[3]/2+i)]),0);
-                let t2v = IFERROR(Number(cTarget_val[(cCompares_Length[2]/2+i)]),0);
+                let u1v = IFERROR(Number(cUnit_val[(cCompares_Length[0]/2+i)]),0);
+                let u2v = IFERROR(Number(sau[10][(cCompares_Length[1]/2+i)]),0);
+                let t1v = IFERROR(Number(cTarget_val[(cCompares_Length[2]/2+i)]),0);
+                let t2v = IFERROR(Number(sau[11][(cCompares_Length[3]/2+i)]),0);
                 let utv = ['','','',''];
                 var u_1stat = IFERROR(Number(sau[10][(cCompares_Length[1]/2+i)]),0);
                 var u_2stat = IFERROR(Number(cUnit_val[(cCompares_Length[0]/2+i)]),0);
