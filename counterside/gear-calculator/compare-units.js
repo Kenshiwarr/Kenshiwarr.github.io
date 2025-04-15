@@ -1123,8 +1123,8 @@ console.timeEnd('LoadingSaved_timer')
                         } else if (cTarget_Left_sorted[i] === 'Healing') {
                                 
                             uctI_o[6].append('Healing' + ': ' + '<br />');
-                                    uctI_o[2].append('+' + (u_2stat) + ' sec.<br />');
-                                    uctI_o[3].append('+' + (u_1stat) + ' sec.<br />');
+                                    uctI_o[2].append('+' + (u_2stat) + '%/sec.<br />');
+                                    uctI_o[3].append('+' + (u_1stat) + '%/sec.<br />');
                                     uctI_o[7].append('<br />');
         
         
@@ -1132,8 +1132,8 @@ console.timeEnd('LoadingSaved_timer')
                                 } else if (cTarget_Left_sorted[i] === 'Barrier') {
                                 
                                     uctI_o[6].append('Barriers' + ': ' + '<br />');
-                                            uctI_o[2].append('+' + (u_2stat) + ' sec.<br />');
-                                            uctI_o[3].append('+' + (u_1stat) + ' sec.<br />');
+                                            uctI_o[2].append('+' + (u_2stat) + '%/sec.<br />');
+                                            uctI_o[3].append('+' + (u_1stat) + '%/sec.<br />');
                                             uctI_o[7].append('<br />');
                 
                 

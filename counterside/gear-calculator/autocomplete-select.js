@@ -1082,9 +1082,11 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
         var unit_def_pen = unit_bonus_stats[58];
 
         let jihoonCritMod = 0;
+        let luciaRidgeUltMod = 0;
         let bellSpecMod = 0;
         let isJihoon = false;
         let isBellCranel = false;
+        let isLuciaRidge = false;
         if ((total_unit_data[0] + ' ' + total_unit_data[1] === 'The Militia Choi Jihoon') && total_target_data[10] == 'Sniper') { // jihoon 2x damage against snipers
           isJihoon = true;
           console.log('jihoon vs sniper 2x damage')
@@ -1106,8 +1108,11 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
           }
 
-        }
+        } else if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Exorcist Lucia Ridge')) {
+          isLuciaRidge = true;
 
+          luciaRidgeUltMod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - (unit_bonus_stats[63]+0.5),0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
+        }
         var attack1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[55]-target_bonus_stats[59])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
         var skill1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[56]-target_bonus_stats[60])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
         var hyper1_mod = (Math.max((Math.min(1-((enemy_DEF*(1-unit_def_pen))/(enemy_DEF*(1-unit_def_pen)+1000)),1)*(1+cat1_dmg-Math.max(enemy_cat1_res - unit_bonus_stats[63],0))),0.2))*(Math.max((1+cat2_dmg+(unit_bonus_stats[57]-target_bonus_stats[61])-enemy_cat2_res),0.5))*(1+0.3*(unit_advantage*(1+Math.max(cat3_dmg-enemy_cat3_res,0))));
@@ -1282,6 +1287,9 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
                   dmgMod = hyper1_aoe_mod;
                 } else {
                   dmgMod = hyper1_mod;
+                  if (uatkd[0] == 'hyper1' && isLuciaRidge) {
+                    dmgMod = luciaRidgeUltMod;
+                  }
                 }
               } else {
                 if (Number(validHitAmt) > 1) {
@@ -1328,6 +1336,10 @@ if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Asmodeus Rosaria le Fr
             
             
             source_dmg = unit_atk*scaleMod*dmgMod;
+            if (((total_unit_data[0] + ' ' + total_unit_data[1]) === 'Exorcist Lucia Ridge') && srcType === 'NST_HYPER') { 
+              console.log('Lucia HP scaling')
+              source_dmg = unit_hp*scaleMod*dmgMod;
+          }
             var sdcurrhpd = (enemy_HP*enemy_remaining_hp_percent)*(uatkd[7]*dmgMod);
             var sdmaxhpd = enemy_HP*(uatkd[8]*dmgMod);
             var source_dmg_name = uatkd[0];
@@ -2858,7 +2870,8 @@ if ($('#HPS_Barrier-Checkbox').is(':checked')) {
   unitHpsBarrier = Number($('#barrier_hps_result span').text());
 }
 
-unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1+target_bonus_stats[62]));
+// unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1+target_bonus_stats[62]));
+unitHpsHealing += Number($('#target-hp').attr('subvalue'))*(target_bonus_stats[16]*(1));
 
 var tUdps = Number(Total_Unit_DPS);
 var tDfinal = target_hp/(Number(Total_Unit_DPS)-unitHpsHealing-unitHpsBarrier);
@@ -2889,13 +2902,15 @@ let tDb = (target_hp/(tUdps-unitHpsBarrier)) - (target_hp/tUdps) ;
       if (unitHpsHealing>0) {
         unit_stats_to_save.push(Math.floor(unitHpsHealing));
         unit_stats_to_save.splice((unit_stats_to_save.length)/2, 0, 'HPS');
-        target_stats_to_save.push((tDh).toFixed(2));
+        // target_stats_to_save.push((tDh).toFixed(2));
+        target_stats_to_save.push(((unitHpsHealing/target_hp)*100).toFixed(2));
         target_stats_to_save.splice((target_stats_to_save.length)/2, 0, 'Healing');
       }
       if (unitHpsBarrier>0) {
         unit_stats_to_save.push(Math.floor(unitHpsBarrier));
         unit_stats_to_save.splice((unit_stats_to_save.length)/2, 0, 'BPS');
-        target_stats_to_save.push((tDb).toFixed(2));
+        // target_stats_to_save.push((tDb).toFixed(2));
+        target_stats_to_save.push(((unitHpsBarrier/target_hp)*100).toFixed(2));
         target_stats_to_save.splice((target_stats_to_save.length)/2, 0, 'Barrier');
       }
      
