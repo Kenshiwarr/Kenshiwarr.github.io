@@ -196,6 +196,15 @@ const LAIKA_GEAR_STATS_VALUES_LIST_1 = [0.116];
 const LAIKA_GEAR_STATS_VALUES_LIST_2 = [0.244,0.122,0.488,0.061,0.183];
 
 
+var st_g = {
+
+}
+
+
+var rest = Object.values(GEARS).filter(item => item.employee_type === 'Counter');
+var rest2 = Object.values(rest).filter(item => item.slot === 'Accessory');
+
+
 /* const SET_HEALING_AMP = "Healing Enhancement";
 const SET_AIR_DMG = "Healing Enhancment";
 const SET_GROUND_DMG = "Healing Enhancment";
@@ -331,7 +340,7 @@ var GearSlot = ['Weapon','Armor','Accessory1','Accessory2'];
 
 
 
-var GearSetsListBasic = {
+const GEAR_SETS_LIST_BASIC = {
   "HP": { 
       name: HP,
       set: 2,
@@ -432,7 +441,7 @@ var GearSetsListBasic = {
 
 
 
-var GearSetsListSpectral = {
+const GEAR_SETS_LIST_SPECTRAL = {
   "Spectral Bullet": { 
       name: "Spectral Bullet",
       set: 2,
@@ -471,7 +480,7 @@ var GearSetsListSpectral = {
   },
 };
 
-var GearSetsListPhantom = {
+const GEAR_SETS_LIST_PHANTOM = {
   "Phantom Armor": { 
       name: "Phantom Armor",
       set: 2,
@@ -510,7 +519,7 @@ var GearSetsListPhantom = {
   },
 };
 
-var GearSetsListTrinity = {
+const GEAR_SETS_LIST_TRINITY = {
   "DEF Penetration": { 
     name: DEF_PEN,
     set: 2,
@@ -608,6 +617,345 @@ var GearSetsListTrinity = {
     amount: 0.24,
 },
 };
+
+const GEAR_SETS_LIST = {
+    "HP": {
+        "name": "HP",
+        "set": 2,
+        "stat1": "HP%",
+        "amount": 0.1
+    },
+    "DEF": {
+        "name": "DEF",
+        "set": 2,
+        "stat1": "DEF%",
+        "amount": 0.2
+    },
+    "EVA": {
+        "name": "EVA",
+        "set": 2,
+        "stat1": "EVA%",
+        "amount": 0.2
+    },
+    "ATK": {
+        "name": "ATK",
+        "set": 2,
+        "stat1": "ATK%",
+        "amount": 0.1
+    },
+    "CRIT": {
+        "name": "CRIT",
+        "set": 2,
+        "stat1": "CRIT%",
+        "amount": 0.2
+    },
+    "HIT": {
+        "name": "HIT",
+        "set": 2,
+        "stat1": "HIT%",
+        "amount": 0.2
+    },
+    "Anti-Striker": {
+        "name": "Anti-Striker",
+        "set": 2,
+        "stat1": "Anti-Striker DMG",
+        "amount": 0.2
+    },
+    "Anti-Defender": {
+        "name": "Anti-Defender",
+        "set": 2,
+        "stat1": "Anti-Defender DMG",
+        "amount": 0.2
+    },
+    "Anti-Ranger": {
+        "name": "Anti-Ranger",
+        "set": 2,
+        "stat1": "Anti-Ranger DMG",
+        "amount": 0.2
+    },
+    "Anti-Sniper": {
+        "name": "Anti-Sniper",
+        "set": 2,
+        "stat1": "Anti-Sniper DMG",
+        "amount": 0.2
+    },
+    "Anti-Supporter": {
+        "name": "Anti-Supporter",
+        "set": 2,
+        "stat1": "Anti-Supporter DMG",
+        "amount": 0.2
+    },
+    "Anti-Tower": {
+        "name": "Anti-Tower",
+        "set": 2,
+        "stat1": "Anti-Tower DMG",
+        "amount": 0.2
+    },
+    "Anti-Siege": {
+        "name": "Anti-Siege",
+        "set": 2,
+        "stat1": "Anti-Siege DMG",
+        "amount": 0.2
+    },
+    "CRIT DMG": {
+        "name": "CRIT DMG",
+        "set": 4,
+        "stat1": "CRIT DMG",
+        "amount": 0.4
+    },
+    "Cooldown": {
+        "name": "Cooldown",
+        "set": 4,
+        "stat1": "Skill Haste",
+        "amount": 0.3
+    },
+    "ASPD": {
+        "name": "ASPD",
+        "set": 4,
+        "stat1": "ASPD",
+        "amount": 0.2
+    },
+    "Spectral Bullet": {
+        "name": "Spectral Bullet",
+        "set": 2,
+        "stat1": [
+            "ATK%",
+            "HIT%"
+        ],
+        "amount": [
+            0.1,
+            0.1
+        ]
+    },
+    "Spectral Gear": {
+        "name": "Spectral Gear",
+        "set": 2,
+        "stat1": [
+            "ATK%",
+            "EVA%"
+        ],
+        "amount": [
+            0.1,
+            0.1
+        ]
+    },
+    "Spectral Chain": {
+        "name": "Spectral Chain",
+        "set": 2,
+        "stat1": [
+            "ATK%",
+            "CRIT%"
+        ],
+        "amount": [
+            0.1,
+            0.1
+        ]
+    },
+    "Spectral Smite": {
+        "name": "Spectral Smite",
+        "set": 4,
+        "stat1": [
+            "ATK%",
+            "CRIT DMG"
+        ],
+        "amount": [
+            0.16,
+            0.16
+        ]
+    },
+    "Spectral Blaze": {
+        "name": "Spectral Blaze",
+        "set": 4,
+        "stat1": [
+            "ATK%",
+            "ASPD"
+        ],
+        "amount": [
+            0.16,
+            0.08
+        ]
+    },
+    "Spectral Spirit": {
+        "name": "Spectral Spirit",
+        "set": 4,
+        "stat1": [
+            "ATK%",
+            "Skill Haste"
+        ],
+        "amount": [
+            0.16,
+            0.12
+        ]
+    },
+    "Phantom Armor": {
+        "name": "Phantom Armor",
+        "set": 2,
+        "stat1": [
+            "HP%",
+            "DEF%"
+        ],
+        "amount": [
+            0.1,
+            0.1
+        ]
+    },
+    "Phantom Shaft": {
+        "name": "Phantom Shaft",
+        "set": 2,
+        "stat1": [
+            "HP%",
+            "EVA%"
+        ],
+        "amount": [
+            0.1,
+            0.1
+        ]
+    },
+    "Phantom Barrier": {
+        "name": "Phantom Barrier",
+        "set": 2,
+        "stat1": [
+            "HP%",
+            "Barrier Enhancement"
+        ],
+        "amount": [
+            0.1,
+            0.15
+        ]
+    },
+    "Phantom Protection": {
+        "name": "Phantom Protection",
+        "set": 4,
+        "stat1": [
+            "HP%",
+            "CRIT DMG RES"
+        ],
+        "amount": [
+            0.16,
+            0.16
+        ]
+    },
+    "Phantom Glare": {
+        "name": "Phantom Glare",
+        "set": 4,
+        "stat1": [
+            "HP%",
+            "ASPD"
+        ],
+        "amount": [
+            0.16,
+            0.08
+        ]
+    },
+    "Phantom Soul": {
+        "name": "Phantom Soul",
+        "set": 4,
+        "stat1": [
+            "HP%",
+            "Skill Haste"
+        ],
+        "amount": [
+            0.16,
+            0.12
+        ]
+    },
+    "DEF Penetration": {
+        "name": "DEF Penetration",
+        "set": 2,
+        "stat1": "DEF Penetration",
+        "amount": 0.15
+    },
+    "Anti-Air DMG": {
+        "name": "Anti-Air DMG",
+        "set": 2,
+        "stat1": "Anti-Air DMG",
+        "amount": 0.1
+    },
+    "Anti-Ground DMG": {
+        "name": "Anti-Ground DMG",
+        "set": 2,
+        "stat1": "Anti-Ground DMG",
+        "amount": 0.1
+    },
+    "SPD": {
+        "name": "SPD",
+        "set": 4,
+        "stat1": "SPD",
+        "amount": 0.15
+    },
+    "Special Skill DMG AMP": {
+        "name": "Special Skill DMG AMP",
+        "set": 4,
+        "stat1": "Special Skill DMG AMP",
+        "amount": 0.3
+    },
+    "Ultimate Skill DMG AMP": {
+        "name": "Ultimate Skill DMG AMP",
+        "set": 4,
+        "stat1": "Ultimate Skill DMG AMP",
+        "amount": 0.3
+    },
+    "Cooldown II": {
+        "name": "Cooldown II",
+        "set": 2,
+        "stat1": "Skill Haste",
+        "amount": 0.12
+    },
+    "ASPD II": {
+        "name": "ASPD II",
+        "set": 2,
+        "stat1": "ASPD",
+        "amount": 0.08
+    },
+    "Status Effect RES": {
+        "name": "Status Effect RES",
+        "set": 2,
+        "stat1": "Status Effect RES",
+        "amount": 0.1
+    },
+    "Incoming Healing +": {
+        "name": "Incoming Healing +",
+        "set": 2,
+        "stat1": "Incoming Healing +",
+        "amount": 0.15
+    },
+    "Anti-Air DMG RES": {
+        "name": "Anti-Air DMG RES",
+        "set": 2,
+        "stat1": "Anti-Air DMG RES",
+        "amount": 0.1
+    },
+    "Anti-Ground DMG RES": {
+        "name": "Anti-Ground DMG RES",
+        "set": 2,
+        "stat1": "Anti-Ground DMG RES",
+        "amount": 0.1
+    },
+    "Melee DMG RES": {
+        "name": "Melee DMG RES",
+        "set": 2,
+        "stat1": "Melee DMG RES",
+        "amount": 0.15
+    },
+    "Ranged DMG RES": {
+        "name": "Ranged DMG RES",
+        "set": 2,
+        "stat1": "Ranged DMG RES",
+        "amount": 0.15
+    },
+    "Healing Enhancement": {
+        "name": "Healing Enhancement",
+        "set": 2,
+        "stat1": "Outgoing Healing +",
+        "amount": 0.15
+    },
+    "HP II": {
+        "name": "HP II",
+        "set": 4,
+        "stat1": "HP%",
+        "amount": 0.24
+    }
+}
 
 /* var GearSetsListTrinity = {
   
@@ -764,17 +1112,17 @@ var GearSetsListTrinity = {
       var setOptions;
 
       if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(gdt_stype) > -1) {
-        setOptions = GearSetsListBasic;
+        setOptions = GEAR_SETS_LIST_BASIC;
       } else if (gdt_stype === 'Spectral') {
-        setOptions = GearSetsListSpectral;
+        setOptions = GEAR_SETS_LIST_SPECTRAL;
       } else if (gdt_stype === 'Phantom') {
-        setOptions = GearSetsListPhantom;
+        setOptions = GEAR_SETS_LIST_PHANTOM;
       } else if (gdt_stype === 'Jungle') {
-        setOptions = GearSetsListTrinity;
+        setOptions = GEAR_SETS_LIST_TRINITY;
       } else if (gdt_stype === 'Volcano') {
-        setOptions = GearSetsListTrinity;
+        setOptions = GEAR_SETS_LIST_TRINITY;
       } else {
-        setOptions = GearSetsListBasic;
+        setOptions = GEAR_SETS_LIST_BASIC;
       }
 
     this.#selectedGearData = Values[0];
@@ -840,17 +1188,17 @@ var GearSetsListTrinity = {
       var setOptions;
 
       if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(urlGearVal[1]) > -1) {
-        setOptions = GearSetsListBasic;
+        setOptions = GEAR_SETS_LIST_BASIC;
       } else if (urlGearVal[1] === 'Spectral') {
-        setOptions = GearSetsListSpectral;
+        setOptions = GEAR_SETS_LIST_SPECTRAL;
       } else if (urlGearVal[1] === 'Phantom') {
-        setOptions = GearSetsListPhantom;
+        setOptions = GEAR_SETS_LIST_PHANTOM;
       } else if (urlGearVal[1] === 'Jungle') {
-        setOptions = GearSetsListTrinity;
+        setOptions = GEAR_SETS_LIST_TRINITY;
       } else if (urlGearVal[1] === 'Volcano') {
-        setOptions = GearSetsListTrinity;
+        setOptions = GEAR_SETS_LIST_TRINITY;
       } else {
-        setOptions = GearSetsListBasic;
+        setOptions = GEAR_SETS_LIST_BASIC;
       }
 
       let getSubstats = this.getAvailableSubstats(urlGearVal[1],eq_Slot);
@@ -919,6 +1267,243 @@ var GearSetsListTrinity = {
 
       return true;
     }
+
+    
+    gts() {
+
+
+
+      let allgear = uggg.slice(1).split('","');
+      // let allgear = total_gear_data_unit.slice(1).split('","');
+      let maingearstat = 0;
+
+      
+      
+      for (let i = 0, nm = allgear.length; i < nm; i++) {
+        
+        
+        const allgear_each = allgear[i].split(",");
+        console.log("allgear_each: ");
+        console.log(allgear_each);
+        
+        let gslot = allgear_each[2] == "Accessory" ? "Accessory1":allgear_each[2]
+        var setOptions;
+
+      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(allgear_each[1]) > -1) {
+        setOptions = GEAR_SETS_LIST_BASIC;
+      } else if (allgear_each[1] === 'Spectral') {
+        setOptions = GEAR_SETS_LIST_SPECTRAL;
+      } else if (allgear_each[1] === 'Phantom') {
+        setOptions = GEAR_SETS_LIST_PHANTOM;
+      } else if (allgear_each[1] === 'Jungle') {
+        setOptions = GEAR_SETS_LIST_TRINITY;
+      } else if (allgear_each[1] === 'Volcano') {
+        setOptions = GEAR_SETS_LIST_TRINITY;
+      } else {
+        setOptions = GEAR_SETS_LIST_BASIC;
+      }
+
+        let getSubstats = this.getAvailableSubstats(allgear_each[1],gslot);
+      console.log('getSubstats');
+      console.log(getSubstats);
+
+      let sc = allgear_each.slice(6)
+      let sub1Final = [];
+      let sub2Final = [];
+
+       switch (allgear_each[3]) {
+                case COUNTER:
+                  if (allgear_each[5] == ATK) {
+                    maingearstat = 399;
+                  } else if (allgear_each[5] == HP) {
+                    maingearstat = 3814;
+                  } else if ((allgear_each[5] == HIT) || (allgear_each[5] == EVA)) {
+                    maingearstat = 274;
+                  }
+                  break;
+                  case SOLDIER:
+                     if (allgear_each[5] == ATK) {
+                    maingearstat = 399;
+                    } else if (allgear_each[5] == HP) {
+                      maingearstat = 206;
+                    } else if ((allgear_each[5] == HIT) || (allgear_each[5] == EVA)) {
+                      maingearstat = 206;
+                    }
+                  break;
+                  case MECH:
+                     if (allgear_each[5] == ATK) {
+                    maingearstat = 399;
+                    } else if (allgear_each[5] == HP) {
+                      maingearstat = 309;
+                    } else if ((allgear_each[5] == HIT) || (allgear_each[5] == EVA)) {
+                      maingearstat = 309;
+                    }
+                  break;
+                default:
+                  break;
+              }
+
+       st_g[i] = {
+  "equip_type": allgear_each[0],
+  "gear_name": allgear_each[1],
+  "slot": allgear_each[2],
+  "employee_type": allgear_each[3],
+  "icon": allgear_each[4],
+  "main_stat": [allgear_each[5],maingearstat],
+  "latent":{},
+  "sub1":{},
+  "sub2":{},
+  "set_options":Object.keys(setOptions),
+      }
+
+      if (allgear_each[1] == "Jungle") {
+        for (let o = 0, nm = JUNGLE_LATENT_STATS_OPTION_LIST.length; o < nm; o++) {
+          st_g[i]["latent"][JUNGLE_LATENT_STATS_OPTION_LIST[o]] = getSubstats[2][o];
+        }
+        
+      } else if (allgear_each[1] == "Inhibitor") {
+        for (let o = 0, nm = INHIBITOR_LATENT_STATS_OPTION_LIST.length; o < nm; o++) {
+          st_g[i]["latent"][INHIBITOR_LATENT_STATS_OPTION_LIST[o]] = getSubstats[2][o];
+        }
+        
+      } else if (allgear_each[1] == "Swift") {
+        for (let o = 0, nm = SWIFT_LATENT_STATS_OPTION_LIST.length; o < nm; o++) {
+          st_g[i]["latent"][SWIFT_LATENT_STATS_OPTION_LIST[o]] = getSubstats[2][o];
+        }
+        
+      } else if (allgear_each[1] == "Britra") {
+        for (let o = 0, nm = BRITRA_LATENT_STATS_OPTION_LIST.length; o < nm; o++) {
+          st_g[i]["latent"][BRITRA_LATENT_STATS_OPTION_LIST[o]] = getSubstats[2][o];
+        }
+        
+      } else if (allgear_each[1] == "Volcano") {
+        for (let o = 0, nm = VOLCANO_LATENT_STATS_OPTION_LIST.length; o < nm; o++) {
+          st_g[i]["latent"][VOLCANO_LATENT_STATS_OPTION_LIST[o]] = getSubstats[2][o];
+        }
+        
+      }
+
+
+      for (let i = 0, n = STATS_OPTION_LIST.length; i < n; i++) {
+        if (sc[i] !== '') {
+          if (sc[i].includes('1') === true) {
+            if (STATS_OPTION_LIST[i] == HP && allgear_each[1] == "Jungle") {
+              sub1Final.push(HP_PERCENT)
+            } else {
+              sub1Final.push(STATS_OPTION_LIST[i])
+            }
+
+          } 
+          if (sc[i].includes('2') === true) {
+            sub2Final.push(STATS_OPTION_LIST[i])
+
+          }
+        }
+      }
+
+        let sC1 = [];
+        let sC2 = [];
+      for (var t = 0, n = sub1Final.length; t < n; t++) {
+        sC1[t] = getSubstats[0].concat(Array(Number(sub1Final.length)).fill(getSubstats[0][getSubstats[0].length-1]))[t]
+          st_g[i]["sub1"][sub1Final[t]] = sC1[t]; 
+       
+      }
+    
+
+      for (var t = 0, n = sub2Final.length; t < n; t++) { 
+        sC2[t] = getSubstats[1].concat(Array(Number(sub2Final.length)).fill(getSubstats[1][getSubstats[1].length-1]))[t]
+          st_g[i]["sub2"][sub2Final[t]] = sC2[t];
+
+      }
+
+      
+      console.log("sCS: ");
+      console.log(sC1);
+      console.log(sC2);
+      console.log("st_g[i]: ");
+      console.log(st_g[i]);
+     
+      /*
+0: {
+  "equip_unit": "Delta Seven Kyle Wong",
+  "equip_type": "Exclusive",
+  "gear_name": "Tactical Comms Gear",
+  "slot": "Accessory",
+  "employee_type": "Counter",
+  "icon": "Icon_Counter_Accessory_Tactical Comms Gear_EE",
+  "main_stat": ["ASPD",0.322],
+    "latent": {
+
+    },
+    "sub1": {
+      "Skill Haste":0.121,
+    },
+    "sub2": {
+      "CRIT DMG":0.242,
+      "Skill Haste":0.121,
+      "CRIT DMG RES":0.462,
+      "Status Effect RES":0.066,
+      "Anti-Striker DMG":0.183,
+      "Anti-Defender DMG":0.183,
+      "Anti-Ranger DMG":0.183,
+      "Anti-Sniper DMG":0.183,
+      "Anti-Air DMG":0.183,
+      "Anti-Ground DMG":0.183,
+      "Anti-Striker DMG RES":0.183,
+      "Anti-Defender DMG RES":0.183,
+      "Anti-Ranger DMG RES":0.183,
+      "Anti-Sniper DMG RES":0.183,
+      "Anti-Air DMG RES":0.183,
+      "Anti-Ground DMG RES":0.183,
+    }
+  }
+
+      */
+
+    }
+
+      // let urlGearVal = searchGearData.split(",");
+
+
+      // let setOptions;
+
+      // if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(urlGearVal[1]) > -1) {
+      //   setOptions = GearSetsListBasic;
+      // } else if (urlGearVal[1] === 'Spectral') {
+      //   setOptions = GearSetsListSpectral;
+      // } else if (urlGearVal[1] === 'Phantom') {
+      //   setOptions = GearSetsListPhantom;
+      // } else if (urlGearVal[1] === 'Jungle') {
+      //   setOptions = GearSetsListTrinity;
+      // } else if (urlGearVal[1] === 'Volcano') {
+      //   setOptions = GearSetsListTrinity;
+      // } else {
+      //   setOptions = GearSetsListBasic;
+      // }
+
+      
+
+      // this.#selectedGearData = searchGearData;
+      // this.#name = urlGearVal[1];
+      // this.#eqSlot = eq_Slot;
+      // this.#eqTier = 7;
+
+      // this.#eqSet = setOptions[Object.keys(setOptions)[Number(ugdt[4])]]['name'];
+      // this.#sub1 = [BONUS_STATS_LIST[sub1_val],s1f];
+      // this.#sub2 = [BONUS_STATS_LIST[sub2_val],s2f];
+      // this.#latent = [BONUS_STATS_LIST[latent_val[0]],latent_val[1]];
+      // this.#eqIcon =  'cs_gears-icons/Special Gear/'+urlGearVal[3]+'/' + urlGearVal[4] +  '.png';
+      // this.#mainStat = [urlGearVal[5],GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(urlGearVal[5])]];
+      
+      // this.#eqSet_Options = setOptions;
+
+
+
+
+      return true;
+    }
+    
+    
 
     getAvailableSubstats(GearType, GearSlot) {
       let aLatent = '';
@@ -1280,6 +1865,7 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
   
   var gear_data = full_gear_data.split('","');
 
+
   
 
 
@@ -1608,31 +2194,31 @@ console.timeEnd('subs_alt')
     selectedGearSub1List = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   selectedGearLatentList = '';
   break;
   case "Loyal":
   selectedGearSub1List = MAZE_GEAR_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_GEAR_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   selectedGearLatentList = '';
   break;
   case "Devoted":
   selectedGearSub1List = MAZE_GEAR_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_GEAR_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   selectedGearLatentList = '';
   break;
   case "Courageous":
   selectedGearSub1List = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   selectedGearLatentList = '';
   break;
   case "Sincere":
   selectedGearSub1List = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   selectedGearLatentList = '';
   break;
   case "Challenger":
@@ -1643,19 +2229,19 @@ console.timeEnd('subs_alt')
       selectedGearSub1List = CHALLENGER_ACCS_SUBSTATS_VALUES_LIST_1;
       selectedGearSub2List = CHALLENGER_ACCS_SUBSTATS_VALUES_LIST_2;
     }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   selectedGearLatentList = '';
   break;
   case "Hummingbird":
   selectedGearSub1List = HUMMINGBIRD_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = HUMMINGBIRD_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   selectedGearLatentList = '';
   break;
   case "Gordias":
     selectedGearSub1List = GORDIAS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = GORDIAS_SUBSTATS_VALUES_LIST_2;
-    selectedGearSetList = GearSetsListBasic;
+    selectedGearSetList = GEAR_SETS_LIST_BASIC;
     selectedGearLatentList = '';
   break;
   case "Spectral":
@@ -1670,7 +2256,7 @@ console.timeEnd('subs_alt')
     selectedGearSub2List = SPECTRAL_ACCS_SUBSTATS_VALUES_LIST_2;
   }
   selectedGearLatentList = '';
-  selectedGearSetList = GearSetsListSpectral;
+  selectedGearSetList = GEAR_SETS_LIST_SPECTRAL;
   break;
   case "Phantom":
     if(selectedGear == (SLOT_WEAPON)){
@@ -1684,7 +2270,7 @@ console.timeEnd('subs_alt')
     selectedGearSub2List = PHANTOM_ACCS_SUBSTATS_VALUES_LIST_2;
   }
   selectedGearLatentList = '';
-  selectedGearSetList = GearSetsListPhantom;
+  selectedGearSetList = GEAR_SETS_LIST_PHANTOM;
   break;
   case "Polymer":
     if(selectedGear == (SLOT_WEAPON)){
@@ -1698,7 +2284,7 @@ console.timeEnd('subs_alt')
     selectedGearSub2List = POLYMER_ACCS_SUBSTATS_VALUES_LIST_2;
   }
   selectedGearLatentList = '';
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Sc. Dante":
     if(selectedGear == (SLOT_WEAPON)){
@@ -1712,7 +2298,7 @@ console.timeEnd('subs_alt')
     selectedGearSub2List = SC_DANTE_ACCS_SUBSTATS_VALUES_LIST_2;
   }
   selectedGearLatentList = '';
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Inhibitor":
     if((selectedGear == SLOT_WEAPON) || (selectedGear == SLOT_ARMOR)){
@@ -1724,7 +2310,7 @@ console.timeEnd('subs_alt')
     selectedGearSub2List = INHIBITOR_ACCS_SUBSTATS_VALUES_LIST_2;
     selectedGearLatentList = INHIBITOR_ACCS_LATENT_STATS_VALUES_LIST;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
    case "Britra":
     if((selectedGear == SLOT_WEAPON) || (selectedGear == SLOT_ARMOR)){
@@ -1736,7 +2322,7 @@ console.timeEnd('subs_alt')
       selectedGearSub2List = BRITRA_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = BRITRA_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListBasic;
+    selectedGearSetList = GEAR_SETS_LIST_BASIC;
     break;
    case "Swift":
     if((selectedGear == SLOT_WEAPON) || (selectedGear == SLOT_ARMOR)){
@@ -1748,7 +2334,7 @@ console.timeEnd('subs_alt')
       selectedGearSub2List = SWIFT_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = SWIFT_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListBasic;
+    selectedGearSetList = GEAR_SETS_LIST_BASIC;
     break;
    case "Jungle":
     if((selectedGear == SLOT_WEAPON) || (selectedGear == SLOT_ARMOR)){
@@ -1760,7 +2346,7 @@ console.timeEnd('subs_alt')
       selectedGearSub2List = JUNGLE_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = JUNGLE_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListTrinity;
+    selectedGearSetList = GEAR_SETS_LIST_TRINITY;
     break;
    case "Volcano":
     if((selectedGear == SLOT_WEAPON) || (selectedGear == SLOT_ARMOR)){
@@ -1772,49 +2358,49 @@ console.timeEnd('subs_alt')
       selectedGearSub2List = VOLCANO_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = VOLCANO_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListTrinity;
+    selectedGearSetList = GEAR_SETS_LIST_TRINITY;
     break;
     case "Cat Brooch":
     if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
     selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
     case "Fairy\'s Infinite Ammo":
     if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
     selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Gear Cell Suppressor":
     if ((selectedGear == SLOT_ARMOR)) {
     selectedGearSub1List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "TCS Module":
     if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
     selectedGearSub1List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Tactical Comms Gear":
     if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
     selectedGearSub1List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Throne of Ashes":
     if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
     selectedGearSub1List = ROSARIA_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Antithesis":
         if ((selectedGear == SLOT_ACCESSORY_1) || (selectedGear == SLOT_ACCESSORY_2)) {
@@ -1827,7 +2413,7 @@ console.timeEnd('subs_alt')
     selectedGearSub1List = XIAO_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = XIAO_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   
 
@@ -2122,27 +2708,27 @@ var isRelic = [];
     selectedGearSub1List = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Loyal":
   selectedGearSub1List = MAZE_GEAR_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_GEAR_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Devoted":
   selectedGearSub1List = MAZE_GEAR_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_GEAR_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Courageous":
   selectedGearSub1List = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Sincere":
   selectedGearSub1List = MAZE_ACCS_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = MAZE_ACCS_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Challenger":
     if((gear_slot_loc == SLOT_WEAPON )|| (gear_slot_loc == SLOT_ARMOR)){
@@ -2152,17 +2738,17 @@ var isRelic = [];
       selectedGearSub1List = CHALLENGER_ACCS_SUBSTATS_VALUES_LIST_1;
       selectedGearSub2List = CHALLENGER_ACCS_SUBSTATS_VALUES_LIST_2;
     }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Hummingbird":
   selectedGearSub1List = HUMMINGBIRD_SUBSTATS_VALUES_LIST_1;
   selectedGearSub2List = HUMMINGBIRD_SUBSTATS_VALUES_LIST_2;
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Gordias":
     selectedGearSub1List = GORDIAS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = GORDIAS_SUBSTATS_VALUES_LIST_2;
-    selectedGearSetList = GearSetsListBasic;
+    selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Spectral":
     if(gear_slot_loc == (SLOT_WEAPON)){
@@ -2175,7 +2761,7 @@ var isRelic = [];
     selectedGearSub1List = SPECTRAL_ACCS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = SPECTRAL_ACCS_SUBSTATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListSpectral;
+  selectedGearSetList = GEAR_SETS_LIST_SPECTRAL;
   break;
   case "Phantom":
     if(gear_slot_loc == (SLOT_WEAPON)){
@@ -2188,7 +2774,7 @@ var isRelic = [];
     selectedGearSub1List = PHANTOM_ACCS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = PHANTOM_ACCS_SUBSTATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListPhantom;
+  selectedGearSetList = GEAR_SETS_LIST_PHANTOM;
   break;
   case "Polymer":
     if(gear_slot_loc == (SLOT_WEAPON)){
@@ -2201,7 +2787,7 @@ var isRelic = [];
     selectedGearSub1List = POLYMER_ACCS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = POLYMER_ACCS_SUBSTATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Sc. Dante":
     if(gear_slot_loc == (SLOT_WEAPON)){
@@ -2214,7 +2800,7 @@ var isRelic = [];
     selectedGearSub1List = SC_DANTE_ACCS_SUBSTATS_VALUES_LIST_1;
     selectedGearSub2List = SC_DANTE_ACCS_SUBSTATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Inhibitor":
     if((gear_slot_loc == SLOT_WEAPON )|| (gear_slot_loc == SLOT_ARMOR)){
@@ -2226,7 +2812,7 @@ var isRelic = [];
     selectedGearSub2List = INHIBITOR_ACCS_SUBSTATS_VALUES_LIST_2;
     selectedGearLatentList = INHIBITOR_ACCS_LATENT_STATS_VALUES_LIST;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
    case "Britra":
     if((gear_slot_loc == SLOT_WEAPON ) || (gear_slot_loc == SLOT_ARMOR)){
@@ -2238,7 +2824,7 @@ var isRelic = [];
       selectedGearSub2List = BRITRA_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = BRITRA_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListBasic;
+    selectedGearSetList = GEAR_SETS_LIST_BASIC;
     break;
    case "Swift":
     if((gear_slot_loc == SLOT_WEAPON )|| (gear_slot_loc == SLOT_ARMOR)){
@@ -2250,7 +2836,7 @@ var isRelic = [];
       selectedGearSub2List = SWIFT_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = SWIFT_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListBasic;
+    selectedGearSetList = GEAR_SETS_LIST_BASIC;
     break;
    case "Jungle":
     if((gear_slot_loc == SLOT_WEAPON )|| (gear_slot_loc == SLOT_ARMOR)){
@@ -2262,7 +2848,7 @@ var isRelic = [];
       selectedGearSub2List = JUNGLE_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = JUNGLE_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListTrinity;
+    selectedGearSetList = GEAR_SETS_LIST_TRINITY;
     break;
    case "Volcano":
     if((gear_slot_loc == SLOT_WEAPON )|| (gear_slot_loc == SLOT_ARMOR)){
@@ -2274,63 +2860,63 @@ var isRelic = [];
       selectedGearSub2List = VOLCANO_ACCS_SUBSTATS_VALUES_LIST_2;
       selectedGearLatentList = VOLCANO_ACCS_LATENT_STATS_VALUES_LIST;
     }
-    selectedGearSetList = GearSetsListTrinity;
+    selectedGearSetList = GEAR_SETS_LIST_TRINITY;
     break;
     case "Cat Brooch":
     if (gear_slot_loc == (SLOT_ACCESSORY)) {
     selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
     case "Fairy\'s Infinite Ammo":
     if (gear_slot_loc == (SLOT_ACCESSORY)) {
     selectedGearSub1List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = MILLIA_RAGE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Gear Cell Suppressor":
     if (gear_slot_loc == (SLOT_ARMOR)) {
     selectedGearSub1List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = SOL_BADGUY_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "TCS Module":
     if (gear_slot_loc == (SLOT_ACCESSORY)) {
     selectedGearSub1List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Tactical Comms Gear":
     if (gear_slot_loc == (SLOT_ACCESSORY)) {
     selectedGearSub1List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Throne of Ashes":
     if (gear_slot_loc == (SLOT_ACCESSORY)) {
     selectedGearSub1List = ROSARIA_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = TITAN_KYLE_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   case "Antithesis":
         if (gear_slot_loc == (SLOT_ACCESSORY)) {
           selectedGearSub1List = LAIKA_GEAR_STATS_VALUES_LIST_1;
           selectedGearSub2List = LAIKA_GEAR_STATS_VALUES_LIST_2;
         }
-        selectedGearSetList = GearSetsListBasic;
+        selectedGearSetList = GEAR_SETS_LIST_BASIC;
         break;
         case "Reliable Messenger":
     if (gear_slot_loc == (SLOT_ACCESSORY)) {
     selectedGearSub1List = XIAO_GEAR_STATS_VALUES_LIST_1;
     selectedGearSub2List = XIAO_GEAR_STATS_VALUES_LIST_2;
   }
-  selectedGearSetList = GearSetsListBasic;
+  selectedGearSetList = GEAR_SETS_LIST_BASIC;
   break;
   default:
     break;

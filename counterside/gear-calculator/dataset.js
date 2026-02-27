@@ -4175,3 +4175,7437 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "- ?","attack1","-","-","4","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_ATTACK1_LOOP","NST_ATTACK'",
 "- ?","attack1","-","-","1","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_ATTACK1_END","NST_ATTACK'",
 ""]
+
+
+const GEARS = {
+    "0": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Maze",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "1": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Maze",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "2": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Maze",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "3": {
+        "equip_type": "Normal",
+        "gear_name": "Challenger",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Challenger",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Special Skill DMG AMP": 0.33
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "4": {
+        "equip_type": "Normal",
+        "gear_name": "Challenger",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Challenger",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {},
+        "sub1": {
+            "Special Skill DMG RDC": 0.33
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "5": {
+        "equip_type": "Normal",
+        "gear_name": "Hummingbird",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Hummingbird",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Melee DMG RES": 0.12,
+            "Ranged DMG RES": 0.12,
+            "DMG Taken RDC": 0.045
+        },
+        "sub2": {
+            "DEF": 81,
+            "CRIT": 81,
+            "HIT": 81,
+            "EVA": 81,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "6": {
+        "equip_type": "Normal",
+        "gear_name": "Gordias",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Gordias_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Melee DMG RES": 0.132
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "7": {
+        "equip_type": "Normal",
+        "gear_name": "Gordias",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Gordias_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Ranged DMG RES": 0.132
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "8": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Inhibitor",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "EVA": 65,
+            "HP": 1185,
+            "HP%": 0.065,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG RES": 0.097,
+            "Melee DMG RES": 0.097
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.04,
+            "Anti-Soldier DMG RES": 0.04,
+            "Anti-Mech DMG RES": 0.04
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "9": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Inhibitor",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {
+            "EVA": 65,
+            "HP": 1185,
+            "HP%": 0.065,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG RES": 0.097,
+            "Melee DMG RES": 0.097
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.04,
+            "Anti-Soldier DMG RES": 0.04,
+            "Anti-Mech DMG RES": 0.04
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "10": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Inhibitor_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {
+            "EVA": 72,
+            "HP": 1302,
+            "HP%": 0.07,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG RES": 0.107,
+            "Melee DMG RES": 0.107
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.05,
+            "Anti-Soldier DMG RES": 0.05,
+            "Anti-Mech DMG RES": 0.05
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "11": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Inhibitor_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {
+            "EVA": 72,
+            "HP": 1302,
+            "HP%": 0.07,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG RES": 0.107,
+            "Melee DMG RES": 0.107
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.05,
+            "Anti-Soldier DMG RES": 0.05,
+            "Anti-Mech DMG RES": 0.05
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "12": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Britra",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "ATK": 123,
+            "ATK%": 0.065,
+            "HIT": 65,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG": 0.097,
+            "Melee DMG": 0.097
+        },
+        "sub1": {
+            "CRIT": 36,
+            "HIT": 36,
+            "CRIT DMG": 0.08
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "13": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Britra",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {
+            "ATK": 123,
+            "ATK%": 0.065,
+            "HIT": 65,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG": 0.097,
+            "Melee DMG": 0.097
+        },
+        "sub1": {
+            "CRIT": 36,
+            "HIT": 36,
+            "CRIT DMG": 0.08
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "14": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Britra_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {
+            "ATK": 137,
+            "ATK%": 0.07,
+            "HIT": 72,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG": 0.107,
+            "Melee DMG": 0.107
+        },
+        "sub1": {
+            "CRIT": 40,
+            "HIT": 40,
+            "CRIT DMG": 0.088
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "15": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Britra_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {
+            "ATK": 137,
+            "ATK%": 0.07,
+            "HIT": 72,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG": 0.107,
+            "Melee DMG": 0.107
+        },
+        "sub1": {
+            "CRIT": 40,
+            "HIT": 40,
+            "CRIT DMG": 0.088
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "16": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Swift",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "ATK": 152,
+            "ATK%": 0.076,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG": 0.15,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.115,
+            "SPD": 0.075,
+            "ASPD": 0.063,
+            "Status Effect RES": 0.063
+        },
+        "sub1": {
+            "SPD": 0.028,
+            "ASPD": 0.018,
+            "Skill Haste": 0.022
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "17": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Swift",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {
+            "ATK": 152,
+            "ATK%": 0.076,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG": 0.15,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.115,
+            "SPD": 0.075,
+            "ASPD": 0.063,
+            "Status Effect RES": 0.063
+        },
+        "sub1": {
+            "SPD": 0.028,
+            "ASPD": 0.018,
+            "Skill Haste": 0.022
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "18": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Swift_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {
+            "ATK": 166,
+            "ATK%": 0.083,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG": 0.163,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.125,
+            "SPD": 0.082,
+            "ASPD": 0.068,
+            "Status Effect RES": 0.068
+        },
+        "sub1": {
+            "SPD": 0.031,
+            "ASPD": 0.02,
+            "Skill Haste": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "19": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Swift_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {
+            "ATK": 166,
+            "ATK%": 0.083,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG": 0.163,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.125,
+            "SPD": 0.082,
+            "ASPD": 0.068,
+            "Status Effect RES": 0.068
+        },
+        "sub1": {
+            "SPD": 0.031,
+            "ASPD": 0.02,
+            "Skill Haste": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "20": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Jungle",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "DEF": 80,
+            "EVA": 70,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG RES": 0.32,
+            "SPD": 0.063,
+            "Status Effect RES": 0.063,
+            "Incoming Healing +": 0.133,
+            "Outgoing Healing +": 0.09,
+            "Barrier Enhancement": 0.163
+        },
+        "sub1": {
+            "HP%": 0.02,
+            "Status Effect RES": 0.03,
+            "Incoming Healing +": 0.052
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "21": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Jungle",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {
+            "DEF": 80,
+            "EVA": 70,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG RES": 0.32,
+            "SPD": 0.063,
+            "Status Effect RES": 0.063,
+            "Incoming Healing +": 0.133,
+            "Outgoing Healing +": 0.09,
+            "Barrier Enhancement": 0.163
+        },
+        "sub1": {
+            "HP%": 0.02,
+            "Status Effect RES": 0.03,
+            "Incoming Healing +": 0.052
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "22": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Jungle_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {
+            "DEF": 87,
+            "EVA": 87,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG RES": 0.352,
+            "SPD": 0.082,
+            "Status Effect RES": 0.068,
+            "Incoming Healing +": 0.147,
+            "Outgoing Healing +": 0.099,
+            "Barrier Enhancement": 0.178
+        },
+        "sub1": {
+            "HP%": 0.022,
+            "Status Effect RES": 0.033,
+            "Incoming Healing +": 0.057
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "23": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Jungle_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {
+            "DEF": 87,
+            "EVA": 87,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG RES": 0.352,
+            "SPD": 0.082,
+            "Status Effect RES": 0.068,
+            "Incoming Healing +": 0.147,
+            "Outgoing Healing +": 0.099,
+            "Barrier Enhancement": 0.178
+        },
+        "sub1": {
+            "HP%": 0.022,
+            "Status Effect RES": 0.033,
+            "Incoming Healing +": 0.057
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "24": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Volcano",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.109,
+            "Ultimate Skill DMG AMP": 0.109,
+            "ATK%": 0.076,
+            "CRIT DMG": 0.15,
+            "Status Effect RES": 0.063,
+            "ASPD": 0.063,
+            "DEF Penetration": 0.069,
+            "Anti-Counter DMG": 0.128,
+            "Anti-Soldier DMG": 0.128,
+            "Anti-Mech DMG": 0.128
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.066,
+            "Ultimate Skill DMG AMP": 0.066,
+            "DEF Penetration": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "25": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Volcano",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.109,
+            "Ultimate Skill DMG AMP": 0.109,
+            "ATK%": 0.076,
+            "CRIT DMG": 0.15,
+            "Status Effect RES": 0.063,
+            "ASPD": 0.063,
+            "DEF Penetration": 0.069,
+            "Anti-Counter DMG": 0.128,
+            "Anti-Soldier DMG": 0.128,
+            "Anti-Mech DMG": 0.128
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.066,
+            "Ultimate Skill DMG AMP": 0.066,
+            "DEF Penetration": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "26": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Volcano_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.119,
+            "Ultimate Skill DMG AMP": 0.119,
+            "ATK%": 0.083,
+            "CRIT DMG": 0.163,
+            "Status Effect RES": 0.068,
+            "ASPD": 0.068,
+            "DEF Penetration": 0.079,
+            "Anti-Counter DMG": 0.142,
+            "Anti-Soldier DMG": 0.142,
+            "Anti-Mech DMG": 0.142
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.072,
+            "Ultimate Skill DMG AMP": 0.072,
+            "DEF Penetration": 0.026
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "27": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Volcano_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.119,
+            "Ultimate Skill DMG AMP": 0.119,
+            "ATK%": 0.083,
+            "CRIT DMG": 0.163,
+            "Status Effect RES": 0.068,
+            "ASPD": 0.068,
+            "DEF Penetration": 0.079,
+            "Anti-Counter DMG": 0.142,
+            "Anti-Soldier DMG": 0.142,
+            "Anti-Mech DMG": 0.142
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.072,
+            "Ultimate Skill DMG AMP": 0.072,
+            "DEF Penetration": 0.026
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "28": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Spectral",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14
+        },
+        "sub2": {
+            "SPD": 0.075,
+            "ASPD": 0.055,
+            "CRIT DMG": 0.15,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "29": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Spectral",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14
+        },
+        "sub2": {
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.038,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "30": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Spectral",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.154,
+            "Anti-Defender DMG": 0.154,
+            "Anti-Ranger DMG": 0.154,
+            "Anti-Sniper DMG": 0.154
+        },
+        "sub2": {
+            "CRIT DMG": 0.165,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.385,
+            "Status Effect RES": 0.043,
+            "Anti-Air DMG": 0.154,
+            "Anti-Ground DMG": 0.154,
+            "Anti-Striker DMG RES": 0.154,
+            "Anti-Defender DMG RES": 0.154,
+            "Anti-Ranger DMG RES": 0.154,
+            "Anti-Sniper DMG RES": 0.154,
+            "Anti-Air DMG RES": 0.154,
+            "Anti-Ground DMG RES": 0.154
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "31": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Phantom",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14
+        },
+        "sub2": {
+            "SPD": 0.075,
+            "ASPD": 0.055,
+            "CRIT DMG": 0.15,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "32": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Phantom",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14
+        },
+        "sub2": {
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.038,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "33": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Phantom",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.154,
+            "Anti-Defender DMG RES": 0.154,
+            "Anti-Ranger DMG RES": 0.154,
+            "Anti-Sniper DMG RES": 0.154
+        },
+        "sub2": {
+            "CRIT DMG": 0.165,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.385,
+            "Status Effect RES": 0.043,
+            "Anti-Striker DMG": 0.154,
+            "Anti-Defender DMG": 0.154,
+            "Anti-Ranger DMG": 0.154,
+            "Anti-Sniper DMG": 0.154,
+            "Anti-Air DMG": 0.154,
+            "Anti-Ground DMG": 0.154,
+            "Anti-Air DMG RES": 0.154,
+            "Anti-Ground DMG RES": 0.154
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "34": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Polymer",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.14,
+            "Anti-Soldier DMG RES": 0.14,
+            "Anti-Mech DMG RES": 0.14
+        },
+        "sub2": {
+            "DEF": 68,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "35": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Polymer",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.14,
+            "Anti-Soldier DMG RES": 0.14,
+            "Anti-Mech DMG RES": 0.14
+        },
+        "sub2": {
+            "ATK": 125,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.05,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "36": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Polymer_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "37": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Polymer_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "38": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Sc. Dante",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.16
+        },
+        "sub2": {
+            "DEF": 68,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "39": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Sc. Dante",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.16
+        },
+        "sub2": {
+            "ATK": 125,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.05,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "40": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Sc. Dante_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.18
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "41": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Sc. Dante_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.18
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "42": {
+        "equip_type": "Normal",
+        "gear_name": "Loyal",
+        "slot": "Weapon",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Weapon_Loyal",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG": 0.16,
+            "Anti-Soldier DMG": 0.16,
+            "Anti-Mech DMG": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "43": {
+        "equip_type": "Normal",
+        "gear_name": "Devoted",
+        "slot": "Armor",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Armor_Devoted",
+        "main_stat": [
+            "HP",
+            3814
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "44": {
+        "equip_type": "Normal",
+        "gear_name": "Courageous",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Courageous_1",
+        "main_stat": [
+            "HIT",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG": 0.176,
+            "Anti-Soldier DMG": 0.176,
+            "Anti-Mech DMG": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "45": {
+        "equip_type": "Normal",
+        "gear_name": "Sincere",
+        "slot": "Accessory",
+        "employee_type": "Counter",
+        "icon": "Icon_Counter_Accessory_Sincere_2",
+        "main_stat": [
+            "EVA",
+            274
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.176,
+            "Anti-Soldier DMG RES": 0.176,
+            "Anti-Mech DMG RES": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "46": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Maze",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "47": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Maze",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "48": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Maze",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "49": {
+        "equip_type": "Normal",
+        "gear_name": "Hummingbird",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Hummingbird",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Melee DMG RES": 0.12,
+            "Ranged DMG RES": 0.12,
+            "DMG Taken RDC": 0.045
+        },
+        "sub2": {
+            "DEF": 81,
+            "CRIT": 81,
+            "HIT": 81,
+            "EVA": 81,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "50": {
+        "equip_type": "Normal",
+        "gear_name": "Gordias",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Gordias_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Melee DMG RES": 0.132
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "51": {
+        "equip_type": "Normal",
+        "gear_name": "Gordias",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Gordias_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Ranged DMG RES": 0.132
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "52": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Inhibitor",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "EVA": 65,
+            "HP": 1185,
+            "HP%": 0.065,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG RES": 0.097,
+            "Melee DMG RES": 0.097
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.04,
+            "Anti-Soldier DMG RES": 0.04,
+            "Anti-Mech DMG RES": 0.04
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "53": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Inhibitor",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {
+            "EVA": 65,
+            "HP": 1185,
+            "HP%": 0.065,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG RES": 0.097,
+            "Melee DMG RES": 0.097
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.04,
+            "Anti-Soldier DMG RES": 0.04,
+            "Anti-Mech DMG RES": 0.04
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "54": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Inhibitor_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {
+            "EVA": 72,
+            "HP": 1302,
+            "HP%": 0.07,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG RES": 0.107,
+            "Melee DMG RES": 0.107
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.05,
+            "Anti-Soldier DMG RES": 0.05,
+            "Anti-Mech DMG RES": 0.05
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "55": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Inhibitor_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {
+            "EVA": 72,
+            "HP": 1302,
+            "HP%": 0.07,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG RES": 0.107,
+            "Melee DMG RES": 0.107
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.05,
+            "Anti-Soldier DMG RES": 0.05,
+            "Anti-Mech DMG RES": 0.05
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "56": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Britra",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "ATK": 123,
+            "ATK%": 0.065,
+            "HIT": 65,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG": 0.097,
+            "Melee DMG": 0.097
+        },
+        "sub1": {
+            "CRIT": 36,
+            "HIT": 36,
+            "CRIT DMG": 0.08
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "57": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Britra",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {
+            "ATK": 123,
+            "ATK%": 0.065,
+            "HIT": 65,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG": 0.097,
+            "Melee DMG": 0.097
+        },
+        "sub1": {
+            "CRIT": 36,
+            "HIT": 36,
+            "CRIT DMG": 0.08
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "58": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Britra_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {
+            "ATK": 137,
+            "ATK%": 0.07,
+            "HIT": 72,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG": 0.107,
+            "Melee DMG": 0.107
+        },
+        "sub1": {
+            "CRIT": 40,
+            "HIT": 40,
+            "CRIT DMG": 0.088
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "59": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Britra_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {
+            "ATK": 137,
+            "ATK%": 0.07,
+            "HIT": 72,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG": 0.107,
+            "Melee DMG": 0.107
+        },
+        "sub1": {
+            "CRIT": 40,
+            "HIT": 40,
+            "CRIT DMG": 0.088
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "60": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Swift",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "ATK": 152,
+            "ATK%": 0.076,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG": 0.15,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.115,
+            "SPD": 0.075,
+            "ASPD": 0.063,
+            "Status Effect RES": 0.063
+        },
+        "sub1": {
+            "SPD": 0.028,
+            "ASPD": 0.018,
+            "Skill Haste": 0.022
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "61": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Swift",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {
+            "ATK": 152,
+            "ATK%": 0.076,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG": 0.15,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.115,
+            "SPD": 0.075,
+            "ASPD": 0.063,
+            "Status Effect RES": 0.063
+        },
+        "sub1": {
+            "SPD": 0.028,
+            "ASPD": 0.018,
+            "Skill Haste": 0.022
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "62": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Swift_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {
+            "ATK": 166,
+            "ATK%": 0.083,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG": 0.163,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.125,
+            "SPD": 0.082,
+            "ASPD": 0.068,
+            "Status Effect RES": 0.068
+        },
+        "sub1": {
+            "SPD": 0.031,
+            "ASPD": 0.02,
+            "Skill Haste": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "63": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Swift_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {
+            "ATK": 166,
+            "ATK%": 0.083,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG": 0.163,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.125,
+            "SPD": 0.082,
+            "ASPD": 0.068,
+            "Status Effect RES": 0.068
+        },
+        "sub1": {
+            "SPD": 0.031,
+            "ASPD": 0.02,
+            "Skill Haste": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "64": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Jungle",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "DEF": 80,
+            "EVA": 70,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG RES": 0.32,
+            "SPD": 0.063,
+            "Status Effect RES": 0.063,
+            "Incoming Healing +": 0.133,
+            "Outgoing Healing +": 0.09,
+            "Barrier Enhancement": 0.163
+        },
+        "sub1": {
+            "HP%": 0.02,
+            "Status Effect RES": 0.03,
+            "Incoming Healing +": 0.052
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "65": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Jungle",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {
+            "DEF": 80,
+            "EVA": 70,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG RES": 0.32,
+            "SPD": 0.063,
+            "Status Effect RES": 0.063,
+            "Incoming Healing +": 0.133,
+            "Outgoing Healing +": 0.09,
+            "Barrier Enhancement": 0.163
+        },
+        "sub1": {
+            "HP%": 0.02,
+            "Status Effect RES": 0.03,
+            "Incoming Healing +": 0.052
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "66": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Jungle_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {
+            "DEF": 87,
+            "EVA": 87,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG RES": 0.352,
+            "SPD": 0.082,
+            "Status Effect RES": 0.068,
+            "Incoming Healing +": 0.147,
+            "Outgoing Healing +": 0.099,
+            "Barrier Enhancement": 0.178
+        },
+        "sub1": {
+            "HP%": 0.022,
+            "Status Effect RES": 0.033,
+            "Incoming Healing +": 0.057
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "67": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Jungle_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {
+            "DEF": 87,
+            "EVA": 87,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG RES": 0.352,
+            "SPD": 0.082,
+            "Status Effect RES": 0.068,
+            "Incoming Healing +": 0.147,
+            "Outgoing Healing +": 0.099,
+            "Barrier Enhancement": 0.178
+        },
+        "sub1": {
+            "HP%": 0.022,
+            "Status Effect RES": 0.033,
+            "Incoming Healing +": 0.057
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "68": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Volcano",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.109,
+            "Ultimate Skill DMG AMP": 0.109,
+            "ATK%": 0.076,
+            "CRIT DMG": 0.15,
+            "Status Effect RES": 0.063,
+            "ASPD": 0.063,
+            "DEF Penetration": 0.069,
+            "Anti-Counter DMG": 0.128,
+            "Anti-Soldier DMG": 0.128,
+            "Anti-Mech DMG": 0.128
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.066,
+            "Ultimate Skill DMG AMP": 0.066,
+            "DEF Penetration": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "69": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Volcano",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.109,
+            "Ultimate Skill DMG AMP": 0.109,
+            "ATK%": 0.076,
+            "CRIT DMG": 0.15,
+            "Status Effect RES": 0.063,
+            "ASPD": 0.063,
+            "DEF Penetration": 0.069,
+            "Anti-Counter DMG": 0.128,
+            "Anti-Soldier DMG": 0.128,
+            "Anti-Mech DMG": 0.128
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.066,
+            "Ultimate Skill DMG AMP": 0.066,
+            "DEF Penetration": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "70": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Volcano_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.119,
+            "Ultimate Skill DMG AMP": 0.119,
+            "ATK%": 0.083,
+            "CRIT DMG": 0.163,
+            "Status Effect RES": 0.068,
+            "ASPD": 0.068,
+            "DEF Penetration": 0.079,
+            "Anti-Counter DMG": 0.142,
+            "Anti-Soldier DMG": 0.142,
+            "Anti-Mech DMG": 0.142
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.072,
+            "Ultimate Skill DMG AMP": 0.072,
+            "DEF Penetration": 0.026
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "71": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Volcano_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.119,
+            "Ultimate Skill DMG AMP": 0.119,
+            "ATK%": 0.083,
+            "CRIT DMG": 0.163,
+            "Status Effect RES": 0.068,
+            "ASPD": 0.068,
+            "DEF Penetration": 0.079,
+            "Anti-Counter DMG": 0.142,
+            "Anti-Soldier DMG": 0.142,
+            "Anti-Mech DMG": 0.142
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.072,
+            "Ultimate Skill DMG AMP": 0.072,
+            "DEF Penetration": 0.026
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "72": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Spectral",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14
+        },
+        "sub2": {
+            "SPD": 0.075,
+            "ASPD": 0.055,
+            "CRIT DMG": 0.15,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "73": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Spectral",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14
+        },
+        "sub2": {
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.038,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "74": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Spectral",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.154,
+            "Anti-Defender DMG": 0.154,
+            "Anti-Ranger DMG": 0.154,
+            "Anti-Sniper DMG": 0.154
+        },
+        "sub2": {
+            "CRIT DMG": 0.165,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.385,
+            "Status Effect RES": 0.043,
+            "Anti-Air DMG": 0.154,
+            "Anti-Ground DMG": 0.154,
+            "Anti-Striker DMG RES": 0.154,
+            "Anti-Defender DMG RES": 0.154,
+            "Anti-Ranger DMG RES": 0.154,
+            "Anti-Sniper DMG RES": 0.154,
+            "Anti-Air DMG RES": 0.154,
+            "Anti-Ground DMG RES": 0.154
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "75": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Phantom",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14
+        },
+        "sub2": {
+            "SPD": 0.075,
+            "ASPD": 0.055,
+            "CRIT DMG": 0.15,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "76": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Phantom",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14
+        },
+        "sub2": {
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.038,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "77": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Phantom",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.154,
+            "Anti-Defender DMG RES": 0.154,
+            "Anti-Ranger DMG RES": 0.154,
+            "Anti-Sniper DMG RES": 0.154
+        },
+        "sub2": {
+            "CRIT DMG": 0.165,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.385,
+            "Status Effect RES": 0.043,
+            "Anti-Striker DMG": 0.154,
+            "Anti-Defender DMG": 0.154,
+            "Anti-Ranger DMG": 0.154,
+            "Anti-Sniper DMG": 0.154,
+            "Anti-Air DMG": 0.154,
+            "Anti-Ground DMG": 0.154,
+            "Anti-Air DMG RES": 0.154,
+            "Anti-Ground DMG RES": 0.154
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "78": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Polymer",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.14,
+            "Anti-Soldier DMG RES": 0.14,
+            "Anti-Mech DMG RES": 0.14
+        },
+        "sub2": {
+            "DEF": 68,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "79": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Polymer",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.14,
+            "Anti-Soldier DMG RES": 0.14,
+            "Anti-Mech DMG RES": 0.14
+        },
+        "sub2": {
+            "ATK": 125,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.05,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "80": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Polymer_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "81": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Polymer_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "82": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Sc. Dante",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.16
+        },
+        "sub2": {
+            "DEF": 68,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "83": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Sc. Dante",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.16
+        },
+        "sub2": {
+            "ATK": 125,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.05,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "84": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Sc. Dante_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.18
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "85": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Sc. Dante_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.18
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "86": {
+        "equip_type": "Normal",
+        "gear_name": "Loyal",
+        "slot": "Weapon",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Weapon_Loyal",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG": 0.16,
+            "Anti-Soldier DMG": 0.16,
+            "Anti-Mech DMG": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "87": {
+        "equip_type": "Normal",
+        "gear_name": "Devoted",
+        "slot": "Armor",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Armor_Devoted",
+        "main_stat": [
+            "HP",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "88": {
+        "equip_type": "Normal",
+        "gear_name": "Courageous",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Courageous_1",
+        "main_stat": [
+            "HIT",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG": 0.176,
+            "Anti-Soldier DMG": 0.176,
+            "Anti-Mech DMG": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "89": {
+        "equip_type": "Normal",
+        "gear_name": "Sincere",
+        "slot": "Accessory",
+        "employee_type": "Soldier",
+        "icon": "Icon_Soldier_Accessory_Sincere_2",
+        "main_stat": [
+            "EVA",
+            206
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.176,
+            "Anti-Soldier DMG RES": 0.176,
+            "Anti-Mech DMG RES": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "90": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Maze",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "91": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Maze",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "92": {
+        "equip_type": "Normal",
+        "gear_name": "Maze",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Maze",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Ground DMG": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "93": {
+        "equip_type": "Normal",
+        "gear_name": "Challenger",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Challenger",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Special Skill DMG AMP": 0.33
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "94": {
+        "equip_type": "Normal",
+        "gear_name": "Challenger",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Challenger_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Special Skill DMG RDC": 0.36
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "95": {
+        "equip_type": "Normal",
+        "gear_name": "Hummingbird",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Hummingbird",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Melee DMG RES": 0.12,
+            "Ranged DMG RES": 0.12,
+            "DMG Taken RDC": 0.045
+        },
+        "sub2": {
+            "DEF": 81,
+            "CRIT": 81,
+            "HIT": 81,
+            "EVA": 81,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "96": {
+        "equip_type": "Normal",
+        "gear_name": "Gordias",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Gordias_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Melee DMG RES": 0.132
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "97": {
+        "equip_type": "Normal",
+        "gear_name": "Gordias",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Gordias_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Ranged DMG RES": 0.132
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "98": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Inhibitor",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "EVA": 65,
+            "HP": 1185,
+            "HP%": 0.065,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG RES": 0.097,
+            "Melee DMG RES": 0.097
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.04,
+            "Anti-Soldier DMG RES": 0.04,
+            "Anti-Mech DMG RES": 0.04
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "99": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Inhibitor",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {
+            "EVA": 65,
+            "HP": 1185,
+            "HP%": 0.065,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG RES": 0.097,
+            "Melee DMG RES": 0.097
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.04,
+            "Anti-Soldier DMG RES": 0.04,
+            "Anti-Mech DMG RES": 0.04
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "100": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Inhibitor_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {
+            "EVA": 72,
+            "HP": 1302,
+            "HP%": 0.07,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG RES": 0.107,
+            "Melee DMG RES": 0.107
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.05,
+            "Anti-Soldier DMG RES": 0.05,
+            "Anti-Mech DMG RES": 0.05
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "101": {
+        "equip_type": "Relic",
+        "gear_name": "Inhibitor",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Inhibitor_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {
+            "EVA": 72,
+            "HP": 1302,
+            "HP%": 0.07,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG RES": 0.107,
+            "Melee DMG RES": 0.107
+        },
+        "sub1": {
+            "Anti-Counter DMG RES": 0.05,
+            "Anti-Soldier DMG RES": 0.05,
+            "Anti-Mech DMG RES": 0.05
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "102": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Britra",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "ATK": 123,
+            "ATK%": 0.065,
+            "HIT": 65,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG": 0.097,
+            "Melee DMG": 0.097
+        },
+        "sub1": {
+            "CRIT": 36,
+            "HIT": 36,
+            "CRIT DMG": 0.08
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "103": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Britra",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {
+            "ATK": 123,
+            "ATK%": 0.065,
+            "HIT": 65,
+            "CRIT DMG": 0.128,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.088,
+            "SPD": 0.065,
+            "Status Effect RES": 0.048,
+            "Ranged DMG": 0.097,
+            "Melee DMG": 0.097
+        },
+        "sub1": {
+            "CRIT": 36,
+            "HIT": 36,
+            "CRIT DMG": 0.08
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "104": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Britra_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {
+            "ATK": 137,
+            "ATK%": 0.07,
+            "HIT": 72,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG": 0.107,
+            "Melee DMG": 0.107
+        },
+        "sub1": {
+            "CRIT": 40,
+            "HIT": 40,
+            "CRIT DMG": 0.088
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "105": {
+        "equip_type": "Relic",
+        "gear_name": "Britra",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Britra_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {
+            "ATK": 137,
+            "ATK%": 0.07,
+            "HIT": 72,
+            "CRIT DMG": 0.142,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.097,
+            "SPD": 0.07,
+            "Status Effect RES": 0.053,
+            "Ranged DMG": 0.107,
+            "Melee DMG": 0.107
+        },
+        "sub1": {
+            "CRIT": 40,
+            "HIT": 40,
+            "CRIT DMG": 0.088
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "106": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Swift",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "ATK": 152,
+            "ATK%": 0.076,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG": 0.15,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.115,
+            "SPD": 0.075,
+            "ASPD": 0.063,
+            "Status Effect RES": 0.063
+        },
+        "sub1": {
+            "SPD": 0.028,
+            "ASPD": 0.018,
+            "Skill Haste": 0.022
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "107": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Swift",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {
+            "ATK": 152,
+            "ATK%": 0.076,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG": 0.15,
+            "CRIT DMG RES": 0.32,
+            "Skill Haste": 0.115,
+            "SPD": 0.075,
+            "ASPD": 0.063,
+            "Status Effect RES": 0.063
+        },
+        "sub1": {
+            "SPD": 0.028,
+            "ASPD": 0.018,
+            "Skill Haste": 0.022
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "108": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Swift_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {
+            "ATK": 166,
+            "ATK%": 0.083,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG": 0.163,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.125,
+            "SPD": 0.082,
+            "ASPD": 0.068,
+            "Status Effect RES": 0.068
+        },
+        "sub1": {
+            "SPD": 0.031,
+            "ASPD": 0.02,
+            "Skill Haste": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "109": {
+        "equip_type": "Relic",
+        "gear_name": "Swift",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Swift_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {
+            "ATK": 166,
+            "ATK%": 0.083,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG": 0.163,
+            "CRIT DMG RES": 0.352,
+            "Skill Haste": 0.125,
+            "SPD": 0.082,
+            "ASPD": 0.068,
+            "Status Effect RES": 0.068
+        },
+        "sub1": {
+            "SPD": 0.031,
+            "ASPD": 0.02,
+            "Skill Haste": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "110": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Jungle",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "DEF": 80,
+            "EVA": 70,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG RES": 0.32,
+            "SPD": 0.063,
+            "Status Effect RES": 0.063,
+            "Incoming Healing +": 0.133,
+            "Outgoing Healing +": 0.09,
+            "Barrier Enhancement": 0.163
+        },
+        "sub1": {
+            "HP%": 0.02,
+            "Status Effect RES": 0.03,
+            "Incoming Healing +": 0.052
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "111": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Jungle",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {
+            "DEF": 80,
+            "EVA": 70,
+            "HP": 1465,
+            "HP%": 0.076,
+            "CRIT DMG RES": 0.32,
+            "SPD": 0.063,
+            "Status Effect RES": 0.063,
+            "Incoming Healing +": 0.133,
+            "Outgoing Healing +": 0.09,
+            "Barrier Enhancement": 0.163
+        },
+        "sub1": {
+            "HP%": 0.02,
+            "Status Effect RES": 0.03,
+            "Incoming Healing +": 0.052
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "112": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Jungle_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {
+            "DEF": 87,
+            "EVA": 87,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG RES": 0.352,
+            "SPD": 0.082,
+            "Status Effect RES": 0.068,
+            "Incoming Healing +": 0.147,
+            "Outgoing Healing +": 0.099,
+            "Barrier Enhancement": 0.178
+        },
+        "sub1": {
+            "HP%": 0.022,
+            "Status Effect RES": 0.033,
+            "Incoming Healing +": 0.057
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "113": {
+        "equip_type": "Relic",
+        "gear_name": "Jungle",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Jungle_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {
+            "DEF": 87,
+            "EVA": 87,
+            "HP": 1598,
+            "HP%": 0.083,
+            "CRIT DMG RES": 0.352,
+            "SPD": 0.082,
+            "Status Effect RES": 0.068,
+            "Incoming Healing +": 0.147,
+            "Outgoing Healing +": 0.099,
+            "Barrier Enhancement": 0.178
+        },
+        "sub1": {
+            "HP%": 0.022,
+            "Status Effect RES": 0.033,
+            "Incoming Healing +": 0.057
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "114": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Volcano",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.109,
+            "Ultimate Skill DMG AMP": 0.109,
+            "ATK%": 0.076,
+            "CRIT DMG": 0.15,
+            "Status Effect RES": 0.063,
+            "ASPD": 0.063,
+            "DEF Penetration": 0.069,
+            "Anti-Counter DMG": 0.128,
+            "Anti-Soldier DMG": 0.128,
+            "Anti-Mech DMG": 0.128
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.066,
+            "Ultimate Skill DMG AMP": 0.066,
+            "DEF Penetration": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Supporter DMG": 0.16,
+            "Anti-Siege DMG": 0.16,
+            "Anti-Tower DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "115": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Volcano",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.109,
+            "Ultimate Skill DMG AMP": 0.109,
+            "ATK%": 0.076,
+            "CRIT DMG": 0.15,
+            "Status Effect RES": 0.063,
+            "ASPD": 0.063,
+            "DEF Penetration": 0.069,
+            "Anti-Counter DMG": 0.128,
+            "Anti-Soldier DMG": 0.128,
+            "Anti-Mech DMG": 0.128
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.066,
+            "Ultimate Skill DMG AMP": 0.066,
+            "DEF Penetration": 0.024
+        },
+        "sub2": {
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Supporter DMG RES": 0.16,
+            "Anti-Siege DMG RES": 0.16,
+            "Anti-Tower DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "116": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Volcano_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.119,
+            "Ultimate Skill DMG AMP": 0.119,
+            "ATK%": 0.083,
+            "CRIT DMG": 0.163,
+            "Status Effect RES": 0.068,
+            "ASPD": 0.068,
+            "DEF Penetration": 0.079,
+            "Anti-Counter DMG": 0.142,
+            "Anti-Soldier DMG": 0.142,
+            "Anti-Mech DMG": 0.142
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.072,
+            "Ultimate Skill DMG AMP": 0.072,
+            "DEF Penetration": 0.026
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "117": {
+        "equip_type": "Relic",
+        "gear_name": "Volcano",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Volcano_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {
+            "Special Skill DMG AMP": 0.119,
+            "Ultimate Skill DMG AMP": 0.119,
+            "ATK%": 0.083,
+            "CRIT DMG": 0.163,
+            "Status Effect RES": 0.068,
+            "ASPD": 0.068,
+            "DEF Penetration": 0.079,
+            "Anti-Counter DMG": 0.142,
+            "Anti-Soldier DMG": 0.142,
+            "Anti-Mech DMG": 0.142
+        },
+        "sub1": {
+            "Special Skill DMG AMP": 0.072,
+            "Ultimate Skill DMG AMP": 0.072,
+            "DEF Penetration": 0.026
+        },
+        "sub2": {
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Supporter DMG": 0.176,
+            "Anti-Siege DMG": 0.176,
+            "Anti-Tower DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Ground DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Supporter DMG RES": 0.176,
+            "Anti-Siege DMG RES": 0.176,
+            "Anti-Tower DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176,
+            "Anti-Ground DMG RES": 0.176
+        },
+        "set_options": [
+            "DEF Penetration",
+            "Anti-Air DMG",
+            "Anti-Ground DMG",
+            "SPD",
+            "Special Skill DMG AMP",
+            "Ultimate Skill DMG AMP",
+            "Cooldown II",
+            "ASPD II",
+            "Status Effect RES",
+            "Incoming Healing +",
+            "Anti-Air DMG RES",
+            "Anti-Ground DMG RES",
+            "Melee DMG RES",
+            "Ranged DMG RES",
+            "Healing Enhancement",
+            "HP II"
+        ]
+    },
+    "118": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Spectral",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14
+        },
+        "sub2": {
+            "SPD": 0.075,
+            "ASPD": 0.055,
+            "CRIT DMG": 0.15,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "119": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Spectral",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14
+        },
+        "sub2": {
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.038,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "120": {
+        "equip_type": "Normal",
+        "gear_name": "Spectral",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Spectral",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG": 0.154,
+            "Anti-Defender DMG": 0.154,
+            "Anti-Ranger DMG": 0.154,
+            "Anti-Sniper DMG": 0.154
+        },
+        "sub2": {
+            "CRIT DMG": 0.165,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.385,
+            "Status Effect RES": 0.043,
+            "Anti-Air DMG": 0.154,
+            "Anti-Ground DMG": 0.154,
+            "Anti-Striker DMG RES": 0.154,
+            "Anti-Defender DMG RES": 0.154,
+            "Anti-Ranger DMG RES": 0.154,
+            "Anti-Sniper DMG RES": 0.154,
+            "Anti-Air DMG RES": 0.154,
+            "Anti-Ground DMG RES": 0.154
+        },
+        "set_options": [
+            "Spectral Bullet",
+            "Spectral Gear",
+            "Spectral Chain",
+            "Spectral Smite",
+            "Spectral Blaze",
+            "Spectral Spirit"
+        ]
+    },
+    "121": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Phantom",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14
+        },
+        "sub2": {
+            "SPD": 0.075,
+            "ASPD": 0.055,
+            "CRIT DMG": 0.15,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "122": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Phantom",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14
+        },
+        "sub2": {
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.038,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "123": {
+        "equip_type": "Normal",
+        "gear_name": "Phantom",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Phantom",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Striker DMG RES": 0.154,
+            "Anti-Defender DMG RES": 0.154,
+            "Anti-Ranger DMG RES": 0.154,
+            "Anti-Sniper DMG RES": 0.154
+        },
+        "sub2": {
+            "CRIT DMG": 0.165,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.385,
+            "Status Effect RES": 0.043,
+            "Anti-Striker DMG": 0.154,
+            "Anti-Defender DMG": 0.154,
+            "Anti-Ranger DMG": 0.154,
+            "Anti-Sniper DMG": 0.154,
+            "Anti-Air DMG": 0.154,
+            "Anti-Ground DMG": 0.154,
+            "Anti-Air DMG RES": 0.154,
+            "Anti-Ground DMG RES": 0.154
+        },
+        "set_options": [
+            "Phantom Armor",
+            "Phantom Shaft",
+            "Phantom Barrier",
+            "Phantom Protection",
+            "Phantom Glare",
+            "Phantom Soul"
+        ]
+    },
+    "124": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Polymer",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.14,
+            "Anti-Soldier DMG RES": 0.14,
+            "Anti-Mech DMG RES": 0.14
+        },
+        "sub2": {
+            "DEF": 68,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "125": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Polymer",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.14,
+            "Anti-Soldier DMG RES": 0.14,
+            "Anti-Mech DMG RES": 0.14
+        },
+        "sub2": {
+            "ATK": 125,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.05,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "126": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Polymer_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "127": {
+        "equip_type": "Normal",
+        "gear_name": "Polymer",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Polymer_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "128": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Sc. Dante",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.16
+        },
+        "sub2": {
+            "DEF": 68,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "SPD": 0.08,
+            "ASPD": 0.06,
+            "Anti-Striker DMG": 0.14,
+            "Anti-Defender DMG": 0.14,
+            "Anti-Ranger DMG": 0.14,
+            "Anti-Sniper DMG": 0.14,
+            "Anti-Air DMG": 0.14,
+            "Anti-Ground DMG": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "129": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Sc. Dante",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.16
+        },
+        "sub2": {
+            "ATK": 125,
+            "CRIT": 68,
+            "HIT": 68,
+            "EVA": 68,
+            "Skill Haste": 0.1,
+            "CRIT DMG RES": 0.35,
+            "Status Effect RES": 0.05,
+            "Anti-Striker DMG RES": 0.14,
+            "Anti-Defender DMG RES": 0.14,
+            "Anti-Ranger DMG RES": 0.14,
+            "Anti-Sniper DMG RES": 0.14,
+            "Anti-Air DMG RES": 0.14,
+            "Anti-Ground DMG RES": 0.14
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "130": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Sc. Dante_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.18
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "131": {
+        "equip_type": "Normal",
+        "gear_name": "Sc. Dante",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Sc. Dante_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "CRIT DMG": 0.18
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Ground DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16,
+            "Anti-Ground DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "132": {
+        "equip_type": "Normal",
+        "gear_name": "Loyal",
+        "slot": "Weapon",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Weapon_Loyal",
+        "main_stat": [
+            "ATK",
+            399
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG": 0.16,
+            "Anti-Soldier DMG": 0.16,
+            "Anti-Mech DMG": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "133": {
+        "equip_type": "Normal",
+        "gear_name": "Devoted",
+        "slot": "Armor",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Armor_Devoted",
+        "main_stat": [
+            "HP",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.16,
+            "Anti-Soldier DMG RES": 0.16,
+            "Anti-Mech DMG RES": 0.16
+        },
+        "sub2": {
+            "HP": 1480,
+            "ATK": 154,
+            "DEF": 81,
+            "CRIT": 81,
+            "CRIT DMG": 0.16,
+            "Skill Haste": 0.11,
+            "CRIT DMG RES": 0.4,
+            "Status Effect RES": 0.06,
+            "Anti-Striker DMG": 0.16,
+            "Anti-Defender DMG": 0.16,
+            "Anti-Ranger DMG": 0.16,
+            "Anti-Sniper DMG": 0.16,
+            "Anti-Air DMG": 0.16,
+            "Anti-Striker DMG RES": 0.16,
+            "Anti-Defender DMG RES": 0.16,
+            "Anti-Ranger DMG RES": 0.16,
+            "Anti-Sniper DMG RES": 0.16,
+            "Anti-Air DMG RES": 0.16
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "134": {
+        "equip_type": "Normal",
+        "gear_name": "Courageous",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Courageous_1",
+        "main_stat": [
+            "HIT",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG": 0.176,
+            "Anti-Soldier DMG": 0.176,
+            "Anti-Mech DMG": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    },
+    "135": {
+        "equip_type": "Normal",
+        "gear_name": "Sincere",
+        "slot": "Accessory",
+        "employee_type": "Mech",
+        "icon": "Icon_Mech_Accessory_Sincere_2",
+        "main_stat": [
+            "EVA",
+            309
+        ],
+        "latent": {},
+        "sub1": {
+            "Anti-Counter DMG RES": 0.176,
+            "Anti-Soldier DMG RES": 0.176,
+            "Anti-Mech DMG RES": 0.176
+        },
+        "sub2": {
+            "HP": 1628,
+            "ATK": 170,
+            "DEF": 90,
+            "CRIT": 90,
+            "CRIT DMG": 0.176,
+            "Skill Haste": 0.121,
+            "CRIT DMG RES": 0.44,
+            "Status Effect RES": 0.066,
+            "Anti-Striker DMG": 0.176,
+            "Anti-Defender DMG": 0.176,
+            "Anti-Ranger DMG": 0.176,
+            "Anti-Sniper DMG": 0.176,
+            "Anti-Air DMG": 0.176,
+            "Anti-Striker DMG RES": 0.176,
+            "Anti-Defender DMG RES": 0.176,
+            "Anti-Ranger DMG RES": 0.176,
+            "Anti-Sniper DMG RES": 0.176,
+            "Anti-Air DMG RES": 0.176
+        },
+        "set_options": [
+            "HP",
+            "DEF",
+            "EVA",
+            "ATK",
+            "CRIT",
+            "HIT",
+            "Anti-Striker",
+            "Anti-Defender",
+            "Anti-Ranger",
+            "Anti-Sniper",
+            "Anti-Supporter",
+            "Anti-Tower",
+            "Anti-Siege",
+            "CRIT DMG",
+            "Cooldown",
+            "ASPD"
+        ]
+    }
+}
