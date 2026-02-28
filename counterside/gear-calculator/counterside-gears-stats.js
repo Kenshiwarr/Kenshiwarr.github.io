@@ -1043,11 +1043,13 @@ const GEAR_SETS_LIST = {
       
       var gdata = GEARS[this.#selectedGearData];
 
+      if (gdata != undefined) {
+        
       
-      let newgear = Object.values(GEARS).filter(item => item.employee_type === GearForType && item.slot === gdata["slot"] && item.gear_name === gdata["gear_name"]);
+      
+      let newgear = Object.values(GEARS).filter(item => item.employee_type === GearForType && item.slot === gdata["slot"] && item.gear_name === gdata["gear_name"] && item.main_stat[0] === gdata["main_stat"][0]);
       console.log("aas: ");
       console.log(newgear);
-      console.log(gdata);
       
       
       
@@ -1078,8 +1080,11 @@ const GEAR_SETS_LIST = {
           $('#' + `${this.#eqSlot}` + ContainerType).css('background-image',"url('"+`${this.#eqIcon}`+"')");
 
       }
+      } else {
+        this.removeGear();
+      }
 
-      //this.removeGear();
+      //
 
     timerEnd('gearUpdateTimer');
     console.timeEnd('gearUpdateTimer');
@@ -2337,7 +2342,7 @@ for (let i = 0, n = selectedGearSets.length; i < n; i++) {
  const selectedGearSetList_loc = Object.keys(selectedGearSetList);
 
 
- $('#selectedGearModal').html('<div class="text-center"><div class="fw-bold">Select Set</div><div id="gearSetOptions"></div> </div> <div class="img-fluid rounded mx-auto d-block" id="selectedGearConfirmation" value="' + $(this).attr('value') +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + selection_modal_gear_data["icon"] +  '.png' + '" class="card-img-top mx-auto d-block" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + gear_type_loc + '</h5> <div id="subNameValueSplit" class="row row-cols-md-2 g-4"> <p class="card-text">  </p> <p class="card-value"> </p> </div> </div>  </div>')
+ $('#selectedGearModal').html('<div class="text-center"><div class="fw-bold">Select Set</div><div id="gearSetOptions"></div> </div> <div class="img-fluid rounded mx-auto d-block" id="selectedGearConfirmation" value="' + $(this).attr('value') +  '"> <img src="'+ 'cs_gears-icons/Special Gear/'+selectedGearUnitType+'/' + selection_modal_gear_data["icon"] +  '.png' + '" class="card-img-top mx-auto d-block" alt="..."> <div class="card-body"> <h5 class="card-title text-truncate">' + selection_modal_gear_data['gear_name'] + '</h5> <div id="subNameValueSplit" class="row row-cols-md-2 g-4"> <p class="card-text">  </p> <p class="card-value"> </p> </div> </div>  </div>')
 
  if (selection_modal_gear_data["equip_type"] != 'Exclusive' ) {
   $('#GearModalTitle').text(selectedGearUnitType + ' ' + gear_slot_loc);
@@ -2541,6 +2546,9 @@ $('#GearConfirmationBtn').on('click' , function(){
 
   console.log('selected gear = ' + selected_gear) */
 
+  console.log("confirmation_gear_data = ");
+  console.log(confirmation_gear_data);
+  
 
 
   var substat1_value = $('#sub1formSelect').val();
