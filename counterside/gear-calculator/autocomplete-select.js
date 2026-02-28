@@ -372,13 +372,13 @@ link.click(); // This will download the data file named "my_data.csv". */
 
 
       if (Weapon.selectedGearData != 0) {
-        Weapon.replaceGearByUnitType(currentUnitType,'Container',total_gear_data_unit,GEAR_MAIN_STATS_VALUES_T7_unit); 
+        Weapon.replaceGearByUnitType(currentUnitType,'Container'); 
       } if (Armor.selectedGearData != 0) {
-        Armor.replaceGearByUnitType(currentUnitType,'Container',total_gear_data_unit,GEAR_MAIN_STATS_VALUES_T7_unit);
+        Armor.replaceGearByUnitType(currentUnitType,'Container');
       } if (Accessory1.selectedGearData != 0) {
-        Accessory1.replaceGearByUnitType(currentUnitType,'Container',total_gear_data_unit,GEAR_MAIN_STATS_VALUES_T7_unit);
+        Accessory1.replaceGearByUnitType(currentUnitType,'Container');
       } if (Accessory2.selectedGearData != 0) {
-        Accessory2.replaceGearByUnitType(currentUnitType,'Container',total_gear_data_unit,GEAR_MAIN_STATS_VALUES_T7_unit);
+        Accessory2.replaceGearByUnitType(currentUnitType,'Container');
       }
 
 
@@ -618,6 +618,8 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
   }
 
+console.log("gear_stats = ");
+console.log(gear_stats);
 
       for (let i = 0; i < gear_stats.length; i++) {
         var if_set_double = BONUS_STATS_LIST.indexOf(gear_stats[i][0]);
@@ -625,6 +627,7 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
           bonus_stats[if_set_double] = bonus_stats[if_set_double] + Number(gear_stats[i][1]); 
         }
       };
+
 
       cat1_dmg = 0;
       cat2_dmg = 0;

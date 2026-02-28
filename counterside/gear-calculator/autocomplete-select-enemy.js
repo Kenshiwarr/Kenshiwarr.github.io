@@ -99,13 +99,13 @@
       
 
       if (enemy_Weapon.selectedGearData != 0) {
-        enemy_Weapon.replaceGearByUnitType(currentTargetType,'Container_enemy',total_gear_data_target,GEAR_MAIN_STATS_VALUES_T7_target); 
+        enemy_Weapon.replaceGearByUnitType(currentTargetType,'Container_enemy'); 
       } if (enemy_Armor.selectedGearData != 0) {
-        enemy_Armor.replaceGearByUnitType(currentTargetType,'Container_enemy',total_gear_data_target,GEAR_MAIN_STATS_VALUES_T7_target);
+        enemy_Armor.replaceGearByUnitType(currentTargetType,'Container_enemy');
       } if (enemy_Accessory1.selectedGearData != 0) {
-        enemy_Accessory1.replaceGearByUnitType(currentTargetType,'Container_enemy',total_gear_data_target,GEAR_MAIN_STATS_VALUES_T7_target);
+        enemy_Accessory1.replaceGearByUnitType(currentTargetType,'Container_enemy');
       } if (enemy_Accessory2.selectedGearData != 0) {
-        enemy_Accessory2.replaceGearByUnitType(currentTargetType,'Container_enemy',total_gear_data_target,GEAR_MAIN_STATS_VALUES_T7_target);
+        enemy_Accessory2.replaceGearByUnitType(currentTargetType,'Container_enemy');
       }
 
 
