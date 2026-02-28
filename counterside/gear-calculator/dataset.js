@@ -4177,8 +4177,9 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 ""]
 
 
-const GEARS = {
-    "0": {
+const GEARS = [
+    {
+        "id": 0,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Weapon",
@@ -4231,7 +4232,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "1": {
+    {
+        "id": 1,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Armor",
@@ -4284,7 +4286,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "2": {
+    {
+        "id": 2,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Accessory",
@@ -4337,7 +4340,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "3": {
+    {
+        "id": 3,
         "equip_type": "Normal",
         "gear_name": "Challenger",
         "slot": "Weapon",
@@ -4390,7 +4394,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "4": {
+    {
+        "id": 4,
         "equip_type": "Normal",
         "gear_name": "Challenger",
         "slot": "Armor",
@@ -4443,7 +4448,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "5": {
+    {
+        "id": 5,
         "equip_type": "Normal",
         "gear_name": "Hummingbird",
         "slot": "Weapon",
@@ -4496,7 +4502,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "6": {
+    {
+        "id": 6,
         "equip_type": "Normal",
         "gear_name": "Gordias",
         "slot": "Accessory",
@@ -4551,7 +4558,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "7": {
+    {
+        "id": 7,
         "equip_type": "Normal",
         "gear_name": "Gordias",
         "slot": "Accessory",
@@ -4606,7 +4614,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "8": {
+    {
+        "id": 8,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Weapon",
@@ -4663,7 +4672,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "9": {
+    {
+        "id": 9,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Armor",
@@ -4720,7 +4730,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "10": {
+    {
+        "id": 10,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Accessory",
@@ -4786,7 +4797,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "11": {
+    {
+        "id": 11,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Accessory",
@@ -4852,7 +4864,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "12": {
+    {
+        "id": 12,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Weapon",
@@ -4909,7 +4922,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "13": {
+    {
+        "id": 13,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Armor",
@@ -4966,7 +4980,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "14": {
+    {
+        "id": 14,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Accessory",
@@ -5032,7 +5047,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "15": {
+    {
+        "id": 15,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Accessory",
@@ -5098,7 +5114,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "16": {
+    {
+        "id": 16,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Weapon",
@@ -5155,7 +5172,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "17": {
+    {
+        "id": 17,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Armor",
@@ -5212,7 +5230,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "18": {
+    {
+        "id": 18,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Accessory",
@@ -5278,7 +5297,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "19": {
+    {
+        "id": 19,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Accessory",
@@ -5344,7 +5364,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "20": {
+    {
+        "id": 20,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Weapon",
@@ -5401,7 +5422,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "21": {
+    {
+        "id": 21,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Armor",
@@ -5458,7 +5480,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "22": {
+    {
+        "id": 22,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Accessory",
@@ -5524,7 +5547,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "23": {
+    {
+        "id": 23,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Accessory",
@@ -5590,7 +5614,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "24": {
+    {
+        "id": 24,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Weapon",
@@ -5647,7 +5672,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "25": {
+    {
+        "id": 25,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Armor",
@@ -5704,7 +5730,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "26": {
+    {
+        "id": 26,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Accessory",
@@ -5770,7 +5797,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "27": {
+    {
+        "id": 27,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Accessory",
@@ -5836,7 +5864,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "28": {
+    {
+        "id": 28,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Weapon",
@@ -5869,7 +5898,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "29": {
+    {
+        "id": 29,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Armor",
@@ -5906,7 +5936,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "30": {
+    {
+        "id": 30,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Accessory",
@@ -5946,7 +5977,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "31": {
+    {
+        "id": 31,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Weapon",
@@ -5979,7 +6011,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "32": {
+    {
+        "id": 32,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Armor",
@@ -6016,7 +6049,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "33": {
+    {
+        "id": 33,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Accessory",
@@ -6056,7 +6090,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "34": {
+    {
+        "id": 34,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Weapon",
@@ -6105,7 +6140,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "35": {
+    {
+        "id": 35,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Armor",
@@ -6155,7 +6191,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "36": {
+    {
+        "id": 36,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Accessory",
@@ -6211,7 +6248,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "37": {
+    {
+        "id": 37,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Accessory",
@@ -6267,7 +6305,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "38": {
+    {
+        "id": 38,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Weapon",
@@ -6314,7 +6353,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "39": {
+    {
+        "id": 39,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Armor",
@@ -6362,7 +6402,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "40": {
+    {
+        "id": 40,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Accessory",
@@ -6416,7 +6457,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "41": {
+    {
+        "id": 41,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Accessory",
@@ -6470,7 +6512,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "42": {
+    {
+        "id": 42,
         "equip_type": "Normal",
         "gear_name": "Loyal",
         "slot": "Weapon",
@@ -6525,7 +6568,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "43": {
+    {
+        "id": 43,
         "equip_type": "Normal",
         "gear_name": "Devoted",
         "slot": "Armor",
@@ -6580,7 +6624,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "44": {
+    {
+        "id": 44,
         "equip_type": "Normal",
         "gear_name": "Courageous",
         "slot": "Accessory",
@@ -6635,7 +6680,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "45": {
+    {
+        "id": 45,
         "equip_type": "Normal",
         "gear_name": "Sincere",
         "slot": "Accessory",
@@ -6690,7 +6736,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "46": {
+    {
+        "id": 46,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Weapon",
@@ -6743,7 +6790,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "47": {
+    {
+        "id": 47,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Armor",
@@ -6796,7 +6844,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "48": {
+    {
+        "id": 48,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Accessory",
@@ -6849,7 +6898,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "49": {
+    {
+        "id": 49,
         "equip_type": "Normal",
         "gear_name": "Hummingbird",
         "slot": "Weapon",
@@ -6902,7 +6952,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "50": {
+    {
+        "id": 50,
         "equip_type": "Normal",
         "gear_name": "Gordias",
         "slot": "Accessory",
@@ -6957,7 +7008,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "51": {
+    {
+        "id": 51,
         "equip_type": "Normal",
         "gear_name": "Gordias",
         "slot": "Accessory",
@@ -7012,7 +7064,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "52": {
+    {
+        "id": 52,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Weapon",
@@ -7069,7 +7122,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "53": {
+    {
+        "id": 53,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Armor",
@@ -7126,7 +7180,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "54": {
+    {
+        "id": 54,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Accessory",
@@ -7192,7 +7247,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "55": {
+    {
+        "id": 55,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Accessory",
@@ -7258,7 +7314,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "56": {
+    {
+        "id": 56,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Weapon",
@@ -7315,7 +7372,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "57": {
+    {
+        "id": 57,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Armor",
@@ -7372,7 +7430,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "58": {
+    {
+        "id": 58,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Accessory",
@@ -7438,7 +7497,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "59": {
+    {
+        "id": 59,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Accessory",
@@ -7504,7 +7564,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "60": {
+    {
+        "id": 60,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Weapon",
@@ -7561,7 +7622,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "61": {
+    {
+        "id": 61,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Armor",
@@ -7618,7 +7680,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "62": {
+    {
+        "id": 62,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Accessory",
@@ -7684,7 +7747,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "63": {
+    {
+        "id": 63,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Accessory",
@@ -7750,7 +7814,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "64": {
+    {
+        "id": 64,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Weapon",
@@ -7807,7 +7872,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "65": {
+    {
+        "id": 65,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Armor",
@@ -7864,7 +7930,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "66": {
+    {
+        "id": 66,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Accessory",
@@ -7930,7 +7997,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "67": {
+    {
+        "id": 67,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Accessory",
@@ -7996,7 +8064,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "68": {
+    {
+        "id": 68,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Weapon",
@@ -8053,7 +8122,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "69": {
+    {
+        "id": 69,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Armor",
@@ -8110,7 +8180,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "70": {
+    {
+        "id": 70,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Accessory",
@@ -8176,7 +8247,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "71": {
+    {
+        "id": 71,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Accessory",
@@ -8242,7 +8314,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "72": {
+    {
+        "id": 72,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Weapon",
@@ -8275,7 +8348,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "73": {
+    {
+        "id": 73,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Armor",
@@ -8312,7 +8386,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "74": {
+    {
+        "id": 74,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Accessory",
@@ -8352,7 +8427,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "75": {
+    {
+        "id": 75,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Weapon",
@@ -8385,7 +8461,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "76": {
+    {
+        "id": 76,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Armor",
@@ -8422,7 +8499,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "77": {
+    {
+        "id": 77,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Accessory",
@@ -8462,7 +8540,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "78": {
+    {
+        "id": 78,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Weapon",
@@ -8511,7 +8590,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "79": {
+    {
+        "id": 79,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Armor",
@@ -8561,7 +8641,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "80": {
+    {
+        "id": 80,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Accessory",
@@ -8617,7 +8698,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "81": {
+    {
+        "id": 81,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Accessory",
@@ -8673,7 +8755,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "82": {
+    {
+        "id": 82,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Weapon",
@@ -8720,7 +8803,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "83": {
+    {
+        "id": 83,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Armor",
@@ -8768,7 +8852,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "84": {
+    {
+        "id": 84,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Accessory",
@@ -8822,7 +8907,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "85": {
+    {
+        "id": 85,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Accessory",
@@ -8876,7 +8962,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "86": {
+    {
+        "id": 86,
         "equip_type": "Normal",
         "gear_name": "Loyal",
         "slot": "Weapon",
@@ -8931,7 +9018,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "87": {
+    {
+        "id": 87,
         "equip_type": "Normal",
         "gear_name": "Devoted",
         "slot": "Armor",
@@ -8986,7 +9074,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "88": {
+    {
+        "id": 88,
         "equip_type": "Normal",
         "gear_name": "Courageous",
         "slot": "Accessory",
@@ -9041,7 +9130,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "89": {
+    {
+        "id": 89,
         "equip_type": "Normal",
         "gear_name": "Sincere",
         "slot": "Accessory",
@@ -9096,7 +9186,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "90": {
+    {
+        "id": 90,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Weapon",
@@ -9149,7 +9240,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "91": {
+    {
+        "id": 91,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Armor",
@@ -9202,7 +9294,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "92": {
+    {
+        "id": 92,
         "equip_type": "Normal",
         "gear_name": "Maze",
         "slot": "Accessory",
@@ -9255,7 +9348,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "93": {
+    {
+        "id": 93,
         "equip_type": "Normal",
         "gear_name": "Challenger",
         "slot": "Weapon",
@@ -9308,7 +9402,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "94": {
+    {
+        "id": 94,
         "equip_type": "Normal",
         "gear_name": "Challenger",
         "slot": "Accessory",
@@ -9361,7 +9456,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "95": {
+    {
+        "id": 95,
         "equip_type": "Normal",
         "gear_name": "Hummingbird",
         "slot": "Weapon",
@@ -9414,7 +9510,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "96": {
+    {
+        "id": 96,
         "equip_type": "Normal",
         "gear_name": "Gordias",
         "slot": "Accessory",
@@ -9469,7 +9566,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "97": {
+    {
+        "id": 97,
         "equip_type": "Normal",
         "gear_name": "Gordias",
         "slot": "Accessory",
@@ -9524,7 +9622,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "98": {
+    {
+        "id": 98,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Weapon",
@@ -9581,7 +9680,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "99": {
+    {
+        "id": 99,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Armor",
@@ -9638,7 +9738,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "100": {
+    {
+        "id": 100,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Accessory",
@@ -9704,7 +9805,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "101": {
+    {
+        "id": 101,
         "equip_type": "Relic",
         "gear_name": "Inhibitor",
         "slot": "Accessory",
@@ -9770,7 +9872,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "102": {
+    {
+        "id": 102,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Weapon",
@@ -9827,7 +9930,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "103": {
+    {
+        "id": 103,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Armor",
@@ -9884,7 +9988,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "104": {
+    {
+        "id": 104,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Accessory",
@@ -9950,7 +10055,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "105": {
+    {
+        "id": 105,
         "equip_type": "Relic",
         "gear_name": "Britra",
         "slot": "Accessory",
@@ -10016,7 +10122,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "106": {
+    {
+        "id": 106,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Weapon",
@@ -10073,7 +10180,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "107": {
+    {
+        "id": 107,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Armor",
@@ -10130,7 +10238,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "108": {
+    {
+        "id": 108,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Accessory",
@@ -10196,7 +10305,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "109": {
+    {
+        "id": 109,
         "equip_type": "Relic",
         "gear_name": "Swift",
         "slot": "Accessory",
@@ -10262,7 +10372,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "110": {
+    {
+        "id": 110,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Weapon",
@@ -10319,7 +10430,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "111": {
+    {
+        "id": 111,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Armor",
@@ -10376,7 +10488,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "112": {
+    {
+        "id": 112,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Accessory",
@@ -10442,7 +10555,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "113": {
+    {
+        "id": 113,
         "equip_type": "Relic",
         "gear_name": "Jungle",
         "slot": "Accessory",
@@ -10508,7 +10622,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "114": {
+    {
+        "id": 114,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Weapon",
@@ -10565,7 +10680,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "115": {
+    {
+        "id": 115,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Armor",
@@ -10622,7 +10738,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "116": {
+    {
+        "id": 116,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Accessory",
@@ -10688,7 +10805,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "117": {
+    {
+        "id": 117,
         "equip_type": "Relic",
         "gear_name": "Volcano",
         "slot": "Accessory",
@@ -10754,7 +10872,8 @@ const GEARS = {
             "HP II"
         ]
     },
-    "118": {
+    {
+        "id": 118,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Weapon",
@@ -10787,7 +10906,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "119": {
+    {
+        "id": 119,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Armor",
@@ -10824,7 +10944,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "120": {
+    {
+        "id": 120,
         "equip_type": "Normal",
         "gear_name": "Spectral",
         "slot": "Accessory",
@@ -10864,7 +10985,8 @@ const GEARS = {
             "Spectral Spirit"
         ]
     },
-    "121": {
+    {
+        "id": 121,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Weapon",
@@ -10897,7 +11019,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "122": {
+    {
+        "id": 122,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Armor",
@@ -10934,7 +11057,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "123": {
+    {
+        "id": 123,
         "equip_type": "Normal",
         "gear_name": "Phantom",
         "slot": "Accessory",
@@ -10974,7 +11098,8 @@ const GEARS = {
             "Phantom Soul"
         ]
     },
-    "124": {
+    {
+        "id": 124,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Weapon",
@@ -11023,7 +11148,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "125": {
+    {
+        "id": 125,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Armor",
@@ -11073,7 +11199,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "126": {
+    {
+        "id": 126,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Accessory",
@@ -11129,7 +11256,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "127": {
+    {
+        "id": 127,
         "equip_type": "Normal",
         "gear_name": "Polymer",
         "slot": "Accessory",
@@ -11185,7 +11313,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "128": {
+    {
+        "id": 128,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Weapon",
@@ -11232,7 +11361,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "129": {
+    {
+        "id": 129,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Armor",
@@ -11280,7 +11410,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "130": {
+    {
+        "id": 130,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Accessory",
@@ -11334,7 +11465,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "131": {
+    {
+        "id": 131,
         "equip_type": "Normal",
         "gear_name": "Sc. Dante",
         "slot": "Accessory",
@@ -11388,7 +11520,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "132": {
+    {
+        "id": 132,
         "equip_type": "Normal",
         "gear_name": "Loyal",
         "slot": "Weapon",
@@ -11443,7 +11576,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "133": {
+    {
+        "id": 133,
         "equip_type": "Normal",
         "gear_name": "Devoted",
         "slot": "Armor",
@@ -11498,7 +11632,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "134": {
+    {
+        "id": 134,
         "equip_type": "Normal",
         "gear_name": "Courageous",
         "slot": "Accessory",
@@ -11553,7 +11688,8 @@ const GEARS = {
             "ASPD"
         ]
     },
-    "135": {
+    {
+        "id": 135,
         "equip_type": "Normal",
         "gear_name": "Sincere",
         "slot": "Accessory",
@@ -11608,4 +11744,4 @@ const GEARS = {
             "ASPD"
         ]
     }
-}
+]
