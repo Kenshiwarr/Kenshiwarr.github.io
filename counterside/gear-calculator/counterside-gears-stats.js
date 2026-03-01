@@ -1159,7 +1159,7 @@ const GEAR_SETS_LIST = {
     }
     }
 
-    setValuesByUrl(urlGearData,searchGearData,eq_Slot) {
+    setValuesByUrl(urlGearData,eq_Slot) {
 
 
       let ugdt = urlGearData.split(",");

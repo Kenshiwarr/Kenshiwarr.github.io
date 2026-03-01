@@ -118,10 +118,9 @@ if (Uname != null) {
     /* let unit_gdata = JSON.parse(atob(gearUnit_DataUrl)); */
     let unit_gdata = gearUnit_DataUrl.split(";");
     console.log("U Uname  = " + unit_gdata[0].split(",")[0])
-    let tgdu = total_gear_data_unit.slice(1).split('","');
 
     if (unit_gdata[0] !== '') {
-      Weapon.setValuesByUrl(unit_gdata[0],tgdu[unit_gdata[0].split(",")[0]],"Weapon");
+      Weapon.setValuesByUrl(unit_gdata[0],"Weapon");
 
       Weapon.setGear();
       weaponIsConfirmed = true;
@@ -130,7 +129,7 @@ if (Uname != null) {
       weaponIsConfirmed = false;
   }
   if (unit_gdata[1] !== '') {
-      Armor.setValuesByUrl(unit_gdata[1],tgdu[unit_gdata[1].split(",")[0]],"Armor");
+      Armor.setValuesByUrl(unit_gdata[1],"Armor");
       Armor.setGear();
       armorIsConfirmed = true;
   } else {
@@ -138,7 +137,7 @@ if (Uname != null) {
       armorIsConfirmed = false;
   }
   if (unit_gdata[2] !== '') {
-      Accessory1.setValuesByUrl(unit_gdata[2],tgdu[unit_gdata[2].split(",")[0]],"Accessory1");
+      Accessory1.setValuesByUrl(unit_gdata[2],"Accessory1");
       Accessory1.setGear();
       accessory1IsConfirmed = true;
   } else {
@@ -146,7 +145,7 @@ if (Uname != null) {
       accessory1IsConfirmed = false;
   }
   if (unit_gdata[3] !== '') {
-      Accessory2.setValuesByUrl(unit_gdata[3],tgdu[unit_gdata[3].split(",")[0]],"Accessory2");
+      Accessory2.setValuesByUrl(unit_gdata[3],"Accessory2");
       Accessory2.setGear();
       accessory2IsConfirmed = true;
   } else {
@@ -188,11 +187,10 @@ $('#target_BuffList_display').show();
     searchvcsv2(toSearchT[0],toSearchT[1],true);
     /* let target_gdata = JSON.parse(atob(gearTarget_DataUrl)); */
     let target_gdata = gearTarget_DataUrl.split(";");
-    let tgdt = total_gear_data_target.slice(1).split('","');
 
 
     if (target_gdata[0] !== '') {
-      enemy_Weapon.setValuesByUrl(target_gdata[0],tgdt[target_gdata[0].split(",")[0]],"Weapon");
+      enemy_Weapon.setValuesByUrl(target_gdata[0],"Weapon");
       enemy_Weapon.setGear();
       enemy_weaponIsConfirmed = true;
   } else {
@@ -200,7 +198,7 @@ $('#target_BuffList_display').show();
       enemy_weaponIsConfirmed = false;
   }
   if (target_gdata[1] !== '') {
-      enemy_Armor.setValuesByUrl(target_gdata[1],tgdt[target_gdata[1].split(",")[0]],"Armor");
+      enemy_Armor.setValuesByUrl(target_gdata[1],"Armor");
       enemy_Armor.setGear();
       enemy_armorIsConfirmed = true;
   } else {
@@ -208,7 +206,7 @@ $('#target_BuffList_display').show();
       enemy_armorIsConfirmed = false;
   }
   if (target_gdata[2] !== '') {
-      enemy_Accessory1.setValuesByUrl(target_gdata[2],tgdt[target_gdata[2].split(",")[0]],"Accessory1");
+      enemy_Accessory1.setValuesByUrl(target_gdata[2],"Accessory1");
       enemy_Accessory1.setGear();
       enemy_accessory1IsConfirmed = true;
   } else {
@@ -216,7 +214,7 @@ $('#target_BuffList_display').show();
       enemy_accessory1IsConfirmed = false;
   }
   if (target_gdata[3] !== '') {
-      enemy_Accessory2.setValuesByUrl(target_gdata[3],tgdt[target_gdata[3].split(",")[0]],"Accessory2");
+      enemy_Accessory2.setValuesByUrl(target_gdata[3],"Accessory2");
       enemy_Accessory2.setGear();
       enemy_accessory2IsConfirmed = true;
   } else {
