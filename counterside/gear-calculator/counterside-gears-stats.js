@@ -1096,31 +1096,28 @@ const GEAR_SETS_LIST = {
       return Values;
     }
 
+
+    getSetOptions(setObj) {
+      let sp = {};
+      
+      for (let i = 0, n = setObj.length; i < n; i++) {
+      sp[setObj[i]] = GEAR_SETS_LIST[setObj[i]]
+    }
+      return sp 
+    }
+
     setAllValues(Values) {
 
-      var gdt = Values[0].split(',');
-      var gdt_stype = gdt[1];
+
+      let gval = GEARS[Values[0]]
+      
 
 
-
-      var setOptions;
-
-      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(gdt_stype) > -1) {
-        setOptions = GEAR_SETS_LIST_BASIC;
-      } else if (gdt_stype === 'Spectral') {
-        setOptions = GEAR_SETS_LIST_SPECTRAL;
-      } else if (gdt_stype === 'Phantom') {
-        setOptions = GEAR_SETS_LIST_PHANTOM;
-      } else if (gdt_stype === 'Jungle') {
-        setOptions = GEAR_SETS_LIST_TRINITY;
-      } else if (gdt_stype === 'Volcano') {
-        setOptions = GEAR_SETS_LIST_TRINITY;
-      } else {
-        setOptions = GEAR_SETS_LIST_BASIC;
-      }
+      var setOptions = this.getSetOptions(gval["set_options"]);
+      
 
     this.#selectedGearData = Values[0];
-    this.#name = Values[1];
+    this.#name = gval['gear_name'];
     this.#eqSlot = Values[2];
     this.#eqTier = Values[3];
     this.#eqSet = Values[4];
@@ -1841,13 +1838,16 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
   selectedGear = $( this ).attr('value');
 
   selectedGearFor = $(this).attr('id');
+  var gear_data;
 
 
   if (selectedGearFor == selectedGear+'Container') {
+    gear_data = Object.values(GEARS).filter(item => item.employee_type === currentUnitType && (item.equip_type != "Exclusive" || item.employee_name == total_unit_data[0] + " " + total_unit_data[1]));
     selectedGearUnitType = currentUnitType;
     GEAR_MAIN_STATS_VALUES_T7 = GEAR_MAIN_STATS_VALUES_T7_unit;
     GEAR_MAIN_STATS_VALUES_T7_EE = GEAR_MAIN_STATS_VALUES_T7_unit_EE;
   } else {
+    gear_data = Object.values(GEARS).filter(item => item.employee_type === currentTargetType && (item.equip_type != "Exclusive" || item.employee_name == total_target_data[0] + " " + total_target_data[1]));
     selectedGearUnitType = currentTargetType;
     GEAR_MAIN_STATS_VALUES_T7 = GEAR_MAIN_STATS_VALUES_T7_target;
     GEAR_MAIN_STATS_VALUES_T7_EE = GEAR_MAIN_STATS_VALUES_T7_target_EE;
@@ -1855,7 +1855,6 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
 
 
   
-  var gear_data = Object.values(GEARS).filter(item => item.employee_type === currentUnitType);
   var gear_data_keys = Object.keys(gear_data);
   // var gear_data = full_gear_data.split('","');
 
@@ -1935,26 +1934,26 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
    }
 
 
-   let hasEx = 'false';
-   if (selectedGearFor == selectedGear+'Container') {
-    $.each($('#gearContainer .equipment-slot'),function() {
-      if (hasEx === 'false') {
-      hasEx = $(this).attr('isExclusive');
-      }
-    })
-   } else {
-    $.each($('#gearContainer_enemy .equipment-slot'),function() {
-      if (hasEx === 'false') {
-      hasEx = $(this).attr('isExclusive');
-      }
-    })
-   }
+  //  let hasEx = 'false';
+  //  if (selectedGearFor == selectedGear+'Container') {
+  //   $.each($('#gearContainer .equipment-slot'),function() {
+  //     if (hasEx === 'false') {
+  //     hasEx = $(this).attr('isExclusive');
+  //     }
+  //   })
+  //  } else {
+  //   $.each($('#gearContainer_enemy .equipment-slot'),function() {
+  //     if (hasEx === 'false') {
+  //     hasEx = $(this).attr('isExclusive');
+  //     }
+  //   })
+  //  }
    
-   if (hasEx === 'true') {
-    $('#isEx').hide();
-   } else {
-    $('#isEx').show();
-   }
+  //  if (hasEx === 'true') {
+  //   $('#isEx').hide();
+  //  } else {
+  //   $('#isEx').show();
+  //  }
 
    $('#GearRemoveBtn').css('display','none');
 
@@ -2140,14 +2139,16 @@ for (let i = 0, n = selectedGearSets.length; i < n; i++) {
       thisBtn.addClass('active').siblings().removeClass('active');
  });
 
+ 
+
 if (selectedGearSub1ListKeys.length == 1) {
   $('#selectedGearConfirmation .card-text').html('<span class="badge bg-secondary">Option 1 [<small>locked</small>]</span><select id="sub1formSelect" class="form-select" aria-label="Disabled select example" disabled> ');
   
 } else {
   $('#selectedGearConfirmation .card-text').html('<span class="badge bg-primary">Option 1 [<small>select</small>]</span><select id="sub1formSelect" class="form-select" aria-label="select example"> ');
 }
-$('#selectedGearConfirmation .card-value').html('<span class="badge" style="visibility: hidden;">0</span><div class="p-2" id="subValue1">'+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selectedGearSub1ListKeys[0])) ? selectedGearSub1List[selectedGearSub1ListKeys[0]]:((((Number(selectedGearSub1List[selectedGearSub1ListKeys[0]]) + Number.EPSILON) * 100)).toFixed(1) + '% ')) +'</div>')
-$('#selectedGearConfirmation .card-value').append('<span class="badge" style="visibility: hidden;">0</span><div class="p-2" id="subValue2">'+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selectedGearSub2ListKeys[0])) ? selectedGearSub2List[selectedGearSub2ListKeys[0]]:((((Number(selectedGearSub2List[selectedGearSub2ListKeys[0]]) + Number.EPSILON) * 100)).toFixed(1) + '% ')) +'</div>')
+$('#selectedGearConfirmation .card-value').html('<span class="badge" style="visibility: hidden;">0</span><div class="p-2" id="subValue1">'+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selected_eqSub1[0])) ? selected_eqSub1[1]:((((Number(selected_eqSub1[1]) + Number.EPSILON) * 100)).toFixed(1) + '% ')) +'</div>')
+$('#selectedGearConfirmation .card-value').append('<span class="badge" style="visibility: hidden;">0</span><div class="p-2" id="subValue2">'+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selected_eqSub2[0])) ? selected_eqSub2[1]:((((Number(selected_eqSub2[1]) + Number.EPSILON) * 100)).toFixed(1) + '% ')) +'</div>')
 if (selectedGearSub2ListKeys.length == 1) {
   $('#selectedGearConfirmation .card-text').append('<span class="badge bg-secondary">Option 2 [<small>locked</small>]</span><select id="sub2formSelect" class="form-select" aria-label="Disabled select example" disabled> ');
 } else {
@@ -2156,12 +2157,10 @@ if (selectedGearSub2ListKeys.length == 1) {
 
 if (selectedGearLatentListKeys.length > 0) {
   $('#selectedGearConfirmation .card-text').append('<span class="badge bg-info">Latent Ability [<small>select</small>]</span><select id="sub3formSelect" class="form-select" aria-label="select example"> ');
-  $('#selectedGearConfirmation .card-value').append('<span class="badge" style="visibility: hidden;">0</span><div class="p-2" id="subValue3">'+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selectedGearLatentListKeys[0])) ? selectedGearLatentList[selectedGearLatentListKeys[0]]:((((Number(selectedGearLatentList[selectedGearLatentListKeys[0]]) + Number.EPSILON) * 100)).toFixed(1) + '% ')) + '</div>')
+  $('#selectedGearConfirmation .card-value').append('<span class="badge" style="visibility: hidden;">0</span><div class="p-2" id="subValue3">'+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selected_eqLatent[0])) ? selected_eqLatent[1]:((((Number(selected_eqLatent[1]) + Number.EPSILON) * 100)).toFixed(1) + '% ')) + '</div>')
 
  
 }
-
-
 
 
  for (let i = 0; i < selectedGearSub1ListKeys.length; i++) {
@@ -2203,7 +2202,7 @@ if (selectedGearLatentListKeys.length > 0) {
    }
    
  
-  // setRangeForSub(selected_eqLatent[0], selected_eqLatent[1], selected_eqLatent[1]);
+  setRangeForSub(selected_eqLatent[0], selected_eqLatent[1], selected_eqLatent[1]);
 }
 
 
@@ -2271,26 +2270,26 @@ if (selectedGearLatentListKeys.length > 0) {
     }
     
    }
-   let hasEx = 'false';
-   if (selectedGearFor == selectedGear+'Container') {
-    $.each($('#gearContainer .equipment-slot'),function() {
-      if (hasEx === 'false') {
-      hasEx = $(this).attr('isExclusive');
-      }
-    })
-   } else {
-    $.each($('#gearContainer_enemy .equipment-slot'),function() {
-      if (hasEx === 'false') {
-      hasEx = $(this).attr('isExclusive');
-      }
-    })
-   }
+  //  let hasEx = 'false';
+  //  if (selectedGearFor == selectedGear+'Container') {
+  //   $.each($('#gearContainer .equipment-slot'),function() {
+  //     if (hasEx === 'false') {
+  //     hasEx = $(this).attr('isExclusive');
+  //     }
+  //   })
+  //  } else {
+  //   $.each($('#gearContainer_enemy .equipment-slot'),function() {
+  //     if (hasEx === 'false') {
+  //     hasEx = $(this).attr('isExclusive');
+  //     }
+  //   })
+  //  }
    
-   if (hasEx === 'true') {
-    $('#isEx').hide();
-   } else {
-    $('#isEx').show();
-   }
+  //  if (hasEx === 'true') {
+  //   $('#isEx').hide();
+  //  } else {
+  //   $('#isEx').show();
+  //  }
 
    $('#selectedGearConfirmation .card-title').append(' <p>'+ selected_eqMainstat[0] +' +' + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === selected_eqMainstat[0])) ? selected_eqMainstat[1]:((selected_eqMainstat[1] + Number.EPSILON) * 100).toFixed(1) + '% ') +'</p>')
   $('#selectedGearConfirmation .card-title').attr('value', selected_eqMainstat[0]);
@@ -2429,7 +2428,8 @@ if (selectedGearLatentListKeys.length > 0) {
     
    }
    
-  // setRangeForSub(isRelic[0], selectedGearLatentList[0], selectedGearLatentList[0]);
+  setRangeForSub(selectedGearLatentListKeys[0], selectedGearLatentList[selectedGearLatentListKeys[0]], selectedGearLatentList[selectedGearLatentListKeys[0]]);
+  // setRangeForSub(selected_eqLatent[0], selected_eqLatent[1], selected_eqLatent[1]);
 }
 
   $('#selectedGearConfirmation .card-text').append('</select>');

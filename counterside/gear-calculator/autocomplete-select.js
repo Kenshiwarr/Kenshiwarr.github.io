@@ -4700,8 +4700,12 @@ function LoadSessionFromLocalStorage() {
 
         
         if (SessionData[11] !== '') {
+          
+          
             selectedGearStats = SessionData[11][0];
-            enemy_Weapon.setAllValues(SessionData[11]);
+            enemy_Weapon.setAllValues(SessionData[11]);  
+            console.log("selectedGearStats!_");
+            console.log(SessionData[11]);
             enemy_Weapon.setGear();
             enemy_weaponIsConfirmed = true;
         }
