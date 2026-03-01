@@ -475,7 +475,7 @@ $('#deleteAllDataForCompare').on('click',function() {
         tt_title = total_target_data[0]; 
         tt_name = total_target_data[1]; 
       }
-      var sau = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),'',tt_title,tt_name,$('#seachedTarget_body img').attr('src'),'','','',unit_stats_to_save,target_stats_to_save,unit_extra_bonus_stats,target_extra_bonus_stats,total_unit_data,Unit_dps_stats,total_gear_data_unit,total_target_data,$('#gearData_enemy').html(),ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,dTableCompare_values,UnitLevel,TargetLevel,saveToUrl()];
+      var sau = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),'',tt_title,tt_name,$('#seachedTarget_body img').attr('src'),'','','',unit_stats_to_save,target_stats_to_save,unit_extra_bonus_stats,target_extra_bonus_stats,total_unit_data,Unit_dps_stats,"",total_target_data,"",ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,dTableCompare_values,UnitLevel,TargetLevel,saveToUrl()];
       var sGear = [Weapon.eqIcon,Weapon.eqSet,Armor.eqIcon,Armor.eqSet,Accessory1.eqIcon,Accessory1.eqSet,Accessory2.eqIcon,Accessory2.eqSet,enemy_Weapon.eqIcon,enemy_Weapon.eqSet,enemy_Armor.eqIcon,enemy_Armor.eqSet,enemy_Accessory1.eqIcon,enemy_Accessory1.eqSet,enemy_Accessory2.eqIcon,enemy_Accessory2.eqSet];
       for (let i = 0, n = (unit_stats_to_save.length)/2; i < n; i++) {
         if (i<6) {
@@ -567,12 +567,11 @@ $('#deleteAllDataForCompare').on('click',function() {
 
   
 
-function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_data_unit) {
+function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats) {
   $('#searched-unitID-values').attr('value',unit_data);
 
   total_unit_data = unit_data;
   Unit_dps_stats = LS_unit_dps_stats;
-  total_gear_data_unit = LS_total_gear_data_unit;
 
   active_skills_exclude = [];
 
@@ -610,32 +609,16 @@ function UpdateUnitFromLocalStorage(unit_data, LS_unit_dps_stats, LS_total_gear_
 
   currentUnitType = unit_data[9].split(';')[0];
 
-  $('#gearData').html(LS_total_gear_data_unit);
-        switch (currentUnitType) {
-          case COUNTER:
-            GEAR_MAIN_STATS_VALUES_T7_unit = [ATK, HP, EVA, HIT, 399, 3814, 274, 274];
-            break;
-            case SOLDIER:
-              GEAR_MAIN_STATS_VALUES_T7_unit = [ATK, HP, EVA, HIT, 399, 3814, 206, 206];
-            break;
-            case MECH:
-              GEAR_MAIN_STATS_VALUES_T7_unit = [ATK, HP, EVA, HIT, 399, 3814, 309, 309];
-            break;
-          default:
-            break;
-        }
-        UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_unit_EE',undefined,(total_unit_data[0] + ' ' + total_unit_data[1]))
         
 }
 
-function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS_currhp_range,LS_target_dps_stats) {
+function UpdateTargetFromLocalStorage(target_data, LS_currhp_range,LS_target_dps_stats) {
   if (target_data !== '') {
     $('#searched-targetID-values').attr('value',target_data);
 
 
 
     total_target_data = target_data;
-    total_gear_data_target = LS_total_gear_data_target;
     Target_dps_stats = LS_target_dps_stats;
   
             $("#target-icon").html(target_data[8])
@@ -671,21 +654,7 @@ function UpdateTargetFromLocalStorage(target_data, LS_total_gear_data_target, LS
   
     currentTargetType = target_data[9].split(';')[0];
   
-    $('#gearData_enemy').html(LS_total_gear_data_target);
-          switch (currentTargetType) {
-            case COUNTER:
-              GEAR_MAIN_STATS_VALUES_T7_target = [ATK, HP, EVA, HIT, 399, 3814, 274, 274];
-              break;
-              case SOLDIER:
-                GEAR_MAIN_STATS_VALUES_T7_target = [ATK, HP, EVA, HIT, 399, 3814, 206, 206];
-              break;
-              case MECH:
-                GEAR_MAIN_STATS_VALUES_T7_target = [ATK, HP, EVA, HIT, 399, 3814, 309, 309];
-              break;
-            default:
-              break;
-          }
-          UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_target_EE',undefined,(total_target_data[0] + ' ' + total_target_data[1]))
+ 
   }
 
   $('#target-current_hp_range').val(Number(LS_currhp_range));

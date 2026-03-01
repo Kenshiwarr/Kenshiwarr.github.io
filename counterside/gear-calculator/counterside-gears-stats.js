@@ -67,7 +67,6 @@ const STATS_OPTION_LIST = ['HP', 'ATK', 'DEF', 'CRIT', 'HIT', 'EVA', 'SPD', 'ASP
 
 
 
-// const GEAR_MAIN_STATS_VALUES_T7 = [ATK, HP, EVA, HIT, 399, 3476, 274, 274];
 const GEAR_MAIN_STATS_VALUES_T6 = [ATK, HP, EVA, HIT, 370, 2900, 250, 250]; // don't know actually, need to check!!!
 
 const MAZE_GEAR_SUBSTATS_VALUES_LIST_1 = [0.16];
@@ -1756,14 +1755,6 @@ var selectedGear;
 
 var selectedGearSlotList;
 
-var GEAR_MAIN_STATS_VALUES_T7_unit;
-var GEAR_MAIN_STATS_VALUES_T7_target;
-var GEAR_MAIN_STATS_VALUES_T7_unit_EE;
-var GEAR_MAIN_STATS_VALUES_T7_target_EE;
-
-var GEAR_MAIN_STATS_VALUES_T7;
-var GEAR_MAIN_STATS_VALUES_T7_EE;
-
 
 var selectedGearFor;
 
@@ -1787,13 +1778,9 @@ $( ".equipment-slot" ).on( "click", function() { // old variant: $( "#gearContai
   if (selectedGearFor == selectedGear+'Container') {
     gear_data = Object.values(GEARS).filter(item => item.employee_type === currentUnitType && (item.equip_type != "Exclusive" || item.employee_name == total_unit_data[0] + " " + total_unit_data[1]));
     selectedGearUnitType = currentUnitType;
-    GEAR_MAIN_STATS_VALUES_T7 = GEAR_MAIN_STATS_VALUES_T7_unit;
-    GEAR_MAIN_STATS_VALUES_T7_EE = GEAR_MAIN_STATS_VALUES_T7_unit_EE;
   } else {
     gear_data = Object.values(GEARS).filter(item => item.employee_type === currentTargetType && (item.equip_type != "Exclusive" || item.employee_name == total_target_data[0] + " " + total_target_data[1]));
     selectedGearUnitType = currentTargetType;
-    GEAR_MAIN_STATS_VALUES_T7 = GEAR_MAIN_STATS_VALUES_T7_target;
-    GEAR_MAIN_STATS_VALUES_T7_EE = GEAR_MAIN_STATS_VALUES_T7_target_EE;
   }
 
 
@@ -2405,7 +2392,6 @@ if (selectedGearLatentListKeys.length > 0) {
 
   
   
-  //+ (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)]:((GEAR_MAIN_STATS_VALUES_T7[(GEAR_MAIN_STATS_VALUES_T7.length/2)+GEAR_MAIN_STATS_VALUES_T7.indexOf(gear_mainstat_loc)] + Number.EPSILON) * 100).toFixed(1) + '% ') +
   $('#selectedGearConfirmation .card-title').append(' <p>'+ gear_mainstat_loc +' +' + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === gear_mainstat_loc)) ? gear_mainstat_val:((gear_mainstat_val + Number.EPSILON) * 100).toFixed(1) + '% ') +'</p>')
   $('#selectedGearConfirmation .card-title').attr('value', gear_mainstat_loc);
   $('#selectedGearConfirmation .card-title').attr('subvalue', gear_mainstat_val);

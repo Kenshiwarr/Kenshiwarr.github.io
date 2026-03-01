@@ -217,76 +217,6 @@ link.click(); // This will download the data file named "my_data.csv". */
      /* var checkSubs = []; */
 
   
-     function UpdUnitEE(statval, eestat, unt) {
-      let eeinf = '';
-      window[statval] = 0
-      let checkEE = UNITS_W_EE.indexOf(unt);
-      if (checkEE > -1) {
-        switch (UNITS_W_EE[checkEE]) {
-          case 'Post-War Administration Bureau Millia Rage':
-            if (eestat === true) {
-              eeinf += '"Exclusive,Cat Brooch,Accessory,Soldier,Icon_Soldier_Accessory_Cat Brooch_EE,ASPD,,,,,,,,,1;2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-            }
-            window[statval] += 0.306
-            break;
-          case 'Flame of Corruption Sol Badguy':
-            if (eestat === true) {
-              eeinf += '"Exclusive,Gear Cell Suppressor,Armor,Counter,Icon_Counter_Armor_Gear Cell Suppressor_EE,HP,,,,,,,,,,2,,2,2,,,,,,,,,,,,,,,,,,,,,,,,2,2,2,2,,,,2,2,,,1,,,,,,';
-            }
-            window[statval] += 4292
-            break;
-          case 'Future-at-War Titan':
-            if (eestat === true) {
-              eeinf += '"Exclusive,TCS Module,Accessory,Mech,Icon_Mech_Accessory_TCS Module_EE,ASPD,,,,,,,,,2,1;2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-            }
-            window[statval] += 0.306
-            break;
-           case 'Triaina Plan Titan':
-            if (eestat === true) {
-              eeinf += '"Exclusive,TCS Module,Accessory,Mech,Icon_Mech_Accessory_TCS Module_EE,ASPD,,,,,,,,,2,1;2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-            }
-            window[statval] += 0.306
-            break;
-            case 'Delta Seven Kyle Wong':
-              if (eestat === true) {
-                eeinf += '"Exclusive,Tactical Comms Gear,Accessory,Counter,Icon_Counter_Accessory_Tactical Comms Gear_EE,ASPD,,,,,,,,,2,1;2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-              }
-              window[statval] += 0.306
-              break;
-            case 'Fallen Hawk Rosaria le Friede':
-              if (eestat === true) {
-                eeinf += '"Exclusive,Throne of Ashes,Accessory,Counter,Icon_Counter_Accessory_Throne of Ashes_EE,HIT,,,,,,,,,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,1;2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-              }
-              window[statval] += 291
-              break;
-            case 'Canary Squad Laika':
-              if (eestat === true) {
-                eeinf += '"Exclusive,Antithesis,Accessory,Soldier,Icon_Soldier_Accessory_Antithesis_EE,HIT,,,,,,,,1,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-              }
-              window[statval] += 231
-              break;
-            case 'Kestrel Xiao Lin':
-              if (eestat === true) {
-                eeinf += '"Exclusive,Reliable Messenger,Accessory,Counter,Icon_Counter_Accessory_Reliable Messenger_EE,ASPD,,,,,,,,1,2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-              }
-              window[statval] += 0.306
-              break;
-            case 'ALT Squad Kim Sobin':
-              if (eestat === true) {
-                eeinf += '"Exclusive,Fairy\'s Infinite Ammo,Accessory,Counter,Icon_Counter_Accessory_Fairy\'s Infinite Ammo_EE,ASPD,,,,,,,,,1;2,2,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,2,2,2,2,,,,2,2,,,,,,,,,';
-              }
-              window[statval] += 0.306
-              break;
-
-          default:
-            
-      GEAR_MAIN_STATS_VALUES_T7_unit_EE = 0;
-      GEAR_MAIN_STATS_VALUES_T7_target_EE = 0;
-            break;
-        }
-      }
-      return eeinf;
-    }
   
 
 
@@ -3430,22 +3360,22 @@ function autocomplete(inp, arr) {
 
                 var unit_data = sc2.split(',');
 
-                var ugr = '';
-                var ugid = indexOfAll(unit_gear_stats_csv, unit_data[9].split(';')[0]);
+                // var ugr = '';
+                // var ugid = indexOfAll(unit_gear_stats_csv, unit_data[9].split(';')[0]);
                 
-                for (let i = 0, n = ugid.length; i < n; i++) {
-                  ugr += '"';
-                  for (let j = 0; j < 59; j++) {
-                    if (unit_gear_stats_csv[ugid[i]+j-3] === undefined) {
-                      ugr += ',';
-                    } else {
-                      ugr += unit_gear_stats_csv[ugid[i]+j-3] + ',';
-                    }
-                  }
-                  if (i < n-1) {
-                    ugr += '",';
-                  }
-                }
+                // for (let i = 0, n = ugid.length; i < n; i++) {
+                //   ugr += '"';
+                //   for (let j = 0; j < 59; j++) {
+                //     if (unit_gear_stats_csv[ugid[i]+j-3] === undefined) {
+                //       ugr += ',';
+                //     } else {
+                //       ugr += unit_gear_stats_csv[ugid[i]+j-3] + ',';
+                //     }
+                //   }
+                //   if (i < n-1) {
+                //     ugr += '",';
+                //   }
+                // }
 
                 var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
                 var udpst = '';
@@ -3523,24 +3453,11 @@ function autocomplete(inp, arr) {
               
               skillCdImprove = []
               
-              switch (currentUnitType) {
-                case COUNTER:
-                  GEAR_MAIN_STATS_VALUES_T7_unit = [ATK, HP, EVA, HIT, 399, 3814, 274, 274];
-                  break;
-                  case SOLDIER:
-                    GEAR_MAIN_STATS_VALUES_T7_unit = [ATK, HP, EVA, HIT, 399, 3814, 206, 206];
-                  break;
-                  case MECH:
-                    GEAR_MAIN_STATS_VALUES_T7_unit = [ATK, HP, EVA, HIT, 399, 3814, 309, 309];
-                  break;
-                default:
-                  break;
-              }
+             
               
               
-              ugr += "\"," + UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_unit_EE', true, (total_unit_data[0] + ' ' + total_unit_data[1]))
-              total_gear_data_unit = ugr;
-              $('#gearData').html(ugr);
+              // total_gear_data_unit = ugr;
+              // $('#gearData').html(ugr);
       
               active_skills_exclude = [];
 
@@ -4568,7 +4485,7 @@ function SaveSessionToLocalStorage() {
   if ($('#searched-targetID-values').attr('value') !== '') {
     
   } */
-  var SessionData = [total_unit_data,Unit_dps_stats,total_gear_data_unit,unit_extra_bonus_stats,'','','','',total_target_data,$('#gearData_enemy').html(),target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,Target_dps_stats,UnitLevel,TargetLevel,active_skills_exclude];
+  var SessionData = [total_unit_data,Unit_dps_stats,"",unit_extra_bonus_stats,'','','','',total_target_data,"",target_extra_bonus_stats,'','','','',ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,Target_dps_stats,UnitLevel,TargetLevel,active_skills_exclude];
   
   //total_gear_data_target
 
@@ -4655,7 +4572,7 @@ function LoadSessionFromLocalStorage() {
         //option[value="'+ val +'"]
         
 
-        UpdateUnitFromLocalStorage(SessionData[0],SessionData[1],SessionData[2]);
+        UpdateUnitFromLocalStorage(SessionData[0],SessionData[1]);
         if (SessionData[4] !== '') {
             selectedGearStats = SessionData[4][0];
             Weapon.setAllValues(SessionData[4]);

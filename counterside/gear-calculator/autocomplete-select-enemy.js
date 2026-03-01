@@ -1029,22 +1029,22 @@ function autocompleteTarget(inp, arr) {
 
                   var target_data = sc2.split(',');
   
-                  var ugr = '';
-                  var ugid = indexOfAll(unit_gear_stats_csv, target_data[9].split(';')[0]);
+                  // var ugr = '';
+                  // var ugid = indexOfAll(unit_gear_stats_csv, target_data[9].split(';')[0]);
                   
-                  for (let i = 0, n = ugid.length; i < n; i++) {
-                    ugr += '"'
-                    for (let j = 0; j < 59; j++) {
-                      if (unit_gear_stats_csv[ugid[i]+j-3] === undefined) {
-                        ugr += ','
-                      } else {
-                        ugr += unit_gear_stats_csv[ugid[i]+j-3] + ',';
-                      }
-                    }
-                    if (i < n-1) {
-                      ugr += '",';
-                    }
-                  }
+                  // for (let i = 0, n = ugid.length; i < n; i++) {
+                  //   ugr += '"'
+                  //   for (let j = 0; j < 59; j++) {
+                  //     if (unit_gear_stats_csv[ugid[i]+j-3] === undefined) {
+                  //       ugr += ','
+                  //     } else {
+                  //       ugr += unit_gear_stats_csv[ugid[i]+j-3] + ',';
+                  //     }
+                  //   }
+                  //   if (i < n-1) {
+                  //     ugr += '",';
+                  //   }
+                  // }
 
 
                   var udpsid = indexOfAll(unit_dps_stats_csv, unit_name);
@@ -1118,22 +1118,9 @@ function autocompleteTarget(inp, arr) {
   
                 
                 
-                switch (currentTargetType) { // variable for different main stat values of gear for counter/sol/mech, put it here idk where else
-                  case COUNTER:
-                    GEAR_MAIN_STATS_VALUES_T7_target = [ATK, HP, EVA, HIT, 399, 3814, 274, 274];
-                    break;
-                    case SOLDIER:
-                      GEAR_MAIN_STATS_VALUES_T7_target = [ATK, HP, EVA, HIT, 399, 3814, 206, 206];
-                    break;
-                    case MECH:
-                      GEAR_MAIN_STATS_VALUES_T7_target = [ATK, HP, EVA, HIT, 399, 3814, 309, 309];
-                    break;
-                  default:
-                    break;
-                }
-                ugr += "\"," + UpdUnitEE('GEAR_MAIN_STATS_VALUES_T7_target_EE', true, (total_target_data[0] + ' ' + total_target_data[1]))
-              total_gear_data_target = ugr;
-              $('#gearData_enemy').html(ugr);
+            
+              // total_gear_data_target = ugr;
+              // $('#gearData_enemy').html(ugr);
         
                 targetIsUpdated = true;
 

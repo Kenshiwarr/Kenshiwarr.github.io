@@ -272,7 +272,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
             if (($('#searched-unitID-values').attr('value') !== '') && ($('#searched-targetID-values').attr('value') !== '') && localStorageAvailable === true) {
                 $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').removeClass('disabled');
                 $('#compareUnitsModal .modal-body .unit_container .list-group-item .dropdown-item[mtd-action="overwrite"]').addClass('text-warning');
-                localStorageData_compare_units = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),dropdownText,sau[4],sau[5],$('#seachedTarget_body img').attr('src'),dropdownText_target,currIndexLi_header.text(),''+saveDate.getTime(),sau[10],sau[11],sau[12],sau[13],sau[14],sau[15],sau[16],sau[17],sau[18],sau[19],sau[20],sau[21],sau[22],sau[23],sau[24],sau[25],sau[26],sau[27],sau[28],sau[29]];
+                localStorageData_compare_units = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),dropdownText,sau[4],sau[5],$('#seachedTarget_body img').attr('src'),dropdownText_target,currIndexLi_header.text(),''+saveDate.getTime(),sau[10],sau[11],sau[12],sau[13],sau[14],sau[15],"",sau[17],sau[18],sau[19],sau[20],sau[21],sau[22],sau[23],sau[24],sau[25],sau[26],sau[27],sau[28],sau[29]];
                 localStorageData_tooltip_gear = sGear;
                 localStorageData_gear_info = gearDataSavedValues;
             }
@@ -339,7 +339,7 @@ function UpdateCompareUnitsModal(sau, sGear,gearDataSavedValues, overwrite, load
 
     
 
-        UpdateUnitFromLocalStorage(sau[14],sau[15],sau[16]);
+        UpdateUnitFromLocalStorage(sau[14],sau[15]);
         if (gearDataSavedValues[0] !== '') {
             selectedGearStats = gearDataSavedValues[0][0];
             Weapon.setAllValues(gearDataSavedValues[0]);
@@ -565,7 +565,7 @@ console.timeEnd('LoadingSaved_timer')
         tt_title = total_target_data[0]; 
         tt_name = total_target_data[1]; 
       }
-    var sau_o = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),'',tt_title,tt_name,$('#seachedTarget_body img').attr('src'),'',headerName,'',unit_stats_to_save,target_stats_to_save,unit_extra_bonus_stats,target_extra_bonus_stats,total_unit_data,Unit_dps_stats,total_gear_data_unit,total_target_data,$('#gearData_enemy').html(),ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,dTableCompare_values,UnitLevel,TargetLevel,saveToUrl()];
+    var sau_o = [total_unit_data[0],total_unit_data[1],$('#seachedUnit_body img').attr('src'),'',tt_title,tt_name,$('#seachedTarget_body img').attr('src'),'',headerName,'',unit_stats_to_save,target_stats_to_save,unit_extra_bonus_stats,target_extra_bonus_stats,total_unit_data,Unit_dps_stats,"",total_target_data,"",ifSelectTargetDummy,$('#range-melee-distance_partial').val(),$('#target-current_hp_range').val(),dummy_extra_bonus_stats,targetIsUpdated,target_dummy_data,unit_mainAttack_selected,dTableCompare_values,UnitLevel,TargetLevel,saveToUrl()];
     
     var sGear_o = [Weapon.eqIcon,Weapon.eqSet,Armor.eqIcon,Armor.eqSet,Accessory1.eqIcon,Accessory1.eqSet,Accessory2.eqIcon,Accessory2.eqSet,enemy_Weapon.eqIcon,enemy_Weapon.eqSet,enemy_Armor.eqIcon,enemy_Armor.eqSet,enemy_Accessory1.eqIcon,enemy_Accessory1.eqSet,enemy_Accessory2.eqIcon,enemy_Accessory2.eqSet];
     for (let i = 0, n = (unit_stats_to_save.length)/2; i < n; i++) {
