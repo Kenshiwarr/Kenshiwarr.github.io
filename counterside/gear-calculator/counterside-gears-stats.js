@@ -1146,12 +1146,7 @@ const GEAR_SETS_LIST = {
         url_Gear_Latent = "";
       }
 
-      let url_Gear_Stats_id;
-      if (this.forUnit == 0) {
-        url_Gear_Stats_id = total_gear_data_unit.slice(1).split('","').indexOf(this.selectedGearData);
-      } else {
-        url_Gear_Stats_id = total_gear_data_target.slice(1).split('","').indexOf(this.selectedGearData);
-      }
+      let url_Gear_Stats_id = this.#selectedGearData;
       let url_Gear_Sub1 = BONUS_STATS_LIST.indexOf(this.#sub1[0]);
       let url_Gear_Sub2 = BONUS_STATS_LIST.indexOf(this.#sub2[0]);
       
@@ -1169,91 +1164,39 @@ const GEAR_SETS_LIST = {
 
       let ugdt = urlGearData.split(",");
 
-      let urlGearVal = searchGearData.split(",");
+      let urlGearVal = GEARS[ugdt[0]];
+      
 
-      let sub1_val = ugdt[1];
-      let sub2_val = ugdt[2];
+      let sub1_val = BONUS_STATS_LIST[ugdt[1]];
+      let sub2_val = BONUS_STATS_LIST[ugdt[2]];
       let latent_val = ugdt[3].split('_');
 
 
-      var setOptions;
+      var setOptions = this.getSetOptions(urlGearVal['set_options']);
 
-      if (['Maze','Challenger','Inhibitor','Britra','Swift','Devoted','Polymer','Sc. Dante','Sincere','Courageous','Loyal'].indexOf(urlGearVal[1]) > -1) {
-        setOptions = GEAR_SETS_LIST_BASIC;
-      } else if (urlGearVal[1] === 'Spectral') {
-        setOptions = GEAR_SETS_LIST_SPECTRAL;
-      } else if (urlGearVal[1] === 'Phantom') {
-        setOptions = GEAR_SETS_LIST_PHANTOM;
-      } else if (urlGearVal[1] === 'Jungle') {
-        setOptions = GEAR_SETS_LIST_TRINITY;
-      } else if (urlGearVal[1] === 'Volcano') {
-        setOptions = GEAR_SETS_LIST_TRINITY;
-      } else {
-        setOptions = GEAR_SETS_LIST_BASIC;
-      }
+     
 
-      let getSubstats = this.getAvailableSubstats(urlGearVal[1],eq_Slot);
-      console.log('getSubstats');
-      console.log(getSubstats);
+   
+      
+      let s1f = urlGearVal["sub1"][sub1_val];
+      let s2f = urlGearVal["sub2"][sub2_val];
 
-      let sc = urlGearVal.slice(6)
-      let sub1Final = [];
-      let sub2Final = [];
+      
 
-      for (let i = 0, n = STATS_OPTION_LIST.length; i < n; i++) {
-        if (sc[i] !== '') {
-          if (sc[i].includes('1') === true) {
-            if (STATS_OPTION_LIST[i] == HP && urlGearVal[1] == "Jungle") {
-              sub1Final.push(HP_PERCENT)
-            } else {
-              sub1Final.push(STATS_OPTION_LIST[i])
-            }
-          } 
-          if (sc[i].includes('2') === true) {
-            sub2Final.push(STATS_OPTION_LIST[i])
-          }
-        }
-      }
-
-        let s1f;
-        let s2f;
-        let sC1 = [];
-        let sC2 = [];
-      for (var i = 0, n = sub1Final.length; i < n; i++) {
-        sC1[i] = getSubstats[0].concat(Array(Number(sub1Final.length)).fill(getSubstats[0][getSubstats[0].length-1]))[i]
-       
-      }
-    
-
-      for (var i = 0, n = sub2Final.length; i < n; i++) { 
-        sC2[i] = getSubstats[1].concat(Array(Number(sub2Final.length)).fill(getSubstats[1][getSubstats[1].length-1]))[i]
-
-      }
-      s1f = sC1[sub1Final.indexOf(BONUS_STATS_LIST[sub1_val])];
-      s2f = sC2[sub2Final.indexOf(BONUS_STATS_LIST[sub2_val])];
-
-      let GearMainStatValues;
-      if (this.forUnit == 0) {
-        GearMainStatValues = GEAR_MAIN_STATS_VALUES_T7_unit;
-      } else {
-        GearMainStatValues = GEAR_MAIN_STATS_VALUES_T7_target;
-      }
-
-      this.#selectedGearData = searchGearData;
-      this.#name = urlGearVal[1];
+      this.#selectedGearData = ugdt[0];
+      this.#name = urlGearVal["gear_name"];
       this.#eqSlot = eq_Slot;
       this.#eqTier = 7;
 
       this.#eqSet = setOptions[Object.keys(setOptions)[Number(ugdt[4])]]['name'];
-      this.#sub1 = [BONUS_STATS_LIST[sub1_val],s1f];
-      this.#sub2 = [BONUS_STATS_LIST[sub2_val],s2f];
+      this.#sub1 = [sub1_val,s1f];
+      this.#sub2 = [sub2_val,s2f];
       this.#latent = [BONUS_STATS_LIST[latent_val[0]],latent_val[1]];
-      this.#eqIcon =  'cs_gears-icons/Special Gear/'+urlGearVal[3]+'/' + urlGearVal[4] +  '.png';
-      this.#mainStat = [urlGearVal[5],GearMainStatValues[(GearMainStatValues.length/2)+GearMainStatValues.indexOf(urlGearVal[5])]];
+      this.#eqIcon =  'cs_gears-icons/Special Gear/'+urlGearVal["employee_type"]+'/' + urlGearVal["icon"] +  '.png';
+      this.#mainStat = urlGearVal["main_stat"];
       
       this.#eqSet_Options = setOptions;
 
-      
 
 
       return true;
