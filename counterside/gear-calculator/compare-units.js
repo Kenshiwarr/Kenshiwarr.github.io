@@ -927,7 +927,7 @@ console.timeEnd('LoadingSaved_timer')
         for (let i = 0, n = cBothLen.length; i < n; i++) {
             
             
-            if (i < 6) {
+            if (i < 5) {
                 let u1v = IFERROR(Number(cUnit_val[(cCompares_Length[0]/2+i)]),0);
                 let u2v = IFERROR(Number(sau[10][(cCompares_Length[1]/2+i)]),0);
                 let t1v = IFERROR(Number(cTarget_val[(cCompares_Length[2]/2+i)]),0);
@@ -993,7 +993,7 @@ console.timeEnd('LoadingSaved_timer')
                 }
 
                 
-            } else if (i >= 6) {
+            } else if (i > 6) {
                 indxOfval = cUnit_val.indexOf(cUnit_Left_sorted[i]);
                 indxOfval2 = sau[10].indexOf(cUnit_Left_sorted[i]);
 

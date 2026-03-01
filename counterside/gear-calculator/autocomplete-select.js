@@ -548,9 +548,6 @@ for (let i = 0; i < available_set_stats_values.length; i++) {
 
   }
 
-console.log("gear_stats = ");
-console.log(gear_stats);
-
       for (let i = 0; i < gear_stats.length; i++) {
         var if_set_double = BONUS_STATS_LIST.indexOf(gear_stats[i][0]);
         if (if_set_double > -1) {
@@ -953,7 +950,7 @@ console.log(gear_stats);
         $('#dropdown_unit_stats .unitStats_of').append('<hr>')
       }
       }
-      if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 11)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%, or i>=11 otherwise
+      if ((bonus_stats[i] != 0 || bonus_stats_gear_set[i] != 0) && (i >= 6)) { //NOTE (i >= 6) to include HP%, DEF%, CRIT%, HIT%, EVA%, or i>=12 otherwise
         stat_bonus = parseFloat(((bonus_stats[i]+bonus_stats_gear_set[i])*100).toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/,'$1'));
         unit_stats_to_save[i] = BONUS_STATS_LIST[i];
         unit_stats_to_save[n+i] = Number(stat_bonus)/100;
@@ -2403,10 +2400,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
   
 
     chm_chance = [ctc,cth,ecd];
-
-    console.log('t_ chm_chance');
-    console.log(chm_chance);
-
     
     sDmg_hitTotal = sDmg_hit;
     sDmg_critTotal = sDmg_crit;
@@ -2543,9 +2536,6 @@ for (let i = 0; i < unit_totalAttacks.length; i++) {
     
   }
   
-  
-  console.log('t_ dmgAppl');
-  console.log(chm_chance);
 }
 if ([isSureFireNat,isSureFire,isForceCrit].some((t) => t === true)) {
   dmgAppl[3] = '<span>'+Math.round(dmgApplTotal)+'</span> <svg data-bs-toggle="collapse" dt_target="#dt_'+i+'tt_'+0+'_dcm" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill dt_tooltip_hover" viewBox="0 0 16 16"> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/> </svg>';

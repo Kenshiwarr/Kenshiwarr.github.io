@@ -1047,11 +1047,7 @@ const GEAR_SETS_LIST = {
       
       
       let newgear = Object.values(GEARS).filter(item => item.employee_type === GearForType && item.slot === gdata["slot"] && item.gear_name === gdata["gear_name"] && item.main_stat[0] === gdata["main_stat"][0]);
-      console.log("aas: ");
-      console.log(newgear);
-      
-      
-      
+
       var gdata_icon = newgear[0]["icon"];
 
 
