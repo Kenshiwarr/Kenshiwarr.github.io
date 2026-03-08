@@ -1153,8 +1153,11 @@ const GEAR_SETS_LIST = {
 
       let latentVal = this.#latent;
       let url_Gear_Latent;
+
+      let thisGear = GEARS[this.#selectedGearData]
       if (this.#latent != ",") {
-        url_Gear_Latent = BONUS_STATS_LIST.indexOf(latentVal[0]) + "_" + latentVal[1];
+        url_Gear_Latent = BONUS_STATS_LIST.indexOf(latentVal[0]) + "_" + parseFloat(latentVal[1]/thisGear["latent"][latentVal[0]]).toFixed(2);
+        // url_Gear_Latent = BONUS_STATS_LIST.indexOf(latentVal[0]) + "_" + latentVal[1];
       } else {
         url_Gear_Latent = "";
       }
@@ -1204,7 +1207,8 @@ const GEAR_SETS_LIST = {
       this.#eqSet = setOptions[Object.keys(setOptions)[Number(ugdt[4])]]['name'];
       this.#sub1 = [sub1_val,s1f];
       this.#sub2 = [sub2_val,s2f];
-      this.#latent = [BONUS_STATS_LIST[latent_val[0]],latent_val[1]];
+      this.#latent = [BONUS_STATS_LIST[latent_val[0]],urlGearVal['latent'][BONUS_STATS_LIST[latent_val[0]]]*latent_val[1]];
+      // this.#latent = [BONUS_STATS_LIST[latent_val[0]],latent_val[1]];
       this.#eqIcon =  'cs_gears-icons/Special Gear/'+urlGearVal["employee_type"]+'/' + urlGearVal["icon"] +  '.png';
       this.#mainStat = urlGearVal["main_stat"];
       

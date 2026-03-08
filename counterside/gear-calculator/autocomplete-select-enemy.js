@@ -98,6 +98,8 @@
 
       
 
+      if (currentTargetType != undefined) {
+        
       if (enemy_Weapon.selectedGearData != -1) {
         enemy_Weapon.replaceGearByUnitType(currentTargetType,'Container_enemy'); 
       } if (enemy_Armor.selectedGearData != -1) {
@@ -106,6 +108,7 @@
         enemy_Accessory1.replaceGearByUnitType(currentTargetType,'Container_enemy');
       } if (enemy_Accessory2.selectedGearData != -1) {
         enemy_Accessory2.replaceGearByUnitType(currentTargetType,'Container_enemy');
+      }
       }
 
 

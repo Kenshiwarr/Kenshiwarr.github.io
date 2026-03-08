@@ -301,6 +301,8 @@ link.click(); // This will download the data file named "my_data.csv". */
       
 
 
+      if (currentUnitType != undefined) {
+        
       if (Weapon.selectedGearData != -1) {
         Weapon.replaceGearByUnitType(currentUnitType,'Container'); 
       } if (Armor.selectedGearData != -1) {
@@ -310,7 +312,7 @@ link.click(); // This will download the data file named "my_data.csv". */
       } if (Accessory2.selectedGearData != -1) {
         Accessory2.replaceGearByUnitType(currentUnitType,'Container');
       }
-
+      }
 
 
 

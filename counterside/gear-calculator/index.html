@@ -669,9 +669,9 @@ jQuery.event.special.mousewheel = {
 
 <div class="mt-4" >
   <button type="button" id="openLoadoutsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#compareUnitsModal" style="right: 2rem; top: 5rem;">Check saved loadouts</button>
-
- 
-
+</div>
+<div class="mt-4" >
+  <button type="button" id="openGearPresetsBtn" class="btn btn-primary position-fixed" data-bs-toggle="modal" data-bs-target="#gearPresetsModal" style="right: 2rem; top: 8rem;">Check gear presets</button>
 </div>
 </div>
 
@@ -714,6 +714,26 @@ jQuery.event.special.mousewheel = {
         <div class="unit_container" id="uct_saved_loadouts">
         <ol class="list-group list-group-numbered">
         </ol>
+        </div>
+      </div>
+      <div class="modal-footer">
+        
+      <button id="deleteAllDataForCompare" type="button" class="btn btn-dark me-auto" hidden>Delete all data</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="gearPresetsModal" tabindex="-1" aria-labelledby="gearPresetsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gearPresetsLabel">Saved gear presets  <small> (up to <span id="PresetsLimit">40</span>)</small></h5> 
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="gearPresetModalContainer" id="gearModalSavedPresets">
         </div>
       </div>
       <div class="modal-footer">
