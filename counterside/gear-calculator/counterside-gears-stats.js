@@ -1039,15 +1039,33 @@ const GEAR_SETS_LIST = {
       timer('gearUpdateTimer');
 
       
-      
+      let funit = ContainerType == "Container" ? total_unit_data[0] + " " + total_unit_data[1]:total_target_data[0] + " " + total_target_data[1];
+
+
       var gdata = GEARS[this.#selectedGearData];
+      console.log('gdata =');
+      console.log(gdata);
+      
+
+      
 
       if (gdata != undefined) {
         
-      
+      if ((gdata['employee_name'] != undefined) && (gdata['employee_name'] != funit)) {
+        this.removeGear();
+        return false;
+      }
       
       let newgear = Object.values(GEARS).filter(item => item.employee_type === GearForType && item.slot === gdata["slot"] && item.gear_name === gdata["gear_name"] && item.main_stat[0] === gdata["main_stat"][0]);
 
+      console.log('newgear = ');
+      console.log(GearForType);
+      console.log(gdata["slot"]);
+      console.log(gdata["gear_name"]);
+      console.log(gdata["main_stat"][0]);
+      
+      console.log(newgear);
+      
       var gdata_icon = newgear[0]["icon"];
 
 

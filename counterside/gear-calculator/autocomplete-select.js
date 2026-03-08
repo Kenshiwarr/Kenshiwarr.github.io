@@ -301,13 +301,13 @@ link.click(); // This will download the data file named "my_data.csv". */
       
 
 
-      if (Weapon.selectedGearData != 0) {
+      if (Weapon.selectedGearData != -1) {
         Weapon.replaceGearByUnitType(currentUnitType,'Container'); 
-      } if (Armor.selectedGearData != 0) {
+      } if (Armor.selectedGearData != -1) {
         Armor.replaceGearByUnitType(currentUnitType,'Container');
-      } if (Accessory1.selectedGearData != 0) {
+      } if (Accessory1.selectedGearData != -1) {
         Accessory1.replaceGearByUnitType(currentUnitType,'Container');
-      } if (Accessory2.selectedGearData != 0) {
+      } if (Accessory2.selectedGearData != -1) {
         Accessory2.replaceGearByUnitType(currentUnitType,'Container');
       }
 
