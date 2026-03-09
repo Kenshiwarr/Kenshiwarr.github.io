@@ -419,6 +419,22 @@ z-index: 999;
   position: relative;
 }
 
+.equipment-preview {
+  width: 20vmin;
+  height: 20vmin;
+  box-shadow: inset 0 0 4vmin #0e0b09;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.equipment-preview img {
+  width: 28% !important;
+  height: 28% !important;
+  top: auto;
+  left: 74%;
+  position: relative;
+}
+
 .equipment-slot:hover {
   cursor: pointer;
   box-shadow: inset 0 0 0.5vmin tomato, 0 0 0.5vmin black;

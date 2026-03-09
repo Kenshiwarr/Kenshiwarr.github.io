@@ -63,6 +63,153 @@ if (localStorageAvailable) {
   } 
   
 
+  if (localStorage.getItem('gearPresetData') !== null) {
+    gearPresetData = JSON.parse(localStorage.getItem('gearPresetData'));
+
+    for (var i = 0; i < gearPresetData.length; i++) {
+      let gearIcData;
+      let gearIc = '<div class="gear-containers">';
+    let gearIcSlot = '';
+
+    console.log(gearPresetData[i]);
+    
+      for (var j = 0; j < gearPresetData[i].length; j++) {
+        gearIcData = gearPresetData[i][j].split(",");
+        gearIcSlot += '<div class="equipment-slot_tooltip" style="background-image: url(&quot;cs_gears-icons/Special Gear/'+ GEARS[gearIcData[0]]['employee_type'] + "/" + GEARS[gearIcData[0]]['icon'] +'.png&quot;)">'+(gearIcData[4] !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ GEARS[gearIcData[0]]['set_options'][gearIcData[4]] +'.png" alt="">': "") + '</img>'+'</div>';
+
+      }
+      gearIc += gearIcSlot;
+      gearIc += "</div>";
+
+    $('#gearModalSavedPresets').append('<div class="saved-preset-container" value="' + i + '">' + gearIc + '<div class="d-grid gear-preset-btn_group"><button type="button" class="btn btn-secondary load-unit-gear_preset-btn">Load unit</button><button type="button" class="btn btn-secondary load-target-gear_preset-btn">Load target</button>' + '<button type="button" class="btn btn-danger delete-gear_preset-btn">Delete</button></div></div>');
+      
+    
+    }
+
+    $('.gearPresetModalContainer .load-unit-gear_preset-btn').on('click',function() {
+      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      
+       if (gearPresetData[gval][0] !== '') {
+      Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
+
+      Weapon.setGear();
+      weaponIsConfirmed = true;
+  } else {
+      Weapon.removeGear();
+      weaponIsConfirmed = false;
+  }
+  if (gearPresetData[gval][1] !== '') {
+      Armor.setValuesByUrl(gearPresetData[gval][1],"Armor");
+      Armor.setGear();
+      armorIsConfirmed = true;
+  } else {
+      Armor.removeGear();
+      armorIsConfirmed = false;
+  }
+  if (gearPresetData[gval][2] !== '') {
+      Accessory1.setValuesByUrl(gearPresetData[gval][2],"Accessory1");
+      Accessory1.setGear();
+      accessory1IsConfirmed = true;
+  } else {
+      Accessory1.removeGear();
+      accessory1IsConfirmed = false;
+  }
+  if (gearPresetData[gval][3] !== '') {
+      Accessory2.setValuesByUrl(gearPresetData[gval][3],"Accessory2");
+      Accessory2.setGear();
+      accessory2IsConfirmed = true;
+  } else {
+      Accessory2.removeGear();
+      accessory2IsConfirmed = false;
+  }
+
+    UpdateUnitAndTarget(total_unit_data);
+    CalcUnitDMG()
+    });
+    $('.gearPresetModalContainer .load-target-gear_preset-btn').on('click',function() {
+      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+
+       if (gearPresetData[gval][0] !== '') {
+      enemy_Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
+      enemy_Weapon.setGear();
+      enemy_weaponIsConfirmed = true;
+  } else {
+      enemy_Weapon.removeGear();
+      enemy_weaponIsConfirmed = false;
+  }
+  if (gearPresetData[gval][1] !== '') {
+      enemy_Armor.setValuesByUrl(gearPresetData[gval][1],"Armor");
+      enemy_Armor.setGear();
+      enemy_armorIsConfirmed = true;
+  } else {
+      enemy_Armor.removeGear();
+      enemy_armorIsConfirmed = false;
+  }
+  if (gearPresetData[gval][2] !== '') {
+      enemy_Accessory1.setValuesByUrl(gearPresetData[gval][2],"Accessory1");
+      enemy_Accessory1.setGear();
+      enemy_accessory1IsConfirmed = true;
+  } else {
+      enemy_Accessory1.removeGear();
+      enemy_accessory1IsConfirmed = false;
+  }
+  if (gearPresetData[gval][3] !== '') {
+      enemy_Accessory2.setValuesByUrl(gearPresetData[gval][3],"Accessory2");
+      enemy_Accessory2.setGear();
+      enemy_accessory2IsConfirmed = true;
+  } else {
+      enemy_Accessory2.removeGear();
+      enemy_accessory2IsConfirmed = false;
+  }
+    
+
+    UpdateUnitAndTarget(total_unit_data);
+    CalcUnitDMG()
+    });
+    $('.gearPresetModalContainer .delete-gear_preset-btn').on('click',function() {
+      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+    
+      console.log(gearPresetData);
+      console.log('removing - ' + gval);
+      console.log(gearPresetData);
+      
+      
+      gearPresetData.splice(gval, 1);
+      $(this).parents('.saved-preset-container').remove()
+      localStorage.setItem('gearPresetData',JSON.stringify(gearPresetData));
+      
+
+    }); 
+
+     $('.gearPresetModalContainer .gear-containers .equipment-slot_tooltip').on('click',function() {
+      const DataRow = $(this).parents('.saved-preset-container').attr('value');
+      const DataItem = $(this).index();
+      const DataGear = gearPresetData[DataRow][DataItem].split(',');
+        console.log('DataRow');
+  console.log(DataRow);
+  console.log(DataItem);
+  console.log(DataGear);
+  console.log(gearPresetData);
+  if (DataGear == '') {
+    return false;
+  }
+  let previewGearData = GEARS[DataGear[0]];
+  console.log(previewGearData);
+  
+  let latentGearData = DataGear[3].split('_');
+
+
+  
+  $('#gearPresetsPreviewModal .modal-title').html(previewGearData['employee_type'] + " " + previewGearData['slot'])
+  $('#previewGearBlock').css('background-image','url("cs_gears-icons/Special Gear/' + previewGearData['employee_type'] + '/' + previewGearData['icon'] +'.png")')
+  // $('#previewGearText').html("<h5>" + previewGearData['gear_name'] + "</br>" + previewGearData['main_stat'][0] + " +" + previewGearData['main_stat'][1] + '</h5></br>' + BONUS_STATS_LIST[DataGear[1]] + ": " + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === BONUS_STATS_LIST[DataGear[1]])) ? previewGearData['sub1'][BONUS_STATS_LIST[DataGear[1]]]:((Math.round((Number(previewGearData['sub1'][BONUS_STATS_LIST[DataGear[1]]]) + Number.EPSILON) * 100)) + '% ')))
+  $('#previewGearText').html("<h5>" + previewGearData['gear_name'] + "</br>" + previewGearData['main_stat'][0] + " +" + previewGearData['main_stat'][1] + '</h5></br>sub1: ' + BONUS_STATS_LIST[DataGear[1]]+ '</br>sub2: ' + BONUS_STATS_LIST[DataGear[2]] + '</br>latent: ' + BONUS_STATS_LIST[latentGearData[0]] ?? "")
+  $('#previewGearBlock').html('<img src="cs_gears-icons/Set Icons/Icon_Set_'+ previewGearData['set_options'][DataGear[4]] +'.png" alt="">')
+  $('#gearPresetsPreviewModal').modal('show');
+});
+    
+  }
+
   console.timeEnd('LoadFromLocalStorageTime');
 } else {
   $('#uct_saved_loadouts').html('<div class="text-danger text-center"> local storage is not available. <br /> No data can be saved. <br /> Your progress will be lost once you refresh the page. </div>')
@@ -432,6 +579,160 @@ $('#deleteAllDataForCompare').on('click',function() {
     }
   }
 });
+
+
+$('.save-unit-preset-btn').on('click',function() {
+
+  let gearIc;
+  let gearData;
+
+  if ($(this).attr('value') == '0') {
+    gearData = [Weapon.getUrlValues(),Armor.getUrlValues(),Accessory1.getUrlValues(),Accessory2.getUrlValues()]
+    gearIc = '<div class="gear-containers"> <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ Weapon.eqIcon +'&quot;)">'+(Weapon.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ Weapon.eqSet +'.png" alt="">': "") + '</img>'+'</div>  <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ Armor.eqIcon +'&quot;)">'+(Armor.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ Armor.eqSet +'.png" alt="">': "") + '</div>  <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ Accessory1.eqIcon +'&quot;)">'+(Accessory1.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ Accessory1.eqSet +'.png" alt="">': "") + '</div>  <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ Accessory2.eqIcon +'&quot;)">'+(Accessory2.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ Accessory2.eqSet +'.png" alt="">': "") + '</div> </div>';
+  } else {
+    gearData = [enemy_Weapon.getUrlValues(),enemy_Armor.getUrlValues(),enemy_Accessory1.getUrlValues(),enemy_Accessory2.getUrlValues()]
+    gearIc = '<div class="gear-containers"> <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ enemy_Weapon.eqIcon +'&quot;)">'+(enemy_Weapon.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ enemy_Weapon.eqSet +'.png" alt="">': "") + '</div>  <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ enemy_Armor.eqIcon +'&quot;)">'+(enemy_Armor.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ enemy_Armor.eqSet +'.png" alt="">': "") + '</div> <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ enemy_Accessory1.eqIcon +'&quot;)">'+(enemy_Accessory1.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ enemy_Accessory1.eqSet +'.png" alt="">': "") + '</div> <div class="equipment-slot_tooltip" style="background-image: url(&quot;'+ enemy_Accessory2.eqIcon +'&quot;)">'+(enemy_Accessory2.eqSet !== 0 ? '<img src="cs_gears-icons/Set Icons/Icon_Set_'+ enemy_Accessory2.eqSet +'.png" alt="">': "") + '</div> </div>';
+  }
+
+   
+    ConfirmDialog("<b>"+gearIc+ "<b>" ,function() {
+
+    if (localStorageAvailable) {
+   
+
+      gearPresetData.push(gearData);
+    localStorage.setItem('gearPresetData',JSON.stringify(gearPresetData));
+   
+      $('#gearModalSavedPresets').append('<div class="saved-preset-container" value="' + (gearPresetData.length-1) + '">' + gearIc + '<div class="d-grid gear-preset-btn_group"><button type="button" class="btn btn-secondary load-unit-gear_preset-btn">Load unit</button><button type="button" class="btn btn-secondary load-target-gear_preset-btn">Load target</button>' + '<button type="button" class="btn btn-danger delete-gear_preset-btn">Delete</button></div></div>');
+   
+   $('.gearPresetModalContainer .load-unit-gear_preset-btn').on('click',function() {
+      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      
+       if (gearPresetData[gval][0] !== '') {
+      Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
+
+      Weapon.setGear();
+      weaponIsConfirmed = true;
+  } else {
+      Weapon.removeGear();
+      weaponIsConfirmed = false;
+  }
+  if (gearPresetData[gval][1] !== '') {
+      Armor.setValuesByUrl(gearPresetData[gval][1],"Armor");
+      Armor.setGear();
+      armorIsConfirmed = true;
+  } else {
+      Armor.removeGear();
+      armorIsConfirmed = false;
+  }
+  if (gearPresetData[gval][2] !== '') {
+      Accessory1.setValuesByUrl(gearPresetData[gval][2],"Accessory1");
+      Accessory1.setGear();
+      accessory1IsConfirmed = true;
+  } else {
+      Accessory1.removeGear();
+      accessory1IsConfirmed = false;
+  }
+  if (gearPresetData[gval][3] !== '') {
+      Accessory2.setValuesByUrl(gearPresetData[gval][3],"Accessory2");
+      Accessory2.setGear();
+      accessory2IsConfirmed = true;
+  } else {
+      Accessory2.removeGear();
+      accessory2IsConfirmed = false;
+  }
+
+    UpdateUnitAndTarget(total_unit_data);
+    CalcUnitDMG()
+    });
+    $('.gearPresetModalContainer .load-target-gear_preset-btn').on('click',function() {
+      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+
+       if (gearPresetData[gval][0] !== '') {
+      enemy_Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
+      enemy_Weapon.setGear();
+      enemy_weaponIsConfirmed = true;
+  } else {
+      enemy_Weapon.removeGear();
+      enemy_weaponIsConfirmed = false;
+  }
+  if (gearPresetData[gval][1] !== '') {
+      enemy_Armor.setValuesByUrl(gearPresetData[gval][1],"Armor");
+      enemy_Armor.setGear();
+      enemy_armorIsConfirmed = true;
+  } else {
+      enemy_Armor.removeGear();
+      enemy_armorIsConfirmed = false;
+  }
+  if (gearPresetData[gval][2] !== '') {
+      enemy_Accessory1.setValuesByUrl(gearPresetData[gval][2],"Accessory1");
+      enemy_Accessory1.setGear();
+      enemy_accessory1IsConfirmed = true;
+  } else {
+      enemy_Accessory1.removeGear();
+      enemy_accessory1IsConfirmed = false;
+  }
+  if (gearPresetData[gval][3] !== '') {
+      enemy_Accessory2.setValuesByUrl(gearPresetData[gval][3],"Accessory2");
+      enemy_Accessory2.setGear();
+      enemy_accessory2IsConfirmed = true;
+  } else {
+      enemy_Accessory2.removeGear();
+      enemy_accessory2IsConfirmed = false;
+  }
+    
+
+    UpdateUnitAndTarget(total_unit_data);
+    CalcUnitDMG()
+    });
+    $('.gearPresetModalContainer .delete-gear_preset-btn').on('click',function() {
+      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+    
+      console.log(gearPresetData);
+      console.log('removing - ' + gval);
+      console.log(gearPresetData);
+      
+      
+      gearPresetData.splice(gval, 1);
+      $(this).parents('.saved-preset-container').remove()
+      localStorage.setItem('gearPresetData',JSON.stringify(gearPresetData));
+      
+
+    }); 
+   
+      $('.gearPresetModalContainer .gear-containers .equipment-slot_tooltip').on('click',function() {
+      const DataRow = Number($(this).parents('.saved-preset-container').attr('value'));
+      const DataItem = $(this).index();
+      const DataGear = gearPresetData[DataRow][DataItem].split(',');
+        console.log('DataRow');
+  console.log(DataRow);
+  console.log(DataItem);
+  console.log(DataGear);
+  console.log(gearPresetData);
+  if (DataGear == '') {
+    return false;
+  }
+  let previewGearData = GEARS[DataGear[0]];
+  console.log(previewGearData);
+  
+  let latentGearData = DataGear[3].split('_');
+
+
+
+  
+  $('#gearPresetsPreviewModal .modal-title').html(previewGearData['employee_type'] + " " + previewGearData['slot'])
+  $('#previewGearBlock').css('background-image','url("cs_gears-icons/Special Gear/' + previewGearData['employee_type'] + '/' + previewGearData['icon'] +'.png")')
+  // $('#previewGearText').html("<h5>" + previewGearData['gear_name'] + "</br>" + previewGearData['main_stat'][0] + " +" + previewGearData['main_stat'][1] + '</h5></br>' + BONUS_STATS_LIST[DataGear[1]] + ": " + (([HP,ATK,DEF,CRIT,HIT,EVA].some((t) => t === BONUS_STATS_LIST[DataGear[1]])) ? previewGearData['sub1'][BONUS_STATS_LIST[DataGear[1]]]:((Math.round((Number(previewGearData['sub1'][BONUS_STATS_LIST[DataGear[1]]]) + Number.EPSILON) * 100)) + '% ')))
+  $('#previewGearText').html("<h5>" + previewGearData['gear_name'] + "</br>" + previewGearData['main_stat'][0] + " +" + previewGearData['main_stat'][1] + '</h5></br>sub1: ' + BONUS_STATS_LIST[DataGear[1]]+ '</br>sub2: ' + BONUS_STATS_LIST[DataGear[2]] + '</br>latent: ' + BONUS_STATS_LIST[latentGearData[0]] ?? "")
+  $('#previewGearBlock').html('<img src="cs_gears-icons/Set Icons/Icon_Set_'+ previewGearData['set_options'][DataGear[4]] +'.png" alt="">')
+  $('#gearPresetsPreviewModal').modal('show');
+});
+    }
+
+    return true;
+    },"Save this gear?");
+});
+
 
 
 

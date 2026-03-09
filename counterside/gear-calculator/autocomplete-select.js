@@ -84,6 +84,9 @@ var unitHasEE = '';
 var skillCdImprove = [];
 
 
+var gearPresetData = [];
+
+
 
 /* BONUS_STATS_LIST.forEach(e => {
   $('#stat_data_list_values ol').append('<li><button class="dropdown-item" type="button" value="'+ e +'" subvalue="0">'+e + ' - 0'+'</button></li>');
