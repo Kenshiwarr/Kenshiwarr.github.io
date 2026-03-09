@@ -555,6 +555,7 @@ const units_stats_csv_2 = ["States of One ACH-4 Clan","2160","164","150","94","7
 "Hyperion Plan Titan","2730","515","268","322","200","207","Icon_Titan_Hyperion Plan","Mech","Ranger","Air","1",,"0.2",,,,,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Space Cat Felicette","1706","438","150","356","945","114","Icon_Felicette_Space Cat","Soldier","Sniper","Ground","1",,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,"0.4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Zodiac Knights: Red Shift Ascella Procenica","3748","395","381","90","238","283","Icon_Ascella Procenica_Zodiac Knights; Red Shift","Counter","Defender","Ground","1",,,,,,"0.25",,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Nostalgia Workshop  Vesca","2644","507","191","476","302","247","Icon_Vesca_Nostalgia Workshop ","Counter","Ranger","Ground","1",,"0.2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 "Official Support Zena Bird","1577","246","156","235","116","291","Icon_Zena Bird_Official Support","Counter","Striker","Ground","1",,"0.15",,,,"0.3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"0.2",,,,,,,,,,,,,,,,];
 
 
@@ -845,6 +846,7 @@ const unit_stats_growth_pve = [
 "Hyperion Plan Titan",264,40.41,2.94,3.55,2.21,2.27,
 "Space Cat Felicette",164.99,34.39,1.64,3.92,10.4,1.26,
 "Zodiac Knights: Red Shift Ascella Procenica",362.99,31.03,4.18,0.98,2.61,3.12,
+"Nostalgia Workshop Vesca",255.99,39.79,2.11,5.23,3.31,2.71,
 "Official Support Zena Bird",194.99,24.72,2.07,3.12,1.54,3.86];
 
 // const unit_gear_stats_csv = ["Equip Type","Gear Name","Slot","Employee Type","Icon","Main Stat","HP","ATK","DEF","CRIT","HIT","EVA","SPD","ASPD","CRIT DMG","Skill Haste","HP Recovery per Sec","CRIT DMG RES","Status Effect RES","Incoming Healing +","Outgoing Healing +","Anti-Counter DMG","Anti-Soldier DMG","Anti-Mech DMG","Anti-C.O. DMG","Anti-Replacer DMG","Anti-Striker DMG","Anti-Defender DMG","Anti-Ranger DMG","Anti-Sniper DMG","Anti-Supporter DMG","Anti-Siege DMG","Anti-Tower DMG","Anti-Air DMG","Anti-Ground DMG","Melee DMG","Ranged DMG","Anti-Counter DMG RES","Anti-Soldier DMG RES","Anti-Mech DMG RES","Anti-C.O. DMG RES","Anti-Replacer DMG RES","Anti-Striker DMG RES","Anti-Defender DMG RES","Anti-Ranger DMG RES","Anti-Sniper DMG RES","Anti-Supporter DMG RES","Anti-Siege DMG RES","Anti-Tower DMG RES","Anti-Air DMG RES","Anti-Ground DMG RES","Melee DMG RES","Ranged DMG RES","DMG Taken RDC","Special Skill DMG AMP","Ultimate Skill DMG AMP","DEF Penetration","Special Skill DMG RDC","Ultimate Skill DMG RDC","Barrier Enhancement",
@@ -4255,6 +4257,2316 @@ const unit_dps_stats_csv = ["Name","Source Entry State","Skill Level Empower Mod
 "- ?","attack1","-","-","4","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_ATTACK1_LOOP","NST_ATTACK'",
 "- ?","attack1","-","-","1","false","false","-","-","-","-","-","-","false","false","false","false","false","-","-","-","USN_ATTACK1_END","NST_ATTACK'",
 ""]
+
+
+const UNITS = [
+    {
+        "unit_icon": "Icon_ACH-4 Clan_States of One",
+        "unit_name": "ACH-4 Clan",
+        "unit_title": "States of One",
+        "unit_type": "Mech",
+        "unit_role": "Tower",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_ATAC-130 Gunship_States of One",
+        "unit_name": "ATAC-130 Gunship",
+        "unit_title": "States of One",
+        "unit_type": "Mech",
+        "unit_role": "Tower",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_ATB-1B Spear_States of One",
+        "unit_name": "ATB-1B Spear",
+        "unit_title": "States of One",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_ATF-35 Thunderbolt_States of One",
+        "unit_name": "ATF-35 Thunderbolt",
+        "unit_title": "States of One",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_ATL-1 Lincoln_States of One",
+        "unit_name": "ATL-1 Lincoln",
+        "unit_title": "States of One",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Orca_Abyssal Ravage",
+        "unit_name": "Orca",
+        "unit_title": "Abyssal Ravage",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Acolyte_ESPR",
+        "unit_name": "Acolyte",
+        "unit_title": "ESPR",
+        "unit_type": "Soldier;C.O.",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Adamant Sniper_Fennec Fox",
+        "unit_name": "Adamant Sniper",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Surya_Aditya",
+        "unit_name": "Surya",
+        "unit_title": "Aditya",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Administration Rifleman_Old Administration",
+        "unit_name": "Administration Rifleman",
+        "unit_title": "Old Administration",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Administration Shieldman_Old Administration",
+        "unit_name": "Administration Shieldman",
+        "unit_title": "Old Administration",
+        "unit_type": "Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Administration Sword Fighter_Old Administration",
+        "unit_name": "Administration Sword Fighter",
+        "unit_title": "Old Administration",
+        "unit_type": "Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Eujin_Agent",
+        "unit_name": "Eujin",
+        "unit_title": "Agent",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Agnes Abigail_Valentinus Monastery",
+        "unit_name": "Agnes Abigail",
+        "unit_title": "Valentinus Monastery",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Alex_Old Administration; Maze Division",
+        "unit_name": "Alex",
+        "unit_title": "Old Administration: Maze Division",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Amy Firstwing_Six Wings",
+        "unit_name": "Amy Firstwing",
+        "unit_title": "Six Wings",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Amy Strickland_Freedom Riders",
+        "unit_name": "Amy Strickland",
+        "unit_title": "Freedom Riders",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Machine Collector_Apex Jackal",
+        "unit_name": "Machine Collector",
+        "unit_title": "Apex Jackal",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Arachne_Future-at-War",
+        "unit_name": "Arachne",
+        "unit_title": "Future-at-War",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Arius Esquede_Zodiac Knights; Blue Shift",
+        "unit_name": "Arius Esquede",
+        "unit_title": "Zodiac Knights: Blue Shift",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Arti Lana_Special Hero Class",
+        "unit_name": "Arti Lana",
+        "unit_title": "Special Hero Class",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Assault Trooper_States of One",
+        "unit_name": "Assault Trooper",
+        "unit_title": "States of One",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Mordred_Avenger",
+        "unit_name": "Mordred",
+        "unit_title": "Avenger",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Hilde_Type; Siegfried",
+        "unit_name": "Hilde",
+        "unit_title": "Type: Siegfried",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Horizon_Cold Case",
+        "unit_name": "Horizon",
+        "unit_title": "Cold Case",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Jake Walker_Stormbringer",
+        "unit_name": "Jake Walker",
+        "unit_title": "Stormbringer",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Joo Shiyoon_Arhat",
+        "unit_name": "Joo Shiyoon",
+        "unit_title": "Arhat",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Karin Wong_Minerva",
+        "unit_name": "Karin Wong",
+        "unit_title": "Minerva",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Sooyeon_Ace of Wings",
+        "unit_name": "Lee Sooyeon",
+        "unit_title": "Ace of Wings",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Lyudmila_Kresnik",
+        "unit_name": "Lyudmila",
+        "unit_title": "Kresnik",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Maria Antonov_Garguantia",
+        "unit_name": "Maria Antonov",
+        "unit_title": "Garguantia",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Na Yubin_Six Wings",
+        "unit_name": "Na Yubin",
+        "unit_title": "Six Wings",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ray_Nehemoth",
+        "unit_name": "Ray",
+        "unit_title": "Nehemoth",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Regina MacCready_Tenured President",
+        "unit_name": "Regina MacCready",
+        "unit_title": "Tenured President",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Rosaria le Friede_Asmodeus",
+        "unit_name": "Rosaria le Friede",
+        "unit_title": "Asmodeus",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Seo Yoon_Altergressive",
+        "unit_name": "Seo Yoon",
+        "unit_title": "Altergressive",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Shin Jia_Singularity",
+        "unit_name": "Shin Jia",
+        "unit_title": "Singularity",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sigma_Final Phase",
+        "unit_name": "Sigma",
+        "unit_title": "Final Phase",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yoo Mina_Type; Fenrir",
+        "unit_name": "Yoo Mina",
+        "unit_title": "Type: Fenrir",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yuna Springfield_Solar Codex",
+        "unit_name": "Yuna Springfield",
+        "unit_title": "Solar Codex",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ballista_Future-at-War",
+        "unit_name": "Ballista",
+        "unit_title": "Future-at-War",
+        "unit_type": "Mech",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Benedict Constantine_Miracle Investigation Council 9",
+        "unit_name": "Benedict Constantine",
+        "unit_title": "Miracle Investigation Council 9",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Irie Alford_Best Mascot",
+        "unit_name": "Irie Alford",
+        "unit_title": "Best Mascot",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Miya_Best Streamer",
+        "unit_name": "Miya",
+        "unit_title": "Best Streamer",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Biblide Luce_Miracle Investigation Council 9",
+        "unit_name": "Biblide Luce",
+        "unit_title": "Miracle Investigation Council 9",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Black Tail_Black Tide",
+        "unit_name": "Black Tail",
+        "unit_title": "Black Tide",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Elizabeth Pendragon_Blue Blood",
+        "unit_name": "Elizabeth Pendragon",
+        "unit_title": "Blue Blood",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Bomi_HRT Berry",
+        "unit_name": "Bomi",
+        "unit_title": "HRT Berry",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Alex_Breakbeat",
+        "unit_name": "Alex",
+        "unit_title": "Breakbeat",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Brownie Moore_Administration Counter Academy",
+        "unit_name": "Brownie Moore",
+        "unit_title": "Administration Counter Academy",
+        "unit_type": "Soldier",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Buzzard_Steel Lane",
+        "unit_name": "Buzzard",
+        "unit_title": "Steel Lane",
+        "unit_type": "Mech",
+        "unit_role": "Sniper",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_C.C._Lancelot Frontier",
+        "unit_name": "C.C.",
+        "unit_title": "Lancelot Frontier",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Carlota Martinez_Knights of Redemption",
+        "unit_name": "Carlota Martinez",
+        "unit_title": "Knights of Redemption",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Carmen_Elysium Philharmonic",
+        "unit_name": "Carmen",
+        "unit_title": "Elysium Philharmonic",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Cathy Wade_Official Support",
+        "unit_name": "Cathy Wade",
+        "unit_title": "Official Support",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Chariot_Black Tide",
+        "unit_name": "Chariot",
+        "unit_title": "Black Tide",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Charlie Rockwood_R7 Irregular Scouts",
+        "unit_name": "Charlie Rockwood",
+        "unit_title": "R7 Irregular Scouts",
+        "unit_type": "Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Cho Hojin_White Rabbit",
+        "unit_name": "Cho Hojin",
+        "unit_title": "White Rabbit",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Choi Gangsan_Daymine Mining Team 4",
+        "unit_name": "Choi Gangsan",
+        "unit_title": "Daymine Mining Team 4",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Choi Ina_HRT Berry",
+        "unit_name": "Choi Ina",
+        "unit_title": "HRT Berry",
+        "unit_type": "Soldier",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Choi Jihoon_The Militia",
+        "unit_name": "Choi Jihoon",
+        "unit_title": "The Militia",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Christina Brecht_The Gronia Department of National Security",
+        "unit_name": "Christina Brecht",
+        "unit_title": "The Gronia Department of National Security",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ciel Marronier_Academy Student Council",
+        "unit_name": "Ciel Marronier",
+        "unit_title": "Academy Student Council",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Cindy Looper_Miracle Investigation Council 9",
+        "unit_name": "Cindy Looper",
+        "unit_title": "Miracle Investigation Council 9",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Clareth El Arcadena_Knights of Redemption",
+        "unit_name": "Clareth El Arcadena",
+        "unit_title": "Knights of Redemption",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Claudia Nelson_Miracle Investigation Council 9",
+        "unit_name": "Claudia Nelson",
+        "unit_title": "Miracle Investigation Council 9",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Credere_Future Strategy Department",
+        "unit_name": "Credere",
+        "unit_title": "Future Strategy Department",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Gerard Curian_The Iron Knight",
+        "unit_name": "Gerard Curian",
+        "unit_title": "The Iron Knight",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sylvia Lena Cooper_Dark Seven",
+        "unit_name": "Sylvia Lena Cooper",
+        "unit_title": "Dark Seven",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Dash_Horizon Finance",
+        "unit_name": "Dash",
+        "unit_title": "Horizon Finance",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Joo Shiyoung_Suicide Squad",
+        "unit_name": "Joo Shiyoung",
+        "unit_title": "Suicide Squad",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Dominic King Reginald_Delta Seven",
+        "unit_name": "Dominic King Reginald",
+        "unit_title": "Delta Seven",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Dorothy_OZ",
+        "unit_name": "Dorothy",
+        "unit_title": "OZ",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Dracasia_Front Bay Sharks",
+        "unit_name": "Dracasia",
+        "unit_title": "Front Bay Sharks",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Drekavac_Northern Union",
+        "unit_name": "Drekavac",
+        "unit_title": "Northern Union",
+        "unit_type": "Mech",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Eddie Fisher_R7 Irregular Scouts",
+        "unit_name": "Eddie Fisher",
+        "unit_title": "R7 Irregular Scouts",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Edel Meitner_ESPR",
+        "unit_name": "Edel Meitner",
+        "unit_title": "ESPR",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Edith Twins_Academy Student Council",
+        "unit_name": "Edith Twins",
+        "unit_title": "Academy Student Council",
+        "unit_type": "Counter",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Eins & Zwei_Jehuty Biotech",
+        "unit_name": "Eins & Zwei",
+        "unit_title": "Jehuty Biotech",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Elizabeth Pendragon_Prydwen Institution",
+        "unit_name": "Elizabeth Pendragon",
+        "unit_title": "Prydwen Institution",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ella_Border Guards",
+        "unit_name": "Ella",
+        "unit_title": "Border Guards",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Estaque_Old Administration",
+        "unit_name": "Estaque",
+        "unit_title": "Old Administration",
+        "unit_type": "Mech",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Esterosa de Chevalier_Zodiac Knights; Blue Shift",
+        "unit_name": "Esterosa de Chevalier",
+        "unit_title": "Zodiac Knights: Blue Shift",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Eujin_ALT Squad",
+        "unit_name": "Eujin",
+        "unit_title": "ALT Squad",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Eve Meitner_Gha&apos;agsheblah",
+        "unit_name": "Eve Meitner",
+        "unit_title": "Gha&apos;agsheblah",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Evelyn Keller_Strega",
+        "unit_name": "Evelyn Keller",
+        "unit_title": "Strega",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Evolved One_Apex Predator",
+        "unit_name": "Evolved One",
+        "unit_title": "Apex Predator",
+        "unit_type": "Mech",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yoo Mina_Expert Mercenary",
+        "unit_name": "Yoo Mina",
+        "unit_title": "Expert Mercenary",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Felicette_Canary Squad",
+        "unit_name": "Felicette",
+        "unit_title": "Canary Squad",
+        "unit_type": "Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Fione Lowell_Zodiac Knights; Blue Shift",
+        "unit_name": "Fione Lowell",
+        "unit_title": "Zodiac Knights: Blue Shift",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Frederick Doma_Fallen Hawk",
+        "unit_name": "Frederick Doma",
+        "unit_title": "Fallen Hawk",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Frederick Yuma_Fallen Hawk",
+        "unit_name": "Frederick Yuma",
+        "unit_title": "Fallen Hawk",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kim Chowon_Freelancer",
+        "unit_name": "Kim Chowon",
+        "unit_title": "Freelancer",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nanahara Chinatsu_Full Moon",
+        "unit_name": "Nanahara Chinatsu",
+        "unit_title": "Full Moon",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Gabriel Jun the Vicious Breaker_Alphatrix Innovation",
+        "unit_name": "Gabriel Jun the Vicious Breaker",
+        "unit_title": "Alphatrix Innovation",
+        "unit_type": "Counter",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Gaeun_HRT Berry",
+        "unit_name": "Gaeun",
+        "unit_title": "HRT Berry",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Roy Burnett_Galahad",
+        "unit_name": "Roy Burnett",
+        "unit_title": "Galahad",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Gambler_Betatrix",
+        "unit_name": "Gambler",
+        "unit_title": "Betatrix",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Glitch_Scavengers",
+        "unit_name": "Glitch",
+        "unit_title": "Scavengers",
+        "unit_type": "Mech;Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Goliath_Northern Union",
+        "unit_name": "Goliath",
+        "unit_title": "Northern Union",
+        "unit_type": "Mech",
+        "unit_role": "Siege",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ecclesia_Great Silence",
+        "unit_name": "Ecclesia",
+        "unit_title": "Great Silence",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Gremory_Gremory&apos;s Bar",
+        "unit_name": "Gremory",
+        "unit_title": "Gremory&apos;s Bar",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Grendel_Northern Union",
+        "unit_name": "Grendel",
+        "unit_title": "Northern Union",
+        "unit_type": "Mech",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Christina Brecht_Griffin Rider",
+        "unit_name": "Christina Brecht",
+        "unit_title": "Griffin Rider",
+        "unit_type": "Counter;Mech",
+        "unit_role": "Supporter",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_HM MRLS_Fennec Fox",
+        "unit_name": "HM MRLS",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Mech",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Han Sorim_White Rabbit",
+        "unit_name": "Han Sorim",
+        "unit_title": "White Rabbit",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Harab_Cronenworth Puppet Troupe",
+        "unit_name": "Harab",
+        "unit_title": "Cronenworth Puppet Troupe",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Hayami Kanade_Nanahara Family Alliance",
+        "unit_name": "Hayami Kanade",
+        "unit_title": "Nanahara Family Alliance",
+        "unit_type": "Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Hayami Sanae_Nanahara Family Alliance",
+        "unit_name": "Hayami Sanae",
+        "unit_title": "Nanahara Family Alliance",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kaci Bins_Hero Blossom",
+        "unit_name": "Kaci Bins",
+        "unit_title": "Hero Blossom",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kim Chulsoo_Hidden Challenger",
+        "unit_name": "Kim Chulsoo",
+        "unit_title": "Hidden Challenger",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Hilde_Fenrir Squad",
+        "unit_name": "Hilde",
+        "unit_title": "Fenrir Squad",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Hirose Aki_Freedom Riders",
+        "unit_name": "Hirose Aki",
+        "unit_title": "Freedom Riders",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Horizon_Horizon Finance",
+        "unit_name": "Horizon",
+        "unit_title": "Horizon Finance",
+        "unit_type": "Mech",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Hound_Steel Lane",
+        "unit_name": "Hound",
+        "unit_title": "Steel Lane",
+        "unit_type": "Mech",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_I-NO_Red Musician",
+        "unit_name": "I-NO",
+        "unit_title": "Red Musician",
+        "unit_type": "Counter;Mech",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ifrit_Old Administration",
+        "unit_name": "Ifrit",
+        "unit_title": "Old Administration",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Hayami Sanae_Ignis Blade",
+        "unit_name": "Hayami Sanae",
+        "unit_title": "Ignis Blade",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ingrid Johanna_Strega",
+        "unit_name": "Ingrid Johanna",
+        "unit_title": "Strega",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kang Soyoung_Joint Investigation",
+        "unit_name": "Kang Soyoung",
+        "unit_title": "Joint Investigation",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Irie Alford_Official Support",
+        "unit_name": "Irie Alford",
+        "unit_title": "Official Support",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ironside_States of One",
+        "unit_name": "Ironside",
+        "unit_title": "States of One",
+        "unit_type": "Soldier",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Jack-O_Scales of Juno",
+        "unit_name": "Jack-O",
+        "unit_title": "Scales of Juno",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Jaina Kropel_Delta Seven",
+        "unit_name": "Jaina Kropel",
+        "unit_title": "Delta Seven",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Jake Walker_Delta Seven",
+        "unit_name": "Jake Walker",
+        "unit_title": "Delta Seven",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Jane Doe_Mason Mercenary Office",
+        "unit_name": "Jane Doe",
+        "unit_title": "Mason Mercenary Office",
+        "unit_type": "Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Janus_Future-at-War",
+        "unit_name": "Janus",
+        "unit_title": "Future-at-War",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Jessica Green_R7 Irregular Scouts",
+        "unit_name": "Jessica Green",
+        "unit_title": "R7 Irregular Scouts",
+        "unit_type": "Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Jin Bora_Subculture Research Club",
+        "unit_name": "Jin Bora",
+        "unit_title": "Subculture Research Club",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_John Mason_Mason Mercenary Office",
+        "unit_name": "John Mason",
+        "unit_title": "Mason Mercenary Office",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Joo Shiyoon_Fenrir Squad",
+        "unit_name": "Joo Shiyoon",
+        "unit_title": "Fenrir Squad",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Joo Shiyoung_Delta Seven; Pathfinder",
+        "unit_name": "Joo Shiyoung",
+        "unit_title": "Delta Seven: Pathfinder",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Judy Swift_Old Management Bureau; Yaksha Squadron",
+        "unit_name": "Judy Swift",
+        "unit_title": "Old Management Bureau: Yaksha Squadron",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kaci Bins_Special Hero Class",
+        "unit_name": "Kaci Bins",
+        "unit_title": "Special Hero Class",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kallen Kozuki_GUREN TYPE-08 ELEMENTS `SEITEN`",
+        "unit_name": "Kallen Kozuki",
+        "unit_title": "GUREN TYPE-08 ELEMENTS \"SEITEN\"",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kang Minwoo_The Militia",
+        "unit_name": "Kang Minwoo",
+        "unit_title": "The Militia",
+        "unit_type": "Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kang Soyoung_Police SWAT 4",
+        "unit_name": "Kang Soyoung",
+        "unit_title": "Police SWAT 4",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Karin Wong_Delta Seven; Pathfinder",
+        "unit_name": "Karin Wong",
+        "unit_title": "Delta Seven: Pathfinder",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Xiao Lin_Kestrel",
+        "unit_name": "Xiao Lin",
+        "unit_title": "Kestrel",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kim Chowon_Alphatrix Innovation",
+        "unit_name": "Kim Chowon",
+        "unit_title": "Alphatrix Innovation",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kim Chulsoo_Yeoksam Residents&apos; Association",
+        "unit_name": "Kim Chulsoo",
+        "unit_title": "Yeoksam Residents&apos; Association",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kim Sobin_ALT Squad",
+        "unit_name": "Kim Sobin",
+        "unit_title": "ALT Squad",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Mavka_Kostroma",
+        "unit_name": "Mavka",
+        "unit_title": "Kostroma",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Alice Braidwood_Kubera",
+        "unit_name": "Alice Braidwood",
+        "unit_title": "Kubera",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Kyle Wong_Delta Seven",
+        "unit_name": "Kyle Wong",
+        "unit_title": "Delta Seven",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Laika_Canary Squad",
+        "unit_name": "Laika",
+        "unit_title": "Canary Squad",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lamda Spatari_ESPR",
+        "unit_name": "Lamda Spatari",
+        "unit_title": "ESPR",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lara Jaeger_Platina Express",
+        "unit_name": "Lara Jaeger",
+        "unit_title": "Platina Express",
+        "unit_type": "Counter",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Laura Beatrix_Strega",
+        "unit_name": "Laura Beatrix",
+        "unit_title": "Strega",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Dafoe_Frontier",
+        "unit_name": "Lee Dafoe",
+        "unit_title": "Frontier",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Jin_Alphatrix Innovation",
+        "unit_name": "Lee Jin",
+        "unit_title": "Alphatrix Innovation",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Jisoo_Six Wings",
+        "unit_name": "Lee Jisoo",
+        "unit_title": "Six Wings",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Minseo_Freedom Riders",
+        "unit_name": "Lee Minseo",
+        "unit_title": "Freedom Riders",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Sooyeon_Fenrir Division",
+        "unit_name": "Lee Sooyeon",
+        "unit_title": "Fenrir Division",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Yumi_Police SWAT 4",
+        "unit_name": "Lee Yumi",
+        "unit_title": "Police SWAT 4",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lee Yuri_The Militia",
+        "unit_name": "Lee Yuri",
+        "unit_title": "The Militia",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lelouch Lamperouge_Zero",
+        "unit_name": "Lelouch Lamperouge",
+        "unit_title": "Zero",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lenore_Northern Union",
+        "unit_name": "Lenore",
+        "unit_title": "Northern Union",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Levia Thanis_Successor",
+        "unit_name": "Levia Thanis",
+        "unit_title": "Successor",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lily_Flora Maid Service",
+        "unit_name": "Lily",
+        "unit_title": "Flora Maid Service",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lin Xien_Freedom Riders",
+        "unit_name": "Lin Xien",
+        "unit_title": "Freedom Riders",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Liona_OZ",
+        "unit_name": "Liona",
+        "unit_title": "OZ",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Liv Allen_Zodiac Knights; Blue Shift",
+        "unit_name": "Liv Allen",
+        "unit_title": "Zodiac Knights: Blue Shift",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lone Lee_Lonely Villainess",
+        "unit_name": "Lone Lee",
+        "unit_title": "Lonely Villainess",
+        "unit_type": "Soldier",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lucid_Jehuty Biotech",
+        "unit_name": "Lucid",
+        "unit_title": "Jehuty Biotech",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lucrecia_Knights of Redemption",
+        "unit_name": "Lucrecia",
+        "unit_title": "Knights of Redemption",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Lulu the Nightmare_Nightmare Realization",
+        "unit_name": "Lulu the Nightmare",
+        "unit_title": "Nightmare Realization",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lumi_HRT Berry",
+        "unit_name": "Lumi",
+        "unit_title": "HRT Berry",
+        "unit_type": "Counter",
+        "unit_role": "Siege",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Luna_Elysium Philharmonic",
+        "unit_name": "Luna",
+        "unit_title": "Elysium Philharmonic",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Defender",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Lycoris_Flora Maid Service",
+        "unit_name": "Lycoris",
+        "unit_title": "Flora Maid Service",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lyudmila_Old Administration; Maze Division",
+        "unit_name": "Lyudmila",
+        "unit_title": "Old Administration: Maze Division",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_MA1 HMMWV_Fennec Fox",
+        "unit_name": "MA1 HMMWV",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Machine Collector_Scavengers",
+        "unit_name": "Machine Collector",
+        "unit_title": "Scavengers",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Maestra Nequitia_Elysium Philharmonic",
+        "unit_name": "Maestra Nequitia",
+        "unit_title": "Elysium Philharmonic",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Maria Antonov_Delta Seven",
+        "unit_name": "Maria Antonov",
+        "unit_title": "Delta Seven",
+        "unit_type": "Counter",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_May_Jellyfish Pirates",
+        "unit_name": "May",
+        "unit_title": "Jellyfish Pirates",
+        "unit_type": "Soldier",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Maya Hunt_Frontier",
+        "unit_name": "Maya Hunt",
+        "unit_title": "Frontier",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Mi Rinae_Subculture Research Club",
+        "unit_name": "Mi Rinae",
+        "unit_title": "Subculture Research Club",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Mika Star_Academy Student Council",
+        "unit_name": "Mika Star",
+        "unit_title": "Academy Student Council",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Millia Rage_Post-War Administration Bureau",
+        "unit_name": "Millia Rage",
+        "unit_title": "Post-War Administration Bureau",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ministra_Demon-type C.O.",
+        "unit_name": "Ministra",
+        "unit_title": "Demon-type C.O.",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Miya_HRT Berry",
+        "unit_name": "Miya",
+        "unit_title": "HRT Berry",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Mone_Flora Maid Service",
+        "unit_name": "Mone",
+        "unit_title": "Flora Maid Service",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Morgana_Stump of the Gelid Lands",
+        "unit_name": "Morgana",
+        "unit_title": "Stump of the Gelid Lands",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Mors_Demon-type C.O.",
+        "unit_name": "Mors",
+        "unit_title": "Demon-type C.O.",
+        "unit_type": "Mech;C.O.",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Mortar Team_Fennec Fox",
+        "unit_name": "Mortar Team",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Soldier",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Na Yubin_Fenrir Division",
+        "unit_name": "Na Yubin",
+        "unit_title": "Fenrir Division",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Naielle Bluesteel_Administration Counter Academy",
+        "unit_name": "Naielle Bluesteel",
+        "unit_title": "Administration Counter Academy",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nanahara Chifuyu_Nanahara Family Alliance",
+        "unit_name": "Nanahara Chifuyu",
+        "unit_title": "Nanahara Family Alliance",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nanahara Chinatsu_Nanahara Family Alliance",
+        "unit_name": "Nanahara Chinatsu",
+        "unit_title": "Nanahara Family Alliance",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nao_Nanahara Family Alliance",
+        "unit_name": "Nao",
+        "unit_title": "Nanahara Family Alliance",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nayuka Minato_Nanahara Family Alliance",
+        "unit_name": "Nayuka Minato",
+        "unit_title": "Nanahara Family Alliance",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Esterosa de Chevalier_Near Astraea",
+        "unit_name": "Esterosa de Chevalier",
+        "unit_title": "Near Astraea",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Xiao Lin_Nest Keeper",
+        "unit_name": "Xiao Lin",
+        "unit_title": "Nest Keeper",
+        "unit_type": "Counter",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nicole Primer_Gremory&apos;s Bar",
+        "unit_name": "Nicole Primer",
+        "unit_title": "Gremory&apos;s Bar",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nina Anderson_Frontier",
+        "unit_name": "Nina Anderson",
+        "unit_title": "Frontier",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Noelle Wright_Fenrir Squad",
+        "unit_name": "Noelle Wright",
+        "unit_title": "Fenrir Squad",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ogami Masaki_Nanahara Family Alliance",
+        "unit_name": "Ogami Masaki",
+        "unit_title": "Nanahara Family Alliance",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Oh Saerom_Alphatrix Innovation",
+        "unit_name": "Oh Saerom",
+        "unit_title": "Alphatrix Innovation",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Orca_Successor",
+        "unit_name": "Orca",
+        "unit_title": "Successor",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nanahara Chifuyu_Orochinagi",
+        "unit_name": "Nanahara Chifuyu",
+        "unit_title": "Orochinagi",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Rivet_Outlander",
+        "unit_name": "Rivet",
+        "unit_title": "Outlander",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Overflow_Scavengers",
+        "unit_name": "Overflow",
+        "unit_title": "Scavengers",
+        "unit_type": "Mech;Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ozymandias_Charade",
+        "unit_name": "Ozymandias",
+        "unit_title": "Charade",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_PZH Mobile Gun_Fennec Fox",
+        "unit_name": "PZH Mobile Gun",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Mech",
+        "unit_role": "Siege",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Park Hyunsoo_Daymine Mining Team 4",
+        "unit_name": "Park Hyunsoo",
+        "unit_title": "Daymine Mining Team 4",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Peacekeeper_States of One",
+        "unit_name": "Peacekeeper",
+        "unit_title": "States of One",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Plaga_Elysium Philharmonic",
+        "unit_name": "Plaga",
+        "unit_title": "Elysium Philharmonic",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Laura Beatrix_Purple Mist",
+        "unit_name": "Laura Beatrix",
+        "unit_title": "Purple Mist",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ramlethal Valentine_Illyria Commando Brigade",
+        "unit_name": "Ramlethal Valentine",
+        "unit_title": "Illyria Commando Brigade",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Raphaela Juri the Evil Chaser_Alphatrix Innovation",
+        "unit_name": "Raphaela Juri the Evil Chaser",
+        "unit_title": "Alphatrix Innovation",
+        "unit_type": "Counter",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Reaper_Black Tide",
+        "unit_name": "Reaper",
+        "unit_title": "Black Tide",
+        "unit_type": "Mech",
+        "unit_role": "Sniper",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Rebecca Catherine_Delta Seven; Pathfinder",
+        "unit_name": "Rebecca Catherine",
+        "unit_title": "Delta Seven: Pathfinder",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Recoiless Gunner_Fennec Fox",
+        "unit_name": "Recoiless Gunner",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Regina MacCready_ESPR",
+        "unit_name": "Regina MacCready",
+        "unit_title": "ESPR",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Replacer Bishop_Replacer Syndicate",
+        "unit_name": "Replacer Bishop",
+        "unit_title": "Replacer Syndicate",
+        "unit_type": "Counter;Replacer",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Replacer King_Replacer Syndicate",
+        "unit_name": "Replacer King",
+        "unit_title": "Replacer Syndicate",
+        "unit_type": "Counter;Replacer",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Replacer Knight_Replacer Syndicate",
+        "unit_name": "Replacer Knight",
+        "unit_title": "Replacer Syndicate",
+        "unit_type": "Counter;Replacer",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Replacer Queen_Replacer Syndicate",
+        "unit_name": "Replacer Queen",
+        "unit_title": "Replacer Syndicate",
+        "unit_type": "Counter;Replacer",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Revenant_The Gronia Department of National Security",
+        "unit_name": "Revenant",
+        "unit_title": "The Gronia Department of National Security",
+        "unit_type": "Soldier",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Rhino_Steel Lane",
+        "unit_name": "Rhino",
+        "unit_title": "Steel Lane",
+        "unit_type": "Mech",
+        "unit_role": "Siege",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Rifleman_Steel Lane",
+        "unit_name": "Rifleman",
+        "unit_title": "Steel Lane",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Rita Arsenico_Horizon Finance",
+        "unit_name": "Rita Arsenico",
+        "unit_title": "Horizon Finance",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Rivet_ESPR",
+        "unit_name": "Rivet",
+        "unit_title": "ESPR",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Rosaria le Friede_Fallen Hawk",
+        "unit_name": "Rosaria le Friede",
+        "unit_title": "Fallen Hawk",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Roy Burnett_Prydwen Institution",
+        "unit_name": "Roy Burnett",
+        "unit_title": "Prydwen Institution",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ryan Ferrier_Prydwen Institution",
+        "unit_name": "Ryan Ferrier",
+        "unit_title": "Prydwen Institution",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Scout_Black Tide",
+        "unit_name": "Scout",
+        "unit_title": "Black Tide",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lycoris_Secret Service",
+        "unit_name": "Lycoris",
+        "unit_title": "Secret Service",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Seo Yoon_ALT Squad",
+        "unit_name": "Seo Yoon",
+        "unit_title": "ALT Squad",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Serapel_Cronenworth Puppet Troupe",
+        "unit_name": "Serapel",
+        "unit_title": "Cronenworth Puppet Troupe",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Shena_Elysium Philharmonic",
+        "unit_name": "Shena",
+        "unit_title": "Elysium Philharmonic",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Shepherd & Lurcher_The Elemental and the Beast",
+        "unit_name": "Shepherd & Lurcher",
+        "unit_title": "The Elemental and the Beast",
+        "unit_type": "Mech;C.O.",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Shieldman_Steel Lane",
+        "unit_name": "Shieldman",
+        "unit_title": "Steel Lane",
+        "unit_type": "Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Shim Somi_Daymine Mining Team 4",
+        "unit_name": "Shim Somi",
+        "unit_title": "Daymine Mining Team 4",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Shin Jia_Alphatrix Innovation",
+        "unit_name": "Shin Jia",
+        "unit_title": "Alphatrix Innovation",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sigma_Future Strategy Department",
+        "unit_name": "Sigma",
+        "unit_title": "Future Strategy Department",
+        "unit_type": "Mech",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Swan Claire_Six Wings",
+        "unit_name": "Swan Claire",
+        "unit_title": "Six Wings",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Skia Crow_OZ",
+        "unit_name": "Skia Crow",
+        "unit_title": "OZ",
+        "unit_type": "Mech;Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sky Layfield_Special Hero Class",
+        "unit_name": "Sky Layfield",
+        "unit_title": "Special Hero Class",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Edith Twins_The Sleeping Girl and the Yellow-billed Flock",
+        "unit_name": "Edith Twins",
+        "unit_title": "The Sleeping Girl and the Yellow-billed Flock",
+        "unit_type": "Counter",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sniper_Steel Lane",
+        "unit_name": "Sniper",
+        "unit_title": "Steel Lane",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sol Badguy_Flame of Corruption",
+        "unit_name": "Sol Badguy",
+        "unit_title": "Flame of Corruption",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sonya Bill_Front Bay Sharks",
+        "unit_name": "Sonya Bill",
+        "unit_title": "Front Bay Sharks",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sparrow_Steel Lane",
+        "unit_name": "Sparrow",
+        "unit_title": "Steel Lane",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Han Sorim_Special Force",
+        "unit_name": "Han Sorim",
+        "unit_title": "Special Force",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Spencer_Chamber",
+        "unit_name": "Spencer",
+        "unit_title": "Chamber",
+        "unit_type": "Soldier",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Spira_Demon-type C.O.",
+        "unit_name": "Spira",
+        "unit_title": "Demon-type C.O.",
+        "unit_type": "Counter;C.O.",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Stinger Gunner_Fennec Fox",
+        "unit_name": "Stinger Gunner",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Stronghold_Black Tide",
+        "unit_name": "Stronghold",
+        "unit_title": "Black Tide",
+        "unit_type": "Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Suppressor_Steel Lane",
+        "unit_name": "Suppressor",
+        "unit_title": "Steel Lane",
+        "unit_type": "Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sweeper_Black Tide",
+        "unit_name": "Sweeper",
+        "unit_title": "Black Tide",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Sylvia Lena Cooper_Delta Seven",
+        "unit_name": "Sylvia Lena Cooper",
+        "unit_title": "Delta Seven",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Tactical Transporter Deuce-and-a-Half_Steel Lane",
+        "unit_name": "Tactical Transporter Deuce-and-a-Half",
+        "unit_title": "Steel Lane",
+        "unit_type": "Mech",
+        "unit_role": "Tower",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Tallie_Front Bay Sharks",
+        "unit_name": "Tallie",
+        "unit_title": "Front Bay Sharks",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Tarrasque_Old Administration",
+        "unit_name": "Tarrasque",
+        "unit_title": "Old Administration",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Terminator_Black Tide",
+        "unit_name": "Terminator",
+        "unit_title": "Black Tide",
+        "unit_type": "Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Thaddeus Morgan_Prydwen Institution",
+        "unit_name": "Thaddeus Morgan",
+        "unit_title": "Prydwen Institution",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Titan_Future-at-War",
+        "unit_name": "Titan",
+        "unit_title": "Future-at-War",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Tommy the Die-hard_Tommy and the Losers",
+        "unit_name": "Tommy the Die-hard",
+        "unit_title": "Tommy and the Losers",
+        "unit_type": "Soldier",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Titan_Triaina Plan",
+        "unit_name": "Titan",
+        "unit_title": "Triaina Plan",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_UBGL Rifleman_Fennec Fox",
+        "unit_name": "UBGL Rifleman",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Soldier",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Veronica_Flora Maid Service",
+        "unit_name": "Veronica",
+        "unit_title": "Flora Maid Service",
+        "unit_type": "Soldier",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Gaeun_Volume Up!",
+        "unit_name": "Gaeun",
+        "unit_title": "Volume Up!",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Warden_Border Guards",
+        "unit_name": "Warden",
+        "unit_title": "Border Guards",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Woodpecker_Steel Lane",
+        "unit_name": "Woodpecker",
+        "unit_title": "Steel Lane",
+        "unit_type": "Mech",
+        "unit_role": "Striker",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Xiao Lin_ALT Squad",
+        "unit_name": "Xiao Lin",
+        "unit_title": "ALT Squad",
+        "unit_type": "Counter",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yamata no Orochi_The Fallen Plague God",
+        "unit_name": "Yamata no Orochi",
+        "unit_title": "The Fallen Plague God",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yang Hansol_Zodiac Knights; Blue Shift",
+        "unit_name": "Yang Hansol",
+        "unit_title": "Zodiac Knights: Blue Shift",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yanikka Shirokova_Chamber",
+        "unit_name": "Yanikka Shirokova",
+        "unit_title": "Chamber",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yang Harim_White Rabbit",
+        "unit_name": "Yang Harim",
+        "unit_title": "White Rabbit",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yen Xing Lanchester_Academy Student Council",
+        "unit_name": "Yen Xing Lanchester",
+        "unit_title": "Academy Student Council",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yoo Mina_Fenrir Squad",
+        "unit_name": "Yoo Mina",
+        "unit_title": "Fenrir Squad",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Yuna Springfield_Strega",
+        "unit_name": "Yuna Springfield",
+        "unit_title": "Strega",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_ZSU Shilka_Fennec Fox",
+        "unit_name": "ZSU Shilka",
+        "unit_title": "Fennec Fox",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Naielle Bluesteel_New Age",
+        "unit_name": "Naielle Bluesteel",
+        "unit_title": "New Age",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Bell Cranel_Rabbit&apos;s Foot",
+        "unit_name": "Bell Cranel",
+        "unit_title": "Rabbit&apos;s Foot",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ryu Lion_Gale Wind",
+        "unit_name": "Ryu Lion",
+        "unit_title": "Gale Wind",
+        "unit_type": "Counter",
+        "unit_role": "Supporter",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ais Wallenstein_Sword Princess",
+        "unit_name": "Ais Wallenstein",
+        "unit_title": "Sword Princess",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Solovey_Sprouting Star",
+        "unit_name": "Solovey",
+        "unit_title": "Sprouting Star",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Nibble_Irregular C.O.",
+        "unit_name": "Nibble",
+        "unit_title": "Irregular C.O.",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Lucia Ridge_Exorcist",
+        "unit_name": "Lucia Ridge",
+        "unit_title": "Exorcist",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Seosaeng_Nostalgia Workshop",
+        "unit_name": "Seosaeng",
+        "unit_title": "Nostalgia Workshop",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Titan_Hyperion Plan",
+        "unit_name": "Titan",
+        "unit_title": "Hyperion Plan",
+        "unit_type": "Mech",
+        "unit_role": "Ranger",
+        "unit_mtype": "Air"
+    },
+    {
+        "unit_icon": "Icon_Felicette_Space Cat",
+        "unit_name": "Felicette",
+        "unit_title": "Space Cat",
+        "unit_type": "Soldier",
+        "unit_role": "Sniper",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Ascella Procenica_Zodiac Knights; Red Shift",
+        "unit_name": "Ascella Procenica",
+        "unit_title": "Zodiac Knights: Red Shift",
+        "unit_type": "Counter",
+        "unit_role": "Defender",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Vesca_Nostalgia Workshop",
+        "unit_name": "Vesca",
+        "unit_title": "Nostalgia Workshop",
+        "unit_type": "Counter",
+        "unit_role": "Ranger",
+        "unit_mtype": "Ground"
+    },
+    {
+        "unit_icon": "Icon_Zena Bird_Official Support",
+        "unit_name": "Zena Bird",
+        "unit_title": "Official Support",
+        "unit_type": "Counter",
+        "unit_role": "Striker",
+        "unit_mtype": "Ground"
+    }
+]
+
+// UNITS_END
 
 
 const GEARS = [

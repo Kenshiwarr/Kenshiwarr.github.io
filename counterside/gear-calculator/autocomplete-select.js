@@ -3110,21 +3110,21 @@ function autocomplete(inp, arr) {
           
           b = document.createElement("DIV");
           if(Number(getIndixesOf(val, arr[i])[0])==0){
-              b.innerHTML += unit_titles[i] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
+              b.innerHTML += UNITS[i]['unit_title'] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(val.length);
           } else {
-              b.innerHTML = unit_titles[i] + ' ';
+              b.innerHTML = UNITS[i]['unit_title'] + ' ';
               b.innerHTML += arr[i].substr(0, getIndixesOf(val, arr[i]), val.length) + "<strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(Number(getIndixesOf(val, arr[i]))+val.length);
           }
     
-          b.innerHTML += '<span class="d-flex align-items-center"><img src="cs_icons/' + units_icons[i] + '.png" alt=""> <span style="position: relative; left: 1rem; top: 0;">' + '<span class="d-flex align-items-center"><img src="cs_icons/type_'+ ((unit_types[i].split(';')[0].toLowerCase() == 'c.o.') || (unit_types[i].split(';')[0].toLowerCase() == 'replacer') ? 'co':unit_types[i].split(';')[0].toLowerCase()) +'.png" height="20px" width="20px">' +  unit_types[i].split(';')[0] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/role_'+ unit_roles[i].toLowerCase() +'.png" height="20px" width="20px">' + unit_roles[i] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/movement_'+ unit_mtypes[i].toLowerCase() +'.png" height="20px" width="20px">' + unit_mtypes[i] + '</span></span>';
+          b.innerHTML += '<span class="d-flex align-items-center"><img src="cs_icons/' + UNITS[i]['unit_icon'] + '.png" alt=""> <span style="position: relative; left: 1rem; top: 0;">' + '<span class="d-flex align-items-center"><img src="cs_icons/type_'+ ((UNITS[i]['unit_type'].split(';')[0].toLowerCase() == 'c.o.') || (UNITS[i]['unit_type'].split(';')[0].toLowerCase() == 'replacer') ? 'co':UNITS[i]['unit_type'].split(';')[0].toLowerCase()) +'.png" height="20px" width="20px">' +  UNITS[i]['unit_type'].split(';')[0] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/role_'+ UNITS[i]['unit_role'].toLowerCase() +'.png" height="20px" width="20px">' + UNITS[i]['unit_role'] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/movement_'+ UNITS[i]['unit_mtype'].toLowerCase() +'.png" height="20px" width="20px">' + UNITS[i]['unit_mtype'] + '</span></span>';
     
     
           
           
-          //b.innerHTML += "<input type='hidden' value='" + unit_titles[i] +  ' ' + arr[i] + "'>";
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "' subvalue='" + unit_titles[i] + "'>";
+          //b.innerHTML += "<input type='hidden' value='" + UNITS[i]['unit_title'] +  ' ' + arr[i] + "'>";
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "' subvalue='" + UNITS[i]['unit_title'] + "'>";
               b.addEventListener("click", function(e) {
                 var uTitle = this.getElementsByTagName("input")[0].getAttribute('subvalue');
                 var uName = this.getElementsByTagName("input")[0].value;
@@ -3185,20 +3185,20 @@ function autocomplete(inp, arr) {
           
           b = document.createElement("DIV");
           if(Number(getIndixesOf(val, arr[i])[0])==0){
-              b.innerHTML += unit_titles[i] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
+              b.innerHTML += UNITS[i]['unit_title'] + " <strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(val.length);
           } else {
-              b.innerHTML = unit_titles[i] + ' ';
+              b.innerHTML = UNITS[i]['unit_title'] + ' ';
               b.innerHTML += arr[i].substr(0, getIndixesOf(val, arr[i]), val.length) + "<strong>" + arr[i].substr(getIndixesOf(val, arr[i]), val.length) + "</strong>";
               b.innerHTML += arr[i].substr(Number(getIndixesOf(val, arr[i]))+val.length);
           }
     
-          b.innerHTML += '<span class="d-flex align-items-center"><img src="cs_icons/' + units_icons[i] + '.png" alt=""> <span style="position: relative; left: 1rem; top: 0;">' + '<span class="d-flex align-items-center"><img src="cs_icons/type_'+ ((unit_types[i].split(';')[0].toLowerCase() == 'c.o.') || (unit_types[i].split(';')[0].toLowerCase() == 'replacer') ? 'co':unit_types[i].split(';')[0].toLowerCase()) +'.png" height="20px" width="20px">' +  unit_types[i].split(';')[0] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/role_'+ unit_roles[i].toLowerCase() +'.png" height="20px" width="20px">' + unit_roles[i] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/movement_'+ unit_mtypes[i].toLowerCase() +'.png" height="20px" width="20px">' + unit_mtypes[i] + '</span></span>';
+          b.innerHTML += '<span class="d-flex align-items-center"><img src="cs_icons/' + UNITS[i]['unit_icon'] + '.png" alt=""> <span style="position: relative; left: 1rem; top: 0;">' + '<span class="d-flex align-items-center"><img src="cs_icons/type_'+ ((UNITS[i]['unit_type'].split(';')[0].toLowerCase() == 'c.o.') || (UNITS[i]['unit_type'].split(';')[0].toLowerCase() == 'replacer') ? 'co':UNITS[i]['unit_type'].split(';')[0].toLowerCase()) +'.png" height="20px" width="20px">' +  UNITS[i]['unit_type'].split(';')[0] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/role_'+ UNITS[i]['unit_role'].toLowerCase() +'.png" height="20px" width="20px">' + UNITS[i]['unit_role'] + '</span>' + '<span class="d-flex align-items-center"><img src="cs_icons/movement_'+ UNITS[i]['unit_mtype'].toLowerCase() +'.png" height="20px" width="20px">' + UNITS[i]['unit_mtype'] + '</span></span>';
     
           
           
-          //b.innerHTML += "<input type='hidden' value='" + unit_titles[i] +  ' ' + arr[i] + "'>";
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "' subvalue='" + unit_titles[i] + "'>";
+          //b.innerHTML += "<input type='hidden' value='" + UNITS[i]['unit_title'] +  ' ' + arr[i] + "'>";
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "' subvalue='" + UNITS[i]['unit_title'] + "'>";
               b.addEventListener("click", function(e) {
                 var uTitle = this.getElementsByTagName("input")[0].getAttribute('subvalue');
                 var uName = this.getElementsByTagName("input")[0].value;
