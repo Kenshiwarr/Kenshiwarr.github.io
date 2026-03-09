@@ -81,13 +81,13 @@ if (localStorageAvailable) {
       gearIc += gearIcSlot;
       gearIc += "</div>";
 
-    $('#gearModalSavedPresets').append('<div class="saved-preset-container" value="' + i + '">' + gearIc + '<div class="d-grid gear-preset-btn_group"><button type="button" class="btn btn-secondary load-unit-gear_preset-btn">Load unit</button><button type="button" class="btn btn-secondary load-target-gear_preset-btn">Load target</button>' + '<button type="button" class="btn btn-danger delete-gear_preset-btn">Delete</button></div></div>');
+    $('#gearModalSavedPresets').append('<div class="saved-preset-container">' + gearIc + '<div class="d-grid gear-preset-btn_group"><button type="button" class="btn btn-secondary load-unit-gear_preset-btn">Load unit</button><button type="button" class="btn btn-secondary load-target-gear_preset-btn">Load target</button>' + '<button type="button" class="btn btn-danger delete-gear_preset-btn">Delete</button></div></div>');
       
     
     }
 
     $('.gearPresetModalContainer .load-unit-gear_preset-btn').on('click',function() {
-      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      const gval = Number($(this).parents('.saved-preset-container').index());
       
        if (gearPresetData[gval][0] !== '') {
       Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
@@ -127,7 +127,7 @@ if (localStorageAvailable) {
     CalcUnitDMG()
     });
     $('.gearPresetModalContainer .load-target-gear_preset-btn').on('click',function() {
-      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      const gval = Number($(this).parents('.saved-preset-container').index());
 
        if (gearPresetData[gval][0] !== '') {
       enemy_Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
@@ -167,7 +167,7 @@ if (localStorageAvailable) {
     CalcUnitDMG()
     });
     $('.gearPresetModalContainer .delete-gear_preset-btn').on('click',function() {
-      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      const gval = Number($(this).parents('.saved-preset-container').index());
     
       console.log(gearPresetData);
       console.log('removing - ' + gval);
@@ -182,7 +182,7 @@ if (localStorageAvailable) {
     }); 
 
      $('.gearPresetModalContainer .gear-containers .equipment-slot_tooltip').on('click',function() {
-      const DataRow = $(this).parents('.saved-preset-container').attr('value');
+      const DataRow = $(this).parents('.saved-preset-container').index();
       const DataItem = $(this).index();
       const DataGear = gearPresetData[DataRow][DataItem].split(',');
         console.log('DataRow');
@@ -603,10 +603,10 @@ $('.save-unit-preset-btn').on('click',function() {
       gearPresetData.push(gearData);
     localStorage.setItem('gearPresetData',JSON.stringify(gearPresetData));
    
-      $('#gearModalSavedPresets').append('<div class="saved-preset-container" value="' + (gearPresetData.length-1) + '">' + gearIc + '<div class="d-grid gear-preset-btn_group"><button type="button" class="btn btn-secondary load-unit-gear_preset-btn">Load unit</button><button type="button" class="btn btn-secondary load-target-gear_preset-btn">Load target</button>' + '<button type="button" class="btn btn-danger delete-gear_preset-btn">Delete</button></div></div>');
+      $('#gearModalSavedPresets').append('<div class="saved-preset-container">' + gearIc + '<div class="d-grid gear-preset-btn_group"><button type="button" class="btn btn-secondary load-unit-gear_preset-btn">Load unit</button><button type="button" class="btn btn-secondary load-target-gear_preset-btn">Load target</button>' + '<button type="button" class="btn btn-danger delete-gear_preset-btn">Delete</button></div></div>');
    
    $('.gearPresetModalContainer .load-unit-gear_preset-btn').on('click',function() {
-      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      const gval = Number($(this).parents('.saved-preset-container').index());
       
        if (gearPresetData[gval][0] !== '') {
       Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
@@ -646,7 +646,7 @@ $('.save-unit-preset-btn').on('click',function() {
     CalcUnitDMG()
     });
     $('.gearPresetModalContainer .load-target-gear_preset-btn').on('click',function() {
-      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      const gval = Number($(this).parents('.saved-preset-container').index());
 
        if (gearPresetData[gval][0] !== '') {
       enemy_Weapon.setValuesByUrl(gearPresetData[gval][0],"Weapon");
@@ -686,7 +686,7 @@ $('.save-unit-preset-btn').on('click',function() {
     CalcUnitDMG()
     });
     $('.gearPresetModalContainer .delete-gear_preset-btn').on('click',function() {
-      const gval = Number($(this).parents('.saved-preset-container').attr('value'));
+      const gval = Number($(this).parents('.saved-preset-container').index());
     
       console.log(gearPresetData);
       console.log('removing - ' + gval);
@@ -701,7 +701,7 @@ $('.save-unit-preset-btn').on('click',function() {
     }); 
    
       $('.gearPresetModalContainer .gear-containers .equipment-slot_tooltip').on('click',function() {
-      const DataRow = Number($(this).parents('.saved-preset-container').attr('value'));
+      const DataRow = Number($(this).parents('.saved-preset-container').index());
       const DataItem = $(this).index();
       const DataGear = gearPresetData[DataRow][DataItem].split(',');
         console.log('DataRow');
