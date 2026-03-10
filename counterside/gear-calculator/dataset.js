@@ -14472,7 +14472,7 @@ const GEARS = [
             466
         ],
         "latent": {
-            "Ranged DMG RES": 0.11,
+            "DMG Taken RDC": 0.059,
         },
         "sub1": {
             "ATK%": 0.076,
@@ -14484,6 +14484,7 @@ const GEARS = [
             "CRIT DMG": 0.115,
             "CRIT DMG RES": 0.32,
             "Melee DMG RES": 0.097,
+            "Ranged DMG RES": 0.097,
             "Incoming Healing +": 0.133,
             "Barrier Enhancement": 0.163,
             "Outgoing Healing": 0.09,
@@ -14532,7 +14533,7 @@ const GEARS = [
             4484
         ],
         "latent": {
-            "Ranged DMG RES": 0.11,
+            "DMG Taken RDC": 0.059,
         },
         "sub1": {
             "ATK%": 0.076,
@@ -14544,6 +14545,7 @@ const GEARS = [
             "CRIT DMG": 0.115,
             "CRIT DMG RES": 0.32,
             "Melee DMG RES": 0.097,
+            "Ranged DMG RES": 0.097,
             "Incoming Healing +": 0.133,
             "Barrier Enhancement": 0.163,
             "Outgoing Healing": 0.09,
@@ -14592,7 +14594,7 @@ const GEARS = [
             304
         ],
         "latent": {
-            "Ranged DMG RES": 0.125,
+            "DMG Taken RDC": 0.066,
         },
         "sub1": {
             "ATK%": 0.083,
@@ -14604,6 +14606,7 @@ const GEARS = [
             "CRIT DMG": 0.163,
             "CRIT DMG RES": 0.352,
             "Melee DMG RES": 0.107,
+            "Ranged DMG RES": 0.107,
             "Incoming Healing +": 0.146,
             "Barrier Enhancement": 0.178,
             "Outgoing Healing": 0.099,
@@ -14652,7 +14655,7 @@ const GEARS = [
             304
         ],
         "latent": {
-            "Ranged DMG RES": 0.125,
+            "DMG Taken RDC": 0.066,
         },
         "sub1": {
             "ATK%": 0.083,
@@ -14664,6 +14667,7 @@ const GEARS = [
             "CRIT DMG": 0.163,
             "CRIT DMG RES": 0.352,
             "Melee DMG RES": 0.107,
+            "Ranged DMG RES": 0.107,
             "Incoming Healing +": 0.146,
             "Barrier Enhancement": 0.178,
             "Outgoing Healing": 0.099,
